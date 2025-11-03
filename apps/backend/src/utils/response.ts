@@ -1,11 +1,13 @@
 import { Response } from 'express';
 
 interface SuccessResponseData {
+  success: boolean;
   message: string;
   data?: any;
 }
 
 interface ErrorResponseData {
+  success: boolean;
   message: string;
   error?: any;
 }
@@ -17,6 +19,7 @@ export const successResponse = (
   statusCode: number = 200
 ) => {
   const response: SuccessResponseData = {
+    success: true,
     message,
   };
 
@@ -34,6 +37,7 @@ export const errorResponse = (
   error?: any
 ) => {
   const response: ErrorResponseData = {
+    success: false,
     message,
   };
 
