@@ -3,12 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const sequelize = new Sequelize({
-  host: process.env.DB_HOST || 'localhost',
-  port: parseInt(process.env.DB_PORT || '5432'),
-  database: process.env.DB_NAME || 'mydb',
-  username: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASS || 'postgres',
+const sequelize = new Sequelize(process.env.DATABASE_URL || '', {
   dialect: 'postgres',
   logging: false,
   dialectOptions: {
@@ -24,5 +19,10 @@ const sequelize = new Sequelize({
     idle: 10000,
   },
 });
+
+sequelize
+  .authenticate()
+  .then(() => console.log('✅ Database connected'))
+  .catch((err) => console.error('❌ Database connection failed:', err));
 
 export default sequelize;
