@@ -134,7 +134,7 @@ npx nx run-many --target=serve --all
 
 ## 👥 Kontributor
 
-- **Hussain & Tim PKBM**
+- **Pengembang PKBM**
 - Open for internal collaboration and further extension.
 
 ---
