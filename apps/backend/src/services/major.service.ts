@@ -18,7 +18,7 @@ export class MajorService {
 
   async getMajorById(id: string) {
     return await Majors.findOne({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null as any },
     });
   }
 
@@ -61,7 +61,7 @@ export class MajorService {
 
   async updateMajor(id: string, data: Partial<MajorsAttributes>) {
     const major = await Majors.findOne({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null as any },
     });
 
     if (!major) {
@@ -74,7 +74,7 @@ export class MajorService {
 
   async deleteMajor(id: string) {
     const major = await Majors.findOne({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null as any },
     });
 
     if (!major) {

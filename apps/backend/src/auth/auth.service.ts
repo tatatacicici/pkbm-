@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { Op } from 'sequelize';
 import { Users } from '../models/Users';
 import { UsersAttributes } from '../models/Users';
 import { Otps } from '../models/Otps';
@@ -138,8 +139,8 @@ export class AuthService {
       id: uuidv4(),
       email,
       otp,
-      type: 'PASSWORD_RESET',
-      expiresAt: new Date(Date.now() + 15 * 60 * 1000),
+      otpType: 'PASSWORD_RESET',
+      expirationTime: new Date(Date.now() + 15 * 60 * 1000),
       createdAt: new Date(),
       updatedAt: new Date(),
     } as any);
@@ -160,8 +161,8 @@ export class AuthService {
     await user.update({ password: hashedPassword });
 
     await Otps.update(
-      { isUsed: true },
-      { where: { email, otp, type: 'PASSWORD_RESET' } }
+      { deletedAt: new Date() },
+      { where: { email, otp, otpType: 'PASSWORD_RESET' } }
     );
   }
 
@@ -178,8 +179,8 @@ export class AuthService {
       id: uuidv4(),
       email,
       otp,
-      type: 'EMAIL_VERIFICATION',
-      expiresAt: new Date(Date.now() + 15 * 60 * 1000),
+      otpType: 'EMAIL_VERIFICATION',
+      expirationTime: new Date(Date.now() + 15 * 60 * 1000),
       createdAt: new Date(),
       updatedAt: new Date(),
     } as any);
@@ -202,14 +203,18 @@ export class AuthService {
     });
 
     await Otps.update(
-      { isUsed: true },
-      { where: { email, otp, type: 'EMAIL_VERIFICATION' } }
+      { deletedAt: new Date() },
+      { where: { email, otp, otpType: 'EMAIL_VERIFICATION' } }
     );
   }
 
   async verifyOtp(email: string, otp: string): Promise<{ valid: boolean }> {
     const otpRecord = await Otps.findOne({
-      where: { email, otp, isUsed: false },
+      where: { 
+        email, 
+        otp, 
+        deletedAt: { [Op.is]: null } as any
+      },
       order: [['createdAt', 'DESC']],
     });
 
@@ -217,7 +222,7 @@ export class AuthService {
       throw new Error('Invalid OTP');
     }
 
-    if (otpRecord.expiresAt && otpRecord.expiresAt < new Date()) {
+    if (otpRecord.expirationTime && otpRecord.expirationTime < new Date()) {
       throw new Error('OTP expired');
     }
 

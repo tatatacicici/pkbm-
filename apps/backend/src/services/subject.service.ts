@@ -43,7 +43,7 @@ export class SubjectService {
 
   async getSubjectById(id: string) {
     return await Subjects.findOne({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null as any },
     });
   }
 
@@ -60,7 +60,7 @@ export class SubjectService {
 
   async updateSubject(id: string, data: Partial<SubjectsAttributes>) {
     const subject = await Subjects.findOne({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null as any },
     });
 
     if (!subject) {
@@ -73,7 +73,7 @@ export class SubjectService {
 
   async deleteSubject(id: string) {
     const subject = await Subjects.findOne({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null as any },
     });
 
     if (!subject) {

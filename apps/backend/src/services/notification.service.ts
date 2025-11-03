@@ -35,13 +35,13 @@ export class NotificationService {
       throw new Error('Notification not found');
     }
 
-    await notification.update({ isRead: true });
+    await notification.update({ isRead: true } as any);
   }
 
   async markAllAsRead(userId: string) {
     await Notifications.update(
-      { isRead: true },
-      { where: { userId, isRead: false } }
+      { isRead: true } as any,
+      { where: { userId, isRead: false } as any }
     );
   }
 }

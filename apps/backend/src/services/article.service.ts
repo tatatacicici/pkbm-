@@ -48,7 +48,7 @@ export class ArticleService {
 
   async getArticleById(id: string) {
     const article = await Articles.findOne({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null as any },
     });
 
     if (article) {
@@ -61,7 +61,7 @@ export class ArticleService {
 
   async getArticleBySlug(slug: string) {
     const article = await Articles.findOne({
-      where: { slug, deletedAt: null },
+      where: { slug, deletedAt: null as any },
     });
 
     if (article) {
@@ -86,7 +86,7 @@ export class ArticleService {
 
   async updateArticle(id: string, data: Partial<ArticlesAttributes>) {
     const article = await Articles.findOne({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null as any },
     });
 
     if (!article) {
@@ -99,7 +99,7 @@ export class ArticleService {
 
   async deleteArticle(id: string) {
     const article = await Articles.findOne({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null as any },
     });
 
     if (!article) {
@@ -120,7 +120,7 @@ export class ArticleService {
       where: {
         id: { [Op.ne]: id },
         categoryId: article.categoryId,
-        deletedAt: null,
+        deletedAt: null as any,
       },
       limit: 5,
       order: [['createdAt', 'DESC']],

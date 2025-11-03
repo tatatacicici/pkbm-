@@ -12,11 +12,11 @@ export class DashboardService {
     });
 
     const registeredEvents = await EventParticipants.count({
-      where: { userId },
+      where: { userId } as any,
     });
 
     const unreadNotifications = await Notifications.count({
-      where: { userId, isRead: false },
+      where: { userId, isRead: false } as any,
     });
 
     return {

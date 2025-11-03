@@ -37,7 +37,7 @@ export class LeaderboardService {
     const offset = (page - 1) * limit;
 
     const { rows: leaderboard, count: total } = await LeaderboardHistories.findAndCountAll({
-      where: { facultyId },
+      where: { facultyId } as any,
       include: [{
         model: Users,
         attributes: ['id', 'fullName', 'avatar', 'userName'],
@@ -63,7 +63,7 @@ export class LeaderboardService {
     const offset = (page - 1) * limit;
 
     const { rows: leaderboard, count: total } = await LeaderboardHistories.findAndCountAll({
-      where: { majorId },
+      where: { majorId } as any,
       include: [{
         model: Users,
         attributes: ['id', 'fullName', 'avatar', 'userName'],
@@ -89,7 +89,7 @@ export class LeaderboardService {
     const offset = (page - 1) * limit;
 
     const { rows: leaderboard, count: total } = await LeaderboardHistories.findAndCountAll({
-      where: { semesterId },
+      where: { semesterId } as any,
       include: [{
         model: Users,
         attributes: ['id', 'fullName', 'avatar', 'userName'],

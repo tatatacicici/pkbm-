@@ -4,14 +4,14 @@ import { v4 as uuidv4 } from 'uuid';
 export class FacultyService {
   async getAllFaculties() {
     return await Faculties.findAll({
-      where: { deletedAt: null },
+      where: { deletedAt: null as any },
       order: [['name', 'ASC']],
     });
   }
 
   async getFacultyById(id: string) {
     return await Faculties.findOne({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null as any },
     });
   }
 
@@ -28,7 +28,7 @@ export class FacultyService {
 
   async updateFaculty(id: string, data: Partial<FacultiesAttributes>) {
     const faculty = await Faculties.findOne({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null as any },
     });
 
     if (!faculty) {
@@ -41,7 +41,7 @@ export class FacultyService {
 
   async deleteFaculty(id: string) {
     const faculty = await Faculties.findOne({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null as any },
     });
 
     if (!faculty) {

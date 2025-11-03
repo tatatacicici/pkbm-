@@ -14,7 +14,7 @@ export class EventService {
     const offset = (page - 1) * limit;
 
     const { rows: events, count: total } = await Events.findAndCountAll({
-      where: { deletedAt: null },
+      where: { deletedAt: null as any },
       limit,
       offset,
       order: [['createdAt', 'DESC']],
@@ -33,16 +33,16 @@ export class EventService {
 
   async getEventById(id: string) {
     return await Events.findOne({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null as any },
     });
   }
 
   async getRegisteredEvents(userId: string) {
     const registrations = await EventParticipants.findAll({
-      where: { userId },
+      where: { userId } as any,
       include: [{
         model: Events,
-        where: { deletedAt: null },
+        where: { deletedAt: null as any },
       }],
     });
 
@@ -53,10 +53,10 @@ export class EventService {
     const now = new Date();
     const events = await Events.findAll({
       where: {
-        deletedAt: null,
-        startDate: { [Op.gte]: now },
-      },
-      order: [['startDate', 'ASC']],
+        deletedAt: null as any,
+        dateStart: { [Op.gte]: now },
+      } as any,
+      order: [['dateStart', 'ASC']],
       limit: 10,
     });
 
@@ -66,13 +66,13 @@ export class EventService {
   async getEventHistory(userId: string) {
     const now = new Date();
     const registrations = await EventParticipants.findAll({
-      where: { userId },
+      where: { userId } as any,
       include: [{
         model: Events,
         where: {
-          deletedAt: null,
-          endDate: { [Op.lt]: now },
-        },
+          deletedAt: null as any,
+          dateEnd: { [Op.lt]: now },
+        } as any,
       }],
       order: [['createdAt', 'DESC']],
     });
@@ -88,7 +88,7 @@ export class EventService {
     }
 
     const existing = await EventParticipants.findOne({
-      where: { userId, eventId },
+      where: { userId, eventId } as any,
     });
 
     if (existing) {
@@ -119,7 +119,7 @@ export class EventService {
 
   async updateEvent(id: string, data: Partial<EventsAttributes>) {
     const event = await Events.findOne({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null as any },
     });
 
     if (!event) {
@@ -132,7 +132,7 @@ export class EventService {
 
   async deleteEvent(id: string) {
     const event = await Events.findOne({
-      where: { id, deletedAt: null },
+      where: { id, deletedAt: null as any },
     });
 
     if (!event) {

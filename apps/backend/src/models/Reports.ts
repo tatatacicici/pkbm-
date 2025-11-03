@@ -15,12 +15,11 @@ export interface ReportsAttributes {
   weekNumber: number;
   startDate: Date;
   endDate: Date;
-  userId?: string;
 }
 
 export type ReportsPk = "id";
 export type ReportsId = Reports[ReportsPk];
-export type ReportsOptionalAttributes = "id" | "deletedAt" | "lessonsLearned" | "userId";
+export type ReportsOptionalAttributes = "id" | "deletedAt" | "lessonsLearned";
 export type ReportsCreationAttributes = Optional<ReportsAttributes, ReportsOptionalAttributes>;
 
 export class Reports extends Model<ReportsAttributes, ReportsCreationAttributes> implements ReportsAttributes {
@@ -37,7 +36,6 @@ export class Reports extends Model<ReportsAttributes, ReportsCreationAttributes>
   weekNumber!: number;
   startDate!: Date;
   endDate!: Date;
-  userId?: string;
 
 
   static initModel(sequelize: Sequelize.Sequelize): typeof Reports {
@@ -104,11 +102,6 @@ export class Reports extends Model<ReportsAttributes, ReportsCreationAttributes>
       type: DataTypes.DATE,
       allowNull: false,
       field: 'end_date'
-    },
-    userId: {
-      type: DataTypes.UUID,
-      allowNull: true,
-      field: 'user__id'
     }
   }, {
     sequelize,

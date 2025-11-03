@@ -3,23 +3,22 @@ dotenv.config();
 
 import app from './app';
 import sequelize from './config/database';
-import { Users } from './models/Users';
+import { initModels } from './models/init-models';
 
-const PORT = parseInt(process.env.PORT || '5000', 10);
+const PORT = parseInt(process.env.PORT || '3000', 10);
 
 const startServer = async () => {
   try {
     await sequelize.authenticate();
     console.log('✅ Database connected');
 
-    Users.initModel(sequelize);
-    console.log('✅ Users model initialized');
+    initModels(sequelize);
+    console.log('✅ All models initialized');
 
     app.listen(PORT, '0.0.0.0', () => {
       console.log(`🚀 Server running on http://0.0.0.0:${PORT}`);
-      console.log(`🔐 Auth endpoints available:`);
-      console.log(`   POST http://localhost:${PORT}/api/auth/login`);
-      console.log(`   GET  http://localhost:${PORT}/api/auth/profile`);
+      console.log(`📚 API Documentation: apps/backend/API_ROUTES.md`);
+      console.log(`🔗 Endpoints available on http://localhost:${PORT}/api`);
     });
   } catch (error) {
     console.error('❌ Error starting server:', error);
