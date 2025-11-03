@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(logger);
 
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.json({
     message: 'PKBM API Server',
     version: '1.0.0',

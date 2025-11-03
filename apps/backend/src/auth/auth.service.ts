@@ -3,7 +3,13 @@ import jwt from 'jsonwebtoken';
 import { Users } from '../models/Users';
 import { UsersAttributes } from '../models/Users';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-this';
+if (!process.env.JWT_SECRET) {
+  console.error('❌ FATAL ERROR: JWT_SECRET environment variable is not set!');
+  console.error('   Please set JWT_SECRET in your .env file');
+  process.exit(1);
+}
+
+const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '7d';
 
 export class AuthService {
@@ -81,7 +87,8 @@ export class AuthService {
   }
 
   generateToken(userId: string, email: string): string {
-    return jwt.sign({ userId, email }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
+    const payload = { userId, email };
+    return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN } as jwt.SignOptions);
   }
 
   verifyToken(token: string): { userId: string; email: string } {
