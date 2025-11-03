@@ -35,7 +35,8 @@ export class CreditConvertionRequests extends Model<CreditConvertionRequestsAttr
     pk: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     uuid: {
       type: DataTypes.UUID,
