@@ -1,0 +1,26 @@
+/* tabsContent.css */
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.highlighted {
+  transition: background-color 0.5s;
+  background-color: #f7fafc; /* Ubah warna latar sesuai kebutuhan */
+}
+
+.bouncy {
+  animation: bounce 1s;
+}

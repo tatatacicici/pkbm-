@@ -1,0 +1,40 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@kampus-gratis/atoms-molecules": ["libs/atoms-molecules/src/index.ts"],
+      "@kampus-gratis/atoms-molecules/server": [
+        "libs/atoms-molecules/src/server.ts"
+      ],
+      "@kampus-gratis/atoms/server": ["libs/atoms/src/server.ts"],
+      "@kampus-gratis/components/atoms": ["libs/components/atoms/src/index.ts"],
+      "@kampus-gratis/components/molecules": [
+        "libs/components/molecules/src/index.ts"
+      ],
+      "@kampus-gratis/components/organisms": [
+        "libs/components/organisms/src/index.ts"
+      ],
+      "@kampus-gratis/modules": ["libs/modules/src/index.ts"],
+      "@kampus-gratis/modules/server": ["libs/modules/src/server.ts"],
+      "@kampus-gratis/molecules/server": ["libs/molecules/src/server.ts"],
+      "@kampus-gratis/organisms/server": ["libs/organisms/src/server.ts"],
+      "@kampus-gratis/utils": ["libs/utils/src/index.ts"],
+      "@kampus-gratis/utils/server": ["libs/utils/src/server.ts"],
+      "@kampus-gratis/apps/kg/*": ["apps/kg/*"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

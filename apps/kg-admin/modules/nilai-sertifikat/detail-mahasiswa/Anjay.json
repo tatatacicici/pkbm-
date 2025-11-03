@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "matakuliah": "Sutardji",
+    "ip_semester": "80",
+    "keterangan": "lulus"
+  },
+  {
+    "id":2,
+    "matakuliah": "Tatang Sutarman",
+    "ip_semester": "590",
+    "keterangan": "tidak lulus"
+  }
+]

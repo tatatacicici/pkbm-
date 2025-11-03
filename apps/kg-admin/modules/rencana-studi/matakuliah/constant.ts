@@ -1,0 +1,198 @@
+export const dataMataKuliah = [
+    {
+      No: 1,
+      Kode_Mata_Kuliah: 'MK001',
+      Nama_Mata_Kuliah: 'Pemrograman Dasar',
+      Program_Studi: 'Teknik Informatika',
+    },
+    {
+      No: 2,
+      Kode_Mata_Kuliah: 'MK002',
+      Nama_Mata_Kuliah: 'Manajemen Keuangan',
+      Program_Studi: 'Manajemen',
+    },
+    {
+      No: 3,
+      Kode_Mata_Kuliah: 'MK003',
+      Nama_Mata_Kuliah: 'Komunikasi Bisnis',
+      Program_Studi: 'Ilmu Komunikasi',
+    },
+    {
+      No: 4,
+      Kode_Mata_Kuliah: 'MK004',
+      Nama_Mata_Kuliah: 'Hukum Bisnis',
+      Program_Studi: 'Hukum',
+    },
+    {
+      No: 5,
+      Kode_Mata_Kuliah: 'MK005',
+      Nama_Mata_Kuliah: 'Basis Data',
+      Program_Studi: 'Sistem Informasi',
+    },
+    {
+      No: 6,
+      Kode_Mata_Kuliah: 'MK006',
+      Nama_Mata_Kuliah: 'Anatomi Manusia',
+      Program_Studi: 'Kedokteran Umum',
+    },
+    {
+      No: 7,
+      Kode_Mata_Kuliah: 'MK007',
+      Nama_Mata_Kuliah: 'Farmakologi Dasar',
+      Program_Studi: 'Farmasi',
+    },
+    {
+      No: 8,
+      Kode_Mata_Kuliah: 'MK008',
+      Nama_Mata_Kuliah: 'Pengantar Agribisnis',
+      Program_Studi: 'Agribisnis',
+    },
+    {
+      No: 9,
+      Kode_Mata_Kuliah: 'MK009',
+      Nama_Mata_Kuliah: 'Psikologi Perkembangan',
+      Program_Studi: 'Psikologi',
+    },
+    {
+      No: 10,
+      Kode_Mata_Kuliah: 'MK010',
+      Nama_Mata_Kuliah: 'Sastra Inggris',
+      Program_Studi: 'Sastra Inggris',
+    },
+    {
+      No: 11,
+      Kode_Mata_Kuliah: 'MK011',
+      Nama_Mata_Kuliah: 'Statistik',
+      Program_Studi: 'Teknik Informatika',
+    },
+    {
+      No: 12,
+      Kode_Mata_Kuliah: 'MK012',
+      Nama_Mata_Kuliah: 'Pemasaran',
+      Program_Studi: 'Manajemen',
+    },
+    {
+      No: 13,
+      Kode_Mata_Kuliah: 'MK013',
+      Nama_Mata_Kuliah: 'Teori Komunikasi',
+      Program_Studi: 'Ilmu Komunikasi',
+    },
+    {
+      No: 14,
+      Kode_Mata_Kuliah: 'MK014',
+      Nama_Mata_Kuliah: 'Hukum Perusahaan',
+      Program_Studi: 'Hukum',
+    },
+    {
+      No: 15,
+      Kode_Mata_Kuliah: 'MK015',
+      Nama_Mata_Kuliah: 'Sistem Basis Data',
+      Program_Studi: 'Sistem Informasi',
+    },
+    {
+      No: 16,
+      Kode_Mata_Kuliah: 'MK016',
+      Nama_Mata_Kuliah: 'Biologi Sel',
+      Program_Studi: 'Kedokteran Umum',
+    },
+    {
+      No: 17,
+      Kode_Mata_Kuliah: 'MK017',
+      Nama_Mata_Kuliah: 'Kimia Farmasi',
+      Program_Studi: 'Farmasi',
+    },
+    {
+      No: 18,
+      Kode_Mata_Kuliah: 'MK018',
+      Nama_Mata_Kuliah: 'Ekonomi Pertanian',
+      Program_Studi: 'Agribisnis',
+    },
+    {
+      No: 19,
+      Kode_Mata_Kuliah: 'MK019',
+      Nama_Mata_Kuliah: 'Psikologi Klinis',
+      Program_Studi: 'Psikologi',
+    },
+    {
+      No: 20,
+      Kode_Mata_Kuliah: 'MK020',
+      Nama_Mata_Kuliah: 'Sastra Jepang',
+      Program_Studi: 'Sastra Inggris',
+    },
+    {
+      No: 21,
+      Kode_Mata_Kuliah: 'MK021',
+      Nama_Mata_Kuliah: 'Pemrograman Web',
+      Program_Studi: 'Teknik Informatika',
+    },
+    {
+      No: 22,
+      Kode_Mata_Kuliah: 'MK022',
+      Nama_Mata_Kuliah: 'Manajemen Sumber Daya Manusia',
+      Program_Studi: 'Manajemen',
+    },
+    {
+      No: 23,
+      Kode_Mata_Kuliah: 'MK023',
+      Nama_Mata_Kuliah: 'Public Relations',
+      Program_Studi: 'Ilmu Komunikasi',
+    },
+    {
+      No: 24,
+      Kode_Mata_Kuliah: 'MK024',
+      Nama_Mata_Kuliah: 'Hukum Kontrak',
+      Program_Studi: 'Hukum',
+    },
+    {
+      No: 25,
+      Kode_Mata_Kuliah: 'MK025',
+      Nama_Mata_Kuliah: 'Pengembangan Aplikasi Mobile',
+      Program_Studi: 'Sistem Informasi',
+    },
+    {
+      No: 26,
+      Kode_Mata_Kuliah: 'MK026',
+      Nama_Mata_Kuliah: 'Mikrobiologi',
+      Program_Studi: 'Kedokteran Umum',
+    },
+    {
+      No: 27,
+      Kode_Mata_Kuliah: 'MK027',
+      Nama_Mata_Kuliah: 'Farmakologi Klinik',
+      Program_Studi: 'Farmasi',
+    },
+    {
+      No: 28,
+      Kode_Mata_Kuliah: 'MK028',
+      Nama_Mata_Kuliah: 'Ekonomi Internasional',
+      Program_Studi: 'Agribisnis',
+    },
+    {
+      No: 29,
+      Kode_Mata_Kuliah: 'MK029',
+      Nama_Mata_Kuliah: 'Psikologi Abnormal',
+      Program_Studi: 'Psikologi',
+    },
+    {
+      No: 30,
+      Kode_Mata_Kuliah: 'MK030',
+      Nama_Mata_Kuliah: 'Sastra Indonesia',
+      Program_Studi: 'Sastra Inggris',
+    },
+  ];
+
+
+  export const namaProgramStudi = [
+    'Teknik Informatika',
+    'Manajemen',
+    'Ilmu Komunikasi',
+    'Hukum',
+    'Sistem Informasi',
+    'Kedokteran Umum',
+    'Farmasi',
+    'Agribisnis',
+    'Psikologi',
+    'Sastra Inggris',
+  ];
+  
+  

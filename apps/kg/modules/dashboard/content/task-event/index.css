@@ -1,0 +1,6 @@
+.mySwiper .swiper-pagination {
+  top: 0 !important;
+  text-align: end !important;
+  z-index: 0 !important;
+  pointer-events: all !important;
+}
