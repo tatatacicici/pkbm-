@@ -45,7 +45,8 @@ export class UsersScreenTimes extends Model<UsersScreenTimesAttributes, UsersScr
     pk: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     id: {
       type: DataTypes.UUID,

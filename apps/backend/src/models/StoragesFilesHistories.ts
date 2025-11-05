@@ -39,7 +39,8 @@ export class StoragesFilesHistories extends Model<StoragesFilesHistoriesAttribut
     pk: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     fileId: {
       type: DataTypes.INTEGER,

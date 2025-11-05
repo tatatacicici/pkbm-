@@ -43,7 +43,8 @@ export class PaymentTransactions extends Model<PaymentTransactionsAttributes, Pa
     pk: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     id: {
       type: DataTypes.UUID,

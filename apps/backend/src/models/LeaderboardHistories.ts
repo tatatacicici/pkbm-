@@ -43,7 +43,8 @@ export class LeaderboardHistories extends Model<LeaderboardHistoriesAttributes, 
     pk: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     id: {
       type: DataTypes.UUID,

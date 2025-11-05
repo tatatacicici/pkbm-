@@ -41,7 +41,8 @@ export class RoleplaysTeamsMembers extends Model<RoleplaysTeamsMembersAttributes
     pk: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     id: {
       type: DataTypes.UUID,

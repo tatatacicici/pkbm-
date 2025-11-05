@@ -27,7 +27,8 @@ export class NotificationsTemplates extends Model<NotificationsTemplatesAttribut
     pk: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     text: {
       type: DataTypes.TEXT,

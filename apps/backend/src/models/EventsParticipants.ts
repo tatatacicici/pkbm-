@@ -33,7 +33,8 @@ export class EventsParticipants extends Model<EventsParticipantsAttributes, Even
     pk: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     id: {
       type: DataTypes.UUID,

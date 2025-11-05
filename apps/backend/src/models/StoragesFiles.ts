@@ -41,7 +41,8 @@ export class StoragesFiles extends Model<StoragesFilesAttributes, StoragesFilesC
     pk: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     id: {
       type: DataTypes.UUID,
