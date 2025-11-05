@@ -3,7 +3,7 @@ import { Certificates } from '../models/Certificates';
 export class CertificateService {
   async getUserCertificates(userId: string) {
     return await Certificates.findAll({
-      where: { userId, deletedAt: null as any } as any,
+      where: { studentId: userId, deletedAt: null as any } as any,
       order: [['createdAt', 'DESC']],
     });
   }
@@ -11,7 +11,7 @@ export class CertificateService {
   async getSubjectCertificates(userId: string) {
     return await Certificates.findAll({
       where: { 
-        userId, 
+        studentId: userId, 
         type: 'SUBJECT',
         deletedAt: null as any
       } as any,
@@ -22,7 +22,7 @@ export class CertificateService {
   async getEventCertificates(userId: string) {
     return await Certificates.findAll({
       where: { 
-        userId, 
+        studentId: userId, 
         type: 'EVENT',
         deletedAt: null as any
       } as any,

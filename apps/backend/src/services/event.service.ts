@@ -38,12 +38,16 @@ export class EventService {
   }
 
   async getRegisteredEvents(userId: string) {
+    const { Users } = require('../models/Users');
+    const user = await Users.findByPk(userId);
+    
+    if (!user) {
+      return [];
+    }
+
     const registrations = await EventParticipants.findAll({
-      where: { userId } as any,
-      include: [{
-        model: Events,
-        where: { deletedAt: null as any },
-      }],
+      where: { emailAddress: user.email } as any,
+      order: [['createdAt', 'DESC']],
     });
 
     return registrations;
@@ -64,20 +68,38 @@ export class EventService {
   }
 
   async getEventHistory(userId: string) {
+    const { Users } = require('../models/Users');
+    const user = await Users.findByPk(userId);
+    
+    if (!user) {
+      return [];
+    }
+
     const now = new Date();
     const registrations = await EventParticipants.findAll({
-      where: { userId } as any,
-      include: [{
-        model: Events,
-        where: {
-          deletedAt: null as any,
-          dateEnd: { [Op.lt]: now },
-        } as any,
-      }],
+      where: { emailAddress: user.email } as any,
       order: [['createdAt', 'DESC']],
     });
 
-    return registrations;
+    const registrationsWithEvents = [];
+    for (const registration of registrations) {
+      const event = await Events.findOne({
+        where: {
+          id: registration.eventId,
+          deletedAt: null as any,
+          dateEnd: { [Op.lt]: now },
+        } as any,
+      });
+      
+      if (event) {
+        registrationsWithEvents.push({
+          ...registration.toJSON(),
+          event: event.toJSON(),
+        });
+      }
+    }
+
+    return registrationsWithEvents;
   }
 
   async registerEvent(userId: string, eventId: string) {
@@ -87,18 +109,29 @@ export class EventService {
       throw new Error('Event not found');
     }
 
+    const { Users } = require('../models/Users');
+    const user = await Users.findByPk(userId);
+    
+    if (!user) {
+      throw new Error('User not found');
+    }
+
     const existing = await EventParticipants.findOne({
-      where: { userId, eventId } as any,
+      where: { emailAddress: user.email, eventId } as any,
     });
 
     if (existing) {
       throw new Error('Already registered to this event');
     }
 
+    const token = uuidv4();
     const registration = await EventParticipants.create({
-      id: uuidv4(),
-      userId,
+      uuid: uuidv4(),
+      token,
       eventId,
+      emailAddress: user.email,
+      fullName: user.fullName,
+      phoneNumber: user.phoneNumber || '',
       createdAt: new Date(),
       updatedAt: new Date(),
     } as any);

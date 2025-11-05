@@ -1,0 +1,86 @@
+Konteks proyek ini: sistem LMS hasil turunan dari platform kampus online, namun disesuaikan untuk PKBM (program Paket C).
+Struktur dasarnya sama (auth, course, enrollment, quiz, assignment), tetapi beberapa entitas diubah:
+
+Fakultas → jurusan (IPS / IPA)
+
+Dosen → tutor
+
+Mahasiswa → peserta
+
+Saat ini seluruh debugging utama sudah selesai.
+
+Tugasmu:
+
+Lakukan pemeriksaan menyeluruh (audit) terhadap seluruh modul backend dan frontend.
+
+Cari potensi bug tersembunyi yang tidak muncul saat runtime biasa — termasuk:
+
+Error logic (data tidak sesuai schema DB)
+
+Endpoint yang tidak pernah dipanggil
+
+Response format yang tidak konsisten
+
+Middleware auth yang tidak dijalankan di semua route
+
+Fungsi async tanpa await
+
+Query yang tidak menutup transaksi atau tidak di-handle promise-nya
+
+Error handling yang tidak return JSON
+
+Jalankan simulasi test coverage fungsional (tanpa benar-benar menulis test) untuk memeriksa alur utama:
+
+Login peserta
+
+Enroll course
+
+Submit tugas
+
+Lihat nilai
+
+Akses materi belajar
+
+Role tutor: buat course, nilai tugas
+
+Pastikan tidak ada dependency yang rusak (cek import path, alias, dan circular reference).
+
+Pastikan konfigurasi environment (dotenv, DB_URL, JWT_SECRET, dll) digunakan dengan benar dan tidak hardcoded.
+
+Validasi semua schema model Sequelize agar sesuai dengan database SQL dump.
+
+Beri laporan audit yang mencakup:
+
+Modul / file yang berpotensi error
+
+Baris kode yang perlu revisi (jika ada)
+
+Tingkat risiko bug (Low / Medium / High)
+
+Saran perbaikan spesifik
+
+Output yang diharapkan:
+
+Daftar bug tersembunyi beserta penjelasannya
+
+Daftar endpoint yang belum diuji
+
+Rekomendasi langkah berikutnya (misal: tambah unit test, refactor middleware)
+
+⚠️ Jangan hanya mengatakan “tidak ada bug”.
+Lakukan audit mendalam terhadap logika aplikasi, integrasi antar modul, dan validasi data.
+
+Jalankan analisis langsung, tampilkan hasil audit dalam format markdown:
+
+## Audit Summary
+...
+## Potential Bugs
+...
+## Endpoint Coverage
+...
+## Recommendations
+...
+
+
+Setelah audit kode, lakukan simulasi virtual (tanpa benar-benar menjalankan server) untuk memastikan setiap route utama (/auth, /courses, /assignments, /grades, /users) menghasilkan response valid (status 200–201, format JSON valid).
+Laporkan jika ada route yang berpotensi error runtime.
