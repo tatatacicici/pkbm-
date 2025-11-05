@@ -29,7 +29,8 @@ export class SurveysQuestionsAnswers extends Model<SurveysQuestionsAnswersAttrib
     pk: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     uuid: {
       type: DataTypes.UUID,

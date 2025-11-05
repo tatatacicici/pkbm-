@@ -33,7 +33,8 @@ export class UsersSearchHistories extends Model<UsersSearchHistoriesAttributes, 
     pk: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     id: {
       type: DataTypes.UUID,

@@ -31,42 +31,11 @@ import { ArticlesFavorites as _ArticlesFavorites } from "./ArticlesFavorites";
 import type { ArticlesFavoritesAttributes, ArticlesFavoritesCreationAttributes } from "./ArticlesFavorites";
 import { ArticlesTags as _ArticlesTags } from "./ArticlesTags";
 import type { ArticlesTagsAttributes, ArticlesTagsCreationAttributes } from "./ArticlesTags";
-import { AssessmentCompetencyTests as _AssessmentCompetencyTests } from "./AssessmentCompetencyTests";
-import type { AssessmentCompetencyTestsAttributes, AssessmentCompetencyTestsCreationAttributes } from "./AssessmentCompetencyTests";
-import { AssessmentCompetencyTestsSchedules as _AssessmentCompetencyTestsSchedules } from "./AssessmentCompetencyTestsSchedules";
-import type { AssessmentCompetencyTestsSchedulesAttributes, AssessmentCompetencyTestsSchedulesCreationAttributes } from "./AssessmentCompetencyTestsSchedules";
-import { Assessments as _Assessments } from "./Assessments";
-import type { AssessmentsAttributes, AssessmentsCreationAttributes } from "./Assessments";
-import { AssessmentsAssessors as _AssessmentsAssessors } from "./AssessmentsAssessors";
-import type { AssessmentsAssessorsAttributes, AssessmentsAssessorsCreationAttributes } from "./AssessmentsAssessors";
-import { AssessmentsAssessorsAvailabilities as _AssessmentsAssessorsAvailabilities } from "./AssessmentsAssessorsAvailabilities";
-import type { AssessmentsAssessorsAvailabilitiesAttributes, AssessmentsAssessorsAvailabilitiesCreationAttributes } from "./AssessmentsAssessorsAvailabilities";
-import { AssessmentsSessions as _AssessmentsSessions } from "./AssessmentsSessions";
-import type { AssessmentsSessionsAttributes, AssessmentsSessionsCreationAttributes } from "./AssessmentsSessions";
-import { AssessmentsSessionsPartners as _AssessmentsSessionsPartners } from "./AssessmentsSessionsPartners";
-import type { AssessmentsSessionsPartnersAttributes, AssessmentsSessionsPartnersCreationAttributes } from "./AssessmentsSessionsPartners";
-import { AssessmentsSessionsRubricsResults as _AssessmentsSessionsRubricsResults } from "./AssessmentsSessionsRubricsResults";
-import type { AssessmentsSessionsRubricsResultsAttributes, AssessmentsSessionsRubricsResultsCreationAttributes } from "./AssessmentsSessionsRubricsResults";
-import { AssessmentsSessionsSubmissions as _AssessmentsSessionsSubmissions } from "./AssessmentsSessionsSubmissions";
-import type { AssessmentsSessionsSubmissionsAttributes, AssessmentsSessionsSubmissionsCreationAttributes } from "./AssessmentsSessionsSubmissions";
-import { AssessmentsSubjectsProgresses as _AssessmentsSubjectsProgresses } from "./AssessmentsSubjectsProgresses";
-import type { AssessmentsSubjectsProgressesAttributes, AssessmentsSubjectsProgressesCreationAttributes } from "./AssessmentsSubjectsProgresses";
-import { AssessmentsSubjectsProgressesAnswers as _AssessmentsSubjectsProgressesAnswers } from "./AssessmentsSubjectsProgressesAnswers";
-import type { AssessmentsSubjectsProgressesAnswersAttributes, AssessmentsSubjectsProgressesAnswersCreationAttributes } from "./AssessmentsSubjectsProgressesAnswers";
-import { AssignmentDocuments as _AssignmentDocuments } from "./AssignmentDocuments";
-import type { AssignmentDocumentsAttributes, AssignmentDocumentsCreationAttributes } from "./AssignmentDocuments";
-import { AssignmentFiles as _AssignmentFiles } from "./AssignmentFiles";
-import type { AssignmentFilesAttributes, AssignmentFilesCreationAttributes } from "./AssignmentFiles";
-import { Assignments as _Assignments } from "./Assignments";
-import type { AssignmentsAttributes, AssignmentsCreationAttributes } from "./Assignments";
-import { AssignmentsAdmin as _AssignmentsAdmin } from "./AssignmentsAdmin";
-import type { AssignmentsAdminAttributes, AssignmentsAdminCreationAttributes } from "./AssignmentsAdmin";
 import { AvailabilitySchedules as _AvailabilitySchedules } from "./AvailabilitySchedules";
 import type { AvailabilitySchedulesAttributes, AvailabilitySchedulesCreationAttributes } from "./AvailabilitySchedules";
 import { Banner as _Banner } from "./Banner";
 import type { BannerAttributes, BannerCreationAttributes } from "./Banner";
 import { BootcampTopics as _BootcampTopics } from "./BootcampTopics";
-import type { BootcampTopicsAttributes, BootcampTopicsCreationAttributes } from "./BootcampTopics";
 import { Certificates as _Certificates } from "./Certificates";
 import type { CertificatesAttributes, CertificatesCreationAttributes } from "./Certificates";
 import { ChatsConversations as _ChatsConversations } from "./ChatsConversations";
@@ -81,16 +50,6 @@ import { ChatsRoomsMembers as _ChatsRoomsMembers } from "./ChatsRoomsMembers";
 import type { ChatsRoomsMembersAttributes, ChatsRoomsMembersCreationAttributes } from "./ChatsRoomsMembers";
 import { ChatsRoomsMessages as _ChatsRoomsMessages } from "./ChatsRoomsMessages";
 import type { ChatsRoomsMessagesAttributes, ChatsRoomsMessagesCreationAttributes } from "./ChatsRoomsMessages";
-import { CollegeAcademicCohorts as _CollegeAcademicCohorts } from "./CollegeAcademicCohorts";
-import type { CollegeAcademicCohortsAttributes, CollegeAcademicCohortsCreationAttributes } from "./CollegeAcademicCohorts";
-import { CollegeClassEnrollments as _CollegeClassEnrollments } from "./CollegeClassEnrollments";
-import type { CollegeClassEnrollmentsAttributes, CollegeClassEnrollmentsCreationAttributes } from "./CollegeClassEnrollments";
-import { CollegeClasses as _CollegeClasses } from "./CollegeClasses";
-import type { CollegeClassesAttributes, CollegeClassesCreationAttributes } from "./CollegeClasses";
-import { CollegeProgramOfferings as _CollegeProgramOfferings } from "./CollegeProgramOfferings";
-import type { CollegeProgramOfferingsAttributes, CollegeProgramOfferingsCreationAttributes } from "./CollegeProgramOfferings";
-import { CollegeStudentRegistrations as _CollegeStudentRegistrations } from "./CollegeStudentRegistrations";
-import type { CollegeStudentRegistrationsAttributes, CollegeStudentRegistrationsCreationAttributes } from "./CollegeStudentRegistrations";
 import { Companies as _Companies } from "./Companies";
 import type { CompaniesAttributes, CompaniesCreationAttributes } from "./Companies";
 import { CompaniesDepartments as _CompaniesDepartments } from "./CompaniesDepartments";
@@ -105,10 +64,6 @@ import { ConsultationRooms as _ConsultationRooms } from "./ConsultationRooms";
 import type { ConsultationRoomsAttributes, ConsultationRoomsCreationAttributes } from "./ConsultationRooms";
 import { ConsultationTypes as _ConsultationTypes } from "./ConsultationTypes";
 import type { ConsultationTypesAttributes, ConsultationTypesCreationAttributes } from "./ConsultationTypes";
-import { CreditConvertionRequests as _CreditConvertionRequests } from "./CreditConvertionRequests";
-import type { CreditConvertionRequestsAttributes, CreditConvertionRequestsCreationAttributes } from "./CreditConvertionRequests";
-import { CreditConvertionRequestsSubjects as _CreditConvertionRequestsSubjects } from "./CreditConvertionRequestsSubjects";
-import type { CreditConvertionRequestsSubjectsAttributes, CreditConvertionRequestsSubjectsCreationAttributes } from "./CreditConvertionRequestsSubjects";
 import { Cycles as _Cycles } from "./Cycles";
 import type { CyclesAttributes, CyclesCreationAttributes } from "./Cycles";
 import { Dictionarys as _Dictionarys } from "./Dictionarys";
@@ -125,12 +80,6 @@ import { DiscussionReports as _DiscussionReports } from "./DiscussionReports";
 import type { DiscussionReportsAttributes, DiscussionReportsCreationAttributes } from "./DiscussionReports";
 import { DonationProofs as _DonationProofs } from "./DonationProofs";
 import type { DonationProofsAttributes, DonationProofsCreationAttributes } from "./DonationProofs";
-import { DrillSimulationAssessmentsMeetings as _DrillSimulationAssessmentsMeetings } from "./DrillSimulationAssessmentsMeetings";
-import type { DrillSimulationAssessmentsMeetingsAttributes, DrillSimulationAssessmentsMeetingsCreationAttributes } from "./DrillSimulationAssessmentsMeetings";
-import { DrillSimulationAssessmentsSchedules as _DrillSimulationAssessmentsSchedules } from "./DrillSimulationAssessmentsSchedules";
-import type { DrillSimulationAssessmentsSchedulesAttributes, DrillSimulationAssessmentsSchedulesCreationAttributes } from "./DrillSimulationAssessmentsSchedules";
-import { Drills as _Drills } from "./Drills";
-import type { DrillsAttributes, DrillsCreationAttributes } from "./Drills";
 import { ErrorLogs as _ErrorLogs } from "./ErrorLogs";
 import type { ErrorLogsAttributes, ErrorLogsCreationAttributes } from "./ErrorLogs";
 import { EventParticipants as _EventParticipants } from "./EventParticipants";
@@ -139,14 +88,6 @@ import { Events as _Events } from "./Events";
 import type { EventsAttributes, EventsCreationAttributes } from "./Events";
 import { EventsParticipants as _EventsParticipants } from "./EventsParticipants";
 import type { EventsParticipantsAttributes, EventsParticipantsCreationAttributes } from "./EventsParticipants";
-import { Faculties as _Faculties } from "./Faculties";
-import type { FacultiesAttributes, FacultiesCreationAttributes } from "./Faculties";
-import { GradingRubrics as _GradingRubrics } from "./GradingRubrics";
-import type { GradingRubricsAttributes, GradingRubricsCreationAttributes } from "./GradingRubrics";
-import { GradingRubricsCriteria as _GradingRubricsCriteria } from "./GradingRubricsCriteria";
-import type { GradingRubricsCriteriaAttributes, GradingRubricsCriteriaCreationAttributes } from "./GradingRubricsCriteria";
-import { GradingRubricsCriteriaDetails as _GradingRubricsCriteriaDetails } from "./GradingRubricsCriteriaDetails";
-import type { GradingRubricsCriteriaDetailsAttributes, GradingRubricsCriteriaDetailsCreationAttributes } from "./GradingRubricsCriteriaDetails";
 import { GuidesBooks as _GuidesBooks } from "./GuidesBooks";
 import type { GuidesBooksAttributes, GuidesBooksCreationAttributes } from "./GuidesBooks";
 import { GuidesDictionaries as _GuidesDictionaries } from "./GuidesDictionaries";
@@ -157,32 +98,14 @@ import { GuidesVideos as _GuidesVideos } from "./GuidesVideos";
 import type { GuidesVideosAttributes, GuidesVideosCreationAttributes } from "./GuidesVideos";
 import { InboxMessages as _InboxMessages } from "./InboxMessages";
 import type { InboxMessagesAttributes, InboxMessagesCreationAttributes } from "./InboxMessages";
-import { InternshipStudentMentors as _InternshipStudentMentors } from "./InternshipStudentMentors";
-import type { InternshipStudentMentorsAttributes, InternshipStudentMentorsCreationAttributes } from "./InternshipStudentMentors";
 import { JobApplications as _JobApplications } from "./JobApplications";
 import type { JobApplicationsAttributes, JobApplicationsCreationAttributes } from "./JobApplications";
 import { Jobs as _Jobs } from "./Jobs";
 import type { JobsAttributes, JobsCreationAttributes } from "./Jobs";
 import { LeaderboardHistories as _LeaderboardHistories } from "./LeaderboardHistories";
 import type { LeaderboardHistoriesAttributes, LeaderboardHistoriesCreationAttributes } from "./LeaderboardHistories";
-import { Majors as _Majors } from "./Majors";
-import type { MajorsAttributes, MajorsCreationAttributes } from "./Majors";
 import { Meetings as _Meetings } from "./Meetings";
 import type { MeetingsAttributes, MeetingsCreationAttributes } from "./Meetings";
-import { Mentors as _Mentors } from "./Mentors";
-import type { MentorsAttributes, MentorsCreationAttributes } from "./Mentors";
-import { Modules as _Modules } from "./Modules";
-import type { ModulesAttributes, ModulesCreationAttributes } from "./Modules";
-import { ModulesAdmin as _ModulesAdmin } from "./ModulesAdmin";
-import type { ModulesAdminAttributes, ModulesAdminCreationAttributes } from "./ModulesAdmin";
-import { ModulesArticles as _ModulesArticles } from "./ModulesArticles";
-import type { ModulesArticlesAttributes, ModulesArticlesCreationAttributes } from "./ModulesArticles";
-import { ModulesDocuments as _ModulesDocuments } from "./ModulesDocuments";
-import type { ModulesDocumentsAttributes, ModulesDocumentsCreationAttributes } from "./ModulesDocuments";
-import { ModulesJournals as _ModulesJournals } from "./ModulesJournals";
-import type { ModulesJournalsAttributes, ModulesJournalsCreationAttributes } from "./ModulesJournals";
-import { ModulesVideos as _ModulesVideos } from "./ModulesVideos";
-import type { ModulesVideosAttributes, ModulesVideosCreationAttributes } from "./ModulesVideos";
 import { Notifications as _Notifications } from "./Notifications";
 import type { NotificationsAttributes, NotificationsCreationAttributes } from "./Notifications";
 import { NotificationsMessages as _NotificationsMessages } from "./NotificationsMessages";
@@ -248,7 +171,6 @@ import type { RoleplayPairsAttributes, RoleplayPairsCreationAttributes } from ".
 import { Roleplays as _Roleplays } from "./Roleplays";
 import type { RoleplaysAttributes, RoleplaysCreationAttributes } from "./Roleplays";
 import { RoleplaysSessions as _RoleplaysSessions } from "./RoleplaysSessions";
-import type { RoleplaysSessionsAttributes, RoleplaysSessionsCreationAttributes } from "./RoleplaysSessions";
 import { RoleplaysTeams as _RoleplaysTeams } from "./RoleplaysTeams";
 import type { RoleplaysTeamsAttributes, RoleplaysTeamsCreationAttributes } from "./RoleplaysTeams";
 import { RoleplaysTeamsMembers as _RoleplaysTeamsMembers } from "./RoleplaysTeamsMembers";
@@ -259,74 +181,14 @@ import { Roles as _Roles } from "./Roles";
 import type { RolesAttributes, RolesCreationAttributes } from "./Roles";
 import { SavedPositions as _SavedPositions } from "./SavedPositions";
 import type { SavedPositionsAttributes, SavedPositionsCreationAttributes } from "./SavedPositions";
-import { Semesters as _Semesters } from "./Semesters";
-import type { SemestersAttributes, SemestersCreationAttributes } from "./Semesters";
 import { ServerAttributes as _ServerAttributes } from "./ServerAttributes";
 import type { ServerAttributesAttributes, ServerAttributesCreationAttributes } from "./ServerAttributes";
 import { ServerLogs as _ServerLogs } from "./ServerLogs";
 import type { ServerLogsAttributes, ServerLogsCreationAttributes } from "./ServerLogs";
-import { Sessions as _Sessions } from "./Sessions";
-import type { SessionsAttributes, SessionsCreationAttributes } from "./Sessions";
-import { SessionsMentorings as _SessionsMentorings } from "./SessionsMentorings";
-import type { SessionsMentoringsAttributes, SessionsMentoringsCreationAttributes } from "./SessionsMentorings";
-import { SessionsReflections as _SessionsReflections } from "./SessionsReflections";
-import type { SessionsReflectionsAttributes, SessionsReflectionsCreationAttributes } from "./SessionsReflections";
-import { SessionsReflectionsComments as _SessionsReflectionsComments } from "./SessionsReflectionsComments";
-import type { SessionsReflectionsCommentsAttributes, SessionsReflectionsCommentsCreationAttributes } from "./SessionsReflectionsComments";
-import { SessionsReflectionsCommentsReplies as _SessionsReflectionsCommentsReplies } from "./SessionsReflectionsCommentsReplies";
-import type { SessionsReflectionsCommentsRepliesAttributes, SessionsReflectionsCommentsRepliesCreationAttributes } from "./SessionsReflectionsCommentsReplies";
-import { SessionsReflectionsLikes as _SessionsReflectionsLikes } from "./SessionsReflectionsLikes";
-import type { SessionsReflectionsLikesAttributes, SessionsReflectionsLikesCreationAttributes } from "./SessionsReflectionsLikes";
-import { SessionsTeacherAssessment as _SessionsTeacherAssessment } from "./SessionsTeacherAssessment";
-import type { SessionsTeacherAssessmentAttributes, SessionsTeacherAssessmentCreationAttributes } from "./SessionsTeacherAssessment";
-import { SessionsTeacherAssessmentQuestions as _SessionsTeacherAssessmentQuestions } from "./SessionsTeacherAssessmentQuestions";
-import type { SessionsTeacherAssessmentQuestionsAttributes, SessionsTeacherAssessmentQuestionsCreationAttributes } from "./SessionsTeacherAssessmentQuestions";
-import { SessionsTeacherAssessmentQuestionsAnswers as _SessionsTeacherAssessmentQuestionsAnswers } from "./SessionsTeacherAssessmentQuestionsAnswers";
-import type { SessionsTeacherAssessmentQuestionsAnswersAttributes, SessionsTeacherAssessmentQuestionsAnswersCreationAttributes } from "./SessionsTeacherAssessmentQuestionsAnswers";
-import { SessionsTeacherAssessmentSessionsQuestions as _SessionsTeacherAssessmentSessionsQuestions } from "./SessionsTeacherAssessmentSessionsQuestions";
-import type { SessionsTeacherAssessmentSessionsQuestionsAttributes, SessionsTeacherAssessmentSessionsQuestionsCreationAttributes } from "./SessionsTeacherAssessmentSessionsQuestions";
-import { SessionsTeacherAssessmentStudentsAnswers as _SessionsTeacherAssessmentStudentsAnswers } from "./SessionsTeacherAssessmentStudentsAnswers";
-import type { SessionsTeacherAssessmentStudentsAnswersAttributes, SessionsTeacherAssessmentStudentsAnswersCreationAttributes } from "./SessionsTeacherAssessmentStudentsAnswers";
-import { SimulationGroupStudents as _SimulationGroupStudents } from "./SimulationGroupStudents";
-import type { SimulationGroupStudentsAttributes, SimulationGroupStudentsCreationAttributes } from "./SimulationGroupStudents";
-import { SimulationGroups as _SimulationGroups } from "./SimulationGroups";
-import type { SimulationGroupsAttributes, SimulationGroupsCreationAttributes } from "./SimulationGroups";
-import { Simulations as _Simulations } from "./Simulations";
-import type { SimulationsAttributes, SimulationsCreationAttributes } from "./Simulations";
 import { StoragesFiles as _StoragesFiles } from "./StoragesFiles";
 import type { StoragesFilesAttributes, StoragesFilesCreationAttributes } from "./StoragesFiles";
 import { StoragesFilesHistories as _StoragesFilesHistories } from "./StoragesFilesHistories";
 import type { StoragesFilesHistoriesAttributes, StoragesFilesHistoriesCreationAttributes } from "./StoragesFilesHistories";
-import { StudentEvents as _StudentEvents } from "./StudentEvents";
-import type { StudentEventsAttributes, StudentEventsCreationAttributes } from "./StudentEvents";
-import { StudentMajors as _StudentMajors } from "./StudentMajors";
-import type { StudentMajorsAttributes, StudentMajorsCreationAttributes } from "./StudentMajors";
-import { StudentProfiles as _StudentProfiles } from "./StudentProfiles";
-import type { StudentProfilesAttributes, StudentProfilesCreationAttributes } from "./StudentProfiles";
-import { StudentSessionProgress as _StudentSessionProgress } from "./StudentSessionProgress";
-import type { StudentSessionProgressAttributes, StudentSessionProgressCreationAttributes } from "./StudentSessionProgress";
-import { StudentSessions as _StudentSessions } from "./StudentSessions";
-import type { StudentSessionsAttributes, StudentSessionsCreationAttributes } from "./StudentSessions";
-import { StudentSubjects as _StudentSubjects } from "./StudentSubjects";
-import type { StudentSubjectsAttributes, StudentSubjectsCreationAttributes } from "./StudentSubjects";
-import { SubjectMajors as _SubjectMajors } from "./SubjectMajors";
-import type { SubjectMajorsAttributes, SubjectMajorsCreationAttributes } from "./SubjectMajors";
-import { SubjectSessions as _SubjectSessions } from "./SubjectSessions";
-import type { SubjectSessionsAttributes, SubjectSessionsCreationAttributes } from "./SubjectSessions";
-import { Subjects as _Subjects } from "./Subjects";
-import type { SubjectsAttributes, SubjectsCreationAttributes } from "./Subjects";
-import { SubjectsOutcomes as _SubjectsOutcomes } from "./SubjectsOutcomes";
-import type { SubjectsOutcomesAttributes, SubjectsOutcomesCreationAttributes } from "./SubjectsOutcomes";
-import { SubjectsSessionsActivities as _SubjectsSessionsActivities } from "./SubjectsSessionsActivities";
-import type { SubjectsSessionsActivitiesAttributes, SubjectsSessionsActivitiesCreationAttributes } from "./SubjectsSessionsActivities";
-import { SubjectsSessionsAssessments as _SubjectsSessionsAssessments } from "./SubjectsSessionsAssessments";
-import type { SubjectsSessionsAssessmentsAttributes, SubjectsSessionsAssessmentsCreationAttributes } from "./SubjectsSessionsAssessments";
-import { SubjectsSessionsContentOrders as _SubjectsSessionsContentOrders } from "./SubjectsSessionsContentOrders";
-import type { SubjectsSessionsContentOrdersAttributes, SubjectsSessionsContentOrdersCreationAttributes } from "./SubjectsSessionsContentOrders";
-import { SubmissionDocuments as _SubmissionDocuments } from "./SubmissionDocuments";
-import type { SubmissionDocumentsAttributes, SubmissionDocumentsCreationAttributes } from "./SubmissionDocuments";
-import { Submissions as _Submissions } from "./Submissions";
-import type { SubmissionsAttributes, SubmissionsCreationAttributes } from "./Submissions";
 import { Surveys as _Surveys } from "./Surveys";
 import type { SurveysAttributes, SurveysCreationAttributes } from "./Surveys";
 import { SurveysQuestions as _SurveysQuestions } from "./SurveysQuestions";
@@ -339,16 +201,9 @@ import { SurveysResponsesAnswers as _SurveysResponsesAnswers } from "./SurveysRe
 import type { SurveysResponsesAnswersAttributes, SurveysResponsesAnswersCreationAttributes } from "./SurveysResponsesAnswers";
 import { Tags as _Tags } from "./Tags";
 import type { TagsAttributes, TagsCreationAttributes } from "./Tags";
-import { TeachersRegistrations as _TeachersRegistrations } from "./TeachersRegistrations";
-import type { TeachersRegistrationsAttributes, TeachersRegistrationsCreationAttributes } from "./TeachersRegistrations";
-import { Topics as _Topics } from "./Topics";
-import type { TopicsAttributes, TopicsCreationAttributes } from "./Topics";
-import { TopicsSubjects as _TopicsSubjects } from "./TopicsSubjects";
-import type { TopicsSubjectsAttributes, TopicsSubjectsCreationAttributes } from "./TopicsSubjects";
 import { UserRoles as _UserRoles } from "./UserRoles";
 import type { UserRolesAttributes, UserRolesCreationAttributes } from "./UserRoles";
 import { UserSessions as _UserSessions } from "./UserSessions";
-import type { UserSessionsAttributes, UserSessionsCreationAttributes } from "./UserSessions";
 import { Users as _Users } from "./Users";
 import type { UsersAttributes, UsersCreationAttributes } from "./Users";
 import { UsersActives as _UsersActives } from "./UsersActives";
@@ -387,24 +242,8 @@ export {
   _ArticlesCategories as ArticlesCategories,
   _ArticlesFavorites as ArticlesFavorites,
   _ArticlesTags as ArticlesTags,
-  _AssessmentCompetencyTests as AssessmentCompetencyTests,
-  _AssessmentCompetencyTestsSchedules as AssessmentCompetencyTestsSchedules,
-  _Assessments as Assessments,
-  _AssessmentsAssessors as AssessmentsAssessors,
-  _AssessmentsAssessorsAvailabilities as AssessmentsAssessorsAvailabilities,
-  _AssessmentsSessions as AssessmentsSessions,
-  _AssessmentsSessionsPartners as AssessmentsSessionsPartners,
-  _AssessmentsSessionsRubricsResults as AssessmentsSessionsRubricsResults,
-  _AssessmentsSessionsSubmissions as AssessmentsSessionsSubmissions,
-  _AssessmentsSubjectsProgresses as AssessmentsSubjectsProgresses,
-  _AssessmentsSubjectsProgressesAnswers as AssessmentsSubjectsProgressesAnswers,
-  _AssignmentDocuments as AssignmentDocuments,
-  _AssignmentFiles as AssignmentFiles,
-  _Assignments as Assignments,
-  _AssignmentsAdmin as AssignmentsAdmin,
   _AvailabilitySchedules as AvailabilitySchedules,
   _Banner as Banner,
-  _BootcampTopics as BootcampTopics,
   _Certificates as Certificates,
   _ChatsConversations as ChatsConversations,
   _ChatsConversationsParticipants as ChatsConversationsParticipants,
@@ -412,11 +251,6 @@ export {
   _ChatsRooms as ChatsRooms,
   _ChatsRoomsMembers as ChatsRoomsMembers,
   _ChatsRoomsMessages as ChatsRoomsMessages,
-  _CollegeAcademicCohorts as CollegeAcademicCohorts,
-  _CollegeClassEnrollments as CollegeClassEnrollments,
-  _CollegeClasses as CollegeClasses,
-  _CollegeProgramOfferings as CollegeProgramOfferings,
-  _CollegeStudentRegistrations as CollegeStudentRegistrations,
   _Companies as Companies,
   _CompaniesDepartments as CompaniesDepartments,
   _CompaniesEmployees as CompaniesEmployees,
@@ -424,8 +258,6 @@ export {
   _ConsultationRoomMessages as ConsultationRoomMessages,
   _ConsultationRooms as ConsultationRooms,
   _ConsultationTypes as ConsultationTypes,
-  _CreditConvertionRequests as CreditConvertionRequests,
-  _CreditConvertionRequestsSubjects as CreditConvertionRequestsSubjects,
   _Cycles as Cycles,
   _Dictionarys as Dictionarys,
   _DiscussionForumComments as DiscussionForumComments,
@@ -434,35 +266,19 @@ export {
   _DiscussionLikes as DiscussionLikes,
   _DiscussionReports as DiscussionReports,
   _DonationProofs as DonationProofs,
-  _DrillSimulationAssessmentsMeetings as DrillSimulationAssessmentsMeetings,
-  _DrillSimulationAssessmentsSchedules as DrillSimulationAssessmentsSchedules,
-  _Drills as Drills,
   _ErrorLogs as ErrorLogs,
   _EventParticipants as EventParticipants,
   _Events as Events,
   _EventsParticipants as EventsParticipants,
-  _Faculties as Faculties,
-  _GradingRubrics as GradingRubrics,
-  _GradingRubricsCriteria as GradingRubricsCriteria,
-  _GradingRubricsCriteriaDetails as GradingRubricsCriteriaDetails,
   _GuidesBooks as GuidesBooks,
   _GuidesDictionaries as GuidesDictionaries,
   _GuidesFrequentlyAskedQuestions as GuidesFrequentlyAskedQuestions,
   _GuidesVideos as GuidesVideos,
   _InboxMessages as InboxMessages,
-  _InternshipStudentMentors as InternshipStudentMentors,
   _JobApplications as JobApplications,
   _Jobs as Jobs,
   _LeaderboardHistories as LeaderboardHistories,
-  _Majors as Majors,
   _Meetings as Meetings,
-  _Mentors as Mentors,
-  _Modules as Modules,
-  _ModulesAdmin as ModulesAdmin,
-  _ModulesArticles as ModulesArticles,
-  _ModulesDocuments as ModulesDocuments,
-  _ModulesJournals as ModulesJournals,
-  _ModulesVideos as ModulesVideos,
   _Notifications as Notifications,
   _NotificationsMessages as NotificationsMessages,
   _NotificationsTemplates as NotificationsTemplates,
@@ -495,57 +311,22 @@ export {
   _RoleplayPair as RoleplayPair,
   _RoleplayPairs as RoleplayPairs,
   _Roleplays as Roleplays,
-  _RoleplaysSessions as RoleplaysSessions,
   _RoleplaysTeams as RoleplaysTeams,
   _RoleplaysTeamsMembers as RoleplaysTeamsMembers,
   _RoleplaysTeamsSchedules as RoleplaysTeamsSchedules,
   _Roles as Roles,
   _SavedPositions as SavedPositions,
-  _Semesters as Semesters,
   _ServerAttributes as ServerAttributes,
   _ServerLogs as ServerLogs,
-  _Sessions as Sessions,
-  _SessionsMentorings as SessionsMentorings,
-  _SessionsReflections as SessionsReflections,
-  _SessionsReflectionsComments as SessionsReflectionsComments,
-  _SessionsReflectionsCommentsReplies as SessionsReflectionsCommentsReplies,
-  _SessionsReflectionsLikes as SessionsReflectionsLikes,
-  _SessionsTeacherAssessment as SessionsTeacherAssessment,
-  _SessionsTeacherAssessmentQuestions as SessionsTeacherAssessmentQuestions,
-  _SessionsTeacherAssessmentQuestionsAnswers as SessionsTeacherAssessmentQuestionsAnswers,
-  _SessionsTeacherAssessmentSessionsQuestions as SessionsTeacherAssessmentSessionsQuestions,
-  _SessionsTeacherAssessmentStudentsAnswers as SessionsTeacherAssessmentStudentsAnswers,
-  _SimulationGroupStudents as SimulationGroupStudents,
-  _SimulationGroups as SimulationGroups,
-  _Simulations as Simulations,
   _StoragesFiles as StoragesFiles,
   _StoragesFilesHistories as StoragesFilesHistories,
-  _StudentEvents as StudentEvents,
-  _StudentMajors as StudentMajors,
-  _StudentProfiles as StudentProfiles,
-  _StudentSessionProgress as StudentSessionProgress,
-  _StudentSessions as StudentSessions,
-  _StudentSubjects as StudentSubjects,
-  _SubjectMajors as SubjectMajors,
-  _SubjectSessions as SubjectSessions,
-  _Subjects as Subjects,
-  _SubjectsOutcomes as SubjectsOutcomes,
-  _SubjectsSessionsActivities as SubjectsSessionsActivities,
-  _SubjectsSessionsAssessments as SubjectsSessionsAssessments,
-  _SubjectsSessionsContentOrders as SubjectsSessionsContentOrders,
-  _SubmissionDocuments as SubmissionDocuments,
-  _Submissions as Submissions,
   _Surveys as Surveys,
   _SurveysQuestions as SurveysQuestions,
   _SurveysQuestionsAnswers as SurveysQuestionsAnswers,
   _SurveysResponses as SurveysResponses,
   _SurveysResponsesAnswers as SurveysResponsesAnswers,
   _Tags as Tags,
-  _TeachersRegistrations as TeachersRegistrations,
-  _Topics as Topics,
-  _TopicsSubjects as TopicsSubjects,
   _UserRoles as UserRoles,
-  _UserSessions as UserSessions,
   _Users as Users,
   _UsersActives as UsersActives,
   _UsersAdministrations as UsersAdministrations,
@@ -591,42 +372,10 @@ export type {
   ArticlesFavoritesCreationAttributes,
   ArticlesTagsAttributes,
   ArticlesTagsCreationAttributes,
-  AssessmentCompetencyTestsAttributes,
-  AssessmentCompetencyTestsCreationAttributes,
-  AssessmentCompetencyTestsSchedulesAttributes,
-  AssessmentCompetencyTestsSchedulesCreationAttributes,
-  AssessmentsAttributes,
-  AssessmentsCreationAttributes,
-  AssessmentsAssessorsAttributes,
-  AssessmentsAssessorsCreationAttributes,
-  AssessmentsAssessorsAvailabilitiesAttributes,
-  AssessmentsAssessorsAvailabilitiesCreationAttributes,
-  AssessmentsSessionsAttributes,
-  AssessmentsSessionsCreationAttributes,
-  AssessmentsSessionsPartnersAttributes,
-  AssessmentsSessionsPartnersCreationAttributes,
-  AssessmentsSessionsRubricsResultsAttributes,
-  AssessmentsSessionsRubricsResultsCreationAttributes,
-  AssessmentsSessionsSubmissionsAttributes,
-  AssessmentsSessionsSubmissionsCreationAttributes,
-  AssessmentsSubjectsProgressesAttributes,
-  AssessmentsSubjectsProgressesCreationAttributes,
-  AssessmentsSubjectsProgressesAnswersAttributes,
-  AssessmentsSubjectsProgressesAnswersCreationAttributes,
-  AssignmentDocumentsAttributes,
-  AssignmentDocumentsCreationAttributes,
-  AssignmentFilesAttributes,
-  AssignmentFilesCreationAttributes,
-  AssignmentsAttributes,
-  AssignmentsCreationAttributes,
-  AssignmentsAdminAttributes,
-  AssignmentsAdminCreationAttributes,
   AvailabilitySchedulesAttributes,
   AvailabilitySchedulesCreationAttributes,
   BannerAttributes,
   BannerCreationAttributes,
-  BootcampTopicsAttributes,
-  BootcampTopicsCreationAttributes,
   CertificatesAttributes,
   CertificatesCreationAttributes,
   ChatsConversationsAttributes,
@@ -641,16 +390,6 @@ export type {
   ChatsRoomsMembersCreationAttributes,
   ChatsRoomsMessagesAttributes,
   ChatsRoomsMessagesCreationAttributes,
-  CollegeAcademicCohortsAttributes,
-  CollegeAcademicCohortsCreationAttributes,
-  CollegeClassEnrollmentsAttributes,
-  CollegeClassEnrollmentsCreationAttributes,
-  CollegeClassesAttributes,
-  CollegeClassesCreationAttributes,
-  CollegeProgramOfferingsAttributes,
-  CollegeProgramOfferingsCreationAttributes,
-  CollegeStudentRegistrationsAttributes,
-  CollegeStudentRegistrationsCreationAttributes,
   CompaniesAttributes,
   CompaniesCreationAttributes,
   CompaniesDepartmentsAttributes,
@@ -665,10 +404,6 @@ export type {
   ConsultationRoomsCreationAttributes,
   ConsultationTypesAttributes,
   ConsultationTypesCreationAttributes,
-  CreditConvertionRequestsAttributes,
-  CreditConvertionRequestsCreationAttributes,
-  CreditConvertionRequestsSubjectsAttributes,
-  CreditConvertionRequestsSubjectsCreationAttributes,
   CyclesAttributes,
   CyclesCreationAttributes,
   DictionarysAttributes,
@@ -685,12 +420,6 @@ export type {
   DiscussionReportsCreationAttributes,
   DonationProofsAttributes,
   DonationProofsCreationAttributes,
-  DrillSimulationAssessmentsMeetingsAttributes,
-  DrillSimulationAssessmentsMeetingsCreationAttributes,
-  DrillSimulationAssessmentsSchedulesAttributes,
-  DrillSimulationAssessmentsSchedulesCreationAttributes,
-  DrillsAttributes,
-  DrillsCreationAttributes,
   ErrorLogsAttributes,
   ErrorLogsCreationAttributes,
   EventParticipantsAttributes,
@@ -699,14 +428,6 @@ export type {
   EventsCreationAttributes,
   EventsParticipantsAttributes,
   EventsParticipantsCreationAttributes,
-  FacultiesAttributes,
-  FacultiesCreationAttributes,
-  GradingRubricsAttributes,
-  GradingRubricsCreationAttributes,
-  GradingRubricsCriteriaAttributes,
-  GradingRubricsCriteriaCreationAttributes,
-  GradingRubricsCriteriaDetailsAttributes,
-  GradingRubricsCriteriaDetailsCreationAttributes,
   GuidesBooksAttributes,
   GuidesBooksCreationAttributes,
   GuidesDictionariesAttributes,
@@ -717,32 +438,14 @@ export type {
   GuidesVideosCreationAttributes,
   InboxMessagesAttributes,
   InboxMessagesCreationAttributes,
-  InternshipStudentMentorsAttributes,
-  InternshipStudentMentorsCreationAttributes,
   JobApplicationsAttributes,
   JobApplicationsCreationAttributes,
   JobsAttributes,
   JobsCreationAttributes,
   LeaderboardHistoriesAttributes,
   LeaderboardHistoriesCreationAttributes,
-  MajorsAttributes,
-  MajorsCreationAttributes,
   MeetingsAttributes,
   MeetingsCreationAttributes,
-  MentorsAttributes,
-  MentorsCreationAttributes,
-  ModulesAttributes,
-  ModulesCreationAttributes,
-  ModulesAdminAttributes,
-  ModulesAdminCreationAttributes,
-  ModulesArticlesAttributes,
-  ModulesArticlesCreationAttributes,
-  ModulesDocumentsAttributes,
-  ModulesDocumentsCreationAttributes,
-  ModulesJournalsAttributes,
-  ModulesJournalsCreationAttributes,
-  ModulesVideosAttributes,
-  ModulesVideosCreationAttributes,
   NotificationsAttributes,
   NotificationsCreationAttributes,
   NotificationsMessagesAttributes,
@@ -807,8 +510,6 @@ export type {
   RoleplayPairsCreationAttributes,
   RoleplaysAttributes,
   RoleplaysCreationAttributes,
-  RoleplaysSessionsAttributes,
-  RoleplaysSessionsCreationAttributes,
   RoleplaysTeamsAttributes,
   RoleplaysTeamsCreationAttributes,
   RoleplaysTeamsMembersAttributes,
@@ -819,74 +520,14 @@ export type {
   RolesCreationAttributes,
   SavedPositionsAttributes,
   SavedPositionsCreationAttributes,
-  SemestersAttributes,
-  SemestersCreationAttributes,
   ServerAttributesAttributes,
   ServerAttributesCreationAttributes,
   ServerLogsAttributes,
   ServerLogsCreationAttributes,
-  SessionsAttributes,
-  SessionsCreationAttributes,
-  SessionsMentoringsAttributes,
-  SessionsMentoringsCreationAttributes,
-  SessionsReflectionsAttributes,
-  SessionsReflectionsCreationAttributes,
-  SessionsReflectionsCommentsAttributes,
-  SessionsReflectionsCommentsCreationAttributes,
-  SessionsReflectionsCommentsRepliesAttributes,
-  SessionsReflectionsCommentsRepliesCreationAttributes,
-  SessionsReflectionsLikesAttributes,
-  SessionsReflectionsLikesCreationAttributes,
-  SessionsTeacherAssessmentAttributes,
-  SessionsTeacherAssessmentCreationAttributes,
-  SessionsTeacherAssessmentQuestionsAttributes,
-  SessionsTeacherAssessmentQuestionsCreationAttributes,
-  SessionsTeacherAssessmentQuestionsAnswersAttributes,
-  SessionsTeacherAssessmentQuestionsAnswersCreationAttributes,
-  SessionsTeacherAssessmentSessionsQuestionsAttributes,
-  SessionsTeacherAssessmentSessionsQuestionsCreationAttributes,
-  SessionsTeacherAssessmentStudentsAnswersAttributes,
-  SessionsTeacherAssessmentStudentsAnswersCreationAttributes,
-  SimulationGroupStudentsAttributes,
-  SimulationGroupStudentsCreationAttributes,
-  SimulationGroupsAttributes,
-  SimulationGroupsCreationAttributes,
-  SimulationsAttributes,
-  SimulationsCreationAttributes,
   StoragesFilesAttributes,
   StoragesFilesCreationAttributes,
   StoragesFilesHistoriesAttributes,
   StoragesFilesHistoriesCreationAttributes,
-  StudentEventsAttributes,
-  StudentEventsCreationAttributes,
-  StudentMajorsAttributes,
-  StudentMajorsCreationAttributes,
-  StudentProfilesAttributes,
-  StudentProfilesCreationAttributes,
-  StudentSessionProgressAttributes,
-  StudentSessionProgressCreationAttributes,
-  StudentSessionsAttributes,
-  StudentSessionsCreationAttributes,
-  StudentSubjectsAttributes,
-  StudentSubjectsCreationAttributes,
-  SubjectMajorsAttributes,
-  SubjectMajorsCreationAttributes,
-  SubjectSessionsAttributes,
-  SubjectSessionsCreationAttributes,
-  SubjectsAttributes,
-  SubjectsCreationAttributes,
-  SubjectsOutcomesAttributes,
-  SubjectsOutcomesCreationAttributes,
-  SubjectsSessionsActivitiesAttributes,
-  SubjectsSessionsActivitiesCreationAttributes,
-  SubjectsSessionsAssessmentsAttributes,
-  SubjectsSessionsAssessmentsCreationAttributes,
-  SubjectsSessionsContentOrdersAttributes,
-  SubjectsSessionsContentOrdersCreationAttributes,
-  SubmissionDocumentsAttributes,
-  SubmissionDocumentsCreationAttributes,
-  SubmissionsAttributes,
-  SubmissionsCreationAttributes,
   SurveysAttributes,
   SurveysCreationAttributes,
   SurveysQuestionsAttributes,
@@ -899,16 +540,8 @@ export type {
   SurveysResponsesAnswersCreationAttributes,
   TagsAttributes,
   TagsCreationAttributes,
-  TeachersRegistrationsAttributes,
-  TeachersRegistrationsCreationAttributes,
-  TopicsAttributes,
-  TopicsCreationAttributes,
-  TopicsSubjectsAttributes,
-  TopicsSubjectsCreationAttributes,
   UserRolesAttributes,
   UserRolesCreationAttributes,
-  UserSessionsAttributes,
-  UserSessionsCreationAttributes,
   UsersAttributes,
   UsersCreationAttributes,
   UsersActivesAttributes,
@@ -948,21 +581,6 @@ export function initModels(sequelize: Sequelize) {
   const ArticlesCategories = _ArticlesCategories.initModel(sequelize);
   const ArticlesFavorites = _ArticlesFavorites.initModel(sequelize);
   const ArticlesTags = _ArticlesTags.initModel(sequelize);
-  const AssessmentCompetencyTests = _AssessmentCompetencyTests.initModel(sequelize);
-  const AssessmentCompetencyTestsSchedules = _AssessmentCompetencyTestsSchedules.initModel(sequelize);
-  const Assessments = _Assessments.initModel(sequelize);
-  const AssessmentsAssessors = _AssessmentsAssessors.initModel(sequelize);
-  const AssessmentsAssessorsAvailabilities = _AssessmentsAssessorsAvailabilities.initModel(sequelize);
-  const AssessmentsSessions = _AssessmentsSessions.initModel(sequelize);
-  const AssessmentsSessionsPartners = _AssessmentsSessionsPartners.initModel(sequelize);
-  const AssessmentsSessionsRubricsResults = _AssessmentsSessionsRubricsResults.initModel(sequelize);
-  const AssessmentsSessionsSubmissions = _AssessmentsSessionsSubmissions.initModel(sequelize);
-  const AssessmentsSubjectsProgresses = _AssessmentsSubjectsProgresses.initModel(sequelize);
-  const AssessmentsSubjectsProgressesAnswers = _AssessmentsSubjectsProgressesAnswers.initModel(sequelize);
-  const AssignmentDocuments = _AssignmentDocuments.initModel(sequelize);
-  const AssignmentFiles = _AssignmentFiles.initModel(sequelize);
-  const Assignments = _Assignments.initModel(sequelize);
-  const AssignmentsAdmin = _AssignmentsAdmin.initModel(sequelize);
   const AvailabilitySchedules = _AvailabilitySchedules.initModel(sequelize);
   const Banner = _Banner.initModel(sequelize);
   const BootcampTopics = _BootcampTopics.initModel(sequelize);
@@ -973,11 +591,6 @@ export function initModels(sequelize: Sequelize) {
   const ChatsRooms = _ChatsRooms.initModel(sequelize);
   const ChatsRoomsMembers = _ChatsRoomsMembers.initModel(sequelize);
   const ChatsRoomsMessages = _ChatsRoomsMessages.initModel(sequelize);
-  const CollegeAcademicCohorts = _CollegeAcademicCohorts.initModel(sequelize);
-  const CollegeClassEnrollments = _CollegeClassEnrollments.initModel(sequelize);
-  const CollegeClasses = _CollegeClasses.initModel(sequelize);
-  const CollegeProgramOfferings = _CollegeProgramOfferings.initModel(sequelize);
-  const CollegeStudentRegistrations = _CollegeStudentRegistrations.initModel(sequelize);
   const Companies = _Companies.initModel(sequelize);
   const CompaniesDepartments = _CompaniesDepartments.initModel(sequelize);
   const CompaniesEmployees = _CompaniesEmployees.initModel(sequelize);
@@ -985,8 +598,6 @@ export function initModels(sequelize: Sequelize) {
   const ConsultationRoomMessages = _ConsultationRoomMessages.initModel(sequelize);
   const ConsultationRooms = _ConsultationRooms.initModel(sequelize);
   const ConsultationTypes = _ConsultationTypes.initModel(sequelize);
-  const CreditConvertionRequests = _CreditConvertionRequests.initModel(sequelize);
-  const CreditConvertionRequestsSubjects = _CreditConvertionRequestsSubjects.initModel(sequelize);
   const Cycles = _Cycles.initModel(sequelize);
   const Dictionarys = _Dictionarys.initModel(sequelize);
   const DiscussionForumComments = _DiscussionForumComments.initModel(sequelize);
@@ -995,35 +606,19 @@ export function initModels(sequelize: Sequelize) {
   const DiscussionLikes = _DiscussionLikes.initModel(sequelize);
   const DiscussionReports = _DiscussionReports.initModel(sequelize);
   const DonationProofs = _DonationProofs.initModel(sequelize);
-  const DrillSimulationAssessmentsMeetings = _DrillSimulationAssessmentsMeetings.initModel(sequelize);
-  const DrillSimulationAssessmentsSchedules = _DrillSimulationAssessmentsSchedules.initModel(sequelize);
-  const Drills = _Drills.initModel(sequelize);
   const ErrorLogs = _ErrorLogs.initModel(sequelize);
   const EventParticipants = _EventParticipants.initModel(sequelize);
   const Events = _Events.initModel(sequelize);
   const EventsParticipants = _EventsParticipants.initModel(sequelize);
-  const Faculties = _Faculties.initModel(sequelize);
-  const GradingRubrics = _GradingRubrics.initModel(sequelize);
-  const GradingRubricsCriteria = _GradingRubricsCriteria.initModel(sequelize);
-  const GradingRubricsCriteriaDetails = _GradingRubricsCriteriaDetails.initModel(sequelize);
   const GuidesBooks = _GuidesBooks.initModel(sequelize);
   const GuidesDictionaries = _GuidesDictionaries.initModel(sequelize);
   const GuidesFrequentlyAskedQuestions = _GuidesFrequentlyAskedQuestions.initModel(sequelize);
   const GuidesVideos = _GuidesVideos.initModel(sequelize);
   const InboxMessages = _InboxMessages.initModel(sequelize);
-  const InternshipStudentMentors = _InternshipStudentMentors.initModel(sequelize);
   const JobApplications = _JobApplications.initModel(sequelize);
   const Jobs = _Jobs.initModel(sequelize);
   const LeaderboardHistories = _LeaderboardHistories.initModel(sequelize);
-  const Majors = _Majors.initModel(sequelize);
   const Meetings = _Meetings.initModel(sequelize);
-  const Mentors = _Mentors.initModel(sequelize);
-  const Modules = _Modules.initModel(sequelize);
-  const ModulesAdmin = _ModulesAdmin.initModel(sequelize);
-  const ModulesArticles = _ModulesArticles.initModel(sequelize);
-  const ModulesDocuments = _ModulesDocuments.initModel(sequelize);
-  const ModulesJournals = _ModulesJournals.initModel(sequelize);
-  const ModulesVideos = _ModulesVideos.initModel(sequelize);
   const Notifications = _Notifications.initModel(sequelize);
   const NotificationsMessages = _NotificationsMessages.initModel(sequelize);
   const NotificationsTemplates = _NotificationsTemplates.initModel(sequelize);
@@ -1062,49 +657,16 @@ export function initModels(sequelize: Sequelize) {
   const RoleplaysTeamsSchedules = _RoleplaysTeamsSchedules.initModel(sequelize);
   const Roles = _Roles.initModel(sequelize);
   const SavedPositions = _SavedPositions.initModel(sequelize);
-  const Semesters = _Semesters.initModel(sequelize);
   const ServerAttributes = _ServerAttributes.initModel(sequelize);
   const ServerLogs = _ServerLogs.initModel(sequelize);
-  const Sessions = _Sessions.initModel(sequelize);
-  const SessionsMentorings = _SessionsMentorings.initModel(sequelize);
-  const SessionsReflections = _SessionsReflections.initModel(sequelize);
-  const SessionsReflectionsComments = _SessionsReflectionsComments.initModel(sequelize);
-  const SessionsReflectionsCommentsReplies = _SessionsReflectionsCommentsReplies.initModel(sequelize);
-  const SessionsReflectionsLikes = _SessionsReflectionsLikes.initModel(sequelize);
-  const SessionsTeacherAssessment = _SessionsTeacherAssessment.initModel(sequelize);
-  const SessionsTeacherAssessmentQuestions = _SessionsTeacherAssessmentQuestions.initModel(sequelize);
-  const SessionsTeacherAssessmentQuestionsAnswers = _SessionsTeacherAssessmentQuestionsAnswers.initModel(sequelize);
-  const SessionsTeacherAssessmentSessionsQuestions = _SessionsTeacherAssessmentSessionsQuestions.initModel(sequelize);
-  const SessionsTeacherAssessmentStudentsAnswers = _SessionsTeacherAssessmentStudentsAnswers.initModel(sequelize);
-  const SimulationGroupStudents = _SimulationGroupStudents.initModel(sequelize);
-  const SimulationGroups = _SimulationGroups.initModel(sequelize);
-  const Simulations = _Simulations.initModel(sequelize);
   const StoragesFiles = _StoragesFiles.initModel(sequelize);
   const StoragesFilesHistories = _StoragesFilesHistories.initModel(sequelize);
-  const StudentEvents = _StudentEvents.initModel(sequelize);
-  const StudentMajors = _StudentMajors.initModel(sequelize);
-  const StudentProfiles = _StudentProfiles.initModel(sequelize);
-  const StudentSessionProgress = _StudentSessionProgress.initModel(sequelize);
-  const StudentSessions = _StudentSessions.initModel(sequelize);
-  const StudentSubjects = _StudentSubjects.initModel(sequelize);
-  const SubjectMajors = _SubjectMajors.initModel(sequelize);
-  const SubjectSessions = _SubjectSessions.initModel(sequelize);
-  const Subjects = _Subjects.initModel(sequelize);
-  const SubjectsOutcomes = _SubjectsOutcomes.initModel(sequelize);
-  const SubjectsSessionsActivities = _SubjectsSessionsActivities.initModel(sequelize);
-  const SubjectsSessionsAssessments = _SubjectsSessionsAssessments.initModel(sequelize);
-  const SubjectsSessionsContentOrders = _SubjectsSessionsContentOrders.initModel(sequelize);
-  const SubmissionDocuments = _SubmissionDocuments.initModel(sequelize);
-  const Submissions = _Submissions.initModel(sequelize);
   const Surveys = _Surveys.initModel(sequelize);
   const SurveysQuestions = _SurveysQuestions.initModel(sequelize);
   const SurveysQuestionsAnswers = _SurveysQuestionsAnswers.initModel(sequelize);
   const SurveysResponses = _SurveysResponses.initModel(sequelize);
   const SurveysResponsesAnswers = _SurveysResponsesAnswers.initModel(sequelize);
   const Tags = _Tags.initModel(sequelize);
-  const TeachersRegistrations = _TeachersRegistrations.initModel(sequelize);
-  const Topics = _Topics.initModel(sequelize);
-  const TopicsSubjects = _TopicsSubjects.initModel(sequelize);
   const UserRoles = _UserRoles.initModel(sequelize);
   const UserSessions = _UserSessions.initModel(sequelize);
   const Users = _Users.initModel(sequelize);
@@ -1136,24 +698,8 @@ export function initModels(sequelize: Sequelize) {
     ArticlesCategories: ArticlesCategories,
     ArticlesFavorites: ArticlesFavorites,
     ArticlesTags: ArticlesTags,
-    AssessmentCompetencyTests: AssessmentCompetencyTests,
-    AssessmentCompetencyTestsSchedules: AssessmentCompetencyTestsSchedules,
-    Assessments: Assessments,
-    AssessmentsAssessors: AssessmentsAssessors,
-    AssessmentsAssessorsAvailabilities: AssessmentsAssessorsAvailabilities,
-    AssessmentsSessions: AssessmentsSessions,
-    AssessmentsSessionsPartners: AssessmentsSessionsPartners,
-    AssessmentsSessionsRubricsResults: AssessmentsSessionsRubricsResults,
-    AssessmentsSessionsSubmissions: AssessmentsSessionsSubmissions,
-    AssessmentsSubjectsProgresses: AssessmentsSubjectsProgresses,
-    AssessmentsSubjectsProgressesAnswers: AssessmentsSubjectsProgressesAnswers,
-    AssignmentDocuments: AssignmentDocuments,
-    AssignmentFiles: AssignmentFiles,
-    Assignments: Assignments,
-    AssignmentsAdmin: AssignmentsAdmin,
     AvailabilitySchedules: AvailabilitySchedules,
     Banner: Banner,
-    BootcampTopics: BootcampTopics,
     Certificates: Certificates,
     ChatsConversations: ChatsConversations,
     ChatsConversationsParticipants: ChatsConversationsParticipants,
@@ -1161,11 +707,6 @@ export function initModels(sequelize: Sequelize) {
     ChatsRooms: ChatsRooms,
     ChatsRoomsMembers: ChatsRoomsMembers,
     ChatsRoomsMessages: ChatsRoomsMessages,
-    CollegeAcademicCohorts: CollegeAcademicCohorts,
-    CollegeClassEnrollments: CollegeClassEnrollments,
-    CollegeClasses: CollegeClasses,
-    CollegeProgramOfferings: CollegeProgramOfferings,
-    CollegeStudentRegistrations: CollegeStudentRegistrations,
     Companies: Companies,
     CompaniesDepartments: CompaniesDepartments,
     CompaniesEmployees: CompaniesEmployees,
@@ -1173,8 +714,6 @@ export function initModels(sequelize: Sequelize) {
     ConsultationRoomMessages: ConsultationRoomMessages,
     ConsultationRooms: ConsultationRooms,
     ConsultationTypes: ConsultationTypes,
-    CreditConvertionRequests: CreditConvertionRequests,
-    CreditConvertionRequestsSubjects: CreditConvertionRequestsSubjects,
     Cycles: Cycles,
     Dictionarys: Dictionarys,
     DiscussionForumComments: DiscussionForumComments,
@@ -1183,35 +722,19 @@ export function initModels(sequelize: Sequelize) {
     DiscussionLikes: DiscussionLikes,
     DiscussionReports: DiscussionReports,
     DonationProofs: DonationProofs,
-    DrillSimulationAssessmentsMeetings: DrillSimulationAssessmentsMeetings,
-    DrillSimulationAssessmentsSchedules: DrillSimulationAssessmentsSchedules,
-    Drills: Drills,
     ErrorLogs: ErrorLogs,
     EventParticipants: EventParticipants,
     Events: Events,
     EventsParticipants: EventsParticipants,
-    Faculties: Faculties,
-    GradingRubrics: GradingRubrics,
-    GradingRubricsCriteria: GradingRubricsCriteria,
-    GradingRubricsCriteriaDetails: GradingRubricsCriteriaDetails,
     GuidesBooks: GuidesBooks,
     GuidesDictionaries: GuidesDictionaries,
     GuidesFrequentlyAskedQuestions: GuidesFrequentlyAskedQuestions,
     GuidesVideos: GuidesVideos,
     InboxMessages: InboxMessages,
-    InternshipStudentMentors: InternshipStudentMentors,
     JobApplications: JobApplications,
     Jobs: Jobs,
     LeaderboardHistories: LeaderboardHistories,
-    Majors: Majors,
     Meetings: Meetings,
-    Mentors: Mentors,
-    Modules: Modules,
-    ModulesAdmin: ModulesAdmin,
-    ModulesArticles: ModulesArticles,
-    ModulesDocuments: ModulesDocuments,
-    ModulesJournals: ModulesJournals,
-    ModulesVideos: ModulesVideos,
     Notifications: Notifications,
     NotificationsMessages: NotificationsMessages,
     NotificationsTemplates: NotificationsTemplates,
@@ -1244,57 +767,22 @@ export function initModels(sequelize: Sequelize) {
     RoleplayPair: RoleplayPair,
     RoleplayPairs: RoleplayPairs,
     Roleplays: Roleplays,
-    RoleplaysSessions: RoleplaysSessions,
     RoleplaysTeams: RoleplaysTeams,
     RoleplaysTeamsMembers: RoleplaysTeamsMembers,
     RoleplaysTeamsSchedules: RoleplaysTeamsSchedules,
     Roles: Roles,
     SavedPositions: SavedPositions,
-    Semesters: Semesters,
     ServerAttributes: ServerAttributes,
     ServerLogs: ServerLogs,
-    Sessions: Sessions,
-    SessionsMentorings: SessionsMentorings,
-    SessionsReflections: SessionsReflections,
-    SessionsReflectionsComments: SessionsReflectionsComments,
-    SessionsReflectionsCommentsReplies: SessionsReflectionsCommentsReplies,
-    SessionsReflectionsLikes: SessionsReflectionsLikes,
-    SessionsTeacherAssessment: SessionsTeacherAssessment,
-    SessionsTeacherAssessmentQuestions: SessionsTeacherAssessmentQuestions,
-    SessionsTeacherAssessmentQuestionsAnswers: SessionsTeacherAssessmentQuestionsAnswers,
-    SessionsTeacherAssessmentSessionsQuestions: SessionsTeacherAssessmentSessionsQuestions,
-    SessionsTeacherAssessmentStudentsAnswers: SessionsTeacherAssessmentStudentsAnswers,
-    SimulationGroupStudents: SimulationGroupStudents,
-    SimulationGroups: SimulationGroups,
-    Simulations: Simulations,
     StoragesFiles: StoragesFiles,
     StoragesFilesHistories: StoragesFilesHistories,
-    StudentEvents: StudentEvents,
-    StudentMajors: StudentMajors,
-    StudentProfiles: StudentProfiles,
-    StudentSessionProgress: StudentSessionProgress,
-    StudentSessions: StudentSessions,
-    StudentSubjects: StudentSubjects,
-    SubjectMajors: SubjectMajors,
-    SubjectSessions: SubjectSessions,
-    Subjects: Subjects,
-    SubjectsOutcomes: SubjectsOutcomes,
-    SubjectsSessionsActivities: SubjectsSessionsActivities,
-    SubjectsSessionsAssessments: SubjectsSessionsAssessments,
-    SubjectsSessionsContentOrders: SubjectsSessionsContentOrders,
-    SubmissionDocuments: SubmissionDocuments,
-    Submissions: Submissions,
     Surveys: Surveys,
     SurveysQuestions: SurveysQuestions,
     SurveysQuestionsAnswers: SurveysQuestionsAnswers,
     SurveysResponses: SurveysResponses,
     SurveysResponsesAnswers: SurveysResponsesAnswers,
     Tags: Tags,
-    TeachersRegistrations: TeachersRegistrations,
-    Topics: Topics,
-    TopicsSubjects: TopicsSubjects,
     UserRoles: UserRoles,
-    UserSessions: UserSessions,
     Users: Users,
     UsersActives: UsersActives,
     UsersAdministrations: UsersAdministrations,

@@ -35,7 +35,8 @@ export class NotificationsMessages extends Model<NotificationsMessagesAttributes
     pk: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     phoneNumber: {
       type: DataTypes.STRING(255),

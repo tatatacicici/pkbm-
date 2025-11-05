@@ -39,7 +39,8 @@ export class RoleplaysSessions extends Model<RoleplaysSessionsAttributes, Rolepl
     pk: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     id: {
       type: DataTypes.UUID,

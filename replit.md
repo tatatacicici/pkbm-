@@ -3,8 +3,39 @@
 KampusGratis is an educational platform providing free online learning programs, particularly focused on Paket-C (high school equivalency) education in Indonesia. The project is built as an Nx monorepo containing multiple Next.js applications, a Node.js/Express backend, and shared libraries for components and utilities.
 
 The platform serves two primary user groups:
-- **Students** - Access courses, assignments, discussions, events, and track their learning progress
-- **Administrators** - Manage content, users, courses, and platform operations
+- **Students** - Peserta Paket C who access learning materials, quizzes, discussions, events, job opportunities, and track their progress
+- **Administrators** - Manage content, users, and platform operations
+
+# Recent Changes
+
+## November 2025 - Paket C Focus Refactoring
+
+Removed all campus/university-specific features to align with Paket C (non-formal education) target audience:
+
+**Backend Changes:**
+- Removed 60+ campus-related models: Faculty, Major, Subject, College*, CreditConversion, Semester, Assessment*, Session*, Mentor, Teacher, Grading*, Module*, Topic*, Assignment*, Submission*, Drill*, Simulation*
+- Removed routes: /faculty, /major, /subject, /study-plan, /student-major, /scores (grades)
+- Removed controllers and services for campus features
+- Updated dashboard service to remove student subject enrollment tracking
+- Fixed Sequelize model configurations (primaryKey for autoIncrement fields)
+- Created .env with JWT_SECRET for authentication
+- Backend server running successfully on port 3000
+
+**Retained Features:**
+- ✅ Quizzes and assessments
+- ✅ Job listings and applications (Companies, Positions, JobApplications)
+- ✅ Events and event registration
+- ✅ Articles and discussion forums
+- ✅ Certificates
+- ✅ Leaderboard
+- ✅ User authentication and profiles
+- ✅ Notifications and messaging
+- ✅ Dashboard with event and notification stats
+
+**Next Steps:**
+- Frontend apps (kg, kg-admin) need corresponding cleanup to remove campus UI modules
+- Review and update any remaining campus-specific business logic
+- Update API documentation to reflect available endpoints
 
 # User Preferences
 
