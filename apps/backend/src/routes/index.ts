@@ -17,6 +17,7 @@ import discussionRoutes from './discussion.routes';
 import discussionLikeRoutes from './discussion-like.routes';
 import emailVerificationRoutes from './email-verification.routes';
 import resetPasswordRoutes from './reset-password.routes';
+import myStudyRoutes from './mystudy.routes';
 
 const router = Router();
 const baseController = new BaseController();
@@ -40,5 +41,6 @@ router.use('/v2/discussions', discussionRoutes);
 router.use('/v1/discussion/like', discussionLikeRoutes);
 router.use('/v1/email-verification', emailVerificationRoutes);
 router.use('/v1/reset-password', resetPasswordRoutes);
+router.use('/', myStudyRoutes);
 
 export default router;
