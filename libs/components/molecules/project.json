@@ -1,0 +1,16 @@
+{
+  "name": "components-molecules",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/components/molecules/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/components/molecules/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  }
+}

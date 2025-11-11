@@ -1,0 +1,38 @@
+[
+  {
+    "id": "MK1025",
+    "nama_mahasiswa": "Salim Rustadge",
+    "program_studi": "1 (satu)",
+    "ip_semester": 2
+  },
+  {
+    "id": "MK1029",
+    "nama_mahasiswa": "Brandise Heamus",
+    "program_studi": "1 (satu)",
+    "ip_semester": 3
+  },
+  {
+    "id": "MK1022",
+    "nama_mahasiswa": "Geralda Statefield",
+    "program_studi": "1 (satu)",
+    "ip_semester": 3
+  },
+  {
+    "id": "MK1029",
+    "nama_mahasiswa": "Beret Renault",
+    "program_studi": "1 (satu)",
+    "ip_semester": 3
+  },
+  {
+    "id": "MK1029",
+    "nama_mahasiswa": "Morry Flippen",
+    "program_studi": "1 (satu)",
+    "ip_semester": 2
+  },
+  {
+    "id": "MK1021",
+    "nama_mahasiswa": "Othello Bruyet",
+    "program_studi": "1 (satu)",
+    "ip_semester": 2
+  }
+]

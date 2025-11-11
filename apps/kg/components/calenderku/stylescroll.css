@@ -1,0 +1,15 @@
+/* Mengubah warna scrollbar */
+::-webkit-scrollbar {
+  width: 5px; /* Lebar scrollbar */
+}
+
+/* Mengubah warna thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #0b568d; /* Warna thumb */
+  border-radius: 12px; /* Bentuk thumb */
+}
+
+/* Mengubah warna track (latar belakang scrollbar) jika diperlukan */
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
