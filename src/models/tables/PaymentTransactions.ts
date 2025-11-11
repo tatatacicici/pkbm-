@@ -1,37 +1,37 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface PaymentTransactionsAttributes {
-  pk?: any;
-  id?: any;
-  user_id?: any;
-  total_item?: any;
-  final_amount?: any;
-  status?: any;
-  type?: any;
-  method?: any;
-  snap_token?: any;
-  snap_redirect_url?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  id?: string;
+  user_id: string;
+  total_item: number;
+  final_amount: number;
+  status: string;
+  type: string;
+  method: string;
+  snap_token: string;
+  snap_redirect_url: string;
+  created_at?: Date;
+  updated_at?: Date;
+  deleted_at?: Date;
 }
 
-export type PaymentTransactionsCreationAttributes = Optional<PaymentTransactionsAttributes, 'id'>;
+export type PaymentTransactionsCreationAttributes = Optional<PaymentTransactionsAttributes, 'id' | 'created_at' | 'updated_at' | 'deleted_at'>;
 
 export class PaymentTransactions extends Model<PaymentTransactionsAttributes, PaymentTransactionsCreationAttributes> implements PaymentTransactionsAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare user_id?: any;
-  declare total_item?: any;
-  declare final_amount?: any;
-  declare status?: any;
-  declare type?: any;
-  declare method?: any;
-  declare snap_token?: any;
-  declare snap_redirect_url?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare user_id: string;
+  declare total_item: number;
+  declare final_amount: number;
+  declare status: string;
+  declare type: string;
+  declare method: string;
+  declare snap_token: string;
+  declare snap_redirect_url: string;
+  declare created_at?: Date;
+  declare updated_at?: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

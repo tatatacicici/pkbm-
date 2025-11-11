@@ -1,49 +1,49 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ArticlesAttributes {
-  id?: any;
-  author_id?: any;
-  category_id?: any;
-  title?: any;
-  content?: any;
-  thumbnail?: any;
-  slug?: any;
-  views?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  thumbnail_id?: any;
-  excerpt?: any;
-  featured_image?: any;
-  tags?: any;
-  category?: any;
-  view_count?: any;
-  like_count?: any;
-  published_at?: any;
+  id?: string;
+  author_id: string;
+  category_id: string;
+  title: string;
+  content: string;
+  thumbnail: string;
+  slug: string;
+  views?: number;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  thumbnail_id?: string;
+  excerpt?: string;
+  featured_image?: string;
+  tags?: string;
+  category?: string;
+  view_count?: number;
+  like_count?: number;
+  published_at?: Date;
 }
 
-export type ArticlesCreationAttributes = Optional<ArticlesAttributes, 'id'>;
+export type ArticlesCreationAttributes = Optional<ArticlesAttributes, 'id' | 'views' | 'deleted_at' | 'thumbnail_id' | 'excerpt' | 'featured_image' | 'tags' | 'category' | 'view_count' | 'like_count' | 'published_at'>;
 
 export class Articles extends Model<ArticlesAttributes, ArticlesCreationAttributes> implements ArticlesAttributes {
-  declare id?: any;
-  declare author_id?: any;
-  declare category_id?: any;
-  declare title?: any;
-  declare content?: any;
-  declare thumbnail?: any;
-  declare slug?: any;
-  declare views?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare thumbnail_id?: any;
-  declare excerpt?: any;
-  declare featured_image?: any;
-  declare tags?: any;
-  declare category?: any;
-  declare view_count?: any;
-  declare like_count?: any;
-  declare published_at?: any;
+  declare id?: string;
+  declare author_id: string;
+  declare category_id: string;
+  declare title: string;
+  declare content: string;
+  declare thumbnail: string;
+  declare slug: string;
+  declare views?: number;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare thumbnail_id?: string;
+  declare excerpt?: string;
+  declare featured_image?: string;
+  declare tags?: string;
+  declare category?: string;
+  declare view_count?: number;
+  declare like_count?: number;
+  declare published_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

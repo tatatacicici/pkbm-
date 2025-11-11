@@ -1,23 +1,23 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface UserRolesAttributes {
-  id?: any;
-  user_id?: any;
-  role_id?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  user_id: string;
+  role_id: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type UserRolesCreationAttributes = Optional<UserRolesAttributes, 'id'>;
+export type UserRolesCreationAttributes = Optional<UserRolesAttributes, 'id' | 'deleted_at'>;
 
 export class UserRoles extends Model<UserRolesAttributes, UserRolesCreationAttributes> implements UserRolesAttributes {
-  declare id?: any;
-  declare user_id?: any;
-  declare role_id?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare user_id: string;
+  declare role_id: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

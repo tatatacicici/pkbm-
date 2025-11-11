@@ -1,25 +1,25 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface DictionarysAttributes {
-  id?: any;
-  url?: any;
-  title?: any;
-  description?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  url?: string;
+  title?: string;
+  description?: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type DictionarysCreationAttributes = Optional<DictionarysAttributes, 'id'>;
+export type DictionarysCreationAttributes = Optional<DictionarysAttributes, 'id' | 'url' | 'title' | 'description' | 'deleted_at'>;
 
 export class Dictionarys extends Model<DictionarysAttributes, DictionarysCreationAttributes> implements DictionarysAttributes {
-  declare id?: any;
-  declare url?: any;
-  declare title?: any;
-  declare description?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare url?: string;
+  declare title?: string;
+  declare description?: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

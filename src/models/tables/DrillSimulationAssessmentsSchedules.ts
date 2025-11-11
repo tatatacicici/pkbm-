@@ -1,35 +1,35 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface DrillSimulationAssessmentsSchedulesAttributes {
-  id?: any;
-  uuid?: any;
-  schedule?: any;
-  meeting_id?: any;
-  assessor_id?: any;
-  student_id?: any;
-  status?: any;
-  finished_at?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  score?: any;
+  id?: number;
+  uuid?: string;
+  schedule: Date;
+  meeting_id: number;
+  assessor_id: string;
+  student_id?: string;
+  status: string;
+  finished_at?: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  score?: number;
 }
 
-export type DrillSimulationAssessmentsSchedulesCreationAttributes = Optional<DrillSimulationAssessmentsSchedulesAttributes, 'id'>;
+export type DrillSimulationAssessmentsSchedulesCreationAttributes = Optional<DrillSimulationAssessmentsSchedulesAttributes, 'id' | 'uuid' | 'student_id' | 'finished_at' | 'deleted_at' | 'score'>;
 
 export class DrillSimulationAssessmentsSchedules extends Model<DrillSimulationAssessmentsSchedulesAttributes, DrillSimulationAssessmentsSchedulesCreationAttributes> implements DrillSimulationAssessmentsSchedulesAttributes {
-  declare id?: any;
-  declare uuid?: any;
-  declare schedule?: any;
-  declare meeting_id?: any;
-  declare assessor_id?: any;
-  declare student_id?: any;
-  declare status?: any;
-  declare finished_at?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare score?: any;
+  declare id?: number;
+  declare uuid?: string;
+  declare schedule: Date;
+  declare meeting_id: number;
+  declare assessor_id: string;
+  declare student_id?: string;
+  declare status: string;
+  declare finished_at?: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare score?: number;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

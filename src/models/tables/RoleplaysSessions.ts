@@ -1,33 +1,33 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface RoleplaysSessionsAttributes {
-  pk?: any;
-  id?: any;
-  roleplay_id?: any;
-  team_id?: any;
-  schedule_id?: any;
-  status?: any;
-  start_at?: any;
-  end_at?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  id?: string;
+  roleplay_id: number;
+  team_id: number;
+  schedule_id: number;
+  status: string;
+  start_at: Date;
+  end_at?: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type RoleplaysSessionsCreationAttributes = Optional<RoleplaysSessionsAttributes, 'id'>;
+export type RoleplaysSessionsCreationAttributes = Optional<RoleplaysSessionsAttributes, 'id' | 'end_at' | 'deleted_at'>;
 
 export class RoleplaysSessions extends Model<RoleplaysSessionsAttributes, RoleplaysSessionsCreationAttributes> implements RoleplaysSessionsAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare roleplay_id?: any;
-  declare team_id?: any;
-  declare schedule_id?: any;
-  declare status?: any;
-  declare start_at?: any;
-  declare end_at?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare roleplay_id: number;
+  declare team_id: number;
+  declare schedule_id: number;
+  declare status: string;
+  declare start_at: Date;
+  declare end_at?: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

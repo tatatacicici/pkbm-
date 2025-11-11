@@ -1,41 +1,41 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AdministrationsFamilialsAttributes {
-  id?: any;
-  administration_id?: any;
-  father_name?: any;
-  father_occupation?: any;
-  father_salary?: any;
-  mother_name?: any;
-  mother_occupation?: any;
-  mother_salary?: any;
-  self_salary?: any;
-  live_with?: any;
-  tuition_payer?: any;
-  created_at?: any;
-  updated_at?: any;
-  self_occupation?: any;
-  deleted_at?: any;
+  id?: string;
+  administration_id: string;
+  father_name?: string;
+  father_occupation?: string;
+  father_salary?: string;
+  mother_name?: string;
+  mother_occupation?: string;
+  mother_salary?: string;
+  self_salary?: string;
+  live_with?: string;
+  tuition_payer?: string;
+  created_at: Date;
+  updated_at: Date;
+  self_occupation?: string;
+  deleted_at?: Date;
 }
 
-export type AdministrationsFamilialsCreationAttributes = Optional<AdministrationsFamilialsAttributes, 'id'>;
+export type AdministrationsFamilialsCreationAttributes = Optional<AdministrationsFamilialsAttributes, 'id' | 'father_name' | 'father_occupation' | 'father_salary' | 'mother_name' | 'mother_occupation' | 'mother_salary' | 'self_salary' | 'live_with' | 'tuition_payer' | 'self_occupation' | 'deleted_at'>;
 
 export class AdministrationsFamilials extends Model<AdministrationsFamilialsAttributes, AdministrationsFamilialsCreationAttributes> implements AdministrationsFamilialsAttributes {
-  declare id?: any;
-  declare administration_id?: any;
-  declare father_name?: any;
-  declare father_occupation?: any;
-  declare father_salary?: any;
-  declare mother_name?: any;
-  declare mother_occupation?: any;
-  declare mother_salary?: any;
-  declare self_salary?: any;
-  declare live_with?: any;
-  declare tuition_payer?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare self_occupation?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare administration_id: string;
+  declare father_name?: string;
+  declare father_occupation?: string;
+  declare father_salary?: string;
+  declare mother_name?: string;
+  declare mother_occupation?: string;
+  declare mother_salary?: string;
+  declare self_salary?: string;
+  declare live_with?: string;
+  declare tuition_payer?: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare self_occupation?: string;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

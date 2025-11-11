@@ -1,33 +1,33 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface InboxMessagesAttributes {
-  id?: any;
-  sender_id?: any;
-  receiver_id?: any;
-  content?: any;
-  attachment_id?: any;
-  attachment_url?: any;
-  is_seen?: any;
-  seen_at?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  sender_id: string;
+  receiver_id: string;
+  content: string;
+  attachment_id?: number;
+  attachment_url?: string;
+  is_seen: boolean;
+  seen_at?: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type InboxMessagesCreationAttributes = Optional<InboxMessagesAttributes, 'id'>;
+export type InboxMessagesCreationAttributes = Optional<InboxMessagesAttributes, 'id' | 'attachment_id' | 'attachment_url' | 'seen_at' | 'deleted_at'>;
 
 export class InboxMessages extends Model<InboxMessagesAttributes, InboxMessagesCreationAttributes> implements InboxMessagesAttributes {
-  declare id?: any;
-  declare sender_id?: any;
-  declare receiver_id?: any;
-  declare content?: any;
-  declare attachment_id?: any;
-  declare attachment_url?: any;
-  declare is_seen?: any;
-  declare seen_at?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare sender_id: string;
+  declare receiver_id: string;
+  declare content: string;
+  declare attachment_id?: number;
+  declare attachment_url?: string;
+  declare is_seen: boolean;
+  declare seen_at?: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

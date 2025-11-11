@@ -1,25 +1,25 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface CollegeClassEnrollmentsAttributes {
-  id?: any;
-  student_id?: any;
-  class_id?: any;
-  grade_point?: any;
-  deleted_at?: any;
-  created_at?: any;
-  updated_at?: any;
+  id?: string;
+  student_id: string;
+  class_id: string;
+  grade_point?: number;
+  deleted_at?: Date;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
-export type CollegeClassEnrollmentsCreationAttributes = Optional<CollegeClassEnrollmentsAttributes, 'id'>;
+export type CollegeClassEnrollmentsCreationAttributes = Optional<CollegeClassEnrollmentsAttributes, 'id' | 'grade_point' | 'deleted_at' | 'created_at' | 'updated_at'>;
 
 export class CollegeClassEnrollments extends Model<CollegeClassEnrollmentsAttributes, CollegeClassEnrollmentsCreationAttributes> implements CollegeClassEnrollmentsAttributes {
-  declare id?: any;
-  declare student_id?: any;
-  declare class_id?: any;
-  declare grade_point?: any;
-  declare deleted_at?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
+  declare id?: string;
+  declare student_id: string;
+  declare class_id: string;
+  declare grade_point?: number;
+  declare deleted_at?: Date;
+  declare created_at?: Date;
+  declare updated_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

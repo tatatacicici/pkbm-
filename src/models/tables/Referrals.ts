@@ -1,29 +1,29 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ReferralsAttributes {
-  id?: any;
-  user_id?: any;
-  code?: any;
-  type?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  total_views?: any;
-  ip_address?: any;
+  id?: string;
+  user_id: string;
+  code: string;
+  type: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  total_views?: number;
+  ip_address: string;
 }
 
-export type ReferralsCreationAttributes = Optional<ReferralsAttributes, 'id'>;
+export type ReferralsCreationAttributes = Optional<ReferralsAttributes, 'id' | 'deleted_at' | 'total_views'>;
 
 export class Referrals extends Model<ReferralsAttributes, ReferralsCreationAttributes> implements ReferralsAttributes {
-  declare id?: any;
-  declare user_id?: any;
-  declare code?: any;
-  declare type?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare total_views?: any;
-  declare ip_address?: any;
+  declare id?: string;
+  declare user_id: string;
+  declare code: string;
+  declare type: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare total_views?: number;
+  declare ip_address: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

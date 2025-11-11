@@ -1,33 +1,33 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SubjectsSessionsActivitiesAttributes {
-  id?: any;
-  session_id?: any;
-  type?: any;
-  reference_id?: any;
-  duration?: any;
-  start_at?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  subject_id?: any;
-  duration_type?: any;
+  id?: string;
+  session_id: string;
+  type: string;
+  reference_id?: string;
+  duration?: number;
+  start_at?: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  subject_id: string;
+  duration_type?: string;
 }
 
-export type SubjectsSessionsActivitiesCreationAttributes = Optional<SubjectsSessionsActivitiesAttributes, 'id'>;
+export type SubjectsSessionsActivitiesCreationAttributes = Optional<SubjectsSessionsActivitiesAttributes, 'id' | 'reference_id' | 'duration' | 'start_at' | 'deleted_at' | 'duration_type'>;
 
 export class SubjectsSessionsActivities extends Model<SubjectsSessionsActivitiesAttributes, SubjectsSessionsActivitiesCreationAttributes> implements SubjectsSessionsActivitiesAttributes {
-  declare id?: any;
-  declare session_id?: any;
-  declare type?: any;
-  declare reference_id?: any;
-  declare duration?: any;
-  declare start_at?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare subject_id?: any;
-  declare duration_type?: any;
+  declare id?: string;
+  declare session_id: string;
+  declare type: string;
+  declare reference_id?: string;
+  declare duration?: number;
+  declare start_at?: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare subject_id: string;
+  declare duration_type?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

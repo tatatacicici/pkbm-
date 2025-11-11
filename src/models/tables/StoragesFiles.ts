@@ -1,35 +1,35 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface StoragesFilesAttributes {
-  pk?: any;
-  id?: any;
-  user_id?: any;
-  name?: any;
-  filename?: any;
-  size?: any;
-  type?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  url?: any;
-  bucket?: any;
+  pk: number;
+  id?: string;
+  user_id: string;
+  name: string;
+  filename: string;
+  size: number;
+  type: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  url?: string;
+  bucket?: string;
 }
 
-export type StoragesFilesCreationAttributes = Optional<StoragesFilesAttributes, 'id'>;
+export type StoragesFilesCreationAttributes = Optional<StoragesFilesAttributes, 'id' | 'deleted_at' | 'url' | 'bucket'>;
 
 export class StoragesFiles extends Model<StoragesFilesAttributes, StoragesFilesCreationAttributes> implements StoragesFilesAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare user_id?: any;
-  declare name?: any;
-  declare filename?: any;
-  declare size?: any;
-  declare type?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare url?: any;
-  declare bucket?: any;
+  declare pk: number;
+  declare id?: string;
+  declare user_id: string;
+  declare name: string;
+  declare filename: string;
+  declare size: number;
+  declare type: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare url?: string;
+  declare bucket?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

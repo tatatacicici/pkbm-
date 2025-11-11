@@ -1,33 +1,33 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SubmissionsAttributes {
-  pk?: any;
-  id?: any;
-  user_id?: any;
-  assignment_id?: any;
-  status?: any;
-  is_graded?: any;
-  score?: any;
-  document_path?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  id?: string;
+  user_id: string;
+  assignment_id: number;
+  status: string;
+  is_graded: boolean;
+  score: number;
+  document_path: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type SubmissionsCreationAttributes = Optional<SubmissionsAttributes, 'id'>;
+export type SubmissionsCreationAttributes = Optional<SubmissionsAttributes, 'id' | 'deleted_at'>;
 
 export class Submissions extends Model<SubmissionsAttributes, SubmissionsCreationAttributes> implements SubmissionsAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare user_id?: any;
-  declare assignment_id?: any;
-  declare status?: any;
-  declare is_graded?: any;
-  declare score?: any;
-  declare document_path?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare user_id: string;
+  declare assignment_id: number;
+  declare status: string;
+  declare is_graded: boolean;
+  declare score: number;
+  declare document_path: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

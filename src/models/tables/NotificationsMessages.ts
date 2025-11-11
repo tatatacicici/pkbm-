@@ -1,31 +1,31 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface NotificationsMessagesAttributes {
-  pk?: any;
-  phone_number?: any;
-  message?: any;
-  type?: any;
-  status?: any;
-  delivered_at?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  user_id?: any;
+  pk: number;
+  phone_number: string;
+  message: string;
+  type: string;
+  status: string;
+  delivered_at?: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  user_id: string;
 }
 
-export type NotificationsMessagesCreationAttributes = Optional<NotificationsMessagesAttributes, 'id'>;
+export type NotificationsMessagesCreationAttributes = Optional<NotificationsMessagesAttributes, 'id' | 'delivered_at' | 'deleted_at'>;
 
 export class NotificationsMessages extends Model<NotificationsMessagesAttributes, NotificationsMessagesCreationAttributes> implements NotificationsMessagesAttributes {
-  declare pk?: any;
-  declare phone_number?: any;
-  declare message?: any;
-  declare type?: any;
-  declare status?: any;
-  declare delivered_at?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare user_id?: any;
+  declare pk: number;
+  declare phone_number: string;
+  declare message: string;
+  declare type: string;
+  declare status: string;
+  declare delivered_at?: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare user_id: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

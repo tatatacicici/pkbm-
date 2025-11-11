@@ -1,27 +1,27 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ServerLogsAttributes {
-  id?: any;
-  log?: any;
-  type?: any;
-  useragent?: any;
-  ip_address?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  log: string;
+  type: string;
+  useragent?: string;
+  ip_address?: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type ServerLogsCreationAttributes = Optional<ServerLogsAttributes, 'id'>;
+export type ServerLogsCreationAttributes = Optional<ServerLogsAttributes, 'id' | 'useragent' | 'ip_address' | 'deleted_at'>;
 
 export class ServerLogs extends Model<ServerLogsAttributes, ServerLogsCreationAttributes> implements ServerLogsAttributes {
-  declare id?: any;
-  declare log?: any;
-  declare type?: any;
-  declare useragent?: any;
-  declare ip_address?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare log: string;
+  declare type: string;
+  declare useragent?: string;
+  declare ip_address?: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

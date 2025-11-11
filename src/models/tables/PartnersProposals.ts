@@ -1,49 +1,49 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface PartnersProposalsAttributes {
-  id?: any;
-  uuid?: any;
-  partner_id?: any;
-  name?: any;
-  type?: any;
-  start_registration?: any;
-  end_registration?: any;
-  start_duration?: any;
-  end_duration?: any;
-  credits_count?: any;
-  location?: any;
-  description?: any;
-  optional_notes?: any;
-  status?: any;
-  actioner_id?: any;
-  actioned_at?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: number;
+  uuid: string;
+  partner_id: string;
+  name: string;
+  type: string;
+  start_registration: Date;
+  end_registration: Date;
+  start_duration: Date;
+  end_duration: Date;
+  credits_count: number;
+  location: string;
+  description: string;
+  optional_notes?: string;
+  status: string;
+  actioner_id?: string;
+  actioned_at?: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type PartnersProposalsCreationAttributes = Optional<PartnersProposalsAttributes, 'id'>;
+export type PartnersProposalsCreationAttributes = Optional<PartnersProposalsAttributes, 'id' | 'optional_notes' | 'actioner_id' | 'actioned_at' | 'deleted_at'>;
 
 export class PartnersProposals extends Model<PartnersProposalsAttributes, PartnersProposalsCreationAttributes> implements PartnersProposalsAttributes {
-  declare id?: any;
-  declare uuid?: any;
-  declare partner_id?: any;
-  declare name?: any;
-  declare type?: any;
-  declare start_registration?: any;
-  declare end_registration?: any;
-  declare start_duration?: any;
-  declare end_duration?: any;
-  declare credits_count?: any;
-  declare location?: any;
-  declare description?: any;
-  declare optional_notes?: any;
-  declare status?: any;
-  declare actioner_id?: any;
-  declare actioned_at?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: number;
+  declare uuid: string;
+  declare partner_id: string;
+  declare name: string;
+  declare type: string;
+  declare start_registration: Date;
+  declare end_registration: Date;
+  declare start_duration: Date;
+  declare end_duration: Date;
+  declare credits_count: number;
+  declare location: string;
+  declare description: string;
+  declare optional_notes?: string;
+  declare status: string;
+  declare actioner_id?: string;
+  declare actioned_at?: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

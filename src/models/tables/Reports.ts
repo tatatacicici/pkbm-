@@ -1,39 +1,39 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ReportsAttributes {
-  id?: any;
-  user_id?: any;
-  type?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  uuid?: any;
-  activity_id?: any;
-  status?: any;
-  lessons_learned?: any;
-  week_number?: any;
-  start_date?: any;
-  end_date?: any;
-  user__id?: any;
+  id?: number;
+  user_id: string;
+  type: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  uuid: string;
+  activity_id: number;
+  status: string;
+  lessons_learned?: string;
+  week_number: number;
+  start_date: Date;
+  end_date: Date;
+  user__id?: string;
 }
 
-export type ReportsCreationAttributes = Optional<ReportsAttributes, 'id'>;
+export type ReportsCreationAttributes = Optional<ReportsAttributes, 'id' | 'deleted_at' | 'lessons_learned' | 'user__id'>;
 
 export class Reports extends Model<ReportsAttributes, ReportsCreationAttributes> implements ReportsAttributes {
-  declare id?: any;
-  declare user_id?: any;
-  declare type?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare uuid?: any;
-  declare activity_id?: any;
-  declare status?: any;
-  declare lessons_learned?: any;
-  declare week_number?: any;
-  declare start_date?: any;
-  declare end_date?: any;
-  declare user__id?: any;
+  declare id?: number;
+  declare user_id: string;
+  declare type: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare uuid: string;
+  declare activity_id: number;
+  declare status: string;
+  declare lessons_learned?: string;
+  declare week_number: number;
+  declare start_date: Date;
+  declare end_date: Date;
+  declare user__id?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

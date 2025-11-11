@@ -1,35 +1,35 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AssessmentsSessionsAttributes {
-  pk?: any;
-  id?: any;
-  assessment_id?: any;
-  type?: any;
-  status?: any;
-  day?: any;
-  booked_by?: any;
-  booked_at?: any;
-  rubric_score?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  id?: string;
+  assessment_id: number;
+  type: string;
+  status: string;
+  day: string;
+  booked_by: string;
+  booked_at: Date;
+  rubric_score?: number;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type AssessmentsSessionsCreationAttributes = Optional<AssessmentsSessionsAttributes, 'id'>;
+export type AssessmentsSessionsCreationAttributes = Optional<AssessmentsSessionsAttributes, 'id' | 'rubric_score' | 'deleted_at'>;
 
 export class AssessmentsSessions extends Model<AssessmentsSessionsAttributes, AssessmentsSessionsCreationAttributes> implements AssessmentsSessionsAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare assessment_id?: any;
-  declare type?: any;
-  declare status?: any;
-  declare day?: any;
-  declare booked_by?: any;
-  declare booked_at?: any;
-  declare rubric_score?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare assessment_id: number;
+  declare type: string;
+  declare status: string;
+  declare day: string;
+  declare booked_by: string;
+  declare booked_at: Date;
+  declare rubric_score?: number;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

@@ -1,45 +1,45 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SessionsMentoringsAttributes {
-  pk?: any;
-  id?: any;
-  subject_id?: any;
-  session_id?: any;
-  teacher_id?: any;
-  session?: any;
-  title?: any;
-  content?: any;
-  duration?: any;
-  location?: any;
-  date?: any;
-  link?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  module_id?: any;
-  type?: any;
+  pk: number;
+  id?: string;
+  subject_id: string;
+  session_id: string;
+  teacher_id: string;
+  session?: number;
+  title: string;
+  content: string;
+  duration: string;
+  location: string;
+  date: Date;
+  link: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  module_id?: string;
+  type?: string;
 }
 
-export type SessionsMentoringsCreationAttributes = Optional<SessionsMentoringsAttributes, 'id'>;
+export type SessionsMentoringsCreationAttributes = Optional<SessionsMentoringsAttributes, 'id' | 'session' | 'deleted_at' | 'module_id' | 'type'>;
 
 export class SessionsMentorings extends Model<SessionsMentoringsAttributes, SessionsMentoringsCreationAttributes> implements SessionsMentoringsAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare subject_id?: any;
-  declare session_id?: any;
-  declare teacher_id?: any;
-  declare session?: any;
-  declare title?: any;
-  declare content?: any;
-  declare duration?: any;
-  declare location?: any;
-  declare date?: any;
-  declare link?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare module_id?: any;
-  declare type?: any;
+  declare pk: number;
+  declare id?: string;
+  declare subject_id: string;
+  declare session_id: string;
+  declare teacher_id: string;
+  declare session?: number;
+  declare title: string;
+  declare content: string;
+  declare duration: string;
+  declare location: string;
+  declare date: Date;
+  declare link: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare module_id?: string;
+  declare type?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

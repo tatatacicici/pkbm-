@@ -1,31 +1,31 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SessionsTeacherAssessmentSessionsQuestionsAttributes {
-  pk?: any;
-  id?: any;
-  subject_id?: any;
-  session_id?: any;
-  session_no?: any;
-  question_id?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  assessment_id?: any;
+  pk: number;
+  id?: string;
+  subject_id: string;
+  session_id: string;
+  session_no: string;
+  question_id: number;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  assessment_id?: string;
 }
 
-export type SessionsTeacherAssessmentSessionsQuestionsCreationAttributes = Optional<SessionsTeacherAssessmentSessionsQuestionsAttributes, 'id'>;
+export type SessionsTeacherAssessmentSessionsQuestionsCreationAttributes = Optional<SessionsTeacherAssessmentSessionsQuestionsAttributes, 'id' | 'deleted_at' | 'assessment_id'>;
 
 export class SessionsTeacherAssessmentSessionsQuestions extends Model<SessionsTeacherAssessmentSessionsQuestionsAttributes, SessionsTeacherAssessmentSessionsQuestionsCreationAttributes> implements SessionsTeacherAssessmentSessionsQuestionsAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare subject_id?: any;
-  declare session_id?: any;
-  declare session_no?: any;
-  declare question_id?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare assessment_id?: any;
+  declare pk: number;
+  declare id?: string;
+  declare subject_id: string;
+  declare session_id: string;
+  declare session_no: string;
+  declare question_id: number;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare assessment_id?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

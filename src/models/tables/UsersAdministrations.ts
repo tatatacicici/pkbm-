@@ -1,32 +1,29 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface UsersAdministrationsAttributes {
-  id?: any;
-  uuid?: any;
-  user_id?: any;
-  cycle_id?: any;
-  type?: any;
-  status?: any;
+  id?: number;
+  uuid?: string;
+  user_id: string;
+  cycle_id: number;
+  type: string;
+  status: string;
   actions?: any;
-  approved_by?: any;
-  approved_at?: any;
+  approved_by?: string;
+  approved_at?: Date;
 }
 
-export type UsersAdministrationsCreationAttributes = Optional<UsersAdministrationsAttributes, 'id'>;
+export type UsersAdministrationsCreationAttributes = Optional<UsersAdministrationsAttributes, 'id' | 'uuid' | 'actions' | 'approved_by' | 'approved_at'>;
 
 export class UsersAdministrations extends Model<UsersAdministrationsAttributes, UsersAdministrationsCreationAttributes> implements UsersAdministrationsAttributes {
-  declare id?: any;
-  declare uuid?: any;
-  declare user_id?: any;
-  declare cycle_id?: any;
-  declare type?: any;
-  declare status?: any;
+  declare id?: number;
+  declare uuid?: string;
+  declare user_id: string;
+  declare cycle_id: number;
+  declare type: string;
+  declare status: string;
   declare actions?: any;
-  declare approved_by?: any;
-  declare approved_at?: any;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare approved_by?: string;
+  declare approved_at?: Date;
 
   public static initModel(sequelize: Sequelize): typeof UsersAdministrations {
     UsersAdministrations.init(

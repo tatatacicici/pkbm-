@@ -1,33 +1,33 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AssessmentCompetencyTestsAttributes {
-  pk?: any;
-  id?: any;
-  title?: any;
-  details?: any;
-  thumbnail?: any;
-  type?: any;
-  price?: any;
-  mentor_id?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  id?: string;
+  title: string;
+  details: string;
+  thumbnail: string;
+  type: string;
+  price: number;
+  mentor_id: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type AssessmentCompetencyTestsCreationAttributes = Optional<AssessmentCompetencyTestsAttributes, 'id'>;
+export type AssessmentCompetencyTestsCreationAttributes = Optional<AssessmentCompetencyTestsAttributes, 'id' | 'deleted_at'>;
 
 export class AssessmentCompetencyTests extends Model<AssessmentCompetencyTestsAttributes, AssessmentCompetencyTestsCreationAttributes> implements AssessmentCompetencyTestsAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare title?: any;
-  declare details?: any;
-  declare thumbnail?: any;
-  declare type?: any;
-  declare price?: any;
-  declare mentor_id?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare title: string;
+  declare details: string;
+  declare thumbnail: string;
+  declare type: string;
+  declare price: number;
+  declare mentor_id: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

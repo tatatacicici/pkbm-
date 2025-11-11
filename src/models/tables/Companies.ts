@@ -1,25 +1,25 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface CompaniesAttributes {
-  id?: any;
-  name?: any;
-  address?: any;
-  website?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  name: string;
+  address: string;
+  website: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type CompaniesCreationAttributes = Optional<CompaniesAttributes, 'id'>;
+export type CompaniesCreationAttributes = Optional<CompaniesAttributes, 'id' | 'deleted_at'>;
 
 export class Companies extends Model<CompaniesAttributes, CompaniesCreationAttributes> implements CompaniesAttributes {
-  declare id?: any;
-  declare name?: any;
-  declare address?: any;
-  declare website?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare name: string;
+  declare address: string;
+  declare website: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

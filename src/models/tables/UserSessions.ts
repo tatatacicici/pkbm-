@@ -1,37 +1,37 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface UserSessionsAttributes {
-  id?: any;
-  user_id?: any;
-  status?: any;
-  user_agent?: any;
-  access_token?: any;
-  refresh_token?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  ip_address?: any;
-  expires_at?: any;
-  last_active_at?: any;
-  last_active?: any;
+  id?: string;
+  user_id: string;
+  status: string;
+  user_agent: string;
+  access_token?: string;
+  refresh_token?: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  ip_address?: string;
+  expires_at?: Date;
+  last_active_at?: Date;
+  last_active?: Date;
 }
 
-export type UserSessionsCreationAttributes = Optional<UserSessionsAttributes, 'id'>;
+export type UserSessionsCreationAttributes = Optional<UserSessionsAttributes, 'id' | 'access_token' | 'refresh_token' | 'deleted_at' | 'ip_address' | 'expires_at' | 'last_active_at' | 'last_active'>;
 
 export class UserSessions extends Model<UserSessionsAttributes, UserSessionsCreationAttributes> implements UserSessionsAttributes {
-  declare id?: any;
-  declare user_id?: any;
-  declare status?: any;
-  declare user_agent?: any;
-  declare access_token?: any;
-  declare refresh_token?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare ip_address?: any;
-  declare expires_at?: any;
-  declare last_active_at?: any;
-  declare last_active?: any;
+  declare id?: string;
+  declare user_id: string;
+  declare status: string;
+  declare user_agent: string;
+  declare access_token?: string;
+  declare refresh_token?: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare ip_address?: string;
+  declare expires_at?: Date;
+  declare last_active_at?: Date;
+  declare last_active?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

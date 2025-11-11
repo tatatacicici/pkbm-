@@ -1,37 +1,37 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SessionsAttributes {
-  id?: any;
-  subject_id?: any;
-  session_no?: any;
-  is_sync?: any;
-  type?: any;
-  description?: any;
-  link?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  title?: any;
-  duration?: any;
-  start_at?: any;
+  id?: string;
+  subject_id: string;
+  session_no: number;
+  is_sync?: boolean;
+  type?: string;
+  description?: string;
+  link?: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  title?: string;
+  duration?: number;
+  start_at?: Date;
 }
 
-export type SessionsCreationAttributes = Optional<SessionsAttributes, 'id'>;
+export type SessionsCreationAttributes = Optional<SessionsAttributes, 'id' | 'is_sync' | 'type' | 'description' | 'link' | 'deleted_at' | 'title' | 'duration' | 'start_at'>;
 
 export class Sessions extends Model<SessionsAttributes, SessionsCreationAttributes> implements SessionsAttributes {
-  declare id?: any;
-  declare subject_id?: any;
-  declare session_no?: any;
-  declare is_sync?: any;
-  declare type?: any;
-  declare description?: any;
-  declare link?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare title?: any;
-  declare duration?: any;
-  declare start_at?: any;
+  declare id?: string;
+  declare subject_id: string;
+  declare session_no: number;
+  declare is_sync?: boolean;
+  declare type?: string;
+  declare description?: string;
+  declare link?: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare title?: string;
+  declare duration?: number;
+  declare start_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

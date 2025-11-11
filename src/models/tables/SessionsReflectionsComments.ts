@@ -1,25 +1,25 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SessionsReflectionsCommentsAttributes {
-  id?: any;
-  reflection_id?: any;
-  user_id?: any;
-  content?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  reflection_id: number;
+  user_id: string;
+  content: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type SessionsReflectionsCommentsCreationAttributes = Optional<SessionsReflectionsCommentsAttributes, 'id'>;
+export type SessionsReflectionsCommentsCreationAttributes = Optional<SessionsReflectionsCommentsAttributes, 'id' | 'deleted_at'>;
 
 export class SessionsReflectionsComments extends Model<SessionsReflectionsCommentsAttributes, SessionsReflectionsCommentsCreationAttributes> implements SessionsReflectionsCommentsAttributes {
-  declare id?: any;
-  declare reflection_id?: any;
-  declare user_id?: any;
-  declare content?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare reflection_id: number;
+  declare user_id: string;
+  declare content: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

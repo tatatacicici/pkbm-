@@ -1,35 +1,35 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface RoleplaysTeamsMembersAttributes {
-  pk?: any;
-  id?: any;
-  roleplay_id?: any;
-  team_id?: any;
-  user_id?: any;
-  schedule_id?: any;
-  status?: any;
-  joined_at?: any;
-  left_at?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  id?: string;
+  roleplay_id: number;
+  team_id: number;
+  user_id: string;
+  schedule_id: number;
+  status: string;
+  joined_at: Date;
+  left_at?: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type RoleplaysTeamsMembersCreationAttributes = Optional<RoleplaysTeamsMembersAttributes, 'id'>;
+export type RoleplaysTeamsMembersCreationAttributes = Optional<RoleplaysTeamsMembersAttributes, 'id' | 'left_at' | 'deleted_at'>;
 
 export class RoleplaysTeamsMembers extends Model<RoleplaysTeamsMembersAttributes, RoleplaysTeamsMembersCreationAttributes> implements RoleplaysTeamsMembersAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare roleplay_id?: any;
-  declare team_id?: any;
-  declare user_id?: any;
-  declare schedule_id?: any;
-  declare status?: any;
-  declare joined_at?: any;
-  declare left_at?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare roleplay_id: number;
+  declare team_id: number;
+  declare user_id: string;
+  declare schedule_id: number;
+  declare status: string;
+  declare joined_at: Date;
+  declare left_at?: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

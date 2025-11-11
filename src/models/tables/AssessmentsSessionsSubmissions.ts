@@ -1,35 +1,35 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AssessmentsSessionsSubmissionsAttributes {
-  pk?: any;
-  id?: any;
-  assessment_id?: any;
-  assessment_session_id?: any;
-  student_id?: any;
-  document_id?: any;
-  document_url?: any;
-  video_url?: any;
-  submitted_at?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  id?: string;
+  assessment_id: number;
+  assessment_session_id: number;
+  student_id: string;
+  document_id?: number;
+  document_url?: string;
+  video_url?: string;
+  submitted_at: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type AssessmentsSessionsSubmissionsCreationAttributes = Optional<AssessmentsSessionsSubmissionsAttributes, 'id'>;
+export type AssessmentsSessionsSubmissionsCreationAttributes = Optional<AssessmentsSessionsSubmissionsAttributes, 'id' | 'document_id' | 'document_url' | 'video_url' | 'deleted_at'>;
 
 export class AssessmentsSessionsSubmissions extends Model<AssessmentsSessionsSubmissionsAttributes, AssessmentsSessionsSubmissionsCreationAttributes> implements AssessmentsSessionsSubmissionsAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare assessment_id?: any;
-  declare assessment_session_id?: any;
-  declare student_id?: any;
-  declare document_id?: any;
-  declare document_url?: any;
-  declare video_url?: any;
-  declare submitted_at?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare assessment_id: number;
+  declare assessment_session_id: number;
+  declare student_id: string;
+  declare document_id?: number;
+  declare document_url?: string;
+  declare video_url?: string;
+  declare submitted_at: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

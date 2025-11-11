@@ -1,24 +1,21 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AssignmentFilesAttributes {
-  pk?: any;
-  id?: any;
-  assignment_id?: any;
-  file_path?: any;
-  name?: any;
+  pk: number;
+  id?: string;
+  assignment_id: number;
+  file_path: string;
+  name: string;
 }
 
 export type AssignmentFilesCreationAttributes = Optional<AssignmentFilesAttributes, 'id'>;
 
 export class AssignmentFiles extends Model<AssignmentFilesAttributes, AssignmentFilesCreationAttributes> implements AssignmentFilesAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare assignment_id?: any;
-  declare file_path?: any;
-  declare name?: any;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare pk: number;
+  declare id?: string;
+  declare assignment_id: number;
+  declare file_path: string;
+  declare name: string;
 
   public static initModel(sequelize: Sequelize): typeof AssignmentFiles {
     AssignmentFiles.init(

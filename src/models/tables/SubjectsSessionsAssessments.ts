@@ -1,27 +1,27 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SubjectsSessionsAssessmentsAttributes {
-  id?: any;
-  title?: any;
-  description?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  subject_id?: any;
-  session_id?: any;
+  id?: string;
+  title: string;
+  description: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  subject_id: string;
+  session_id: string;
 }
 
-export type SubjectsSessionsAssessmentsCreationAttributes = Optional<SubjectsSessionsAssessmentsAttributes, 'id'>;
+export type SubjectsSessionsAssessmentsCreationAttributes = Optional<SubjectsSessionsAssessmentsAttributes, 'id' | 'deleted_at'>;
 
 export class SubjectsSessionsAssessments extends Model<SubjectsSessionsAssessmentsAttributes, SubjectsSessionsAssessmentsCreationAttributes> implements SubjectsSessionsAssessmentsAttributes {
-  declare id?: any;
-  declare title?: any;
-  declare description?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare subject_id?: any;
-  declare session_id?: any;
+  declare id?: string;
+  declare title: string;
+  declare description: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare subject_id: string;
+  declare session_id: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

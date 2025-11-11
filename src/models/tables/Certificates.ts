@@ -1,37 +1,37 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface CertificatesAttributes {
-  id?: any;
-  student_id?: any;
-  subject_id?: any;
-  event_id?: any;
-  type?: any;
-  id_certificate?: any;
-  file?: any;
-  link?: any;
-  thumbnail?: any;
-  thumbnail_link?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  student_id: string;
+  subject_id?: string;
+  event_id?: string;
+  type?: string;
+  id_certificate: string;
+  file?: string;
+  link?: string;
+  thumbnail?: string;
+  thumbnail_link?: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type CertificatesCreationAttributes = Optional<CertificatesAttributes, 'id'>;
+export type CertificatesCreationAttributes = Optional<CertificatesAttributes, 'id' | 'subject_id' | 'event_id' | 'type' | 'file' | 'link' | 'thumbnail' | 'thumbnail_link' | 'deleted_at'>;
 
 export class Certificates extends Model<CertificatesAttributes, CertificatesCreationAttributes> implements CertificatesAttributes {
-  declare id?: any;
-  declare student_id?: any;
-  declare subject_id?: any;
-  declare event_id?: any;
-  declare type?: any;
-  declare id_certificate?: any;
-  declare file?: any;
-  declare link?: any;
-  declare thumbnail?: any;
-  declare thumbnail_link?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare student_id: string;
+  declare subject_id?: string;
+  declare event_id?: string;
+  declare type?: string;
+  declare id_certificate: string;
+  declare file?: string;
+  declare link?: string;
+  declare thumbnail?: string;
+  declare thumbnail_link?: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

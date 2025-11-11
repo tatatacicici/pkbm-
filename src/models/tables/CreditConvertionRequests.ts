@@ -1,31 +1,31 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface CreditConvertionRequestsAttributes {
-  pk?: any;
-  uuid?: any;
-  student_id?: any;
-  status?: any;
-  file_report?: any;
-  action_by?: any;
-  action_at?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  uuid?: string;
+  student_id: string;
+  status: string;
+  file_report?: number;
+  action_by?: string;
+  action_at?: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type CreditConvertionRequestsCreationAttributes = Optional<CreditConvertionRequestsAttributes, 'id'>;
+export type CreditConvertionRequestsCreationAttributes = Optional<CreditConvertionRequestsAttributes, 'id' | 'uuid' | 'file_report' | 'action_by' | 'action_at' | 'deleted_at'>;
 
 export class CreditConvertionRequests extends Model<CreditConvertionRequestsAttributes, CreditConvertionRequestsCreationAttributes> implements CreditConvertionRequestsAttributes {
-  declare pk?: any;
-  declare uuid?: any;
-  declare student_id?: any;
-  declare status?: any;
-  declare file_report?: any;
-  declare action_by?: any;
-  declare action_at?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare uuid?: string;
+  declare student_id: string;
+  declare status: string;
+  declare file_report?: number;
+  declare action_by?: string;
+  declare action_at?: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

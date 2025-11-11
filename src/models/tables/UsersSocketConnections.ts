@@ -1,33 +1,33 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface UsersSocketConnectionsAttributes {
-  id?: any;
-  user_id?: any;
-  socket_id?: any;
-  connected_at?: any;
-  disconnected_at?: any;
-  connection_duration?: any;
-  url_origin?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  active_duration?: any;
+  id?: string;
+  user_id: string;
+  socket_id: string;
+  connected_at: Date;
+  disconnected_at?: Date;
+  connection_duration?: number;
+  url_origin?: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  active_duration?: number;
 }
 
-export type UsersSocketConnectionsCreationAttributes = Optional<UsersSocketConnectionsAttributes, 'id'>;
+export type UsersSocketConnectionsCreationAttributes = Optional<UsersSocketConnectionsAttributes, 'id' | 'disconnected_at' | 'connection_duration' | 'url_origin' | 'deleted_at' | 'active_duration'>;
 
 export class UsersSocketConnections extends Model<UsersSocketConnectionsAttributes, UsersSocketConnectionsCreationAttributes> implements UsersSocketConnectionsAttributes {
-  declare id?: any;
-  declare user_id?: any;
-  declare socket_id?: any;
-  declare connected_at?: any;
-  declare disconnected_at?: any;
-  declare connection_duration?: any;
-  declare url_origin?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare active_duration?: any;
+  declare id?: string;
+  declare user_id: string;
+  declare socket_id: string;
+  declare connected_at: Date;
+  declare disconnected_at?: Date;
+  declare connection_duration?: number;
+  declare url_origin?: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare active_duration?: number;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

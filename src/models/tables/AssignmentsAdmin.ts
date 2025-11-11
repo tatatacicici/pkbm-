@@ -1,29 +1,29 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AssignmentsAdminAttributes {
-  pk?: any;
-  id?: any;
-  session_id?: any;
-  module_id?: any;
-  title?: any;
-  deadline?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  id?: string;
+  session_id: string;
+  module_id: string;
+  title: string;
+  deadline: number;
+  created_at?: Date;
+  updated_at?: Date;
+  deleted_at?: Date;
 }
 
-export type AssignmentsAdminCreationAttributes = Optional<AssignmentsAdminAttributes, 'id'>;
+export type AssignmentsAdminCreationAttributes = Optional<AssignmentsAdminAttributes, 'id' | 'created_at' | 'updated_at' | 'deleted_at'>;
 
 export class AssignmentsAdmin extends Model<AssignmentsAdminAttributes, AssignmentsAdminCreationAttributes> implements AssignmentsAdminAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare session_id?: any;
-  declare module_id?: any;
-  declare title?: any;
-  declare deadline?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare session_id: string;
+  declare module_id: string;
+  declare title: string;
+  declare deadline: number;
+  declare created_at?: Date;
+  declare updated_at?: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

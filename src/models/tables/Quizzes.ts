@@ -1,37 +1,37 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface QuizzesAttributes {
-  id?: any;
-  session_id?: any;
-  type?: any;
-  title?: any;
-  duration_sec?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  start_date?: any;
-  end_date?: any;
-  module_id?: any;
-  max_attempts?: any;
-  description?: any;
+  id?: string;
+  session_id: string;
+  type: string;
+  title: string;
+  duration_sec?: number;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  start_date?: Date;
+  end_date?: Date;
+  module_id?: string;
+  max_attempts?: number;
+  description?: string;
 }
 
-export type QuizzesCreationAttributes = Optional<QuizzesAttributes, 'id'>;
+export type QuizzesCreationAttributes = Optional<QuizzesAttributes, 'id' | 'duration_sec' | 'deleted_at' | 'start_date' | 'end_date' | 'module_id' | 'max_attempts' | 'description'>;
 
 export class Quizzes extends Model<QuizzesAttributes, QuizzesCreationAttributes> implements QuizzesAttributes {
-  declare id?: any;
-  declare session_id?: any;
-  declare type?: any;
-  declare title?: any;
-  declare duration_sec?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare start_date?: any;
-  declare end_date?: any;
-  declare module_id?: any;
-  declare max_attempts?: any;
-  declare description?: any;
+  declare id?: string;
+  declare session_id: string;
+  declare type: string;
+  declare title: string;
+  declare duration_sec?: number;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare start_date?: Date;
+  declare end_date?: Date;
+  declare module_id?: string;
+  declare max_attempts?: number;
+  declare description?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

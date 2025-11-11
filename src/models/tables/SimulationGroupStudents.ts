@@ -1,27 +1,27 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SimulationGroupStudentsAttributes {
-  id?: any;
-  uuid?: any;
-  simulation_group_id?: any;
-  student_id?: any;
-  group_role?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: number;
+  uuid?: string;
+  simulation_group_id: string;
+  student_id: string;
+  group_role?: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type SimulationGroupStudentsCreationAttributes = Optional<SimulationGroupStudentsAttributes, 'id'>;
+export type SimulationGroupStudentsCreationAttributes = Optional<SimulationGroupStudentsAttributes, 'id' | 'uuid' | 'group_role' | 'deleted_at'>;
 
 export class SimulationGroupStudents extends Model<SimulationGroupStudentsAttributes, SimulationGroupStudentsCreationAttributes> implements SimulationGroupStudentsAttributes {
-  declare id?: any;
-  declare uuid?: any;
-  declare simulation_group_id?: any;
-  declare student_id?: any;
-  declare group_role?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: number;
+  declare uuid?: string;
+  declare simulation_group_id: string;
+  declare student_id: string;
+  declare group_role?: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

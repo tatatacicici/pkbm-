@@ -1,27 +1,27 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface CompaniesEmployeesAttributes {
-  id?: any;
-  company_id?: any;
-  employee_id?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  assigned_at?: any;
-  company_department_id?: any;
+  id?: string;
+  company_id: string;
+  employee_id: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  assigned_at?: Date;
+  company_department_id?: string;
 }
 
-export type CompaniesEmployeesCreationAttributes = Optional<CompaniesEmployeesAttributes, 'id'>;
+export type CompaniesEmployeesCreationAttributes = Optional<CompaniesEmployeesAttributes, 'id' | 'deleted_at' | 'assigned_at' | 'company_department_id'>;
 
 export class CompaniesEmployees extends Model<CompaniesEmployeesAttributes, CompaniesEmployeesCreationAttributes> implements CompaniesEmployeesAttributes {
-  declare id?: any;
-  declare company_id?: any;
-  declare employee_id?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare assigned_at?: any;
-  declare company_department_id?: any;
+  declare id?: string;
+  declare company_id: string;
+  declare employee_id: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare assigned_at?: Date;
+  declare company_department_id?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

@@ -1,22 +1,19 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SubjectsOutcomesAttributes {
-  pk?: any;
-  uuid?: any;
-  criteria?: any;
-  subject_id?: any;
+  pk: number;
+  uuid?: string;
+  criteria?: string;
+  subject_id: string;
 }
 
-export type SubjectsOutcomesCreationAttributes = Optional<SubjectsOutcomesAttributes, 'id'>;
+export type SubjectsOutcomesCreationAttributes = Optional<SubjectsOutcomesAttributes, 'id' | 'uuid' | 'criteria'>;
 
 export class SubjectsOutcomes extends Model<SubjectsOutcomesAttributes, SubjectsOutcomesCreationAttributes> implements SubjectsOutcomesAttributes {
-  declare pk?: any;
-  declare uuid?: any;
-  declare criteria?: any;
-  declare subject_id?: any;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare pk: number;
+  declare uuid?: string;
+  declare criteria?: string;
+  declare subject_id: string;
 
   public static initModel(sequelize: Sequelize): typeof SubjectsOutcomes {
     SubjectsOutcomes.init(

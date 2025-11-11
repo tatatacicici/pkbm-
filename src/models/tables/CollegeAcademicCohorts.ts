@@ -1,29 +1,29 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface CollegeAcademicCohortsAttributes {
-  id?: any;
-  name?: any;
-  academic_year?: any;
-  start_date?: any;
-  end_date?: any;
-  deleted_at?: any;
-  created_at?: any;
-  updated_at?: any;
-  code?: any;
+  id?: string;
+  name: string;
+  academic_year: string;
+  start_date: Date;
+  end_date: Date;
+  deleted_at?: Date;
+  created_at?: Date;
+  updated_at?: Date;
+  code?: string;
 }
 
-export type CollegeAcademicCohortsCreationAttributes = Optional<CollegeAcademicCohortsAttributes, 'id'>;
+export type CollegeAcademicCohortsCreationAttributes = Optional<CollegeAcademicCohortsAttributes, 'id' | 'deleted_at' | 'created_at' | 'updated_at' | 'code'>;
 
 export class CollegeAcademicCohorts extends Model<CollegeAcademicCohortsAttributes, CollegeAcademicCohortsCreationAttributes> implements CollegeAcademicCohortsAttributes {
-  declare id?: any;
-  declare name?: any;
-  declare academic_year?: any;
-  declare start_date?: any;
-  declare end_date?: any;
-  declare deleted_at?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare code?: any;
+  declare id?: string;
+  declare name: string;
+  declare academic_year: string;
+  declare start_date: Date;
+  declare end_date: Date;
+  declare deleted_at?: Date;
+  declare created_at?: Date;
+  declare updated_at?: Date;
+  declare code?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

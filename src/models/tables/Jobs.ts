@@ -1,45 +1,45 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface JobsAttributes {
-  id?: any;
-  company?: any;
-  company_logo?: any;
-  location?: any;
-  min_salary?: any;
-  max_salary?: any;
-  workhour_start?: any;
-  workhour_end?: any;
-  workday?: any;
-  experience?: any;
-  description?: any;
-  type?: any;
-  tag?: any;
-  closing_date?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  company: string;
+  company_logo: string;
+  location: string;
+  min_salary: number;
+  max_salary: number;
+  workhour_start: string;
+  workhour_end: string;
+  workday: string;
+  experience: string;
+  description: string;
+  type: string;
+  tag: string;
+  closing_date: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type JobsCreationAttributes = Optional<JobsAttributes, 'id'>;
+export type JobsCreationAttributes = Optional<JobsAttributes, 'id' | 'deleted_at'>;
 
 export class Jobs extends Model<JobsAttributes, JobsCreationAttributes> implements JobsAttributes {
-  declare id?: any;
-  declare company?: any;
-  declare company_logo?: any;
-  declare location?: any;
-  declare min_salary?: any;
-  declare max_salary?: any;
-  declare workhour_start?: any;
-  declare workhour_end?: any;
-  declare workday?: any;
-  declare experience?: any;
-  declare description?: any;
-  declare type?: any;
-  declare tag?: any;
-  declare closing_date?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare company: string;
+  declare company_logo: string;
+  declare location: string;
+  declare min_salary: number;
+  declare max_salary: number;
+  declare workhour_start: string;
+  declare workhour_end: string;
+  declare workday: string;
+  declare experience: string;
+  declare description: string;
+  declare type: string;
+  declare tag: string;
+  declare closing_date: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

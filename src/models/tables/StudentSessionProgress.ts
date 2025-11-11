@@ -1,49 +1,49 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface StudentSessionProgressAttributes {
-  id?: any;
-  student_id?: any;
-  session_id?: any;
-  subject_id?: any;
-  status?: any;
-  type?: any;
-  score?: any;
-  is_late?: any;
-  module_answer?: any;
-  timestamp_taken?: any;
-  timestamp_submitted?: any;
-  deadline?: any;
-  created_at?: any;
-  updated_at?: any;
-  module_id?: any;
-  deleted_at?: any;
-  assignment_id?: any;
-  timestamp_scored?: any;
-  quiz_id?: any;
+  id?: string;
+  student_id: string;
+  session_id: string;
+  subject_id: string;
+  status: string;
+  type: string;
+  score?: number;
+  is_late?: boolean;
+  module_answer?: string;
+  timestamp_taken: Date;
+  timestamp_submitted?: Date;
+  deadline?: Date;
+  created_at: Date;
+  updated_at: Date;
+  module_id?: string;
+  deleted_at?: Date;
+  assignment_id?: string;
+  timestamp_scored?: Date;
+  quiz_id?: string;
 }
 
-export type StudentSessionProgressCreationAttributes = Optional<StudentSessionProgressAttributes, 'id'>;
+export type StudentSessionProgressCreationAttributes = Optional<StudentSessionProgressAttributes, 'id' | 'score' | 'is_late' | 'module_answer' | 'timestamp_submitted' | 'deadline' | 'module_id' | 'deleted_at' | 'assignment_id' | 'timestamp_scored' | 'quiz_id'>;
 
 export class StudentSessionProgress extends Model<StudentSessionProgressAttributes, StudentSessionProgressCreationAttributes> implements StudentSessionProgressAttributes {
-  declare id?: any;
-  declare student_id?: any;
-  declare session_id?: any;
-  declare subject_id?: any;
-  declare status?: any;
-  declare type?: any;
-  declare score?: any;
-  declare is_late?: any;
-  declare module_answer?: any;
-  declare timestamp_taken?: any;
-  declare timestamp_submitted?: any;
-  declare deadline?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare module_id?: any;
-  declare deleted_at?: any;
-  declare assignment_id?: any;
-  declare timestamp_scored?: any;
-  declare quiz_id?: any;
+  declare id?: string;
+  declare student_id: string;
+  declare session_id: string;
+  declare subject_id: string;
+  declare status: string;
+  declare type: string;
+  declare score?: number;
+  declare is_late?: boolean;
+  declare module_answer?: string;
+  declare timestamp_taken: Date;
+  declare timestamp_submitted?: Date;
+  declare deadline?: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare module_id?: string;
+  declare deleted_at?: Date;
+  declare assignment_id?: string;
+  declare timestamp_scored?: Date;
+  declare quiz_id?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

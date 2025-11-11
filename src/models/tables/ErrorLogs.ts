@@ -1,25 +1,25 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ErrorLogsAttributes {
-  id?: any;
-  code?: any;
-  status?: any;
-  message?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  code: string;
+  status: string;
+  message: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type ErrorLogsCreationAttributes = Optional<ErrorLogsAttributes, 'id'>;
+export type ErrorLogsCreationAttributes = Optional<ErrorLogsAttributes, 'id' | 'deleted_at'>;
 
 export class ErrorLogs extends Model<ErrorLogsAttributes, ErrorLogsCreationAttributes> implements ErrorLogsAttributes {
-  declare id?: any;
-  declare code?: any;
-  declare status?: any;
-  declare message?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare code: string;
+  declare status: string;
+  declare message: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

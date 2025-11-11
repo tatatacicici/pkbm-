@@ -1,18 +1,15 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface VideosAttributes {
-  id?: any;
-  video_url?: any;
+  id?: string;
+  video_url?: string;
 }
 
-export type VideosCreationAttributes = Optional<VideosAttributes, 'id'>;
+export type VideosCreationAttributes = Optional<VideosAttributes, 'id' | 'video_url'>;
 
 export class Videos extends Model<VideosAttributes, VideosCreationAttributes> implements VideosAttributes {
-  declare id?: any;
-  declare video_url?: any;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare id?: string;
+  declare video_url?: string;
 
   public static initModel(sequelize: Sequelize): typeof Videos {
     Videos.init(

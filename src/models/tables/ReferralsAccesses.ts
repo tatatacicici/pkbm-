@@ -1,29 +1,29 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ReferralsAccessesAttributes {
-  id?: any;
-  referral_id?: any;
-  user_id?: any;
-  useragent?: any;
-  ip_address?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  is_valid?: any;
+  id?: string;
+  referral_id: string;
+  user_id?: string;
+  useragent: string;
+  ip_address: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  is_valid?: boolean;
 }
 
-export type ReferralsAccessesCreationAttributes = Optional<ReferralsAccessesAttributes, 'id'>;
+export type ReferralsAccessesCreationAttributes = Optional<ReferralsAccessesAttributes, 'id' | 'user_id' | 'deleted_at' | 'is_valid'>;
 
 export class ReferralsAccesses extends Model<ReferralsAccessesAttributes, ReferralsAccessesCreationAttributes> implements ReferralsAccessesAttributes {
-  declare id?: any;
-  declare referral_id?: any;
-  declare user_id?: any;
-  declare useragent?: any;
-  declare ip_address?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare is_valid?: any;
+  declare id?: string;
+  declare referral_id: string;
+  declare user_id?: string;
+  declare useragent: string;
+  declare ip_address: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare is_valid?: boolean;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

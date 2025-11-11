@@ -1,25 +1,25 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface MentorsAttributes {
-  id?: any;
-  user_id?: any;
-  partner_id?: any;
-  nik?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  user_id: string;
+  partner_id: string;
+  nik: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type MentorsCreationAttributes = Optional<MentorsAttributes, 'id'>;
+export type MentorsCreationAttributes = Optional<MentorsAttributes, 'id' | 'deleted_at'>;
 
 export class Mentors extends Model<MentorsAttributes, MentorsCreationAttributes> implements MentorsAttributes {
-  declare id?: any;
-  declare user_id?: any;
-  declare partner_id?: any;
-  declare nik?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare user_id: string;
+  declare partner_id: string;
+  declare nik: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

@@ -1,31 +1,31 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SubjectSessionsAttributes {
-  id?: any;
-  subject_id?: any;
-  title?: any;
-  description?: any;
-  session_number?: any;
-  duration_minutes?: any;
-  published_at?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  subject_id: string;
+  title: string;
+  description?: string;
+  session_number: number;
+  duration_minutes?: number;
+  published_at?: Date;
+  created_at?: Date;
+  updated_at?: Date;
+  deleted_at?: Date;
 }
 
-export type SubjectSessionsCreationAttributes = Optional<SubjectSessionsAttributes, 'id'>;
+export type SubjectSessionsCreationAttributes = Optional<SubjectSessionsAttributes, 'id' | 'description' | 'duration_minutes' | 'published_at' | 'created_at' | 'updated_at' | 'deleted_at'>;
 
 export class SubjectSessions extends Model<SubjectSessionsAttributes, SubjectSessionsCreationAttributes> implements SubjectSessionsAttributes {
-  declare id?: any;
-  declare subject_id?: any;
-  declare title?: any;
-  declare description?: any;
-  declare session_number?: any;
-  declare duration_minutes?: any;
-  declare published_at?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare subject_id: string;
+  declare title: string;
+  declare description?: string;
+  declare session_number: number;
+  declare duration_minutes?: number;
+  declare published_at?: Date;
+  declare created_at?: Date;
+  declare updated_at?: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

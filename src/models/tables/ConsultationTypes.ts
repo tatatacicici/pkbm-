@@ -1,23 +1,23 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ConsultationTypesAttributes {
-  id?: any;
-  name?: any;
-  current_consultant_id?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  name: string;
+  current_consultant_id: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type ConsultationTypesCreationAttributes = Optional<ConsultationTypesAttributes, 'id'>;
+export type ConsultationTypesCreationAttributes = Optional<ConsultationTypesAttributes, 'id' | 'deleted_at'>;
 
 export class ConsultationTypes extends Model<ConsultationTypesAttributes, ConsultationTypesCreationAttributes> implements ConsultationTypesAttributes {
-  declare id?: any;
-  declare name?: any;
-  declare current_consultant_id?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare name: string;
+  declare current_consultant_id: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

@@ -1,20 +1,17 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ServerAttributesAttributes {
-  id?: any;
-  key?: any;
-  value?: any;
+  id?: string;
+  key: string;
+  value?: string;
 }
 
-export type ServerAttributesCreationAttributes = Optional<ServerAttributesAttributes, 'id'>;
+export type ServerAttributesCreationAttributes = Optional<ServerAttributesAttributes, 'id' | 'value'>;
 
 export class ServerAttributes extends Model<ServerAttributesAttributes, ServerAttributesCreationAttributes> implements ServerAttributesAttributes {
-  declare id?: any;
-  declare key?: any;
-  declare value?: any;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare id?: string;
+  declare key: string;
+  declare value?: string;
 
   public static initModel(sequelize: Sequelize): typeof ServerAttributes {
     ServerAttributes.init(

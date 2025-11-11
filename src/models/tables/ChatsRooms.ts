@@ -1,25 +1,25 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ChatsRoomsAttributes {
-  pk?: any;
-  id?: any;
-  name?: any;
-  created_by?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  id?: string;
+  name: string;
+  created_by: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type ChatsRoomsCreationAttributes = Optional<ChatsRoomsAttributes, 'id'>;
+export type ChatsRoomsCreationAttributes = Optional<ChatsRoomsAttributes, 'id' | 'deleted_at'>;
 
 export class ChatsRooms extends Model<ChatsRoomsAttributes, ChatsRoomsCreationAttributes> implements ChatsRoomsAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare name?: any;
-  declare created_by?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare name: string;
+  declare created_by: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

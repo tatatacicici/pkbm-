@@ -1,29 +1,29 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface StudentSessionsAttributes {
-  id?: any;
-  session_id?: any;
-  student_id?: any;
-  date_present?: any;
-  final_score?: any;
-  is_present?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  session_id: string;
+  student_id: string;
+  date_present?: Date;
+  final_score?: number;
+  is_present?: boolean;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type StudentSessionsCreationAttributes = Optional<StudentSessionsAttributes, 'id'>;
+export type StudentSessionsCreationAttributes = Optional<StudentSessionsAttributes, 'id' | 'date_present' | 'final_score' | 'is_present' | 'deleted_at'>;
 
 export class StudentSessions extends Model<StudentSessionsAttributes, StudentSessionsCreationAttributes> implements StudentSessionsAttributes {
-  declare id?: any;
-  declare session_id?: any;
-  declare student_id?: any;
-  declare date_present?: any;
-  declare final_score?: any;
-  declare is_present?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare session_id: string;
+  declare student_id: string;
+  declare date_present?: Date;
+  declare final_score?: number;
+  declare is_present?: boolean;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

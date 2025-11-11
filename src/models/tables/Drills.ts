@@ -1,39 +1,39 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface DrillsAttributes {
-  id?: any;
-  uuid?: any;
-  topic?: any;
-  description?: any;
-  session?: any;
-  roleplay?: any;
-  assessor_id?: any;
-  student_id?: any;
-  accepted?: any;
-  score?: any;
-  feedback?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: number;
+  uuid?: string;
+  topic: string;
+  description: string;
+  session: string;
+  roleplay: string;
+  assessor_id: string;
+  student_id: string;
+  accepted?: boolean;
+  score?: number;
+  feedback?: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type DrillsCreationAttributes = Optional<DrillsAttributes, 'id'>;
+export type DrillsCreationAttributes = Optional<DrillsAttributes, 'id' | 'uuid' | 'accepted' | 'score' | 'feedback' | 'deleted_at'>;
 
 export class Drills extends Model<DrillsAttributes, DrillsCreationAttributes> implements DrillsAttributes {
-  declare id?: any;
-  declare uuid?: any;
-  declare topic?: any;
-  declare description?: any;
-  declare session?: any;
-  declare roleplay?: any;
-  declare assessor_id?: any;
-  declare student_id?: any;
-  declare accepted?: any;
-  declare score?: any;
-  declare feedback?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: number;
+  declare uuid?: string;
+  declare topic: string;
+  declare description: string;
+  declare session: string;
+  declare roleplay: string;
+  declare assessor_id: string;
+  declare student_id: string;
+  declare accepted?: boolean;
+  declare score?: number;
+  declare feedback?: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

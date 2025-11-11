@@ -1,25 +1,25 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface UsersDeleteAttributes {
-  id?: any;
-  email?: any;
-  user_id?: any;
-  action_at?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  email: string;
+  user_id: string;
+  action_at: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type UsersDeleteCreationAttributes = Optional<UsersDeleteAttributes, 'id'>;
+export type UsersDeleteCreationAttributes = Optional<UsersDeleteAttributes, 'id' | 'deleted_at'>;
 
 export class UsersDelete extends Model<UsersDeleteAttributes, UsersDeleteCreationAttributes> implements UsersDeleteAttributes {
-  declare id?: any;
-  declare email?: any;
-  declare user_id?: any;
-  declare action_at?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare email: string;
+  declare user_id: string;
+  declare action_at: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

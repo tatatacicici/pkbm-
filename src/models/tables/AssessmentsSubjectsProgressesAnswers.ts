@@ -1,35 +1,35 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AssessmentsSubjectsProgressesAnswersAttributes {
-  pk?: any;
-  id?: any;
-  subject_progress_id?: any;
-  student_id?: any;
-  subject_id?: any;
-  rubric_id?: any;
-  competency_id?: any;
-  score_id?: any;
-  score?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  id?: string;
+  subject_progress_id: number;
+  student_id: string;
+  subject_id: string;
+  rubric_id: number;
+  competency_id: string;
+  score_id: string;
+  score: number;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type AssessmentsSubjectsProgressesAnswersCreationAttributes = Optional<AssessmentsSubjectsProgressesAnswersAttributes, 'id'>;
+export type AssessmentsSubjectsProgressesAnswersCreationAttributes = Optional<AssessmentsSubjectsProgressesAnswersAttributes, 'id' | 'deleted_at'>;
 
 export class AssessmentsSubjectsProgressesAnswers extends Model<AssessmentsSubjectsProgressesAnswersAttributes, AssessmentsSubjectsProgressesAnswersCreationAttributes> implements AssessmentsSubjectsProgressesAnswersAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare subject_progress_id?: any;
-  declare student_id?: any;
-  declare subject_id?: any;
-  declare rubric_id?: any;
-  declare competency_id?: any;
-  declare score_id?: any;
-  declare score?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare subject_progress_id: number;
+  declare student_id: string;
+  declare subject_id: string;
+  declare rubric_id: number;
+  declare competency_id: string;
+  declare score_id: string;
+  declare score: number;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

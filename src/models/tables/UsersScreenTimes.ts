@@ -1,39 +1,39 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface UsersScreenTimesAttributes {
-  pk?: any;
-  id?: any;
-  user_id?: any;
-  session_id?: any;
-  token?: any;
-  type?: any;
-  page?: any;
-  seconds?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  last_refreshed_at?: any;
-  total_refreshed?: any;
-  submitted_at?: any;
+  pk: number;
+  id?: string;
+  user_id: string;
+  session_id: string;
+  token: string;
+  type: string;
+  page: string;
+  seconds?: number;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  last_refreshed_at?: Date;
+  total_refreshed?: number;
+  submitted_at?: Date;
 }
 
-export type UsersScreenTimesCreationAttributes = Optional<UsersScreenTimesAttributes, 'id'>;
+export type UsersScreenTimesCreationAttributes = Optional<UsersScreenTimesAttributes, 'id' | 'seconds' | 'deleted_at' | 'last_refreshed_at' | 'total_refreshed' | 'submitted_at'>;
 
 export class UsersScreenTimes extends Model<UsersScreenTimesAttributes, UsersScreenTimesCreationAttributes> implements UsersScreenTimesAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare user_id?: any;
-  declare session_id?: any;
-  declare token?: any;
-  declare type?: any;
-  declare page?: any;
-  declare seconds?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare last_refreshed_at?: any;
-  declare total_refreshed?: any;
-  declare submitted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare user_id: string;
+  declare session_id: string;
+  declare token: string;
+  declare type: string;
+  declare page: string;
+  declare seconds?: number;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare last_refreshed_at?: Date;
+  declare total_refreshed?: number;
+  declare submitted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

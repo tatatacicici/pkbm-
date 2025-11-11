@@ -1,29 +1,29 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SimulationsAttributes {
-  id?: any;
-  uuid?: any;
-  topic?: any;
-  description?: any;
-  assessor_id?: any;
-  session?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: number;
+  uuid?: string;
+  topic: string;
+  description: string;
+  assessor_id: string;
+  session: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type SimulationsCreationAttributes = Optional<SimulationsAttributes, 'id'>;
+export type SimulationsCreationAttributes = Optional<SimulationsAttributes, 'id' | 'uuid' | 'deleted_at'>;
 
 export class Simulations extends Model<SimulationsAttributes, SimulationsCreationAttributes> implements SimulationsAttributes {
-  declare id?: any;
-  declare uuid?: any;
-  declare topic?: any;
-  declare description?: any;
-  declare assessor_id?: any;
-  declare session?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: number;
+  declare uuid?: string;
+  declare topic: string;
+  declare description: string;
+  declare assessor_id: string;
+  declare session: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

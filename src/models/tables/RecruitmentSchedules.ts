@@ -1,25 +1,25 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface RecruitmentSchedulesAttributes {
-  pk?: any;
-  uuid?: any;
-  department_id?: any;
-  schedule?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  uuid?: string;
+  department_id: number;
+  schedule: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type RecruitmentSchedulesCreationAttributes = Optional<RecruitmentSchedulesAttributes, 'id'>;
+export type RecruitmentSchedulesCreationAttributes = Optional<RecruitmentSchedulesAttributes, 'id' | 'uuid' | 'deleted_at'>;
 
 export class RecruitmentSchedules extends Model<RecruitmentSchedulesAttributes, RecruitmentSchedulesCreationAttributes> implements RecruitmentSchedulesAttributes {
-  declare pk?: any;
-  declare uuid?: any;
-  declare department_id?: any;
-  declare schedule?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare uuid?: string;
+  declare department_id: number;
+  declare schedule: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

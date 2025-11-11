@@ -1,23 +1,23 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SavedPositionsAttributes {
-  id?: any;
-  student_id?: any;
-  position_id?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: number;
+  student_id: string;
+  position_id: number;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type SavedPositionsCreationAttributes = Optional<SavedPositionsAttributes, 'id'>;
+export type SavedPositionsCreationAttributes = Optional<SavedPositionsAttributes, 'id' | 'deleted_at'>;
 
 export class SavedPositions extends Model<SavedPositionsAttributes, SavedPositionsCreationAttributes> implements SavedPositionsAttributes {
-  declare id?: any;
-  declare student_id?: any;
-  declare position_id?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: number;
+  declare student_id: string;
+  declare position_id: number;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

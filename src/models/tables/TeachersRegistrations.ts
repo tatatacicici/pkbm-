@@ -1,47 +1,47 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface TeachersRegistrationsAttributes {
-  id?: any;
-  full_name?: any;
-  email?: any;
-  phone_number?: any;
-  address?: any;
-  organization?: any;
-  linkedin_url?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  department?: any;
-  last_education?: any;
-  birth_date?: any;
-  interest_field?: any;
-  feedback?: any;
-  contributions?: any;
-  user_id?: any;
-  status?: any;
+  id?: string;
+  full_name: string;
+  email?: string;
+  phone_number: string;
+  address: string;
+  organization: string;
+  linkedin_url: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  department: string;
+  last_education: string;
+  birth_date: Date;
+  interest_field: string;
+  feedback: string;
+  contributions?: string;
+  user_id?: string;
+  status?: string;
 }
 
-export type TeachersRegistrationsCreationAttributes = Optional<TeachersRegistrationsAttributes, 'id'>;
+export type TeachersRegistrationsCreationAttributes = Optional<TeachersRegistrationsAttributes, 'id' | 'email' | 'deleted_at' | 'contributions' | 'user_id' | 'status'>;
 
 export class TeachersRegistrations extends Model<TeachersRegistrationsAttributes, TeachersRegistrationsCreationAttributes> implements TeachersRegistrationsAttributes {
-  declare id?: any;
-  declare full_name?: any;
-  declare email?: any;
-  declare phone_number?: any;
-  declare address?: any;
-  declare organization?: any;
-  declare linkedin_url?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare department?: any;
-  declare last_education?: any;
-  declare birth_date?: any;
-  declare interest_field?: any;
-  declare feedback?: any;
-  declare contributions?: any;
-  declare user_id?: any;
-  declare status?: any;
+  declare id?: string;
+  declare full_name: string;
+  declare email?: string;
+  declare phone_number: string;
+  declare address: string;
+  declare organization: string;
+  declare linkedin_url: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare department: string;
+  declare last_education: string;
+  declare birth_date: Date;
+  declare interest_field: string;
+  declare feedback: string;
+  declare contributions?: string;
+  declare user_id?: string;
+  declare status?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

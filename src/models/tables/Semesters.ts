@@ -1,31 +1,31 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SemestersAttributes {
-  id?: any;
-  semester?: any;
-  batchyear?: any;
-  plan_date_start?: any;
-  plan_date_end?: any;
-  program_date_start?: any;
-  program_date_end?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  semester: number;
+  batchyear: number;
+  plan_date_start: Date;
+  plan_date_end: Date;
+  program_date_start: Date;
+  program_date_end: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type SemestersCreationAttributes = Optional<SemestersAttributes, 'id'>;
+export type SemestersCreationAttributes = Optional<SemestersAttributes, 'id' | 'deleted_at'>;
 
 export class Semesters extends Model<SemestersAttributes, SemestersCreationAttributes> implements SemestersAttributes {
-  declare id?: any;
-  declare semester?: any;
-  declare batchyear?: any;
-  declare plan_date_start?: any;
-  declare plan_date_end?: any;
-  declare program_date_start?: any;
-  declare program_date_end?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare semester: number;
+  declare batchyear: number;
+  declare plan_date_start: Date;
+  declare plan_date_end: Date;
+  declare program_date_start: Date;
+  declare program_date_end: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

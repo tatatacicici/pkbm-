@@ -1,43 +1,43 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface RoleplaysAttributes {
-  pk?: any;
-  id?: any;
-  topic?: any;
-  description?: any;
-  case_study?: any;
-  rules?: any;
-  duration?: any;
-  subject_id?: any;
-  session_id?: any;
-  rubric_id?: any;
-  start_at?: any;
-  end_at?: any;
-  created_by?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  id?: string;
+  topic: string;
+  description?: string;
+  case_study?: string;
+  rules?: string;
+  duration: number;
+  subject_id: string;
+  session_id: string;
+  rubric_id: number;
+  start_at: Date;
+  end_at: Date;
+  created_by: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type RoleplaysCreationAttributes = Optional<RoleplaysAttributes, 'id'>;
+export type RoleplaysCreationAttributes = Optional<RoleplaysAttributes, 'id' | 'description' | 'case_study' | 'rules' | 'deleted_at'>;
 
 export class Roleplays extends Model<RoleplaysAttributes, RoleplaysCreationAttributes> implements RoleplaysAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare topic?: any;
-  declare description?: any;
-  declare case_study?: any;
-  declare rules?: any;
-  declare duration?: any;
-  declare subject_id?: any;
-  declare session_id?: any;
-  declare rubric_id?: any;
-  declare start_at?: any;
-  declare end_at?: any;
-  declare created_by?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare topic: string;
+  declare description?: string;
+  declare case_study?: string;
+  declare rules?: string;
+  declare duration: number;
+  declare subject_id: string;
+  declare session_id: string;
+  declare rubric_id: number;
+  declare start_at: Date;
+  declare end_at: Date;
+  declare created_by: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

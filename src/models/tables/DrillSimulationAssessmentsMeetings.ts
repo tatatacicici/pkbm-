@@ -1,33 +1,33 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface DrillSimulationAssessmentsMeetingsAttributes {
-  id?: any;
-  uuid?: any;
-  topic?: any;
-  description?: any;
-  thumbnail?: any;
-  type?: any;
-  place?: any;
-  assessor_id?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: number;
+  uuid?: string;
+  topic: string;
+  description: string;
+  thumbnail?: string;
+  type: string;
+  place: string;
+  assessor_id: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type DrillSimulationAssessmentsMeetingsCreationAttributes = Optional<DrillSimulationAssessmentsMeetingsAttributes, 'id'>;
+export type DrillSimulationAssessmentsMeetingsCreationAttributes = Optional<DrillSimulationAssessmentsMeetingsAttributes, 'id' | 'uuid' | 'thumbnail' | 'deleted_at'>;
 
 export class DrillSimulationAssessmentsMeetings extends Model<DrillSimulationAssessmentsMeetingsAttributes, DrillSimulationAssessmentsMeetingsCreationAttributes> implements DrillSimulationAssessmentsMeetingsAttributes {
-  declare id?: any;
-  declare uuid?: any;
-  declare topic?: any;
-  declare description?: any;
-  declare thumbnail?: any;
-  declare type?: any;
-  declare place?: any;
-  declare assessor_id?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: number;
+  declare uuid?: string;
+  declare topic: string;
+  declare description: string;
+  declare thumbnail?: string;
+  declare type: string;
+  declare place: string;
+  declare assessor_id: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

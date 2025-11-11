@@ -1,29 +1,29 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AssessmentsAssessorsAttributes {
-  pk?: any;
-  id?: any;
-  assessment_id?: any;
-  assessor_id?: any;
-  role?: any;
-  assigned_at?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  id?: string;
+  assessment_id: number;
+  assessor_id: string;
+  role: string;
+  assigned_at: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type AssessmentsAssessorsCreationAttributes = Optional<AssessmentsAssessorsAttributes, 'id'>;
+export type AssessmentsAssessorsCreationAttributes = Optional<AssessmentsAssessorsAttributes, 'id' | 'deleted_at'>;
 
 export class AssessmentsAssessors extends Model<AssessmentsAssessorsAttributes, AssessmentsAssessorsCreationAttributes> implements AssessmentsAssessorsAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare assessment_id?: any;
-  declare assessor_id?: any;
-  declare role?: any;
-  declare assigned_at?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare assessment_id: number;
+  declare assessor_id: string;
+  declare role: string;
+  declare assigned_at: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

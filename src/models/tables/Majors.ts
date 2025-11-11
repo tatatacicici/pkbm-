@@ -1,37 +1,37 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface MajorsAttributes {
-  id?: any;
-  faculty_id?: any;
-  name?: any;
-  degree?: any;
-  major_head_id?: any;
-  thumbnail?: any;
-  description?: any;
-  slug?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  thumbnail_id?: any;
-  code?: any;
+  id?: string;
+  faculty_id: string;
+  name: string;
+  degree: string;
+  major_head_id: string;
+  thumbnail: string;
+  description?: string;
+  slug: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  thumbnail_id?: number;
+  code?: string;
 }
 
-export type MajorsCreationAttributes = Optional<MajorsAttributes, 'id'>;
+export type MajorsCreationAttributes = Optional<MajorsAttributes, 'id' | 'description' | 'deleted_at' | 'thumbnail_id' | 'code'>;
 
 export class Majors extends Model<MajorsAttributes, MajorsCreationAttributes> implements MajorsAttributes {
-  declare id?: any;
-  declare faculty_id?: any;
-  declare name?: any;
-  declare degree?: any;
-  declare major_head_id?: any;
-  declare thumbnail?: any;
-  declare description?: any;
-  declare slug?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare thumbnail_id?: any;
-  declare code?: any;
+  declare id?: string;
+  declare faculty_id: string;
+  declare name: string;
+  declare degree: string;
+  declare major_head_id: string;
+  declare thumbnail: string;
+  declare description?: string;
+  declare slug: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare thumbnail_id?: number;
+  declare code?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

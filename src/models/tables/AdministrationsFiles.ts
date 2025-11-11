@@ -1,49 +1,49 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AdministrationsFilesAttributes {
-  id?: any;
-  administration_id?: any;
-  id_card?: any;
-  diploma_certificate?: any;
-  family_card?: any;
-  photo?: any;
-  transcript?: any;
-  letter_of_recommendation?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  id_card_id?: any;
-  diploma_certificate_id?: any;
-  family_card_id?: any;
-  photo_id?: any;
-  transcript_id?: any;
-  letter_of_recommendation_id?: any;
-  student_card_id?: any;
-  student_card?: any;
+  id?: string;
+  administration_id: string;
+  id_card?: string;
+  diploma_certificate?: string;
+  family_card?: string;
+  photo?: string;
+  transcript?: string;
+  letter_of_recommendation?: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  id_card_id?: number;
+  diploma_certificate_id?: number;
+  family_card_id?: number;
+  photo_id?: number;
+  transcript_id?: number;
+  letter_of_recommendation_id?: number;
+  student_card_id?: number;
+  student_card?: string;
 }
 
-export type AdministrationsFilesCreationAttributes = Optional<AdministrationsFilesAttributes, 'id'>;
+export type AdministrationsFilesCreationAttributes = Optional<AdministrationsFilesAttributes, 'id' | 'id_card' | 'diploma_certificate' | 'family_card' | 'photo' | 'transcript' | 'letter_of_recommendation' | 'deleted_at' | 'id_card_id' | 'diploma_certificate_id' | 'family_card_id' | 'photo_id' | 'transcript_id' | 'letter_of_recommendation_id' | 'student_card_id' | 'student_card'>;
 
 export class AdministrationsFiles extends Model<AdministrationsFilesAttributes, AdministrationsFilesCreationAttributes> implements AdministrationsFilesAttributes {
-  declare id?: any;
-  declare administration_id?: any;
-  declare id_card?: any;
-  declare diploma_certificate?: any;
-  declare family_card?: any;
-  declare photo?: any;
-  declare transcript?: any;
-  declare letter_of_recommendation?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare id_card_id?: any;
-  declare diploma_certificate_id?: any;
-  declare family_card_id?: any;
-  declare photo_id?: any;
-  declare transcript_id?: any;
-  declare letter_of_recommendation_id?: any;
-  declare student_card_id?: any;
-  declare student_card?: any;
+  declare id?: string;
+  declare administration_id: string;
+  declare id_card?: string;
+  declare diploma_certificate?: string;
+  declare family_card?: string;
+  declare photo?: string;
+  declare transcript?: string;
+  declare letter_of_recommendation?: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare id_card_id?: number;
+  declare diploma_certificate_id?: number;
+  declare family_card_id?: number;
+  declare photo_id?: number;
+  declare transcript_id?: number;
+  declare letter_of_recommendation_id?: number;
+  declare student_card_id?: number;
+  declare student_card?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

@@ -1,25 +1,25 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface GuidesVideosAttributes {
-  id?: any;
-  url?: any;
-  title?: any;
-  description?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  url?: string;
+  title?: string;
+  description?: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type GuidesVideosCreationAttributes = Optional<GuidesVideosAttributes, 'id'>;
+export type GuidesVideosCreationAttributes = Optional<GuidesVideosAttributes, 'id' | 'url' | 'title' | 'description' | 'deleted_at'>;
 
 export class GuidesVideos extends Model<GuidesVideosAttributes, GuidesVideosCreationAttributes> implements GuidesVideosAttributes {
-  declare id?: any;
-  declare url?: any;
-  declare title?: any;
-  declare description?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare url?: string;
+  declare title?: string;
+  declare description?: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

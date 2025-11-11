@@ -1,35 +1,35 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface NotificationsAttributes {
-  id?: any;
-  title?: any;
-  message?: any;
-  seen_at?: any;
-  user_id?: any;
-  type?: any;
-  created_at?: any;
-  updated_at?: any;
-  sender_id?: any;
-  destination?: any;
-  deleted_at?: any;
-  category?: any;
+  id?: string;
+  title: string;
+  message: string;
+  seen_at?: Date;
+  user_id: string;
+  type: string;
+  created_at: Date;
+  updated_at: Date;
+  sender_id?: string;
+  destination?: string;
+  deleted_at?: Date;
+  category?: string;
 }
 
-export type NotificationsCreationAttributes = Optional<NotificationsAttributes, 'id'>;
+export type NotificationsCreationAttributes = Optional<NotificationsAttributes, 'id' | 'seen_at' | 'sender_id' | 'destination' | 'deleted_at' | 'category'>;
 
 export class Notifications extends Model<NotificationsAttributes, NotificationsCreationAttributes> implements NotificationsAttributes {
-  declare id?: any;
-  declare title?: any;
-  declare message?: any;
-  declare seen_at?: any;
-  declare user_id?: any;
-  declare type?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare sender_id?: any;
-  declare destination?: any;
-  declare deleted_at?: any;
-  declare category?: any;
+  declare id?: string;
+  declare title: string;
+  declare message: string;
+  declare seen_at?: Date;
+  declare user_id: string;
+  declare type: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare sender_id?: string;
+  declare destination?: string;
+  declare deleted_at?: Date;
+  declare category?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

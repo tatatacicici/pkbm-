@@ -1,31 +1,31 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ModulesDocumentsAttributes {
-  id?: any;
-  document_file?: any;
-  module_id?: any;
-  title?: any;
-  duration_in_seconds?: any;
-  document_id?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  content?: any;
+  id?: string;
+  document_file?: string;
+  module_id: string;
+  title: string;
+  duration_in_seconds?: number;
+  document_id?: number;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  content?: string;
 }
 
-export type ModulesDocumentsCreationAttributes = Optional<ModulesDocumentsAttributes, 'id'>;
+export type ModulesDocumentsCreationAttributes = Optional<ModulesDocumentsAttributes, 'id' | 'document_file' | 'duration_in_seconds' | 'document_id' | 'deleted_at' | 'content'>;
 
 export class ModulesDocuments extends Model<ModulesDocumentsAttributes, ModulesDocumentsCreationAttributes> implements ModulesDocumentsAttributes {
-  declare id?: any;
-  declare document_file?: any;
-  declare module_id?: any;
-  declare title?: any;
-  declare duration_in_seconds?: any;
-  declare document_id?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare content?: any;
+  declare id?: string;
+  declare document_file?: string;
+  declare module_id: string;
+  declare title: string;
+  declare duration_in_seconds?: number;
+  declare document_id?: number;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare content?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

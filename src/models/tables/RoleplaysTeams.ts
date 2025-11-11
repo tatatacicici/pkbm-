@@ -1,31 +1,31 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface RoleplaysTeamsAttributes {
-  pk?: any;
-  id?: any;
-  roleplay_id?: any;
-  master_id?: any;
-  number?: any;
-  status?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  student_id?: any;
+  pk: number;
+  id?: string;
+  roleplay_id: number;
+  master_id: string;
+  number: string;
+  status: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  student_id?: string;
 }
 
-export type RoleplaysTeamsCreationAttributes = Optional<RoleplaysTeamsAttributes, 'id'>;
+export type RoleplaysTeamsCreationAttributes = Optional<RoleplaysTeamsAttributes, 'id' | 'deleted_at' | 'student_id'>;
 
 export class RoleplaysTeams extends Model<RoleplaysTeamsAttributes, RoleplaysTeamsCreationAttributes> implements RoleplaysTeamsAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare roleplay_id?: any;
-  declare master_id?: any;
-  declare number?: any;
-  declare status?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare student_id?: any;
+  declare pk: number;
+  declare id?: string;
+  declare roleplay_id: number;
+  declare master_id: string;
+  declare number: string;
+  declare status: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare student_id?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

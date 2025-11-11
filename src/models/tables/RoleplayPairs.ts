@@ -1,37 +1,37 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface RoleplayPairsAttributes {
-  id?: any;
-  uuid?: any;
-  user_invitor?: any;
-  user_invitee?: any;
-  accepted?: any;
-  roleplay_id?: any;
-  video_link?: any;
-  invitor_input?: any;
-  invitee_input?: any;
-  score?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: number;
+  uuid?: string;
+  user_invitor: string;
+  user_invitee: string;
+  accepted?: boolean;
+  roleplay_id: string;
+  video_link?: string;
+  invitor_input?: string;
+  invitee_input?: string;
+  score?: number;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type RoleplayPairsCreationAttributes = Optional<RoleplayPairsAttributes, 'id'>;
+export type RoleplayPairsCreationAttributes = Optional<RoleplayPairsAttributes, 'id' | 'uuid' | 'accepted' | 'video_link' | 'invitor_input' | 'invitee_input' | 'score' | 'deleted_at'>;
 
 export class RoleplayPairs extends Model<RoleplayPairsAttributes, RoleplayPairsCreationAttributes> implements RoleplayPairsAttributes {
-  declare id?: any;
-  declare uuid?: any;
-  declare user_invitor?: any;
-  declare user_invitee?: any;
-  declare accepted?: any;
-  declare roleplay_id?: any;
-  declare video_link?: any;
-  declare invitor_input?: any;
-  declare invitee_input?: any;
-  declare score?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: number;
+  declare uuid?: string;
+  declare user_invitor: string;
+  declare user_invitee: string;
+  declare accepted?: boolean;
+  declare roleplay_id: string;
+  declare video_link?: string;
+  declare invitor_input?: string;
+  declare invitee_input?: string;
+  declare score?: number;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

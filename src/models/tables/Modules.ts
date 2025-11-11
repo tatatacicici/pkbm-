@@ -1,31 +1,31 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ModulesAttributes {
-  id?: any;
-  session_id?: any;
-  document_id?: any;
-  video_id?: any;
-  title?: any;
-  description?: any;
-  duration_sec?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  session_id: string;
+  document_id?: string;
+  video_id?: string;
+  title: string;
+  description: string;
+  duration_sec?: number;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type ModulesCreationAttributes = Optional<ModulesAttributes, 'id'>;
+export type ModulesCreationAttributes = Optional<ModulesAttributes, 'id' | 'document_id' | 'video_id' | 'duration_sec' | 'deleted_at'>;
 
 export class Modules extends Model<ModulesAttributes, ModulesCreationAttributes> implements ModulesAttributes {
-  declare id?: any;
-  declare session_id?: any;
-  declare document_id?: any;
-  declare video_id?: any;
-  declare title?: any;
-  declare description?: any;
-  declare duration_sec?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare session_id: string;
+  declare document_id?: string;
+  declare video_id?: string;
+  declare title: string;
+  declare description: string;
+  declare duration_sec?: number;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

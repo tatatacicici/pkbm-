@@ -1,48 +1,45 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface PartnersAttributes {
-  id?: any;
-  user_id?: any;
-  official_name?: any;
-  category_name?: any;
-  organization_name?: any;
-  industrial_sector?: any;
-  main_office_address?: any;
-  province_name?: any;
-  regency_name?: any;
-  website?: any;
-  contact_person?: any;
-  contact_phone_number?: any;
-  logo?: any;
-  province_code?: any;
-  regency_code?: any;
-  description?: any;
-  slogan?: any;
+  id?: string;
+  user_id?: string;
+  official_name: string;
+  category_name: string;
+  organization_name: string;
+  industrial_sector: string;
+  main_office_address: string;
+  province_name: string;
+  regency_name: string;
+  website?: string;
+  contact_person: string;
+  contact_phone_number: string;
+  logo?: string;
+  province_code: string;
+  regency_code: string;
+  description?: string;
+  slogan?: string;
 }
 
-export type PartnersCreationAttributes = Optional<PartnersAttributes, 'id'>;
+export type PartnersCreationAttributes = Optional<PartnersAttributes, 'id' | 'user_id' | 'website' | 'logo' | 'description' | 'slogan'>;
 
 export class Partners extends Model<PartnersAttributes, PartnersCreationAttributes> implements PartnersAttributes {
-  declare id?: any;
-  declare user_id?: any;
-  declare official_name?: any;
-  declare category_name?: any;
-  declare organization_name?: any;
-  declare industrial_sector?: any;
-  declare main_office_address?: any;
-  declare province_name?: any;
-  declare regency_name?: any;
-  declare website?: any;
-  declare contact_person?: any;
-  declare contact_phone_number?: any;
-  declare logo?: any;
-  declare province_code?: any;
-  declare regency_code?: any;
-  declare description?: any;
-  declare slogan?: any;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare id?: string;
+  declare user_id?: string;
+  declare official_name: string;
+  declare category_name: string;
+  declare organization_name: string;
+  declare industrial_sector: string;
+  declare main_office_address: string;
+  declare province_name: string;
+  declare regency_name: string;
+  declare website?: string;
+  declare contact_person: string;
+  declare contact_phone_number: string;
+  declare logo?: string;
+  declare province_code: string;
+  declare regency_code: string;
+  declare description?: string;
+  declare slogan?: string;
 
   public static initModel(sequelize: Sequelize): typeof Partners {
     Partners.init(

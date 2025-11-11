@@ -1,29 +1,29 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface OtpsAttributes {
-  id?: any;
-  email?: any;
-  otp?: any;
-  otp_type?: any;
-  expiration_time?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  token?: any;
+  id?: string;
+  email: string;
+  otp: string;
+  otp_type: string;
+  expiration_time?: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  token?: string;
 }
 
-export type OtpsCreationAttributes = Optional<OtpsAttributes, 'id'>;
+export type OtpsCreationAttributes = Optional<OtpsAttributes, 'id' | 'expiration_time' | 'deleted_at' | 'token'>;
 
 export class Otps extends Model<OtpsAttributes, OtpsCreationAttributes> implements OtpsAttributes {
-  declare id?: any;
-  declare email?: any;
-  declare otp?: any;
-  declare otp_type?: any;
-  declare expiration_time?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare token?: any;
+  declare id?: string;
+  declare email: string;
+  declare otp: string;
+  declare otp_type: string;
+  declare expiration_time?: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare token?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

@@ -1,19 +1,19 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ChatsConversationsParticipantsAttributes {
-  created_at?: any;
-  updated_at?: any;
-  conversation_id?: any;
-  user_id?: any;
+  created_at: Date;
+  updated_at: Date;
+  conversation_id: string;
+  user_id: string;
 }
 
 export type ChatsConversationsParticipantsCreationAttributes = Optional<ChatsConversationsParticipantsAttributes, 'id'>;
 
 export class ChatsConversationsParticipants extends Model<ChatsConversationsParticipantsAttributes, ChatsConversationsParticipantsCreationAttributes> implements ChatsConversationsParticipantsAttributes {
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare conversation_id?: any;
-  declare user_id?: any;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare conversation_id: string;
+  declare user_id: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

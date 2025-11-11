@@ -1,35 +1,35 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ActivitiesAttributes {
-  id?: any;
-  uuid?: any;
-  position_id?: any;
-  user_id?: any;
-  status?: any;
-  type?: any;
-  start_date?: any;
-  end_date?: any;
-  is_expired?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: number;
+  uuid: string;
+  position_id: number;
+  user_id: string;
+  status: string;
+  type: string;
+  start_date?: Date;
+  end_date?: Date;
+  is_expired?: boolean;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type ActivitiesCreationAttributes = Optional<ActivitiesAttributes, 'id'>;
+export type ActivitiesCreationAttributes = Optional<ActivitiesAttributes, 'id' | 'start_date' | 'end_date' | 'is_expired' | 'deleted_at'>;
 
 export class Activities extends Model<ActivitiesAttributes, ActivitiesCreationAttributes> implements ActivitiesAttributes {
-  declare id?: any;
-  declare uuid?: any;
-  declare position_id?: any;
-  declare user_id?: any;
-  declare status?: any;
-  declare type?: any;
-  declare start_date?: any;
-  declare end_date?: any;
-  declare is_expired?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: number;
+  declare uuid: string;
+  declare position_id: number;
+  declare user_id: string;
+  declare status: string;
+  declare type: string;
+  declare start_date?: Date;
+  declare end_date?: Date;
+  declare is_expired?: boolean;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

@@ -1,23 +1,23 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ArticlesTagsAttributes {
-  id?: any;
-  tags_id?: any;
-  articles_id?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  tags_id: string;
+  articles_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+  deleted_at?: Date;
 }
 
-export type ArticlesTagsCreationAttributes = Optional<ArticlesTagsAttributes, 'id'>;
+export type ArticlesTagsCreationAttributes = Optional<ArticlesTagsAttributes, 'id' | 'created_at' | 'updated_at' | 'deleted_at'>;
 
 export class ArticlesTags extends Model<ArticlesTagsAttributes, ArticlesTagsCreationAttributes> implements ArticlesTagsAttributes {
-  declare id?: any;
-  declare tags_id?: any;
-  declare articles_id?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare tags_id: string;
+  declare articles_id: string;
+  declare created_at?: Date;
+  declare updated_at?: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

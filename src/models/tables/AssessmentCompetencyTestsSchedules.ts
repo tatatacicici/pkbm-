@@ -1,33 +1,33 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AssessmentCompetencyTestsSchedulesAttributes {
-  pk?: any;
-  id?: any;
-  program_id?: any;
-  provider?: any;
-  date?: any;
-  via?: any;
-  link?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  user_id?: any;
+  pk: number;
+  id?: string;
+  program_id: string;
+  provider: string;
+  date: Date;
+  via?: string;
+  link?: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  user_id: string;
 }
 
-export type AssessmentCompetencyTestsSchedulesCreationAttributes = Optional<AssessmentCompetencyTestsSchedulesAttributes, 'id'>;
+export type AssessmentCompetencyTestsSchedulesCreationAttributes = Optional<AssessmentCompetencyTestsSchedulesAttributes, 'id' | 'via' | 'link' | 'deleted_at'>;
 
 export class AssessmentCompetencyTestsSchedules extends Model<AssessmentCompetencyTestsSchedulesAttributes, AssessmentCompetencyTestsSchedulesCreationAttributes> implements AssessmentCompetencyTestsSchedulesAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare program_id?: any;
-  declare provider?: any;
-  declare date?: any;
-  declare via?: any;
-  declare link?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare user_id?: any;
+  declare pk: number;
+  declare id?: string;
+  declare program_id: string;
+  declare provider: string;
+  declare date: Date;
+  declare via?: string;
+  declare link?: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare user_id: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

@@ -1,29 +1,29 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AdminAttendenceAttributes {
-  pk?: any;
-  id?: any;
-  session_id?: any;
-  user_id?: any;
-  is_present?: any;
-  status?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  id?: string;
+  session_id: string;
+  user_id: string;
+  is_present?: boolean;
+  status: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type AdminAttendenceCreationAttributes = Optional<AdminAttendenceAttributes, 'id'>;
+export type AdminAttendenceCreationAttributes = Optional<AdminAttendenceAttributes, 'id' | 'is_present' | 'deleted_at'>;
 
 export class AdminAttendence extends Model<AdminAttendenceAttributes, AdminAttendenceCreationAttributes> implements AdminAttendenceAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare session_id?: any;
-  declare user_id?: any;
-  declare is_present?: any;
-  declare status?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare session_id: string;
+  declare user_id: string;
+  declare is_present?: boolean;
+  declare status: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

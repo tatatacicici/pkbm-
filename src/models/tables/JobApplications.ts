@@ -1,33 +1,33 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface JobApplicationsAttributes {
-  id?: any;
-  user_id?: any;
-  job_id?: any;
-  full_name?: any;
-  phone_number?: any;
-  cv?: any;
-  portofolio?: any;
-  application_letter?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  user_id: string;
+  job_id: string;
+  full_name: string;
+  phone_number: string;
+  cv: string;
+  portofolio: string;
+  application_letter: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type JobApplicationsCreationAttributes = Optional<JobApplicationsAttributes, 'id'>;
+export type JobApplicationsCreationAttributes = Optional<JobApplicationsAttributes, 'id' | 'deleted_at'>;
 
 export class JobApplications extends Model<JobApplicationsAttributes, JobApplicationsCreationAttributes> implements JobApplicationsAttributes {
-  declare id?: any;
-  declare user_id?: any;
-  declare job_id?: any;
-  declare full_name?: any;
-  declare phone_number?: any;
-  declare cv?: any;
-  declare portofolio?: any;
-  declare application_letter?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare user_id: string;
+  declare job_id: string;
+  declare full_name: string;
+  declare phone_number: string;
+  declare cv: string;
+  declare portofolio: string;
+  declare application_letter: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

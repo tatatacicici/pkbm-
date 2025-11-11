@@ -1,35 +1,35 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AdministrationsAttributes {
-  id?: any;
-  user_id?: any;
-  type?: any;
-  status?: any;
-  action_by?: any;
-  created_at?: any;
-  updated_at?: any;
-  reason?: any;
-  deleted_at?: any;
-  category?: any;
-  approved_by?: any;
-  approved_at?: any;
+  id?: string;
+  user_id: string;
+  type: string;
+  status: string;
+  action_by?: string;
+  created_at: Date;
+  updated_at: Date;
+  reason?: string;
+  deleted_at?: Date;
+  category?: string;
+  approved_by?: string;
+  approved_at?: Date;
 }
 
-export type AdministrationsCreationAttributes = Optional<AdministrationsAttributes, 'id'>;
+export type AdministrationsCreationAttributes = Optional<AdministrationsAttributes, 'id' | 'action_by' | 'reason' | 'deleted_at' | 'category' | 'approved_by' | 'approved_at'>;
 
 export class Administrations extends Model<AdministrationsAttributes, AdministrationsCreationAttributes> implements AdministrationsAttributes {
-  declare id?: any;
-  declare user_id?: any;
-  declare type?: any;
-  declare status?: any;
-  declare action_by?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare reason?: any;
-  declare deleted_at?: any;
-  declare category?: any;
-  declare approved_by?: any;
-  declare approved_at?: any;
+  declare id?: string;
+  declare user_id: string;
+  declare type: string;
+  declare status: string;
+  declare action_by?: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare reason?: string;
+  declare deleted_at?: Date;
+  declare category?: string;
+  declare approved_by?: string;
+  declare approved_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

@@ -1,37 +1,37 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface LeaderboardHistoriesAttributes {
-  pk?: any;
-  id?: any;
-  code?: any;
-  student_id?: any;
-  type?: any;
-  current_score?: any;
-  current_rank?: any;
-  previous_score?: any;
-  previous_rank?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  subject_id?: any;
+  pk: number;
+  id?: string;
+  code: string;
+  student_id: string;
+  type: string;
+  current_score: number;
+  current_rank: number;
+  previous_score: number;
+  previous_rank: number;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  subject_id?: string;
 }
 
-export type LeaderboardHistoriesCreationAttributes = Optional<LeaderboardHistoriesAttributes, 'id'>;
+export type LeaderboardHistoriesCreationAttributes = Optional<LeaderboardHistoriesAttributes, 'id' | 'deleted_at' | 'subject_id'>;
 
 export class LeaderboardHistories extends Model<LeaderboardHistoriesAttributes, LeaderboardHistoriesCreationAttributes> implements LeaderboardHistoriesAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare code?: any;
-  declare student_id?: any;
-  declare type?: any;
-  declare current_score?: any;
-  declare current_rank?: any;
-  declare previous_score?: any;
-  declare previous_rank?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare subject_id?: any;
+  declare pk: number;
+  declare id?: string;
+  declare code: string;
+  declare student_id: string;
+  declare type: string;
+  declare current_score: number;
+  declare current_rank: number;
+  declare previous_score: number;
+  declare previous_rank: number;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare subject_id?: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

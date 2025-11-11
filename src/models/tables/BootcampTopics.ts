@@ -1,25 +1,25 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface BootcampTopicsAttributes {
-  id?: any;
-  title?: any;
-  description?: any;
-  duration_weeks?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  title: string;
+  description?: string;
+  duration_weeks?: number;
+  created_at?: Date;
+  updated_at?: Date;
+  deleted_at?: Date;
 }
 
-export type BootcampTopicsCreationAttributes = Optional<BootcampTopicsAttributes, 'id'>;
+export type BootcampTopicsCreationAttributes = Optional<BootcampTopicsAttributes, 'id' | 'description' | 'duration_weeks' | 'created_at' | 'updated_at' | 'deleted_at'>;
 
 export class BootcampTopics extends Model<BootcampTopicsAttributes, BootcampTopicsCreationAttributes> implements BootcampTopicsAttributes {
-  declare id?: any;
-  declare title?: any;
-  declare description?: any;
-  declare duration_weeks?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare title: string;
+  declare description?: string;
+  declare duration_weeks?: number;
+  declare created_at?: Date;
+  declare updated_at?: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

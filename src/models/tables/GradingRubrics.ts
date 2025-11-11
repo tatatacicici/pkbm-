@@ -1,31 +1,31 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface GradingRubricsAttributes {
-  pk?: any;
-  id?: any;
-  title?: any;
-  description?: any;
-  type?: any;
-  major_id?: any;
-  created_by?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  id?: string;
+  title: string;
+  description?: string;
+  type: string;
+  major_id: string;
+  created_by: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type GradingRubricsCreationAttributes = Optional<GradingRubricsAttributes, 'id'>;
+export type GradingRubricsCreationAttributes = Optional<GradingRubricsAttributes, 'id' | 'description' | 'deleted_at'>;
 
 export class GradingRubrics extends Model<GradingRubricsAttributes, GradingRubricsCreationAttributes> implements GradingRubricsAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare title?: any;
-  declare description?: any;
-  declare type?: any;
-  declare major_id?: any;
-  declare created_by?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare title: string;
+  declare description?: string;
+  declare type: string;
+  declare major_id: string;
+  declare created_by: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

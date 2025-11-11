@@ -1,23 +1,23 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface InternshipStudentMentorsAttributes {
-  id?: any;
-  student_id?: any;
-  mentor_id?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  student_id: string;
+  mentor_id: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type InternshipStudentMentorsCreationAttributes = Optional<InternshipStudentMentorsAttributes, 'id'>;
+export type InternshipStudentMentorsCreationAttributes = Optional<InternshipStudentMentorsAttributes, 'id' | 'deleted_at'>;
 
 export class InternshipStudentMentors extends Model<InternshipStudentMentorsAttributes, InternshipStudentMentorsCreationAttributes> implements InternshipStudentMentorsAttributes {
-  declare id?: any;
-  declare student_id?: any;
-  declare mentor_id?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare student_id: string;
+  declare mentor_id: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

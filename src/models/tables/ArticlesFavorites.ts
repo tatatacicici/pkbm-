@@ -1,23 +1,23 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ArticlesFavoritesAttributes {
-  id?: any;
-  user_id?: any;
-  article_id?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  user_id: string;
+  article_id: string;
+  created_at?: Date;
+  updated_at?: Date;
+  deleted_at?: Date;
 }
 
-export type ArticlesFavoritesCreationAttributes = Optional<ArticlesFavoritesAttributes, 'id'>;
+export type ArticlesFavoritesCreationAttributes = Optional<ArticlesFavoritesAttributes, 'id' | 'created_at' | 'updated_at' | 'deleted_at'>;
 
 export class ArticlesFavorites extends Model<ArticlesFavoritesAttributes, ArticlesFavoritesCreationAttributes> implements ArticlesFavoritesAttributes {
-  declare id?: any;
-  declare user_id?: any;
-  declare article_id?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare user_id: string;
+  declare article_id: string;
+  declare created_at?: Date;
+  declare updated_at?: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

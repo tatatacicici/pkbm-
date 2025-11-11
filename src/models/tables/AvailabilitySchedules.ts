@@ -1,31 +1,31 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AvailabilitySchedulesAttributes {
-  id?: any;
-  uuid?: any;
-  scheduler_id?: any;
-  scheduler_role?: any;
-  time_start?: any;
-  duration?: any;
-  taken?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: number;
+  uuid?: string;
+  scheduler_id: string;
+  scheduler_role: string;
+  time_start?: Date;
+  duration?: number;
+  taken?: boolean;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type AvailabilitySchedulesCreationAttributes = Optional<AvailabilitySchedulesAttributes, 'id'>;
+export type AvailabilitySchedulesCreationAttributes = Optional<AvailabilitySchedulesAttributes, 'id' | 'uuid' | 'time_start' | 'duration' | 'taken' | 'deleted_at'>;
 
 export class AvailabilitySchedules extends Model<AvailabilitySchedulesAttributes, AvailabilitySchedulesCreationAttributes> implements AvailabilitySchedulesAttributes {
-  declare id?: any;
-  declare uuid?: any;
-  declare scheduler_id?: any;
-  declare scheduler_role?: any;
-  declare time_start?: any;
-  declare duration?: any;
-  declare taken?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: number;
+  declare uuid?: string;
+  declare scheduler_id: string;
+  declare scheduler_role: string;
+  declare time_start?: Date;
+  declare duration?: number;
+  declare taken?: boolean;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

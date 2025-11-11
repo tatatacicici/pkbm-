@@ -1,25 +1,25 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface DiscussionLikesAttributes {
-  id?: any;
-  user_id?: any;
-  resource_type?: any;
-  resource_id?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  user_id: string;
+  resource_type: string;
+  resource_id: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type DiscussionLikesCreationAttributes = Optional<DiscussionLikesAttributes, 'id'>;
+export type DiscussionLikesCreationAttributes = Optional<DiscussionLikesAttributes, 'id' | 'deleted_at'>;
 
 export class DiscussionLikes extends Model<DiscussionLikesAttributes, DiscussionLikesCreationAttributes> implements DiscussionLikesAttributes {
-  declare id?: any;
-  declare user_id?: any;
-  declare resource_type?: any;
-  declare resource_id?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare user_id: string;
+  declare resource_type: string;
+  declare resource_id: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

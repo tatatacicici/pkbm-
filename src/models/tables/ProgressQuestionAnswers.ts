@@ -1,22 +1,19 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ProgressQuestionAnswersAttributes {
-  id?: any;
-  question_id?: any;
-  answer_id?: any;
-  progress_id?: any;
+  id?: string;
+  question_id: string;
+  answer_id?: string;
+  progress_id: string;
 }
 
-export type ProgressQuestionAnswersCreationAttributes = Optional<ProgressQuestionAnswersAttributes, 'id'>;
+export type ProgressQuestionAnswersCreationAttributes = Optional<ProgressQuestionAnswersAttributes, 'id' | 'answer_id'>;
 
 export class ProgressQuestionAnswers extends Model<ProgressQuestionAnswersAttributes, ProgressQuestionAnswersCreationAttributes> implements ProgressQuestionAnswersAttributes {
-  declare id?: any;
-  declare question_id?: any;
-  declare answer_id?: any;
-  declare progress_id?: any;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare id?: string;
+  declare question_id: string;
+  declare answer_id?: string;
+  declare progress_id: string;
 
   public static initModel(sequelize: Sequelize): typeof ProgressQuestionAnswers {
     ProgressQuestionAnswers.init(

@@ -1,31 +1,31 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AssessmentsAssessorsAvailabilitiesAttributes {
-  pk?: any;
-  id?: any;
-  assessment_id?: any;
-  assessor_id?: any;
-  day?: any;
-  start_time?: any;
-  end_time?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  id?: string;
+  assessment_id: number;
+  assessor_id: string;
+  day: string;
+  start_time: string;
+  end_time: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type AssessmentsAssessorsAvailabilitiesCreationAttributes = Optional<AssessmentsAssessorsAvailabilitiesAttributes, 'id'>;
+export type AssessmentsAssessorsAvailabilitiesCreationAttributes = Optional<AssessmentsAssessorsAvailabilitiesAttributes, 'id' | 'deleted_at'>;
 
 export class AssessmentsAssessorsAvailabilities extends Model<AssessmentsAssessorsAvailabilitiesAttributes, AssessmentsAssessorsAvailabilitiesCreationAttributes> implements AssessmentsAssessorsAvailabilitiesAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare assessment_id?: any;
-  declare assessor_id?: any;
-  declare day?: any;
-  declare start_time?: any;
-  declare end_time?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare assessment_id: number;
+  declare assessor_id: string;
+  declare day: string;
+  declare start_time: string;
+  declare end_time: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

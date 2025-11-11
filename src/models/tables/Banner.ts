@@ -1,21 +1,21 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface BannerAttributes {
-  id?: any;
-  image?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  image: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type BannerCreationAttributes = Optional<BannerAttributes, 'id'>;
+export type BannerCreationAttributes = Optional<BannerAttributes, 'id' | 'deleted_at'>;
 
 export class Banner extends Model<BannerAttributes, BannerCreationAttributes> implements BannerAttributes {
-  declare id?: any;
-  declare image?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare image: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

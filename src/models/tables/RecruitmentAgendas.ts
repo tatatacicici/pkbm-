@@ -1,29 +1,29 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface RecruitmentAgendasAttributes {
-  pk?: any;
-  uuid?: any;
-  student_id?: any;
-  participant_id?: any;
-  schedule_id?: any;
-  department_id?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  uuid?: string;
+  student_id: string;
+  participant_id: number;
+  schedule_id: number;
+  department_id: number;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type RecruitmentAgendasCreationAttributes = Optional<RecruitmentAgendasAttributes, 'id'>;
+export type RecruitmentAgendasCreationAttributes = Optional<RecruitmentAgendasAttributes, 'id' | 'uuid' | 'deleted_at'>;
 
 export class RecruitmentAgendas extends Model<RecruitmentAgendasAttributes, RecruitmentAgendasCreationAttributes> implements RecruitmentAgendasAttributes {
-  declare pk?: any;
-  declare uuid?: any;
-  declare student_id?: any;
-  declare participant_id?: any;
-  declare schedule_id?: any;
-  declare department_id?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare uuid?: string;
+  declare student_id: string;
+  declare participant_id: number;
+  declare schedule_id: number;
+  declare department_id: number;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

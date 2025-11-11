@@ -1,27 +1,27 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SurveysQuestionsAttributes {
-  pk?: any;
-  uuid?: any;
-  survey_id?: any;
-  question?: any;
-  type?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  uuid?: string;
+  survey_id: number;
+  question: string;
+  type: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type SurveysQuestionsCreationAttributes = Optional<SurveysQuestionsAttributes, 'id'>;
+export type SurveysQuestionsCreationAttributes = Optional<SurveysQuestionsAttributes, 'id' | 'uuid' | 'deleted_at'>;
 
 export class SurveysQuestions extends Model<SurveysQuestionsAttributes, SurveysQuestionsCreationAttributes> implements SurveysQuestionsAttributes {
-  declare pk?: any;
-  declare uuid?: any;
-  declare survey_id?: any;
-  declare question?: any;
-  declare type?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare uuid?: string;
+  declare survey_id: number;
+  declare question: string;
+  declare type: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

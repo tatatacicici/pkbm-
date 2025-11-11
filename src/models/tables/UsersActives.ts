@@ -1,27 +1,27 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface UsersActivesAttributes {
-  pk?: any;
-  uuid?: any;
-  user_id?: any;
-  date?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  last_active?: any;
+  pk: number;
+  uuid?: string;
+  user_id: string;
+  date: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  last_active?: Date;
 }
 
-export type UsersActivesCreationAttributes = Optional<UsersActivesAttributes, 'id'>;
+export type UsersActivesCreationAttributes = Optional<UsersActivesAttributes, 'id' | 'uuid' | 'deleted_at' | 'last_active'>;
 
 export class UsersActives extends Model<UsersActivesAttributes, UsersActivesCreationAttributes> implements UsersActivesAttributes {
-  declare pk?: any;
-  declare uuid?: any;
-  declare user_id?: any;
-  declare date?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare last_active?: any;
+  declare pk: number;
+  declare uuid?: string;
+  declare user_id: string;
+  declare date: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare last_active?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

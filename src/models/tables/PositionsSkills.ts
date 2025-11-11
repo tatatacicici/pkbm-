@@ -1,30 +1,27 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface PositionsSkillsAttributes {
-  id?: any;
-  uuid?: any;
-  position_id?: any;
-  name?: any;
-  target?: any;
-  detail?: any;
-  method?: any;
-  program_position_id?: any;
+  id?: number;
+  uuid: string;
+  position_id: number;
+  name: string;
+  target: string;
+  detail: string;
+  method: string;
+  program_position_id?: number;
 }
 
-export type PositionsSkillsCreationAttributes = Optional<PositionsSkillsAttributes, 'id'>;
+export type PositionsSkillsCreationAttributes = Optional<PositionsSkillsAttributes, 'id' | 'program_position_id'>;
 
 export class PositionsSkills extends Model<PositionsSkillsAttributes, PositionsSkillsCreationAttributes> implements PositionsSkillsAttributes {
-  declare id?: any;
-  declare uuid?: any;
-  declare position_id?: any;
-  declare name?: any;
-  declare target?: any;
-  declare detail?: any;
-  declare method?: any;
-  declare program_position_id?: any;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare id?: number;
+  declare uuid: string;
+  declare position_id: number;
+  declare name: string;
+  declare target: string;
+  declare detail: string;
+  declare method: string;
+  declare program_position_id?: number;
 
   public static initModel(sequelize: Sequelize): typeof PositionsSkills {
     PositionsSkills.init(

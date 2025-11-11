@@ -1,27 +1,27 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SubmissionDocumentsAttributes {
-  id?: any;
-  progress_id?: any;
-  document_url?: any;
-  document_filename?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  document_id?: any;
+  id?: string;
+  progress_id: string;
+  document_url: string;
+  document_filename: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  document_id?: number;
 }
 
-export type SubmissionDocumentsCreationAttributes = Optional<SubmissionDocumentsAttributes, 'id'>;
+export type SubmissionDocumentsCreationAttributes = Optional<SubmissionDocumentsAttributes, 'id' | 'deleted_at' | 'document_id'>;
 
 export class SubmissionDocuments extends Model<SubmissionDocumentsAttributes, SubmissionDocumentsCreationAttributes> implements SubmissionDocumentsAttributes {
-  declare id?: any;
-  declare progress_id?: any;
-  declare document_url?: any;
-  declare document_filename?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare document_id?: any;
+  declare id?: string;
+  declare progress_id: string;
+  declare document_url: string;
+  declare document_filename: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare document_id?: number;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

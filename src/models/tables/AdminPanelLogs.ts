@@ -1,37 +1,37 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AdminPanelLogsAttributes {
-  id?: any;
-  title?: any;
-  description?: any;
-  type?: any;
-  body?: any;
-  useragent?: any;
-  ip_address?: any;
-  user_id?: any;
-  session_id?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  affected_id?: any;
+  id?: string;
+  title: string;
+  description?: string;
+  type: string;
+  body: string;
+  useragent: string;
+  ip_address: string;
+  user_id: string;
+  session_id: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  affected_id: string;
 }
 
-export type AdminPanelLogsCreationAttributes = Optional<AdminPanelLogsAttributes, 'id'>;
+export type AdminPanelLogsCreationAttributes = Optional<AdminPanelLogsAttributes, 'id' | 'description' | 'deleted_at'>;
 
 export class AdminPanelLogs extends Model<AdminPanelLogsAttributes, AdminPanelLogsCreationAttributes> implements AdminPanelLogsAttributes {
-  declare id?: any;
-  declare title?: any;
-  declare description?: any;
-  declare type?: any;
-  declare body?: any;
-  declare useragent?: any;
-  declare ip_address?: any;
-  declare user_id?: any;
-  declare session_id?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare affected_id?: any;
+  declare id?: string;
+  declare title: string;
+  declare description?: string;
+  declare type: string;
+  declare body: string;
+  declare useragent: string;
+  declare ip_address: string;
+  declare user_id: string;
+  declare session_id: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare affected_id: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

@@ -1,37 +1,37 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface CyclesAttributes {
-  id?: any;
-  uuid?: any;
-  name?: any;
-  cycle?: any;
-  type?: any;
-  start_duration?: any;
-  start_registration?: any;
-  end_registration?: any;
-  end_duration?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  status?: any;
+  id?: number;
+  uuid?: string;
+  name: string;
+  cycle: number;
+  type: string;
+  start_duration: Date;
+  start_registration: Date;
+  end_registration: Date;
+  end_duration: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  status: string;
 }
 
-export type CyclesCreationAttributes = Optional<CyclesAttributes, 'id'>;
+export type CyclesCreationAttributes = Optional<CyclesAttributes, 'id' | 'uuid' | 'deleted_at'>;
 
 export class Cycles extends Model<CyclesAttributes, CyclesCreationAttributes> implements CyclesAttributes {
-  declare id?: any;
-  declare uuid?: any;
-  declare name?: any;
-  declare cycle?: any;
-  declare type?: any;
-  declare start_duration?: any;
-  declare start_registration?: any;
-  declare end_registration?: any;
-  declare end_duration?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare status?: any;
+  declare id?: number;
+  declare uuid?: string;
+  declare name: string;
+  declare cycle: number;
+  declare type: string;
+  declare start_duration: Date;
+  declare start_registration: Date;
+  declare end_registration: Date;
+  declare end_duration: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare status: string;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

@@ -1,31 +1,31 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface DiscussionForumsAttributes {
-  id?: any;
-  user_id?: any;
-  session_id?: any;
-  title?: any;
-  content?: any;
-  is_global?: any;
-  images?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  id?: string;
+  user_id: string;
+  session_id: string;
+  title?: string;
+  content: string;
+  is_global?: boolean;
+  images?: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type DiscussionForumsCreationAttributes = Optional<DiscussionForumsAttributes, 'id'>;
+export type DiscussionForumsCreationAttributes = Optional<DiscussionForumsAttributes, 'id' | 'title' | 'is_global' | 'images' | 'deleted_at'>;
 
 export class DiscussionForums extends Model<DiscussionForumsAttributes, DiscussionForumsCreationAttributes> implements DiscussionForumsAttributes {
-  declare id?: any;
-  declare user_id?: any;
-  declare session_id?: any;
-  declare title?: any;
-  declare content?: any;
-  declare is_global?: any;
-  declare images?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare id?: string;
+  declare user_id: string;
+  declare session_id: string;
+  declare title?: string;
+  declare content: string;
+  declare is_global?: boolean;
+  declare images?: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

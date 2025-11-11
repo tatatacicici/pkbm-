@@ -1,31 +1,31 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface DiscussionForumRepliesAttributes {
-  id?: any;
-  user_id?: any;
-  comment_id?: any;
-  content?: any;
-  image?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  df_id?: any;
-  image_id?: any;
+  id?: string;
+  user_id: string;
+  comment_id: string;
+  content?: string;
+  image?: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  df_id?: string;
+  image_id?: number;
 }
 
-export type DiscussionForumRepliesCreationAttributes = Optional<DiscussionForumRepliesAttributes, 'id'>;
+export type DiscussionForumRepliesCreationAttributes = Optional<DiscussionForumRepliesAttributes, 'id' | 'content' | 'image' | 'deleted_at' | 'df_id' | 'image_id'>;
 
 export class DiscussionForumReplies extends Model<DiscussionForumRepliesAttributes, DiscussionForumRepliesCreationAttributes> implements DiscussionForumRepliesAttributes {
-  declare id?: any;
-  declare user_id?: any;
-  declare comment_id?: any;
-  declare content?: any;
-  declare image?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare df_id?: any;
-  declare image_id?: any;
+  declare id?: string;
+  declare user_id: string;
+  declare comment_id: string;
+  declare content?: string;
+  declare image?: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare df_id?: string;
+  declare image_id?: number;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

@@ -1,27 +1,27 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface QuizzesAnswersAttributes {
-  id?: any;
-  question_id?: any;
-  answer?: any;
-  is_correct?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  score?: any;
+  id?: string;
+  question_id: string;
+  answer: string;
+  is_correct: boolean;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  score?: number;
 }
 
-export type QuizzesAnswersCreationAttributes = Optional<QuizzesAnswersAttributes, 'id'>;
+export type QuizzesAnswersCreationAttributes = Optional<QuizzesAnswersAttributes, 'id' | 'deleted_at' | 'score'>;
 
 export class QuizzesAnswers extends Model<QuizzesAnswersAttributes, QuizzesAnswersCreationAttributes> implements QuizzesAnswersAttributes {
-  declare id?: any;
-  declare question_id?: any;
-  declare answer?: any;
-  declare is_correct?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare score?: any;
+  declare id?: string;
+  declare question_id: string;
+  declare answer: string;
+  declare is_correct: boolean;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare score?: number;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

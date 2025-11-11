@@ -1,27 +1,27 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AdminReflectionAttributes {
-  pk?: any;
-  id?: any;
-  session_id?: any;
-  user_id?: any;
-  question?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  id?: string;
+  session_id: string;
+  user_id: string;
+  question: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type AdminReflectionCreationAttributes = Optional<AdminReflectionAttributes, 'id'>;
+export type AdminReflectionCreationAttributes = Optional<AdminReflectionAttributes, 'id' | 'deleted_at'>;
 
 export class AdminReflection extends Model<AdminReflectionAttributes, AdminReflectionCreationAttributes> implements AdminReflectionAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare session_id?: any;
-  declare user_id?: any;
-  declare question?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare id?: string;
+  declare session_id: string;
+  declare user_id: string;
+  declare question: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

@@ -1,27 +1,27 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ReportActionsAttributes {
-  id?: any;
-  uuid?: any;
-  user_id?: any;
-  report_id?: any;
-  mentor_id?: any;
-  note?: any;
-  created_at?: any;
-  updated_at?: any;
+  id?: number;
+  uuid: string;
+  user_id: string;
+  report_id: number;
+  mentor_id: string;
+  note: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
-export type ReportActionsCreationAttributes = Optional<ReportActionsAttributes, 'id'>;
+export type ReportActionsCreationAttributes = Optional<ReportActionsAttributes, 'id' | 'created_at' | 'updated_at'>;
 
 export class ReportActions extends Model<ReportActionsAttributes, ReportActionsCreationAttributes> implements ReportActionsAttributes {
-  declare id?: any;
-  declare uuid?: any;
-  declare user_id?: any;
-  declare report_id?: any;
-  declare mentor_id?: any;
-  declare note?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
+  declare id?: number;
+  declare uuid: string;
+  declare user_id: string;
+  declare report_id: number;
+  declare mentor_id: string;
+  declare note: string;
+  declare created_at?: Date;
+  declare updated_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

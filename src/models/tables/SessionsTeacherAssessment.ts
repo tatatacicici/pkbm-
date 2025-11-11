@@ -1,39 +1,39 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SessionsTeacherAssessmentAttributes {
-  pk?: any;
-  id?: any;
-  subject_id?: any;
-  session_id?: any;
-  session_no?: any;
-  teacher_id?: any;
-  student_id?: any;
-  status?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
-  assessment_id?: any;
-  timestamp_taken?: any;
-  timestamp_submitted?: any;
+  pk: number;
+  id?: string;
+  subject_id: string;
+  session_id: string;
+  session_no: string;
+  teacher_id?: string;
+  student_id: string;
+  status: string;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
+  assessment_id?: string;
+  timestamp_taken?: Date;
+  timestamp_submitted?: Date;
 }
 
-export type SessionsTeacherAssessmentCreationAttributes = Optional<SessionsTeacherAssessmentAttributes, 'id'>;
+export type SessionsTeacherAssessmentCreationAttributes = Optional<SessionsTeacherAssessmentAttributes, 'id' | 'teacher_id' | 'deleted_at' | 'assessment_id' | 'timestamp_taken' | 'timestamp_submitted'>;
 
 export class SessionsTeacherAssessment extends Model<SessionsTeacherAssessmentAttributes, SessionsTeacherAssessmentCreationAttributes> implements SessionsTeacherAssessmentAttributes {
-  declare pk?: any;
-  declare id?: any;
-  declare subject_id?: any;
-  declare session_id?: any;
-  declare session_no?: any;
-  declare teacher_id?: any;
-  declare student_id?: any;
-  declare status?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
-  declare assessment_id?: any;
-  declare timestamp_taken?: any;
-  declare timestamp_submitted?: any;
+  declare pk: number;
+  declare id?: string;
+  declare subject_id: string;
+  declare session_id: string;
+  declare session_no: string;
+  declare teacher_id?: string;
+  declare student_id: string;
+  declare status: string;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
+  declare assessment_id?: string;
+  declare timestamp_taken?: Date;
+  declare timestamp_submitted?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;

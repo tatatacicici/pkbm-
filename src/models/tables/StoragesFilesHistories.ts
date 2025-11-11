@@ -1,35 +1,35 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface StoragesFilesHistoriesAttributes {
-  pk?: any;
-  file_id?: any;
-  user_id?: any;
-  session_id?: any;
-  name?: any;
-  signed_url?: any;
-  ip_address?: any;
-  useragent?: any;
-  expired_at?: any;
-  created_at?: any;
-  updated_at?: any;
-  deleted_at?: any;
+  pk: number;
+  file_id?: number;
+  user_id: string;
+  session_id: string;
+  name: string;
+  signed_url: string;
+  ip_address: string;
+  useragent: string;
+  expired_at: Date;
+  created_at: Date;
+  updated_at: Date;
+  deleted_at?: Date;
 }
 
-export type StoragesFilesHistoriesCreationAttributes = Optional<StoragesFilesHistoriesAttributes, 'id'>;
+export type StoragesFilesHistoriesCreationAttributes = Optional<StoragesFilesHistoriesAttributes, 'id' | 'file_id' | 'deleted_at'>;
 
 export class StoragesFilesHistories extends Model<StoragesFilesHistoriesAttributes, StoragesFilesHistoriesCreationAttributes> implements StoragesFilesHistoriesAttributes {
-  declare pk?: any;
-  declare file_id?: any;
-  declare user_id?: any;
-  declare session_id?: any;
-  declare name?: any;
-  declare signed_url?: any;
-  declare ip_address?: any;
-  declare useragent?: any;
-  declare expired_at?: any;
-  declare created_at?: any;
-  declare updated_at?: any;
-  declare deleted_at?: any;
+  declare pk: number;
+  declare file_id?: number;
+  declare user_id: string;
+  declare session_id: string;
+  declare name: string;
+  declare signed_url: string;
+  declare ip_address: string;
+  declare useragent: string;
+  declare expired_at: Date;
+  declare created_at: Date;
+  declare updated_at: Date;
+  declare deleted_at?: Date;
 
   declare readonly createdAt?: Date;
   declare readonly updatedAt?: Date;
