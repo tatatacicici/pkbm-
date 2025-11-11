@@ -11,7 +11,7 @@ export interface StudentProfilesAttributes {
   updated_at?: Date;
 }
 
-export type StudentProfilesCreationAttributes = Optional<StudentProfilesAttributes, 'id' | 'national_student_number' | 'current_gpa' | 'graduation_date' | 'diploma_number' | 'deleted_at' | 'created_at' | 'updated_at'>;
+export type StudentProfilesCreationAttributes = Optional<StudentProfilesAttributes, 'national_student_number' | 'current_gpa' | 'graduation_date' | 'diploma_number' | 'deleted_at' | 'created_at' | 'updated_at'>;
 
 export class StudentProfiles extends Model<StudentProfilesAttributes, StudentProfilesCreationAttributes> implements StudentProfilesAttributes {
   declare user_id: string;
