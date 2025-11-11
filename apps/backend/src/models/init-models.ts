@@ -1,797 +1,1724 @@
-import type { Sequelize } from "sequelize";
-import { SequelizeMeta as _SequelizeMeta } from "./SequelizeMeta";
-import type { SequelizeMetaAttributes, SequelizeMetaCreationAttributes } from "./SequelizeMeta";
-import { Activities as _Activities } from "./Activities";
-import type { ActivitiesAttributes, ActivitiesCreationAttributes } from "./Activities";
-import { AdminAttendence as _AdminAttendence } from "./AdminAttendence";
-import type { AdminAttendenceAttributes, AdminAttendenceCreationAttributes } from "./AdminAttendence";
-import { AdminPanelLogs as _AdminPanelLogs } from "./AdminPanelLogs";
-import type { AdminPanelLogsAttributes, AdminPanelLogsCreationAttributes } from "./AdminPanelLogs";
-import { AdminReflection as _AdminReflection } from "./AdminReflection";
-import type { AdminReflectionAttributes, AdminReflectionCreationAttributes } from "./AdminReflection";
-import { Administrations as _Administrations } from "./Administrations";
-import type { AdministrationsAttributes, AdministrationsCreationAttributes } from "./Administrations";
-import { AdministrationsBiodatas as _AdministrationsBiodatas } from "./AdministrationsBiodatas";
-import type { AdministrationsBiodatasAttributes, AdministrationsBiodatasCreationAttributes } from "./AdministrationsBiodatas";
-import { AdministrationsFamilials as _AdministrationsFamilials } from "./AdministrationsFamilials";
-import type { AdministrationsFamilialsAttributes, AdministrationsFamilialsCreationAttributes } from "./AdministrationsFamilials";
-import { AdministrationsFiles as _AdministrationsFiles } from "./AdministrationsFiles";
-import type { AdministrationsFilesAttributes, AdministrationsFilesCreationAttributes } from "./AdministrationsFiles";
-import { AnalyticVisits as _AnalyticVisits } from "./AnalyticVisits";
-import type { AnalyticVisitsAttributes, AnalyticVisitsCreationAttributes } from "./AnalyticVisits";
-import { ArticleFavorites as _ArticleFavorites } from "./ArticleFavorites";
-import type { ArticleFavoritesAttributes, ArticleFavoritesCreationAttributes } from "./ArticleFavorites";
-import { ArticleLikes as _ArticleLikes } from "./ArticleLikes";
-import type { ArticleLikesAttributes, ArticleLikesCreationAttributes } from "./ArticleLikes";
-import { Articles as _Articles } from "./Articles";
-import type { ArticlesAttributes, ArticlesCreationAttributes } from "./Articles";
-import { ArticlesCategories as _ArticlesCategories } from "./ArticlesCategories";
-import type { ArticlesCategoriesAttributes, ArticlesCategoriesCreationAttributes } from "./ArticlesCategories";
-import { ArticlesFavorites as _ArticlesFavorites } from "./ArticlesFavorites";
-import type { ArticlesFavoritesAttributes, ArticlesFavoritesCreationAttributes } from "./ArticlesFavorites";
-import { ArticlesTags as _ArticlesTags } from "./ArticlesTags";
-import type { ArticlesTagsAttributes, ArticlesTagsCreationAttributes } from "./ArticlesTags";
-import { AvailabilitySchedules as _AvailabilitySchedules } from "./AvailabilitySchedules";
-import type { AvailabilitySchedulesAttributes, AvailabilitySchedulesCreationAttributes } from "./AvailabilitySchedules";
-import { Banner as _Banner } from "./Banner";
-import type { BannerAttributes, BannerCreationAttributes } from "./Banner";
-import { BootcampTopics as _BootcampTopics } from "./BootcampTopics";
-import { Certificates as _Certificates } from "./Certificates";
-import type { CertificatesAttributes, CertificatesCreationAttributes } from "./Certificates";
-import { ChatsConversations as _ChatsConversations } from "./ChatsConversations";
-import type { ChatsConversationsAttributes, ChatsConversationsCreationAttributes } from "./ChatsConversations";
-import { ChatsConversationsParticipants as _ChatsConversationsParticipants } from "./ChatsConversationsParticipants";
-import type { ChatsConversationsParticipantsAttributes, ChatsConversationsParticipantsCreationAttributes } from "./ChatsConversationsParticipants";
-import { ChatsMessages as _ChatsMessages } from "./ChatsMessages";
-import type { ChatsMessagesAttributes, ChatsMessagesCreationAttributes } from "./ChatsMessages";
-import { ChatsRooms as _ChatsRooms } from "./ChatsRooms";
-import type { ChatsRoomsAttributes, ChatsRoomsCreationAttributes } from "./ChatsRooms";
-import { ChatsRoomsMembers as _ChatsRoomsMembers } from "./ChatsRoomsMembers";
-import type { ChatsRoomsMembersAttributes, ChatsRoomsMembersCreationAttributes } from "./ChatsRoomsMembers";
-import { ChatsRoomsMessages as _ChatsRoomsMessages } from "./ChatsRoomsMessages";
-import type { ChatsRoomsMessagesAttributes, ChatsRoomsMessagesCreationAttributes } from "./ChatsRoomsMessages";
-import { Companies as _Companies } from "./Companies";
-import type { CompaniesAttributes, CompaniesCreationAttributes } from "./Companies";
-import { CompaniesDepartments as _CompaniesDepartments } from "./CompaniesDepartments";
-import type { CompaniesDepartmentsAttributes, CompaniesDepartmentsCreationAttributes } from "./CompaniesDepartments";
-import { CompaniesEmployees as _CompaniesEmployees } from "./CompaniesEmployees";
-import type { CompaniesEmployeesAttributes, CompaniesEmployeesCreationAttributes } from "./CompaniesEmployees";
-import { CompaniesEmployeesRoles as _CompaniesEmployeesRoles } from "./CompaniesEmployeesRoles";
-import type { CompaniesEmployeesRolesAttributes, CompaniesEmployeesRolesCreationAttributes } from "./CompaniesEmployeesRoles";
-import { ConsultationRoomMessages as _ConsultationRoomMessages } from "./ConsultationRoomMessages";
-import type { ConsultationRoomMessagesAttributes, ConsultationRoomMessagesCreationAttributes } from "./ConsultationRoomMessages";
-import { ConsultationRooms as _ConsultationRooms } from "./ConsultationRooms";
-import type { ConsultationRoomsAttributes, ConsultationRoomsCreationAttributes } from "./ConsultationRooms";
-import { ConsultationTypes as _ConsultationTypes } from "./ConsultationTypes";
-import type { ConsultationTypesAttributes, ConsultationTypesCreationAttributes } from "./ConsultationTypes";
-import { Cycles as _Cycles } from "./Cycles";
-import type { CyclesAttributes, CyclesCreationAttributes } from "./Cycles";
-import { Dictionarys as _Dictionarys } from "./Dictionarys";
-import type { DictionarysAttributes, DictionarysCreationAttributes } from "./Dictionarys";
-import { DiscussionForumComments as _DiscussionForumComments } from "./DiscussionForumComments";
-import type { DiscussionForumCommentsAttributes, DiscussionForumCommentsCreationAttributes } from "./DiscussionForumComments";
-import { DiscussionForumReplies as _DiscussionForumReplies } from "./DiscussionForumReplies";
-import type { DiscussionForumRepliesAttributes, DiscussionForumRepliesCreationAttributes } from "./DiscussionForumReplies";
-import { DiscussionForums as _DiscussionForums } from "./DiscussionForums";
-import type { DiscussionForumsAttributes, DiscussionForumsCreationAttributes } from "./DiscussionForums";
-import { DiscussionLikes as _DiscussionLikes } from "./DiscussionLikes";
-import type { DiscussionLikesAttributes, DiscussionLikesCreationAttributes } from "./DiscussionLikes";
-import { DiscussionReports as _DiscussionReports } from "./DiscussionReports";
-import type { DiscussionReportsAttributes, DiscussionReportsCreationAttributes } from "./DiscussionReports";
-import { DonationProofs as _DonationProofs } from "./DonationProofs";
-import type { DonationProofsAttributes, DonationProofsCreationAttributes } from "./DonationProofs";
-import { ErrorLogs as _ErrorLogs } from "./ErrorLogs";
-import type { ErrorLogsAttributes, ErrorLogsCreationAttributes } from "./ErrorLogs";
-import { EventParticipants as _EventParticipants } from "./EventParticipants";
-import type { EventParticipantsAttributes, EventParticipantsCreationAttributes } from "./EventParticipants";
-import { Events as _Events } from "./Events";
-import type { EventsAttributes, EventsCreationAttributes } from "./Events";
-import { EventsParticipants as _EventsParticipants } from "./EventsParticipants";
-import type { EventsParticipantsAttributes, EventsParticipantsCreationAttributes } from "./EventsParticipants";
-import { GuidesBooks as _GuidesBooks } from "./GuidesBooks";
-import type { GuidesBooksAttributes, GuidesBooksCreationAttributes } from "./GuidesBooks";
-import { GuidesDictionaries as _GuidesDictionaries } from "./GuidesDictionaries";
-import type { GuidesDictionariesAttributes, GuidesDictionariesCreationAttributes } from "./GuidesDictionaries";
-import { GuidesFrequentlyAskedQuestions as _GuidesFrequentlyAskedQuestions } from "./GuidesFrequentlyAskedQuestions";
-import type { GuidesFrequentlyAskedQuestionsAttributes, GuidesFrequentlyAskedQuestionsCreationAttributes } from "./GuidesFrequentlyAskedQuestions";
-import { GuidesVideos as _GuidesVideos } from "./GuidesVideos";
-import type { GuidesVideosAttributes, GuidesVideosCreationAttributes } from "./GuidesVideos";
-import { InboxMessages as _InboxMessages } from "./InboxMessages";
-import type { InboxMessagesAttributes, InboxMessagesCreationAttributes } from "./InboxMessages";
-import { JobApplications as _JobApplications } from "./JobApplications";
-import type { JobApplicationsAttributes, JobApplicationsCreationAttributes } from "./JobApplications";
-import { Jobs as _Jobs } from "./Jobs";
-import type { JobsAttributes, JobsCreationAttributes } from "./Jobs";
-import { LeaderboardHistories as _LeaderboardHistories } from "./LeaderboardHistories";
-import type { LeaderboardHistoriesAttributes, LeaderboardHistoriesCreationAttributes } from "./LeaderboardHistories";
-import { Meetings as _Meetings } from "./Meetings";
-import type { MeetingsAttributes, MeetingsCreationAttributes } from "./Meetings";
-import { Notifications as _Notifications } from "./Notifications";
-import type { NotificationsAttributes, NotificationsCreationAttributes } from "./Notifications";
-import { NotificationsMessages as _NotificationsMessages } from "./NotificationsMessages";
-import type { NotificationsMessagesAttributes, NotificationsMessagesCreationAttributes } from "./NotificationsMessages";
-import { NotificationsTemplates as _NotificationsTemplates } from "./NotificationsTemplates";
-import type { NotificationsTemplatesAttributes, NotificationsTemplatesCreationAttributes } from "./NotificationsTemplates";
-import { Otps as _Otps } from "./Otps";
-import type { OtpsAttributes, OtpsCreationAttributes } from "./Otps";
-import { Partners as _Partners } from "./Partners";
-import type { PartnersAttributes, PartnersCreationAttributes } from "./Partners";
-import { PartnersProposals as _PartnersProposals } from "./PartnersProposals";
-import type { PartnersProposalsAttributes, PartnersProposalsCreationAttributes } from "./PartnersProposals";
-import { PaymentTransactions as _PaymentTransactions } from "./PaymentTransactions";
-import type { PaymentTransactionsAttributes, PaymentTransactionsCreationAttributes } from "./PaymentTransactions";
-import { PaymentTrasactionItems as _PaymentTrasactionItems } from "./PaymentTrasactionItems";
-import type { PaymentTrasactionItemsAttributes, PaymentTrasactionItemsCreationAttributes } from "./PaymentTrasactionItems";
-import { PositionSkills as _PositionSkills } from "./PositionSkills";
-import type { PositionSkillsAttributes, PositionSkillsCreationAttributes } from "./PositionSkills";
-import { Positions as _Positions } from "./Positions";
-import type { PositionsAttributes, PositionsCreationAttributes } from "./Positions";
-import { PositionsSkills as _PositionsSkills } from "./PositionsSkills";
-import type { PositionsSkillsAttributes, PositionsSkillsCreationAttributes } from "./PositionsSkills";
-import { ProgramPositionSkills as _ProgramPositionSkills } from "./ProgramPositionSkills";
-import type { ProgramPositionSkillsAttributes, ProgramPositionSkillsCreationAttributes } from "./ProgramPositionSkills";
-import { ProgramPositions as _ProgramPositions } from "./ProgramPositions";
-import type { ProgramPositionsAttributes, ProgramPositionsCreationAttributes } from "./ProgramPositions";
-import { ProgramsPositionSkills as _ProgramsPositionSkills } from "./ProgramsPositionSkills";
-import type { ProgramsPositionSkillsAttributes, ProgramsPositionSkillsCreationAttributes } from "./ProgramsPositionSkills";
-import { ProgressQuestionAnswers as _ProgressQuestionAnswers } from "./ProgressQuestionAnswers";
-import type { ProgressQuestionAnswersAttributes, ProgressQuestionAnswersCreationAttributes } from "./ProgressQuestionAnswers";
-import { Quizzes as _Quizzes } from "./Quizzes";
-import type { QuizzesAttributes, QuizzesCreationAttributes } from "./Quizzes";
-import { QuizzesAnswers as _QuizzesAnswers } from "./QuizzesAnswers";
-import type { QuizzesAnswersAttributes, QuizzesAnswersCreationAttributes } from "./QuizzesAnswers";
-import { QuizzesQuestions as _QuizzesQuestions } from "./QuizzesQuestions";
-import type { QuizzesQuestionsAttributes, QuizzesQuestionsCreationAttributes } from "./QuizzesQuestions";
-import { RecruitmentAgendas as _RecruitmentAgendas } from "./RecruitmentAgendas";
-import type { RecruitmentAgendasAttributes, RecruitmentAgendasCreationAttributes } from "./RecruitmentAgendas";
-import { RecruitmentDepartments as _RecruitmentDepartments } from "./RecruitmentDepartments";
-import type { RecruitmentDepartmentsAttributes, RecruitmentDepartmentsCreationAttributes } from "./RecruitmentDepartments";
-import { RecruitmentParticipants as _RecruitmentParticipants } from "./RecruitmentParticipants";
-import type { RecruitmentParticipantsAttributes, RecruitmentParticipantsCreationAttributes } from "./RecruitmentParticipants";
-import { RecruitmentSchedules as _RecruitmentSchedules } from "./RecruitmentSchedules";
-import type { RecruitmentSchedulesAttributes, RecruitmentSchedulesCreationAttributes } from "./RecruitmentSchedules";
-import { Referrals as _Referrals } from "./Referrals";
-import type { ReferralsAttributes, ReferralsCreationAttributes } from "./Referrals";
-import { ReferralsAccesses as _ReferralsAccesses } from "./ReferralsAccesses";
-import type { ReferralsAccessesAttributes, ReferralsAccessesCreationAttributes } from "./ReferralsAccesses";
-import { ReferralsRegistrations as _ReferralsRegistrations } from "./ReferralsRegistrations";
-import type { ReferralsRegistrationsAttributes, ReferralsRegistrationsCreationAttributes } from "./ReferralsRegistrations";
-import { ReportActions as _ReportActions } from "./ReportActions";
-import type { ReportActionsAttributes, ReportActionsCreationAttributes } from "./ReportActions";
-import { ReportDetails as _ReportDetails } from "./ReportDetails";
-import type { ReportDetailsAttributes, ReportDetailsCreationAttributes } from "./ReportDetails";
-import { Reports as _Reports } from "./Reports";
-import type { ReportsAttributes, ReportsCreationAttributes } from "./Reports";
-import { Roleplay as _Roleplay } from "./Roleplay";
-import type { RoleplayAttributes, RoleplayCreationAttributes } from "./Roleplay";
-import { RoleplayPair as _RoleplayPair } from "./RoleplayPair";
-import type { RoleplayPairAttributes, RoleplayPairCreationAttributes } from "./RoleplayPair";
-import { RoleplayPairs as _RoleplayPairs } from "./RoleplayPairs";
-import type { RoleplayPairsAttributes, RoleplayPairsCreationAttributes } from "./RoleplayPairs";
-import { Roleplays as _Roleplays } from "./Roleplays";
-import type { RoleplaysAttributes, RoleplaysCreationAttributes } from "./Roleplays";
-import { RoleplaysSessions as _RoleplaysSessions } from "./RoleplaysSessions";
-import { RoleplaysTeams as _RoleplaysTeams } from "./RoleplaysTeams";
-import type { RoleplaysTeamsAttributes, RoleplaysTeamsCreationAttributes } from "./RoleplaysTeams";
-import { RoleplaysTeamsMembers as _RoleplaysTeamsMembers } from "./RoleplaysTeamsMembers";
-import type { RoleplaysTeamsMembersAttributes, RoleplaysTeamsMembersCreationAttributes } from "./RoleplaysTeamsMembers";
-import { RoleplaysTeamsSchedules as _RoleplaysTeamsSchedules } from "./RoleplaysTeamsSchedules";
-import type { RoleplaysTeamsSchedulesAttributes, RoleplaysTeamsSchedulesCreationAttributes } from "./RoleplaysTeamsSchedules";
-import { Roles as _Roles } from "./Roles";
-import type { RolesAttributes, RolesCreationAttributes } from "./Roles";
-import { SavedPositions as _SavedPositions } from "./SavedPositions";
-import type { SavedPositionsAttributes, SavedPositionsCreationAttributes } from "./SavedPositions";
-import { ServerAttributes as _ServerAttributes } from "./ServerAttributes";
-import type { ServerAttributesAttributes, ServerAttributesCreationAttributes } from "./ServerAttributes";
-import { ServerLogs as _ServerLogs } from "./ServerLogs";
-import type { ServerLogsAttributes, ServerLogsCreationAttributes } from "./ServerLogs";
-import { StoragesFiles as _StoragesFiles } from "./StoragesFiles";
-import type { StoragesFilesAttributes, StoragesFilesCreationAttributes } from "./StoragesFiles";
-import { StoragesFilesHistories as _StoragesFilesHistories } from "./StoragesFilesHistories";
-import type { StoragesFilesHistoriesAttributes, StoragesFilesHistoriesCreationAttributes } from "./StoragesFilesHistories";
-import { Surveys as _Surveys } from "./Surveys";
-import type { SurveysAttributes, SurveysCreationAttributes } from "./Surveys";
-import { SurveysQuestions as _SurveysQuestions } from "./SurveysQuestions";
-import type { SurveysQuestionsAttributes, SurveysQuestionsCreationAttributes } from "./SurveysQuestions";
-import { SurveysQuestionsAnswers as _SurveysQuestionsAnswers } from "./SurveysQuestionsAnswers";
-import type { SurveysQuestionsAnswersAttributes, SurveysQuestionsAnswersCreationAttributes } from "./SurveysQuestionsAnswers";
-import { SurveysResponses as _SurveysResponses } from "./SurveysResponses";
-import type { SurveysResponsesAttributes, SurveysResponsesCreationAttributes } from "./SurveysResponses";
-import { SurveysResponsesAnswers as _SurveysResponsesAnswers } from "./SurveysResponsesAnswers";
-import type { SurveysResponsesAnswersAttributes, SurveysResponsesAnswersCreationAttributes } from "./SurveysResponsesAnswers";
-import { Tags as _Tags } from "./Tags";
-import type { TagsAttributes, TagsCreationAttributes } from "./Tags";
-import { UserRoles as _UserRoles } from "./UserRoles";
-import type { UserRolesAttributes, UserRolesCreationAttributes } from "./UserRoles";
-import { UserSessions as _UserSessions } from "./UserSessions";
-import { Users as _Users } from "./Users";
-import type { UsersAttributes, UsersCreationAttributes } from "./Users";
-import { UsersActives as _UsersActives } from "./UsersActives";
-import type { UsersActivesAttributes, UsersActivesCreationAttributes } from "./UsersActives";
-import { UsersAdministrations as _UsersAdministrations } from "./UsersAdministrations";
-import type { UsersAdministrationsAttributes, UsersAdministrationsCreationAttributes } from "./UsersAdministrations";
-import { UsersDelete as _UsersDelete } from "./UsersDelete";
-import type { UsersDeleteAttributes, UsersDeleteCreationAttributes } from "./UsersDelete";
-import { UsersScreenTimes as _UsersScreenTimes } from "./UsersScreenTimes";
-import type { UsersScreenTimesAttributes, UsersScreenTimesCreationAttributes } from "./UsersScreenTimes";
-import { UsersSearchHistories as _UsersSearchHistories } from "./UsersSearchHistories";
-import type { UsersSearchHistoriesAttributes, UsersSearchHistoriesCreationAttributes } from "./UsersSearchHistories";
-import { UsersSocialMedia as _UsersSocialMedia } from "./UsersSocialMedia";
-import type { UsersSocialMediaAttributes, UsersSocialMediaCreationAttributes } from "./UsersSocialMedia";
-import { UsersSocketConnections as _UsersSocketConnections } from "./UsersSocketConnections";
-import type { UsersSocketConnectionsAttributes, UsersSocketConnectionsCreationAttributes } from "./UsersSocketConnections";
-import { Videos as _Videos } from "./Videos";
-import type { VideosAttributes, VideosCreationAttributes } from "./Videos";
-import { WatchedVideoProgress as _WatchedVideoProgress } from "./WatchedVideoProgress";
-import type { WatchedVideoProgressAttributes, WatchedVideoProgressCreationAttributes } from "./WatchedVideoProgress";
+import { Sequelize } from 'sequelize';
+import { Activities } from './tables/Activities';
+import { AdminAttendence } from './tables/AdminAttendence';
+import { AdminPanelLogs } from './tables/AdminPanelLogs';
+import { AdminReflection } from './tables/AdminReflection';
+import { Administrations } from './tables/Administrations';
+import { AdministrationsBiodatas } from './tables/AdministrationsBiodatas';
+import { AdministrationsFamilials } from './tables/AdministrationsFamilials';
+import { AdministrationsFiles } from './tables/AdministrationsFiles';
+import { AnalyticVisits } from './tables/AnalyticVisits';
+import { ArticleFavorites } from './tables/ArticleFavorites';
+import { ArticleLikes } from './tables/ArticleLikes';
+import { Articles } from './tables/Articles';
+import { ArticlesCategories } from './tables/ArticlesCategories';
+import { ArticlesFavorites } from './tables/ArticlesFavorites';
+import { ArticlesTags } from './tables/ArticlesTags';
+import { AssessmentCompetencyTests } from './tables/AssessmentCompetencyTests';
+import { AssessmentCompetencyTestsSchedules } from './tables/AssessmentCompetencyTestsSchedules';
+import { Assessments } from './tables/Assessments';
+import { AssessmentsAssessors } from './tables/AssessmentsAssessors';
+import { AssessmentsAssessorsAvailabilities } from './tables/AssessmentsAssessorsAvailabilities';
+import { AssessmentsSessions } from './tables/AssessmentsSessions';
+import { AssessmentsSessionsPartners } from './tables/AssessmentsSessionsPartners';
+import { AssessmentsSessionsRubricsResults } from './tables/AssessmentsSessionsRubricsResults';
+import { AssessmentsSessionsSubmissions } from './tables/AssessmentsSessionsSubmissions';
+import { AssessmentsSubjectsProgresses } from './tables/AssessmentsSubjectsProgresses';
+import { AssessmentsSubjectsProgressesAnswers } from './tables/AssessmentsSubjectsProgressesAnswers';
+import { AssignmentDocuments } from './tables/AssignmentDocuments';
+import { AssignmentFiles } from './tables/AssignmentFiles';
+import { Assignments } from './tables/Assignments';
+import { AssignmentsAdmin } from './tables/AssignmentsAdmin';
+import { AvailabilitySchedules } from './tables/AvailabilitySchedules';
+import { Banner } from './tables/Banner';
+import { BootcampTopics } from './tables/BootcampTopics';
+import { Certificates } from './tables/Certificates';
+import { ChatsConversations } from './tables/ChatsConversations';
+import { ChatsConversationsParticipants } from './tables/ChatsConversationsParticipants';
+import { ChatsMessages } from './tables/ChatsMessages';
+import { ChatsRooms } from './tables/ChatsRooms';
+import { ChatsRoomsMembers } from './tables/ChatsRoomsMembers';
+import { ChatsRoomsMessages } from './tables/ChatsRoomsMessages';
+import { CollegeAcademicCohorts } from './tables/CollegeAcademicCohorts';
+import { CollegeClassEnrollments } from './tables/CollegeClassEnrollments';
+import { CollegeClasses } from './tables/CollegeClasses';
+import { CollegeProgramOfferings } from './tables/CollegeProgramOfferings';
+import { CollegeStudentRegistrations } from './tables/CollegeStudentRegistrations';
+import { Companies } from './tables/Companies';
+import { CompaniesDepartments } from './tables/CompaniesDepartments';
+import { CompaniesEmployees } from './tables/CompaniesEmployees';
+import { CompaniesEmployeesRoles } from './tables/CompaniesEmployeesRoles';
+import { ConsultationRoomMessages } from './tables/ConsultationRoomMessages';
+import { ConsultationRooms } from './tables/ConsultationRooms';
+import { ConsultationTypes } from './tables/ConsultationTypes';
+import { CreditConvertionRequests } from './tables/CreditConvertionRequests';
+import { CreditConvertionRequestsSubjects } from './tables/CreditConvertionRequestsSubjects';
+import { Cycles } from './tables/Cycles';
+import { Dictionarys } from './tables/Dictionarys';
+import { DiscussionForumComments } from './tables/DiscussionForumComments';
+import { DiscussionForumReplies } from './tables/DiscussionForumReplies';
+import { DiscussionForums } from './tables/DiscussionForums';
+import { DiscussionLikes } from './tables/DiscussionLikes';
+import { DiscussionReports } from './tables/DiscussionReports';
+import { DonationProofs } from './tables/DonationProofs';
+import { DrillSimulationAssessmentsMeetings } from './tables/DrillSimulationAssessmentsMeetings';
+import { DrillSimulationAssessmentsSchedules } from './tables/DrillSimulationAssessmentsSchedules';
+import { Drills } from './tables/Drills';
+import { ErrorLogs } from './tables/ErrorLogs';
+import { EventParticipants } from './tables/EventParticipants';
+import { Events } from './tables/Events';
+import { EventsParticipants } from './tables/EventsParticipants';
+import { Faculties } from './tables/Faculties';
+import { GradingRubrics } from './tables/GradingRubrics';
+import { GradingRubricsCriteria } from './tables/GradingRubricsCriteria';
+import { GradingRubricsCriteriaDetails } from './tables/GradingRubricsCriteriaDetails';
+import { GuidesBooks } from './tables/GuidesBooks';
+import { GuidesDictionaries } from './tables/GuidesDictionaries';
+import { GuidesFrequentlyAskedQuestions } from './tables/GuidesFrequentlyAskedQuestions';
+import { GuidesVideos } from './tables/GuidesVideos';
+import { InboxMessages } from './tables/InboxMessages';
+import { InternshipStudentMentors } from './tables/InternshipStudentMentors';
+import { JobApplications } from './tables/JobApplications';
+import { Jobs } from './tables/Jobs';
+import { LeaderboardHistories } from './tables/LeaderboardHistories';
+import { Majors } from './tables/Majors';
+import { Meetings } from './tables/Meetings';
+import { Mentors } from './tables/Mentors';
+import { Modules } from './tables/Modules';
+import { ModulesAdmin } from './tables/ModulesAdmin';
+import { ModulesArticles } from './tables/ModulesArticles';
+import { ModulesDocuments } from './tables/ModulesDocuments';
+import { ModulesJournals } from './tables/ModulesJournals';
+import { ModulesVideos } from './tables/ModulesVideos';
+import { Notifications } from './tables/Notifications';
+import { NotificationsMessages } from './tables/NotificationsMessages';
+import { NotificationsTemplates } from './tables/NotificationsTemplates';
+import { Otps } from './tables/Otps';
+import { Partners } from './tables/Partners';
+import { PartnersProposals } from './tables/PartnersProposals';
+import { PaymentTransactions } from './tables/PaymentTransactions';
+import { PaymentTrasactionItems } from './tables/PaymentTrasactionItems';
+import { PositionSkills } from './tables/PositionSkills';
+import { Positions } from './tables/Positions';
+import { PositionsSkills } from './tables/PositionsSkills';
+import { ProgramPositionSkills } from './tables/ProgramPositionSkills';
+import { ProgramPositions } from './tables/ProgramPositions';
+import { ProgramsPositionSkills } from './tables/ProgramsPositionSkills';
+import { ProgressQuestionAnswers } from './tables/ProgressQuestionAnswers';
+import { Quizzes } from './tables/Quizzes';
+import { QuizzesAnswers } from './tables/QuizzesAnswers';
+import { QuizzesQuestions } from './tables/QuizzesQuestions';
+import { RecruitmentAgendas } from './tables/RecruitmentAgendas';
+import { RecruitmentDepartments } from './tables/RecruitmentDepartments';
+import { RecruitmentParticipants } from './tables/RecruitmentParticipants';
+import { RecruitmentSchedules } from './tables/RecruitmentSchedules';
+import { Referrals } from './tables/Referrals';
+import { ReferralsAccesses } from './tables/ReferralsAccesses';
+import { ReferralsRegistrations } from './tables/ReferralsRegistrations';
+import { ReportActions } from './tables/ReportActions';
+import { ReportDetails } from './tables/ReportDetails';
+import { Reports } from './tables/Reports';
+import { Roleplay } from './tables/Roleplay';
+import { RoleplayPair } from './tables/RoleplayPair';
+import { RoleplayPairs } from './tables/RoleplayPairs';
+import { Roleplays } from './tables/Roleplays';
+import { RoleplaysSessions } from './tables/RoleplaysSessions';
+import { RoleplaysTeams } from './tables/RoleplaysTeams';
+import { RoleplaysTeamsMembers } from './tables/RoleplaysTeamsMembers';
+import { RoleplaysTeamsSchedules } from './tables/RoleplaysTeamsSchedules';
+import { Roles } from './tables/Roles';
+import { SavedPositions } from './tables/SavedPositions';
+import { Semesters } from './tables/Semesters';
+import { ServerAttributes } from './tables/ServerAttributes';
+import { ServerLogs } from './tables/ServerLogs';
+import { Sessions } from './tables/Sessions';
+import { SessionsMentorings } from './tables/SessionsMentorings';
+import { SessionsReflections } from './tables/SessionsReflections';
+import { SessionsReflectionsComments } from './tables/SessionsReflectionsComments';
+import { SessionsReflectionsCommentsReplies } from './tables/SessionsReflectionsCommentsReplies';
+import { SessionsReflectionsLikes } from './tables/SessionsReflectionsLikes';
+import { SessionsTeacherAssessment } from './tables/SessionsTeacherAssessment';
+import { SessionsTeacherAssessmentQuestions } from './tables/SessionsTeacherAssessmentQuestions';
+import { SessionsTeacherAssessmentQuestionsAnswers } from './tables/SessionsTeacherAssessmentQuestionsAnswers';
+import { SessionsTeacherAssessmentSessionsQuestions } from './tables/SessionsTeacherAssessmentSessionsQuestions';
+import { SessionsTeacherAssessmentStudentsAnswers } from './tables/SessionsTeacherAssessmentStudentsAnswers';
+import { SimulationGroupStudents } from './tables/SimulationGroupStudents';
+import { SimulationGroups } from './tables/SimulationGroups';
+import { Simulations } from './tables/Simulations';
+import { StoragesFiles } from './tables/StoragesFiles';
+import { StoragesFilesHistories } from './tables/StoragesFilesHistories';
+import { StudentEvents } from './tables/StudentEvents';
+import { StudentMajors } from './tables/StudentMajors';
+import { StudentProfiles } from './tables/StudentProfiles';
+import { StudentSessionProgress } from './tables/StudentSessionProgress';
+import { StudentSessions } from './tables/StudentSessions';
+import { StudentSubjects } from './tables/StudentSubjects';
+import { SubjectMajors } from './tables/SubjectMajors';
+import { SubjectSessions } from './tables/SubjectSessions';
+import { Subjects } from './tables/Subjects';
+import { SubjectsOutcomes } from './tables/SubjectsOutcomes';
+import { SubjectsSessionsActivities } from './tables/SubjectsSessionsActivities';
+import { SubjectsSessionsAssessments } from './tables/SubjectsSessionsAssessments';
+import { SubjectsSessionsContentOrders } from './tables/SubjectsSessionsContentOrders';
+import { SubmissionDocuments } from './tables/SubmissionDocuments';
+import { Submissions } from './tables/Submissions';
+import { Surveys } from './tables/Surveys';
+import { SurveysQuestions } from './tables/SurveysQuestions';
+import { SurveysQuestionsAnswers } from './tables/SurveysQuestionsAnswers';
+import { SurveysResponses } from './tables/SurveysResponses';
+import { SurveysResponsesAnswers } from './tables/SurveysResponsesAnswers';
+import { Tags } from './tables/Tags';
+import { TeachersRegistrations } from './tables/TeachersRegistrations';
+import { Topics } from './tables/Topics';
+import { TopicsSubjects } from './tables/TopicsSubjects';
+import { UserRoles } from './tables/UserRoles';
+import { UserSessions } from './tables/UserSessions';
+import { Users } from './tables/Users';
+import { UsersActives } from './tables/UsersActives';
+import { UsersAdministrations } from './tables/UsersAdministrations';
+import { UsersDelete } from './tables/UsersDelete';
+import { UsersScreenTimes } from './tables/UsersScreenTimes';
+import { UsersSearchHistories } from './tables/UsersSearchHistories';
+import { UsersSocialMedia } from './tables/UsersSocialMedia';
+import { UsersSocketConnections } from './tables/UsersSocketConnections';
+import { Videos } from './tables/Videos';
+import { WatchedVideoProgress } from './tables/WatchedVideoProgress';
 
-export {
-  _SequelizeMeta as SequelizeMeta,
-  _Activities as Activities,
-  _AdminAttendence as AdminAttendence,
-  _AdminPanelLogs as AdminPanelLogs,
-  _AdminReflection as AdminReflection,
-  _Administrations as Administrations,
-  _AdministrationsBiodatas as AdministrationsBiodatas,
-  _AdministrationsFamilials as AdministrationsFamilials,
-  _AdministrationsFiles as AdministrationsFiles,
-  _AnalyticVisits as AnalyticVisits,
-  _ArticleFavorites as ArticleFavorites,
-  _ArticleLikes as ArticleLikes,
-  _Articles as Articles,
-  _ArticlesCategories as ArticlesCategories,
-  _ArticlesFavorites as ArticlesFavorites,
-  _ArticlesTags as ArticlesTags,
-  _AvailabilitySchedules as AvailabilitySchedules,
-  _Banner as Banner,
-  _Certificates as Certificates,
-  _ChatsConversations as ChatsConversations,
-  _ChatsConversationsParticipants as ChatsConversationsParticipants,
-  _ChatsMessages as ChatsMessages,
-  _ChatsRooms as ChatsRooms,
-  _ChatsRoomsMembers as ChatsRoomsMembers,
-  _ChatsRoomsMessages as ChatsRoomsMessages,
-  _Companies as Companies,
-  _CompaniesDepartments as CompaniesDepartments,
-  _CompaniesEmployees as CompaniesEmployees,
-  _CompaniesEmployeesRoles as CompaniesEmployeesRoles,
-  _ConsultationRoomMessages as ConsultationRoomMessages,
-  _ConsultationRooms as ConsultationRooms,
-  _ConsultationTypes as ConsultationTypes,
-  _Cycles as Cycles,
-  _Dictionarys as Dictionarys,
-  _DiscussionForumComments as DiscussionForumComments,
-  _DiscussionForumReplies as DiscussionForumReplies,
-  _DiscussionForums as DiscussionForums,
-  _DiscussionLikes as DiscussionLikes,
-  _DiscussionReports as DiscussionReports,
-  _DonationProofs as DonationProofs,
-  _ErrorLogs as ErrorLogs,
-  _EventParticipants as EventParticipants,
-  _Events as Events,
-  _EventsParticipants as EventsParticipants,
-  _GuidesBooks as GuidesBooks,
-  _GuidesDictionaries as GuidesDictionaries,
-  _GuidesFrequentlyAskedQuestions as GuidesFrequentlyAskedQuestions,
-  _GuidesVideos as GuidesVideos,
-  _InboxMessages as InboxMessages,
-  _JobApplications as JobApplications,
-  _Jobs as Jobs,
-  _LeaderboardHistories as LeaderboardHistories,
-  _Meetings as Meetings,
-  _Notifications as Notifications,
-  _NotificationsMessages as NotificationsMessages,
-  _NotificationsTemplates as NotificationsTemplates,
-  _Otps as Otps,
-  _Partners as Partners,
-  _PartnersProposals as PartnersProposals,
-  _PaymentTransactions as PaymentTransactions,
-  _PaymentTrasactionItems as PaymentTrasactionItems,
-  _PositionSkills as PositionSkills,
-  _Positions as Positions,
-  _PositionsSkills as PositionsSkills,
-  _ProgramPositionSkills as ProgramPositionSkills,
-  _ProgramPositions as ProgramPositions,
-  _ProgramsPositionSkills as ProgramsPositionSkills,
-  _ProgressQuestionAnswers as ProgressQuestionAnswers,
-  _Quizzes as Quizzes,
-  _QuizzesAnswers as QuizzesAnswers,
-  _QuizzesQuestions as QuizzesQuestions,
-  _RecruitmentAgendas as RecruitmentAgendas,
-  _RecruitmentDepartments as RecruitmentDepartments,
-  _RecruitmentParticipants as RecruitmentParticipants,
-  _RecruitmentSchedules as RecruitmentSchedules,
-  _Referrals as Referrals,
-  _ReferralsAccesses as ReferralsAccesses,
-  _ReferralsRegistrations as ReferralsRegistrations,
-  _ReportActions as ReportActions,
-  _ReportDetails as ReportDetails,
-  _Reports as Reports,
-  _Roleplay as Roleplay,
-  _RoleplayPair as RoleplayPair,
-  _RoleplayPairs as RoleplayPairs,
-  _Roleplays as Roleplays,
-  _RoleplaysTeams as RoleplaysTeams,
-  _RoleplaysTeamsMembers as RoleplaysTeamsMembers,
-  _RoleplaysTeamsSchedules as RoleplaysTeamsSchedules,
-  _Roles as Roles,
-  _SavedPositions as SavedPositions,
-  _ServerAttributes as ServerAttributes,
-  _ServerLogs as ServerLogs,
-  _StoragesFiles as StoragesFiles,
-  _StoragesFilesHistories as StoragesFilesHistories,
-  _Surveys as Surveys,
-  _SurveysQuestions as SurveysQuestions,
-  _SurveysQuestionsAnswers as SurveysQuestionsAnswers,
-  _SurveysResponses as SurveysResponses,
-  _SurveysResponsesAnswers as SurveysResponsesAnswers,
-  _Tags as Tags,
-  _UserRoles as UserRoles,
-  _Users as Users,
-  _UsersActives as UsersActives,
-  _UsersAdministrations as UsersAdministrations,
-  _UsersDelete as UsersDelete,
-  _UsersScreenTimes as UsersScreenTimes,
-  _UsersSearchHistories as UsersSearchHistories,
-  _UsersSocialMedia as UsersSocialMedia,
-  _UsersSocketConnections as UsersSocketConnections,
-  _Videos as Videos,
-  _WatchedVideoProgress as WatchedVideoProgress,
-};
+export interface Models {
+  Activities: typeof Activities;
+  AdminAttendence: typeof AdminAttendence;
+  AdminPanelLogs: typeof AdminPanelLogs;
+  AdminReflection: typeof AdminReflection;
+  Administrations: typeof Administrations;
+  AdministrationsBiodatas: typeof AdministrationsBiodatas;
+  AdministrationsFamilials: typeof AdministrationsFamilials;
+  AdministrationsFiles: typeof AdministrationsFiles;
+  AnalyticVisits: typeof AnalyticVisits;
+  ArticleFavorites: typeof ArticleFavorites;
+  ArticleLikes: typeof ArticleLikes;
+  Articles: typeof Articles;
+  ArticlesCategories: typeof ArticlesCategories;
+  ArticlesFavorites: typeof ArticlesFavorites;
+  ArticlesTags: typeof ArticlesTags;
+  AssessmentCompetencyTests: typeof AssessmentCompetencyTests;
+  AssessmentCompetencyTestsSchedules: typeof AssessmentCompetencyTestsSchedules;
+  Assessments: typeof Assessments;
+  AssessmentsAssessors: typeof AssessmentsAssessors;
+  AssessmentsAssessorsAvailabilities: typeof AssessmentsAssessorsAvailabilities;
+  AssessmentsSessions: typeof AssessmentsSessions;
+  AssessmentsSessionsPartners: typeof AssessmentsSessionsPartners;
+  AssessmentsSessionsRubricsResults: typeof AssessmentsSessionsRubricsResults;
+  AssessmentsSessionsSubmissions: typeof AssessmentsSessionsSubmissions;
+  AssessmentsSubjectsProgresses: typeof AssessmentsSubjectsProgresses;
+  AssessmentsSubjectsProgressesAnswers: typeof AssessmentsSubjectsProgressesAnswers;
+  AssignmentDocuments: typeof AssignmentDocuments;
+  AssignmentFiles: typeof AssignmentFiles;
+  Assignments: typeof Assignments;
+  AssignmentsAdmin: typeof AssignmentsAdmin;
+  AvailabilitySchedules: typeof AvailabilitySchedules;
+  Banner: typeof Banner;
+  BootcampTopics: typeof BootcampTopics;
+  Certificates: typeof Certificates;
+  ChatsConversations: typeof ChatsConversations;
+  ChatsConversationsParticipants: typeof ChatsConversationsParticipants;
+  ChatsMessages: typeof ChatsMessages;
+  ChatsRooms: typeof ChatsRooms;
+  ChatsRoomsMembers: typeof ChatsRoomsMembers;
+  ChatsRoomsMessages: typeof ChatsRoomsMessages;
+  CollegeAcademicCohorts: typeof CollegeAcademicCohorts;
+  CollegeClassEnrollments: typeof CollegeClassEnrollments;
+  CollegeClasses: typeof CollegeClasses;
+  CollegeProgramOfferings: typeof CollegeProgramOfferings;
+  CollegeStudentRegistrations: typeof CollegeStudentRegistrations;
+  Companies: typeof Companies;
+  CompaniesDepartments: typeof CompaniesDepartments;
+  CompaniesEmployees: typeof CompaniesEmployees;
+  CompaniesEmployeesRoles: typeof CompaniesEmployeesRoles;
+  ConsultationRoomMessages: typeof ConsultationRoomMessages;
+  ConsultationRooms: typeof ConsultationRooms;
+  ConsultationTypes: typeof ConsultationTypes;
+  CreditConvertionRequests: typeof CreditConvertionRequests;
+  CreditConvertionRequestsSubjects: typeof CreditConvertionRequestsSubjects;
+  Cycles: typeof Cycles;
+  Dictionarys: typeof Dictionarys;
+  DiscussionForumComments: typeof DiscussionForumComments;
+  DiscussionForumReplies: typeof DiscussionForumReplies;
+  DiscussionForums: typeof DiscussionForums;
+  DiscussionLikes: typeof DiscussionLikes;
+  DiscussionReports: typeof DiscussionReports;
+  DonationProofs: typeof DonationProofs;
+  DrillSimulationAssessmentsMeetings: typeof DrillSimulationAssessmentsMeetings;
+  DrillSimulationAssessmentsSchedules: typeof DrillSimulationAssessmentsSchedules;
+  Drills: typeof Drills;
+  ErrorLogs: typeof ErrorLogs;
+  EventParticipants: typeof EventParticipants;
+  Events: typeof Events;
+  EventsParticipants: typeof EventsParticipants;
+  Faculties: typeof Faculties;
+  GradingRubrics: typeof GradingRubrics;
+  GradingRubricsCriteria: typeof GradingRubricsCriteria;
+  GradingRubricsCriteriaDetails: typeof GradingRubricsCriteriaDetails;
+  GuidesBooks: typeof GuidesBooks;
+  GuidesDictionaries: typeof GuidesDictionaries;
+  GuidesFrequentlyAskedQuestions: typeof GuidesFrequentlyAskedQuestions;
+  GuidesVideos: typeof GuidesVideos;
+  InboxMessages: typeof InboxMessages;
+  InternshipStudentMentors: typeof InternshipStudentMentors;
+  JobApplications: typeof JobApplications;
+  Jobs: typeof Jobs;
+  LeaderboardHistories: typeof LeaderboardHistories;
+  Majors: typeof Majors;
+  Meetings: typeof Meetings;
+  Mentors: typeof Mentors;
+  Modules: typeof Modules;
+  ModulesAdmin: typeof ModulesAdmin;
+  ModulesArticles: typeof ModulesArticles;
+  ModulesDocuments: typeof ModulesDocuments;
+  ModulesJournals: typeof ModulesJournals;
+  ModulesVideos: typeof ModulesVideos;
+  Notifications: typeof Notifications;
+  NotificationsMessages: typeof NotificationsMessages;
+  NotificationsTemplates: typeof NotificationsTemplates;
+  Otps: typeof Otps;
+  Partners: typeof Partners;
+  PartnersProposals: typeof PartnersProposals;
+  PaymentTransactions: typeof PaymentTransactions;
+  PaymentTrasactionItems: typeof PaymentTrasactionItems;
+  PositionSkills: typeof PositionSkills;
+  Positions: typeof Positions;
+  PositionsSkills: typeof PositionsSkills;
+  ProgramPositionSkills: typeof ProgramPositionSkills;
+  ProgramPositions: typeof ProgramPositions;
+  ProgramsPositionSkills: typeof ProgramsPositionSkills;
+  ProgressQuestionAnswers: typeof ProgressQuestionAnswers;
+  Quizzes: typeof Quizzes;
+  QuizzesAnswers: typeof QuizzesAnswers;
+  QuizzesQuestions: typeof QuizzesQuestions;
+  RecruitmentAgendas: typeof RecruitmentAgendas;
+  RecruitmentDepartments: typeof RecruitmentDepartments;
+  RecruitmentParticipants: typeof RecruitmentParticipants;
+  RecruitmentSchedules: typeof RecruitmentSchedules;
+  Referrals: typeof Referrals;
+  ReferralsAccesses: typeof ReferralsAccesses;
+  ReferralsRegistrations: typeof ReferralsRegistrations;
+  ReportActions: typeof ReportActions;
+  ReportDetails: typeof ReportDetails;
+  Reports: typeof Reports;
+  Roleplay: typeof Roleplay;
+  RoleplayPair: typeof RoleplayPair;
+  RoleplayPairs: typeof RoleplayPairs;
+  Roleplays: typeof Roleplays;
+  RoleplaysSessions: typeof RoleplaysSessions;
+  RoleplaysTeams: typeof RoleplaysTeams;
+  RoleplaysTeamsMembers: typeof RoleplaysTeamsMembers;
+  RoleplaysTeamsSchedules: typeof RoleplaysTeamsSchedules;
+  Roles: typeof Roles;
+  SavedPositions: typeof SavedPositions;
+  Semesters: typeof Semesters;
+  ServerAttributes: typeof ServerAttributes;
+  ServerLogs: typeof ServerLogs;
+  Sessions: typeof Sessions;
+  SessionsMentorings: typeof SessionsMentorings;
+  SessionsReflections: typeof SessionsReflections;
+  SessionsReflectionsComments: typeof SessionsReflectionsComments;
+  SessionsReflectionsCommentsReplies: typeof SessionsReflectionsCommentsReplies;
+  SessionsReflectionsLikes: typeof SessionsReflectionsLikes;
+  SessionsTeacherAssessment: typeof SessionsTeacherAssessment;
+  SessionsTeacherAssessmentQuestions: typeof SessionsTeacherAssessmentQuestions;
+  SessionsTeacherAssessmentQuestionsAnswers: typeof SessionsTeacherAssessmentQuestionsAnswers;
+  SessionsTeacherAssessmentSessionsQuestions: typeof SessionsTeacherAssessmentSessionsQuestions;
+  SessionsTeacherAssessmentStudentsAnswers: typeof SessionsTeacherAssessmentStudentsAnswers;
+  SimulationGroupStudents: typeof SimulationGroupStudents;
+  SimulationGroups: typeof SimulationGroups;
+  Simulations: typeof Simulations;
+  StoragesFiles: typeof StoragesFiles;
+  StoragesFilesHistories: typeof StoragesFilesHistories;
+  StudentEvents: typeof StudentEvents;
+  StudentMajors: typeof StudentMajors;
+  StudentProfiles: typeof StudentProfiles;
+  StudentSessionProgress: typeof StudentSessionProgress;
+  StudentSessions: typeof StudentSessions;
+  StudentSubjects: typeof StudentSubjects;
+  SubjectMajors: typeof SubjectMajors;
+  SubjectSessions: typeof SubjectSessions;
+  Subjects: typeof Subjects;
+  SubjectsOutcomes: typeof SubjectsOutcomes;
+  SubjectsSessionsActivities: typeof SubjectsSessionsActivities;
+  SubjectsSessionsAssessments: typeof SubjectsSessionsAssessments;
+  SubjectsSessionsContentOrders: typeof SubjectsSessionsContentOrders;
+  SubmissionDocuments: typeof SubmissionDocuments;
+  Submissions: typeof Submissions;
+  Surveys: typeof Surveys;
+  SurveysQuestions: typeof SurveysQuestions;
+  SurveysQuestionsAnswers: typeof SurveysQuestionsAnswers;
+  SurveysResponses: typeof SurveysResponses;
+  SurveysResponsesAnswers: typeof SurveysResponsesAnswers;
+  Tags: typeof Tags;
+  TeachersRegistrations: typeof TeachersRegistrations;
+  Topics: typeof Topics;
+  TopicsSubjects: typeof TopicsSubjects;
+  UserRoles: typeof UserRoles;
+  UserSessions: typeof UserSessions;
+  Users: typeof Users;
+  UsersActives: typeof UsersActives;
+  UsersAdministrations: typeof UsersAdministrations;
+  UsersDelete: typeof UsersDelete;
+  UsersScreenTimes: typeof UsersScreenTimes;
+  UsersSearchHistories: typeof UsersSearchHistories;
+  UsersSocialMedia: typeof UsersSocialMedia;
+  UsersSocketConnections: typeof UsersSocketConnections;
+  Videos: typeof Videos;
+  WatchedVideoProgress: typeof WatchedVideoProgress;
+}
 
-export type {
-  SequelizeMetaAttributes,
-  SequelizeMetaCreationAttributes,
-  ActivitiesAttributes,
-  ActivitiesCreationAttributes,
-  AdminAttendenceAttributes,
-  AdminAttendenceCreationAttributes,
-  AdminPanelLogsAttributes,
-  AdminPanelLogsCreationAttributes,
-  AdminReflectionAttributes,
-  AdminReflectionCreationAttributes,
-  AdministrationsAttributes,
-  AdministrationsCreationAttributes,
-  AdministrationsBiodatasAttributes,
-  AdministrationsBiodatasCreationAttributes,
-  AdministrationsFamilialsAttributes,
-  AdministrationsFamilialsCreationAttributes,
-  AdministrationsFilesAttributes,
-  AdministrationsFilesCreationAttributes,
-  AnalyticVisitsAttributes,
-  AnalyticVisitsCreationAttributes,
-  ArticleFavoritesAttributes,
-  ArticleFavoritesCreationAttributes,
-  ArticleLikesAttributes,
-  ArticleLikesCreationAttributes,
-  ArticlesAttributes,
-  ArticlesCreationAttributes,
-  ArticlesCategoriesAttributes,
-  ArticlesCategoriesCreationAttributes,
-  ArticlesFavoritesAttributes,
-  ArticlesFavoritesCreationAttributes,
-  ArticlesTagsAttributes,
-  ArticlesTagsCreationAttributes,
-  AvailabilitySchedulesAttributes,
-  AvailabilitySchedulesCreationAttributes,
-  BannerAttributes,
-  BannerCreationAttributes,
-  CertificatesAttributes,
-  CertificatesCreationAttributes,
-  ChatsConversationsAttributes,
-  ChatsConversationsCreationAttributes,
-  ChatsConversationsParticipantsAttributes,
-  ChatsConversationsParticipantsCreationAttributes,
-  ChatsMessagesAttributes,
-  ChatsMessagesCreationAttributes,
-  ChatsRoomsAttributes,
-  ChatsRoomsCreationAttributes,
-  ChatsRoomsMembersAttributes,
-  ChatsRoomsMembersCreationAttributes,
-  ChatsRoomsMessagesAttributes,
-  ChatsRoomsMessagesCreationAttributes,
-  CompaniesAttributes,
-  CompaniesCreationAttributes,
-  CompaniesDepartmentsAttributes,
-  CompaniesDepartmentsCreationAttributes,
-  CompaniesEmployeesAttributes,
-  CompaniesEmployeesCreationAttributes,
-  CompaniesEmployeesRolesAttributes,
-  CompaniesEmployeesRolesCreationAttributes,
-  ConsultationRoomMessagesAttributes,
-  ConsultationRoomMessagesCreationAttributes,
-  ConsultationRoomsAttributes,
-  ConsultationRoomsCreationAttributes,
-  ConsultationTypesAttributes,
-  ConsultationTypesCreationAttributes,
-  CyclesAttributes,
-  CyclesCreationAttributes,
-  DictionarysAttributes,
-  DictionarysCreationAttributes,
-  DiscussionForumCommentsAttributes,
-  DiscussionForumCommentsCreationAttributes,
-  DiscussionForumRepliesAttributes,
-  DiscussionForumRepliesCreationAttributes,
-  DiscussionForumsAttributes,
-  DiscussionForumsCreationAttributes,
-  DiscussionLikesAttributes,
-  DiscussionLikesCreationAttributes,
-  DiscussionReportsAttributes,
-  DiscussionReportsCreationAttributes,
-  DonationProofsAttributes,
-  DonationProofsCreationAttributes,
-  ErrorLogsAttributes,
-  ErrorLogsCreationAttributes,
-  EventParticipantsAttributes,
-  EventParticipantsCreationAttributes,
-  EventsAttributes,
-  EventsCreationAttributes,
-  EventsParticipantsAttributes,
-  EventsParticipantsCreationAttributes,
-  GuidesBooksAttributes,
-  GuidesBooksCreationAttributes,
-  GuidesDictionariesAttributes,
-  GuidesDictionariesCreationAttributes,
-  GuidesFrequentlyAskedQuestionsAttributes,
-  GuidesFrequentlyAskedQuestionsCreationAttributes,
-  GuidesVideosAttributes,
-  GuidesVideosCreationAttributes,
-  InboxMessagesAttributes,
-  InboxMessagesCreationAttributes,
-  JobApplicationsAttributes,
-  JobApplicationsCreationAttributes,
-  JobsAttributes,
-  JobsCreationAttributes,
-  LeaderboardHistoriesAttributes,
-  LeaderboardHistoriesCreationAttributes,
-  MeetingsAttributes,
-  MeetingsCreationAttributes,
-  NotificationsAttributes,
-  NotificationsCreationAttributes,
-  NotificationsMessagesAttributes,
-  NotificationsMessagesCreationAttributes,
-  NotificationsTemplatesAttributes,
-  NotificationsTemplatesCreationAttributes,
-  OtpsAttributes,
-  OtpsCreationAttributes,
-  PartnersAttributes,
-  PartnersCreationAttributes,
-  PartnersProposalsAttributes,
-  PartnersProposalsCreationAttributes,
-  PaymentTransactionsAttributes,
-  PaymentTransactionsCreationAttributes,
-  PaymentTrasactionItemsAttributes,
-  PaymentTrasactionItemsCreationAttributes,
-  PositionSkillsAttributes,
-  PositionSkillsCreationAttributes,
-  PositionsAttributes,
-  PositionsCreationAttributes,
-  PositionsSkillsAttributes,
-  PositionsSkillsCreationAttributes,
-  ProgramPositionSkillsAttributes,
-  ProgramPositionSkillsCreationAttributes,
-  ProgramPositionsAttributes,
-  ProgramPositionsCreationAttributes,
-  ProgramsPositionSkillsAttributes,
-  ProgramsPositionSkillsCreationAttributes,
-  ProgressQuestionAnswersAttributes,
-  ProgressQuestionAnswersCreationAttributes,
-  QuizzesAttributes,
-  QuizzesCreationAttributes,
-  QuizzesAnswersAttributes,
-  QuizzesAnswersCreationAttributes,
-  QuizzesQuestionsAttributes,
-  QuizzesQuestionsCreationAttributes,
-  RecruitmentAgendasAttributes,
-  RecruitmentAgendasCreationAttributes,
-  RecruitmentDepartmentsAttributes,
-  RecruitmentDepartmentsCreationAttributes,
-  RecruitmentParticipantsAttributes,
-  RecruitmentParticipantsCreationAttributes,
-  RecruitmentSchedulesAttributes,
-  RecruitmentSchedulesCreationAttributes,
-  ReferralsAttributes,
-  ReferralsCreationAttributes,
-  ReferralsAccessesAttributes,
-  ReferralsAccessesCreationAttributes,
-  ReferralsRegistrationsAttributes,
-  ReferralsRegistrationsCreationAttributes,
-  ReportActionsAttributes,
-  ReportActionsCreationAttributes,
-  ReportDetailsAttributes,
-  ReportDetailsCreationAttributes,
-  ReportsAttributes,
-  ReportsCreationAttributes,
-  RoleplayAttributes,
-  RoleplayCreationAttributes,
-  RoleplayPairAttributes,
-  RoleplayPairCreationAttributes,
-  RoleplayPairsAttributes,
-  RoleplayPairsCreationAttributes,
-  RoleplaysAttributes,
-  RoleplaysCreationAttributes,
-  RoleplaysTeamsAttributes,
-  RoleplaysTeamsCreationAttributes,
-  RoleplaysTeamsMembersAttributes,
-  RoleplaysTeamsMembersCreationAttributes,
-  RoleplaysTeamsSchedulesAttributes,
-  RoleplaysTeamsSchedulesCreationAttributes,
-  RolesAttributes,
-  RolesCreationAttributes,
-  SavedPositionsAttributes,
-  SavedPositionsCreationAttributes,
-  ServerAttributesAttributes,
-  ServerAttributesCreationAttributes,
-  ServerLogsAttributes,
-  ServerLogsCreationAttributes,
-  StoragesFilesAttributes,
-  StoragesFilesCreationAttributes,
-  StoragesFilesHistoriesAttributes,
-  StoragesFilesHistoriesCreationAttributes,
-  SurveysAttributes,
-  SurveysCreationAttributes,
-  SurveysQuestionsAttributes,
-  SurveysQuestionsCreationAttributes,
-  SurveysQuestionsAnswersAttributes,
-  SurveysQuestionsAnswersCreationAttributes,
-  SurveysResponsesAttributes,
-  SurveysResponsesCreationAttributes,
-  SurveysResponsesAnswersAttributes,
-  SurveysResponsesAnswersCreationAttributes,
-  TagsAttributes,
-  TagsCreationAttributes,
-  UserRolesAttributes,
-  UserRolesCreationAttributes,
-  UsersAttributes,
-  UsersCreationAttributes,
-  UsersActivesAttributes,
-  UsersActivesCreationAttributes,
-  UsersAdministrationsAttributes,
-  UsersAdministrationsCreationAttributes,
-  UsersDeleteAttributes,
-  UsersDeleteCreationAttributes,
-  UsersScreenTimesAttributes,
-  UsersScreenTimesCreationAttributes,
-  UsersSearchHistoriesAttributes,
-  UsersSearchHistoriesCreationAttributes,
-  UsersSocialMediaAttributes,
-  UsersSocialMediaCreationAttributes,
-  UsersSocketConnectionsAttributes,
-  UsersSocketConnectionsCreationAttributes,
-  VideosAttributes,
-  VideosCreationAttributes,
-  WatchedVideoProgressAttributes,
-  WatchedVideoProgressCreationAttributes,
-};
+export function initModels(sequelize: Sequelize): Models {
+  // Initialize all models
+  Activities.initModel(sequelize);
+  AdminAttendence.initModel(sequelize);
+  AdminPanelLogs.initModel(sequelize);
+  AdminReflection.initModel(sequelize);
+  Administrations.initModel(sequelize);
+  AdministrationsBiodatas.initModel(sequelize);
+  AdministrationsFamilials.initModel(sequelize);
+  AdministrationsFiles.initModel(sequelize);
+  AnalyticVisits.initModel(sequelize);
+  ArticleFavorites.initModel(sequelize);
+  ArticleLikes.initModel(sequelize);
+  Articles.initModel(sequelize);
+  ArticlesCategories.initModel(sequelize);
+  ArticlesFavorites.initModel(sequelize);
+  ArticlesTags.initModel(sequelize);
+  AssessmentCompetencyTests.initModel(sequelize);
+  AssessmentCompetencyTestsSchedules.initModel(sequelize);
+  Assessments.initModel(sequelize);
+  AssessmentsAssessors.initModel(sequelize);
+  AssessmentsAssessorsAvailabilities.initModel(sequelize);
+  AssessmentsSessions.initModel(sequelize);
+  AssessmentsSessionsPartners.initModel(sequelize);
+  AssessmentsSessionsRubricsResults.initModel(sequelize);
+  AssessmentsSessionsSubmissions.initModel(sequelize);
+  AssessmentsSubjectsProgresses.initModel(sequelize);
+  AssessmentsSubjectsProgressesAnswers.initModel(sequelize);
+  AssignmentDocuments.initModel(sequelize);
+  AssignmentFiles.initModel(sequelize);
+  Assignments.initModel(sequelize);
+  AssignmentsAdmin.initModel(sequelize);
+  AvailabilitySchedules.initModel(sequelize);
+  Banner.initModel(sequelize);
+  BootcampTopics.initModel(sequelize);
+  Certificates.initModel(sequelize);
+  ChatsConversations.initModel(sequelize);
+  ChatsConversationsParticipants.initModel(sequelize);
+  ChatsMessages.initModel(sequelize);
+  ChatsRooms.initModel(sequelize);
+  ChatsRoomsMembers.initModel(sequelize);
+  ChatsRoomsMessages.initModel(sequelize);
+  CollegeAcademicCohorts.initModel(sequelize);
+  CollegeClassEnrollments.initModel(sequelize);
+  CollegeClasses.initModel(sequelize);
+  CollegeProgramOfferings.initModel(sequelize);
+  CollegeStudentRegistrations.initModel(sequelize);
+  Companies.initModel(sequelize);
+  CompaniesDepartments.initModel(sequelize);
+  CompaniesEmployees.initModel(sequelize);
+  CompaniesEmployeesRoles.initModel(sequelize);
+  ConsultationRoomMessages.initModel(sequelize);
+  ConsultationRooms.initModel(sequelize);
+  ConsultationTypes.initModel(sequelize);
+  CreditConvertionRequests.initModel(sequelize);
+  CreditConvertionRequestsSubjects.initModel(sequelize);
+  Cycles.initModel(sequelize);
+  Dictionarys.initModel(sequelize);
+  DiscussionForumComments.initModel(sequelize);
+  DiscussionForumReplies.initModel(sequelize);
+  DiscussionForums.initModel(sequelize);
+  DiscussionLikes.initModel(sequelize);
+  DiscussionReports.initModel(sequelize);
+  DonationProofs.initModel(sequelize);
+  DrillSimulationAssessmentsMeetings.initModel(sequelize);
+  DrillSimulationAssessmentsSchedules.initModel(sequelize);
+  Drills.initModel(sequelize);
+  ErrorLogs.initModel(sequelize);
+  EventParticipants.initModel(sequelize);
+  Events.initModel(sequelize);
+  EventsParticipants.initModel(sequelize);
+  Faculties.initModel(sequelize);
+  GradingRubrics.initModel(sequelize);
+  GradingRubricsCriteria.initModel(sequelize);
+  GradingRubricsCriteriaDetails.initModel(sequelize);
+  GuidesBooks.initModel(sequelize);
+  GuidesDictionaries.initModel(sequelize);
+  GuidesFrequentlyAskedQuestions.initModel(sequelize);
+  GuidesVideos.initModel(sequelize);
+  InboxMessages.initModel(sequelize);
+  InternshipStudentMentors.initModel(sequelize);
+  JobApplications.initModel(sequelize);
+  Jobs.initModel(sequelize);
+  LeaderboardHistories.initModel(sequelize);
+  Majors.initModel(sequelize);
+  Meetings.initModel(sequelize);
+  Mentors.initModel(sequelize);
+  Modules.initModel(sequelize);
+  ModulesAdmin.initModel(sequelize);
+  ModulesArticles.initModel(sequelize);
+  ModulesDocuments.initModel(sequelize);
+  ModulesJournals.initModel(sequelize);
+  ModulesVideos.initModel(sequelize);
+  Notifications.initModel(sequelize);
+  NotificationsMessages.initModel(sequelize);
+  NotificationsTemplates.initModel(sequelize);
+  Otps.initModel(sequelize);
+  Partners.initModel(sequelize);
+  PartnersProposals.initModel(sequelize);
+  PaymentTransactions.initModel(sequelize);
+  PaymentTrasactionItems.initModel(sequelize);
+  PositionSkills.initModel(sequelize);
+  Positions.initModel(sequelize);
+  PositionsSkills.initModel(sequelize);
+  ProgramPositionSkills.initModel(sequelize);
+  ProgramPositions.initModel(sequelize);
+  ProgramsPositionSkills.initModel(sequelize);
+  ProgressQuestionAnswers.initModel(sequelize);
+  Quizzes.initModel(sequelize);
+  QuizzesAnswers.initModel(sequelize);
+  QuizzesQuestions.initModel(sequelize);
+  RecruitmentAgendas.initModel(sequelize);
+  RecruitmentDepartments.initModel(sequelize);
+  RecruitmentParticipants.initModel(sequelize);
+  RecruitmentSchedules.initModel(sequelize);
+  Referrals.initModel(sequelize);
+  ReferralsAccesses.initModel(sequelize);
+  ReferralsRegistrations.initModel(sequelize);
+  ReportActions.initModel(sequelize);
+  ReportDetails.initModel(sequelize);
+  Reports.initModel(sequelize);
+  Roleplay.initModel(sequelize);
+  RoleplayPair.initModel(sequelize);
+  RoleplayPairs.initModel(sequelize);
+  Roleplays.initModel(sequelize);
+  RoleplaysSessions.initModel(sequelize);
+  RoleplaysTeams.initModel(sequelize);
+  RoleplaysTeamsMembers.initModel(sequelize);
+  RoleplaysTeamsSchedules.initModel(sequelize);
+  Roles.initModel(sequelize);
+  SavedPositions.initModel(sequelize);
+  Semesters.initModel(sequelize);
+  ServerAttributes.initModel(sequelize);
+  ServerLogs.initModel(sequelize);
+  Sessions.initModel(sequelize);
+  SessionsMentorings.initModel(sequelize);
+  SessionsReflections.initModel(sequelize);
+  SessionsReflectionsComments.initModel(sequelize);
+  SessionsReflectionsCommentsReplies.initModel(sequelize);
+  SessionsReflectionsLikes.initModel(sequelize);
+  SessionsTeacherAssessment.initModel(sequelize);
+  SessionsTeacherAssessmentQuestions.initModel(sequelize);
+  SessionsTeacherAssessmentQuestionsAnswers.initModel(sequelize);
+  SessionsTeacherAssessmentSessionsQuestions.initModel(sequelize);
+  SessionsTeacherAssessmentStudentsAnswers.initModel(sequelize);
+  SimulationGroupStudents.initModel(sequelize);
+  SimulationGroups.initModel(sequelize);
+  Simulations.initModel(sequelize);
+  StoragesFiles.initModel(sequelize);
+  StoragesFilesHistories.initModel(sequelize);
+  StudentEvents.initModel(sequelize);
+  StudentMajors.initModel(sequelize);
+  StudentProfiles.initModel(sequelize);
+  StudentSessionProgress.initModel(sequelize);
+  StudentSessions.initModel(sequelize);
+  StudentSubjects.initModel(sequelize);
+  SubjectMajors.initModel(sequelize);
+  SubjectSessions.initModel(sequelize);
+  Subjects.initModel(sequelize);
+  SubjectsOutcomes.initModel(sequelize);
+  SubjectsSessionsActivities.initModel(sequelize);
+  SubjectsSessionsAssessments.initModel(sequelize);
+  SubjectsSessionsContentOrders.initModel(sequelize);
+  SubmissionDocuments.initModel(sequelize);
+  Submissions.initModel(sequelize);
+  Surveys.initModel(sequelize);
+  SurveysQuestions.initModel(sequelize);
+  SurveysQuestionsAnswers.initModel(sequelize);
+  SurveysResponses.initModel(sequelize);
+  SurveysResponsesAnswers.initModel(sequelize);
+  Tags.initModel(sequelize);
+  TeachersRegistrations.initModel(sequelize);
+  Topics.initModel(sequelize);
+  TopicsSubjects.initModel(sequelize);
+  UserRoles.initModel(sequelize);
+  UserSessions.initModel(sequelize);
+  Users.initModel(sequelize);
+  UsersActives.initModel(sequelize);
+  UsersAdministrations.initModel(sequelize);
+  UsersDelete.initModel(sequelize);
+  UsersScreenTimes.initModel(sequelize);
+  UsersSearchHistories.initModel(sequelize);
+  UsersSocialMedia.initModel(sequelize);
+  UsersSocketConnections.initModel(sequelize);
+  Videos.initModel(sequelize);
+  WatchedVideoProgress.initModel(sequelize);
 
-export function initModels(sequelize: Sequelize) {
-  const SequelizeMeta = _SequelizeMeta.initModel(sequelize);
-  const Activities = _Activities.initModel(sequelize);
-  const AdminAttendence = _AdminAttendence.initModel(sequelize);
-  const AdminPanelLogs = _AdminPanelLogs.initModel(sequelize);
-  const AdminReflection = _AdminReflection.initModel(sequelize);
-  const Administrations = _Administrations.initModel(sequelize);
-  const AdministrationsBiodatas = _AdministrationsBiodatas.initModel(sequelize);
-  const AdministrationsFamilials = _AdministrationsFamilials.initModel(sequelize);
-  const AdministrationsFiles = _AdministrationsFiles.initModel(sequelize);
-  const AnalyticVisits = _AnalyticVisits.initModel(sequelize);
-  const ArticleFavorites = _ArticleFavorites.initModel(sequelize);
-  const ArticleLikes = _ArticleLikes.initModel(sequelize);
-  const Articles = _Articles.initModel(sequelize);
-  const ArticlesCategories = _ArticlesCategories.initModel(sequelize);
-  const ArticlesFavorites = _ArticlesFavorites.initModel(sequelize);
-  const ArticlesTags = _ArticlesTags.initModel(sequelize);
-  const AvailabilitySchedules = _AvailabilitySchedules.initModel(sequelize);
-  const Banner = _Banner.initModel(sequelize);
-  const BootcampTopics = _BootcampTopics.initModel(sequelize);
-  const Certificates = _Certificates.initModel(sequelize);
-  const ChatsConversations = _ChatsConversations.initModel(sequelize);
-  const ChatsConversationsParticipants = _ChatsConversationsParticipants.initModel(sequelize);
-  const ChatsMessages = _ChatsMessages.initModel(sequelize);
-  const ChatsRooms = _ChatsRooms.initModel(sequelize);
-  const ChatsRoomsMembers = _ChatsRoomsMembers.initModel(sequelize);
-  const ChatsRoomsMessages = _ChatsRoomsMessages.initModel(sequelize);
-  const Companies = _Companies.initModel(sequelize);
-  const CompaniesDepartments = _CompaniesDepartments.initModel(sequelize);
-  const CompaniesEmployees = _CompaniesEmployees.initModel(sequelize);
-  const CompaniesEmployeesRoles = _CompaniesEmployeesRoles.initModel(sequelize);
-  const ConsultationRoomMessages = _ConsultationRoomMessages.initModel(sequelize);
-  const ConsultationRooms = _ConsultationRooms.initModel(sequelize);
-  const ConsultationTypes = _ConsultationTypes.initModel(sequelize);
-  const Cycles = _Cycles.initModel(sequelize);
-  const Dictionarys = _Dictionarys.initModel(sequelize);
-  const DiscussionForumComments = _DiscussionForumComments.initModel(sequelize);
-  const DiscussionForumReplies = _DiscussionForumReplies.initModel(sequelize);
-  const DiscussionForums = _DiscussionForums.initModel(sequelize);
-  const DiscussionLikes = _DiscussionLikes.initModel(sequelize);
-  const DiscussionReports = _DiscussionReports.initModel(sequelize);
-  const DonationProofs = _DonationProofs.initModel(sequelize);
-  const ErrorLogs = _ErrorLogs.initModel(sequelize);
-  const EventParticipants = _EventParticipants.initModel(sequelize);
-  const Events = _Events.initModel(sequelize);
-  const EventsParticipants = _EventsParticipants.initModel(sequelize);
-  const GuidesBooks = _GuidesBooks.initModel(sequelize);
-  const GuidesDictionaries = _GuidesDictionaries.initModel(sequelize);
-  const GuidesFrequentlyAskedQuestions = _GuidesFrequentlyAskedQuestions.initModel(sequelize);
-  const GuidesVideos = _GuidesVideos.initModel(sequelize);
-  const InboxMessages = _InboxMessages.initModel(sequelize);
-  const JobApplications = _JobApplications.initModel(sequelize);
-  const Jobs = _Jobs.initModel(sequelize);
-  const LeaderboardHistories = _LeaderboardHistories.initModel(sequelize);
-  const Meetings = _Meetings.initModel(sequelize);
-  const Notifications = _Notifications.initModel(sequelize);
-  const NotificationsMessages = _NotificationsMessages.initModel(sequelize);
-  const NotificationsTemplates = _NotificationsTemplates.initModel(sequelize);
-  const Otps = _Otps.initModel(sequelize);
-  const Partners = _Partners.initModel(sequelize);
-  const PartnersProposals = _PartnersProposals.initModel(sequelize);
-  const PaymentTransactions = _PaymentTransactions.initModel(sequelize);
-  const PaymentTrasactionItems = _PaymentTrasactionItems.initModel(sequelize);
-  const PositionSkills = _PositionSkills.initModel(sequelize);
-  const Positions = _Positions.initModel(sequelize);
-  const PositionsSkills = _PositionsSkills.initModel(sequelize);
-  const ProgramPositionSkills = _ProgramPositionSkills.initModel(sequelize);
-  const ProgramPositions = _ProgramPositions.initModel(sequelize);
-  const ProgramsPositionSkills = _ProgramsPositionSkills.initModel(sequelize);
-  const ProgressQuestionAnswers = _ProgressQuestionAnswers.initModel(sequelize);
-  const Quizzes = _Quizzes.initModel(sequelize);
-  const QuizzesAnswers = _QuizzesAnswers.initModel(sequelize);
-  const QuizzesQuestions = _QuizzesQuestions.initModel(sequelize);
-  const RecruitmentAgendas = _RecruitmentAgendas.initModel(sequelize);
-  const RecruitmentDepartments = _RecruitmentDepartments.initModel(sequelize);
-  const RecruitmentParticipants = _RecruitmentParticipants.initModel(sequelize);
-  const RecruitmentSchedules = _RecruitmentSchedules.initModel(sequelize);
-  const Referrals = _Referrals.initModel(sequelize);
-  const ReferralsAccesses = _ReferralsAccesses.initModel(sequelize);
-  const ReferralsRegistrations = _ReferralsRegistrations.initModel(sequelize);
-  const ReportActions = _ReportActions.initModel(sequelize);
-  const ReportDetails = _ReportDetails.initModel(sequelize);
-  const Reports = _Reports.initModel(sequelize);
-  const Roleplay = _Roleplay.initModel(sequelize);
-  const RoleplayPair = _RoleplayPair.initModel(sequelize);
-  const RoleplayPairs = _RoleplayPairs.initModel(sequelize);
-  const Roleplays = _Roleplays.initModel(sequelize);
-  const RoleplaysSessions = _RoleplaysSessions.initModel(sequelize);
-  const RoleplaysTeams = _RoleplaysTeams.initModel(sequelize);
-  const RoleplaysTeamsMembers = _RoleplaysTeamsMembers.initModel(sequelize);
-  const RoleplaysTeamsSchedules = _RoleplaysTeamsSchedules.initModel(sequelize);
-  const Roles = _Roles.initModel(sequelize);
-  const SavedPositions = _SavedPositions.initModel(sequelize);
-  const ServerAttributes = _ServerAttributes.initModel(sequelize);
-  const ServerLogs = _ServerLogs.initModel(sequelize);
-  const StoragesFiles = _StoragesFiles.initModel(sequelize);
-  const StoragesFilesHistories = _StoragesFilesHistories.initModel(sequelize);
-  const Surveys = _Surveys.initModel(sequelize);
-  const SurveysQuestions = _SurveysQuestions.initModel(sequelize);
-  const SurveysQuestionsAnswers = _SurveysQuestionsAnswers.initModel(sequelize);
-  const SurveysResponses = _SurveysResponses.initModel(sequelize);
-  const SurveysResponsesAnswers = _SurveysResponsesAnswers.initModel(sequelize);
-  const Tags = _Tags.initModel(sequelize);
-  const UserRoles = _UserRoles.initModel(sequelize);
-  const UserSessions = _UserSessions.initModel(sequelize);
-  const Users = _Users.initModel(sequelize);
-  const UsersActives = _UsersActives.initModel(sequelize);
-  const UsersAdministrations = _UsersAdministrations.initModel(sequelize);
-  const UsersDelete = _UsersDelete.initModel(sequelize);
-  const UsersScreenTimes = _UsersScreenTimes.initModel(sequelize);
-  const UsersSearchHistories = _UsersSearchHistories.initModel(sequelize);
-  const UsersSocialMedia = _UsersSocialMedia.initModel(sequelize);
-  const UsersSocketConnections = _UsersSocketConnections.initModel(sequelize);
-  const Videos = _Videos.initModel(sequelize);
-  const WatchedVideoProgress = _WatchedVideoProgress.initModel(sequelize);
+  // Define associations
+  // Activities belongsTo ProgramPositions
+  Activities.belongsTo(ProgramPositions, { foreignKey: 'position_id', as: 'position' });
+  ProgramPositions.hasMany(Activities, { foreignKey: 'position_id', as: 'activities' });
+
+  // Activities belongsTo Users
+  Activities.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(Activities, { foreignKey: 'user_id', as: 'activities' });
+
+  // AdminAttendence belongsTo Sessions
+  AdminAttendence.belongsTo(Sessions, { foreignKey: 'session_id', as: 'session' });
+  Sessions.hasMany(AdminAttendence, { foreignKey: 'session_id', as: 'adminAttendences' });
+
+  // AdminAttendence belongsTo Users
+  AdminAttendence.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(AdminAttendence, { foreignKey: 'user_id', as: 'adminAttendences' });
+
+  // AdminReflection belongsTo Sessions
+  AdminReflection.belongsTo(Sessions, { foreignKey: 'session_id', as: 'session' });
+  Sessions.hasMany(AdminReflection, { foreignKey: 'session_id', as: 'adminReflections' });
+
+  // AdminReflection belongsTo Users
+  AdminReflection.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(AdminReflection, { foreignKey: 'user_id', as: 'adminReflections' });
+
+  // AdministrationsBiodatas belongsTo Administrations
+  AdministrationsBiodatas.belongsTo(Administrations, { foreignKey: 'administration_id', as: 'administration' });
+  Administrations.hasMany(AdministrationsBiodatas, { foreignKey: 'administration_id', as: 'administrationsBiodatas' });
+
+  // AdministrationsFamilials belongsTo Administrations
+  AdministrationsFamilials.belongsTo(Administrations, { foreignKey: 'administration_id', as: 'administration' });
+  Administrations.hasMany(AdministrationsFamilials, { foreignKey: 'administration_id', as: 'administrationsFamilials' });
+
+  // AdministrationsFiles belongsTo Administrations
+  AdministrationsFiles.belongsTo(Administrations, { foreignKey: 'administration_id', as: 'administration' });
+  Administrations.hasMany(AdministrationsFiles, { foreignKey: 'administration_id', as: 'administrationsFiles' });
+
+  // Administrations belongsTo Users
+  Administrations.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(Administrations, { foreignKey: 'user_id', as: 'administrations' });
+
+  // Articles belongsTo Users
+  Articles.belongsTo(Users, { foreignKey: 'author_id', as: 'author' });
+  Users.hasMany(Articles, { foreignKey: 'author_id', as: 'articles' });
+
+  // Articles belongsTo ArticlesCategories
+  Articles.belongsTo(ArticlesCategories, { foreignKey: 'category_id', as: 'category' });
+  ArticlesCategories.hasMany(Articles, { foreignKey: 'category_id', as: 'articles' });
+
+  // ArticlesFavorites belongsTo Articles
+  ArticlesFavorites.belongsTo(Articles, { foreignKey: 'article_id', as: 'article' });
+  Articles.hasMany(ArticlesFavorites, { foreignKey: 'article_id', as: 'articlesFavorites' });
+
+  // ArticlesFavorites belongsTo Users
+  ArticlesFavorites.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(ArticlesFavorites, { foreignKey: 'user_id', as: 'articlesFavorites' });
+
+  // ArticlesTags belongsTo Articles
+  ArticlesTags.belongsTo(Articles, { foreignKey: 'articles_id', as: 'articles' });
+  Articles.hasMany(ArticlesTags, { foreignKey: 'articles_id', as: 'articlesTags' });
+
+  // ArticlesTags belongsTo Tags
+  ArticlesTags.belongsTo(Tags, { foreignKey: 'tags_id', as: 'tags' });
+  Tags.hasMany(ArticlesTags, { foreignKey: 'tags_id', as: 'articlesTags' });
+
+  // AssessmentsAssessors belongsTo Assessments
+  AssessmentsAssessors.belongsTo(Assessments, { foreignKey: 'assessment_id', as: 'assessment' });
+  Assessments.hasMany(AssessmentsAssessors, { foreignKey: 'assessment_id', as: 'assessmentsAssessors' });
+
+  // AssessmentsAssessors belongsTo Users
+  AssessmentsAssessors.belongsTo(Users, { foreignKey: 'assessor_id', as: 'assessor' });
+  Users.hasMany(AssessmentsAssessors, { foreignKey: 'assessor_id', as: 'assessmentsAssessors' });
+
+  // AssessmentsAssessorsAvailabilities belongsTo Assessments
+  AssessmentsAssessorsAvailabilities.belongsTo(Assessments, { foreignKey: 'assessment_id', as: 'assessment' });
+  Assessments.hasMany(AssessmentsAssessorsAvailabilities, { foreignKey: 'assessment_id', as: 'assessmentsAssessorsAvailabilities' });
+
+  // AssessmentsAssessorsAvailabilities belongsTo Users
+  AssessmentsAssessorsAvailabilities.belongsTo(Users, { foreignKey: 'assessor_id', as: 'assessor' });
+  Users.hasMany(AssessmentsAssessorsAvailabilities, { foreignKey: 'assessor_id', as: 'assessmentsAssessorsAvailabilities' });
+
+  // Assessments belongsTo Users
+  Assessments.belongsTo(Users, { foreignKey: 'created_by', as: 'createdBy' });
+  Users.hasMany(Assessments, { foreignKey: 'created_by', as: 'assessments' });
+
+  // Assessments belongsTo Majors
+  Assessments.belongsTo(Majors, { foreignKey: 'major_id', as: 'major' });
+  Majors.hasMany(Assessments, { foreignKey: 'major_id', as: 'assessments' });
+
+  // Assessments belongsTo GradingRubrics
+  Assessments.belongsTo(GradingRubrics, { foreignKey: 'rubric_id', as: 'rubric' });
+  GradingRubrics.hasMany(Assessments, { foreignKey: 'rubric_id', as: 'assessments' });
+
+  // AssessmentsSessions belongsTo Assessments
+  AssessmentsSessions.belongsTo(Assessments, { foreignKey: 'assessment_id', as: 'assessment' });
+  Assessments.hasMany(AssessmentsSessions, { foreignKey: 'assessment_id', as: 'assessmentsSessions' });
+
+  // AssessmentsSessions belongsTo Users
+  AssessmentsSessions.belongsTo(Users, { foreignKey: 'booked_by', as: 'bookedBy' });
+  Users.hasMany(AssessmentsSessions, { foreignKey: 'booked_by', as: 'assessmentsSessions' });
+
+  // AssessmentsSessionsPartners belongsTo Assessments
+  AssessmentsSessionsPartners.belongsTo(Assessments, { foreignKey: 'assessment_id', as: 'assessment' });
+  Assessments.hasMany(AssessmentsSessionsPartners, { foreignKey: 'assessment_id', as: 'assessmentsSessionsPartners' });
+
+  // AssessmentsSessionsPartners belongsTo AssessmentsSessions
+  AssessmentsSessionsPartners.belongsTo(AssessmentsSessions, { foreignKey: 'assessment_session_id', as: 'assessmentSession' });
+  AssessmentsSessions.hasMany(AssessmentsSessionsPartners, { foreignKey: 'assessment_session_id', as: 'assessmentsSessionsPartners' });
+
+  // AssessmentsSessionsRubricsResults belongsTo GradingRubrics
+  AssessmentsSessionsRubricsResults.belongsTo(GradingRubrics, { foreignKey: 'rubric_id', as: 'rubric' });
+  GradingRubrics.hasMany(AssessmentsSessionsRubricsResults, { foreignKey: 'rubric_id', as: 'assessmentsSessionsRubricsResults' });
+
+  // AssessmentsSessionsSubmissions belongsTo Assessments
+  AssessmentsSessionsSubmissions.belongsTo(Assessments, { foreignKey: 'assessment_id', as: 'assessment' });
+  Assessments.hasMany(AssessmentsSessionsSubmissions, { foreignKey: 'assessment_id', as: 'assessmentsSessionsSubmissions' });
+
+  // AssessmentsSessionsSubmissions belongsTo AssessmentsSessions
+  AssessmentsSessionsSubmissions.belongsTo(AssessmentsSessions, { foreignKey: 'assessment_session_id', as: 'assessmentSession' });
+  AssessmentsSessions.hasMany(AssessmentsSessionsSubmissions, { foreignKey: 'assessment_session_id', as: 'assessmentsSessionsSubmissions' });
+
+  // AssessmentsSessionsSubmissions belongsTo Users
+  AssessmentsSessionsSubmissions.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
+  Users.hasMany(AssessmentsSessionsSubmissions, { foreignKey: 'student_id', as: 'assessmentsSessionsSubmissions' });
+
+  // Assessments belongsTo Subjects
+  Assessments.belongsTo(Subjects, { foreignKey: 'subject_id', as: 'subject' });
+  Subjects.hasMany(Assessments, { foreignKey: 'subject_id', as: 'assessments' });
+
+  // Assessments belongsTo StoragesFiles
+  Assessments.belongsTo(StoragesFiles, { foreignKey: 'thumbnail_id', as: 'thumbnail' });
+  StoragesFiles.hasMany(Assessments, { foreignKey: 'thumbnail_id', as: 'assessments' });
+
+  // AssignmentDocuments belongsTo Assignments
+  AssignmentDocuments.belongsTo(Assignments, { foreignKey: 'assignment_id', as: 'assignment' });
+  Assignments.hasMany(AssignmentDocuments, { foreignKey: 'assignment_id', as: 'assignmentDocuments' });
+
+  // AssignmentFiles belongsTo AssignmentsAdmin
+  AssignmentFiles.belongsTo(AssignmentsAdmin, { foreignKey: 'assignment_id', as: 'assignment' });
+  AssignmentsAdmin.hasMany(AssignmentFiles, { foreignKey: 'assignment_id', as: 'assignmentFiles' });
+
+  // AssignmentsAdmin belongsTo Modules
+  AssignmentsAdmin.belongsTo(Modules, { foreignKey: 'module_id', as: 'module' });
+  Modules.hasMany(AssignmentsAdmin, { foreignKey: 'module_id', as: 'assignmentsAdmins' });
+
+  // AssignmentsAdmin belongsTo Sessions
+  AssignmentsAdmin.belongsTo(Sessions, { foreignKey: 'session_id', as: 'session' });
+  Sessions.hasMany(AssignmentsAdmin, { foreignKey: 'session_id', as: 'assignmentsAdmins' });
+
+  // Assignments belongsTo Sessions
+  Assignments.belongsTo(Sessions, { foreignKey: 'session_id', as: 'session' });
+  Sessions.hasMany(Assignments, { foreignKey: 'session_id', as: 'assignments' });
+
+  // Certificates belongsTo Events
+  Certificates.belongsTo(Events, { foreignKey: 'event_id', as: 'event' });
+  Events.hasMany(Certificates, { foreignKey: 'event_id', as: 'certificates' });
+
+  // Certificates belongsTo Users
+  Certificates.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
+  Users.hasMany(Certificates, { foreignKey: 'student_id', as: 'certificates' });
+
+  // Certificates belongsTo Subjects
+  Certificates.belongsTo(Subjects, { foreignKey: 'subject_id', as: 'subject' });
+  Subjects.hasMany(Certificates, { foreignKey: 'subject_id', as: 'certificates' });
+
+  // ChatsConversations belongsTo Users
+  ChatsConversations.belongsTo(Users, { foreignKey: 'creator_id', as: 'creator' });
+  Users.hasMany(ChatsConversations, { foreignKey: 'creator_id', as: 'chatsConversations' });
+
+  // ChatsConversations belongsTo ChatsMessages
+  ChatsConversations.belongsTo(ChatsMessages, { foreignKey: 'last_message_id', as: 'lastMessage' });
+  ChatsMessages.hasMany(ChatsConversations, { foreignKey: 'last_message_id', as: 'chatsConversations' });
+
+  // ChatsConversationsParticipants belongsTo ChatsConversations
+  ChatsConversationsParticipants.belongsTo(ChatsConversations, { foreignKey: 'conversation_id', as: 'conversation' });
+  ChatsConversations.hasMany(ChatsConversationsParticipants, { foreignKey: 'conversation_id', as: 'chatsConversationsParticipants' });
+
+  // ChatsConversationsParticipants belongsTo Users
+  ChatsConversationsParticipants.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(ChatsConversationsParticipants, { foreignKey: 'user_id', as: 'chatsConversationsParticipants' });
+
+  // ChatsMessages belongsTo Users
+  ChatsMessages.belongsTo(Users, { foreignKey: 'receiver_id', as: 'receiver' });
+  Users.hasMany(ChatsMessages, { foreignKey: 'receiver_id', as: 'chatsMessages' });
+
+  // ChatsMessages belongsTo Users
+  ChatsMessages.belongsTo(Users, { foreignKey: 'sender_id', as: 'sender' });
+  Users.hasMany(ChatsMessages, { foreignKey: 'sender_id', as: 'chatsMessages' });
+
+  // ChatsRooms belongsTo Users
+  ChatsRooms.belongsTo(Users, { foreignKey: 'created_by', as: 'createdBy' });
+  Users.hasMany(ChatsRooms, { foreignKey: 'created_by', as: 'chatsRooms' });
+
+  // ChatsRoomsMembers belongsTo ChatsRooms
+  ChatsRoomsMembers.belongsTo(ChatsRooms, { foreignKey: 'room_id', as: 'room' });
+  ChatsRooms.hasMany(ChatsRoomsMembers, { foreignKey: 'room_id', as: 'chatsRoomsMembers' });
+
+  // ChatsRoomsMembers belongsTo Users
+  ChatsRoomsMembers.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(ChatsRoomsMembers, { foreignKey: 'user_id', as: 'chatsRoomsMembers' });
+
+  // ChatsRoomsMessages belongsTo ChatsRooms
+  ChatsRoomsMessages.belongsTo(ChatsRooms, { foreignKey: 'room_id', as: 'room' });
+  ChatsRooms.hasMany(ChatsRoomsMessages, { foreignKey: 'room_id', as: 'chatsRoomsMessages' });
+
+  // ChatsRoomsMessages belongsTo Users
+  ChatsRoomsMessages.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(ChatsRoomsMessages, { foreignKey: 'user_id', as: 'chatsRoomsMessages' });
+
+  // CompaniesDepartments belongsTo Companies
+  CompaniesDepartments.belongsTo(Companies, { foreignKey: 'company_id', as: 'company' });
+  Companies.hasMany(CompaniesDepartments, { foreignKey: 'company_id', as: 'companiesDepartments' });
+
+  // CompaniesEmployees belongsTo CompaniesDepartments
+  CompaniesEmployees.belongsTo(CompaniesDepartments, { foreignKey: 'company_department_id', as: 'companyDepartment' });
+  CompaniesDepartments.hasMany(CompaniesEmployees, { foreignKey: 'company_department_id', as: 'companiesEmployees' });
+
+  // CompaniesEmployees belongsTo Companies
+  CompaniesEmployees.belongsTo(Companies, { foreignKey: 'company_id', as: 'company' });
+  Companies.hasMany(CompaniesEmployees, { foreignKey: 'company_id', as: 'companiesEmployees' });
+
+  // CompaniesEmployees belongsTo Users
+  CompaniesEmployees.belongsTo(Users, { foreignKey: 'employee_id', as: 'employee' });
+  Users.hasMany(CompaniesEmployees, { foreignKey: 'employee_id', as: 'companiesEmployees' });
+
+  // CompaniesEmployeesRoles belongsTo CompaniesEmployees
+  CompaniesEmployeesRoles.belongsTo(CompaniesEmployees, { foreignKey: 'company_employee_id', as: 'companyEmployee' });
+  CompaniesEmployees.hasMany(CompaniesEmployeesRoles, { foreignKey: 'company_employee_id', as: 'companiesEmployeesRoles' });
+
+  // ConsultationRoomMessages belongsTo ConsultationRooms
+  ConsultationRoomMessages.belongsTo(ConsultationRooms, { foreignKey: 'consultation_room_id', as: 'consultationRoom' });
+  ConsultationRooms.hasMany(ConsultationRoomMessages, { foreignKey: 'consultation_room_id', as: 'consultationRoomMessages' });
+
+  // ConsultationRoomMessages belongsTo Users
+  ConsultationRoomMessages.belongsTo(Users, { foreignKey: 'sender_id', as: 'sender' });
+  Users.hasMany(ConsultationRoomMessages, { foreignKey: 'sender_id', as: 'consultationRoomMessages' });
+
+  // ConsultationRooms belongsTo Users
+  ConsultationRooms.belongsTo(Users, { foreignKey: 'client_id', as: 'client' });
+  Users.hasMany(ConsultationRooms, { foreignKey: 'client_id', as: 'consultationRooms' });
+
+  // ConsultationRooms belongsTo Users
+  ConsultationRooms.belongsTo(Users, { foreignKey: 'consultant_id', as: 'consultant' });
+  Users.hasMany(ConsultationRooms, { foreignKey: 'consultant_id', as: 'consultationRooms' });
+
+  // ConsultationRooms belongsTo ConsultationTypes
+  ConsultationRooms.belongsTo(ConsultationTypes, { foreignKey: 'consultation_type_id', as: 'consultationType' });
+  ConsultationTypes.hasMany(ConsultationRooms, { foreignKey: 'consultation_type_id', as: 'consultationRooms' });
+
+  // ConsultationTypes belongsTo Users
+  ConsultationTypes.belongsTo(Users, { foreignKey: 'current_consultant_id', as: 'currentConsultant' });
+  Users.hasMany(ConsultationTypes, { foreignKey: 'current_consultant_id', as: 'consultationTypes' });
+
+  // CreditConvertionRequests belongsTo Users
+  CreditConvertionRequests.belongsTo(Users, { foreignKey: 'action_by', as: 'actionBy' });
+  Users.hasMany(CreditConvertionRequests, { foreignKey: 'action_by', as: 'creditConvertionRequests' });
+
+  // CreditConvertionRequests belongsTo Users
+  CreditConvertionRequests.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
+  Users.hasMany(CreditConvertionRequests, { foreignKey: 'student_id', as: 'creditConvertionRequests' });
+
+  // CreditConvertionRequestsSubjects belongsTo CreditConvertionRequests
+  CreditConvertionRequestsSubjects.belongsTo(CreditConvertionRequests, { foreignKey: 'request_id', as: 'request' });
+  CreditConvertionRequests.hasMany(CreditConvertionRequestsSubjects, { foreignKey: 'request_id', as: 'creditConvertionRequestsSubjects' });
+
+  // CreditConvertionRequestsSubjects belongsTo Users
+  CreditConvertionRequestsSubjects.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
+  Users.hasMany(CreditConvertionRequestsSubjects, { foreignKey: 'student_id', as: 'creditConvertionRequestsSubjects' });
+
+  // CreditConvertionRequestsSubjects belongsTo Subjects
+  CreditConvertionRequestsSubjects.belongsTo(Subjects, { foreignKey: 'subject_id', as: 'subject' });
+  Subjects.hasMany(CreditConvertionRequestsSubjects, { foreignKey: 'subject_id', as: 'creditConvertionRequestsSubjects' });
+
+  // DiscussionForumComments belongsTo DiscussionForums
+  DiscussionForumComments.belongsTo(DiscussionForums, { foreignKey: 'df_id', as: 'df' });
+  DiscussionForums.hasMany(DiscussionForumComments, { foreignKey: 'df_id', as: 'discussionForumComments' });
+
+  // DiscussionForumComments belongsTo Users
+  DiscussionForumComments.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(DiscussionForumComments, { foreignKey: 'user_id', as: 'discussionForumComments' });
+
+  // DiscussionForumReplies belongsTo DiscussionForumComments
+  DiscussionForumReplies.belongsTo(DiscussionForumComments, { foreignKey: 'comment_id', as: 'comment' });
+  DiscussionForumComments.hasMany(DiscussionForumReplies, { foreignKey: 'comment_id', as: 'discussionForumReplies' });
+
+  // DiscussionForumReplies belongsTo Users
+  DiscussionForumReplies.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(DiscussionForumReplies, { foreignKey: 'user_id', as: 'discussionForumReplies' });
+
+  // DiscussionForums belongsTo Sessions
+  DiscussionForums.belongsTo(Sessions, { foreignKey: 'session_id', as: 'session' });
+  Sessions.hasMany(DiscussionForums, { foreignKey: 'session_id', as: 'discussionForums' });
+
+  // DiscussionForums belongsTo Users
+  DiscussionForums.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(DiscussionForums, { foreignKey: 'user_id', as: 'discussionForums' });
+
+  // DiscussionLikes belongsTo Users
+  DiscussionLikes.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(DiscussionLikes, { foreignKey: 'user_id', as: 'discussionLikes' });
+
+  // DiscussionReports belongsTo Users
+  DiscussionReports.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(DiscussionReports, { foreignKey: 'user_id', as: 'discussionReports' });
+
+  // DrillSimulationAssessmentsMeetings belongsTo Users
+  DrillSimulationAssessmentsMeetings.belongsTo(Users, { foreignKey: 'assessor_id', as: 'assessor' });
+  Users.hasMany(DrillSimulationAssessmentsMeetings, { foreignKey: 'assessor_id', as: 'drillSimulationAssessmentsMeetings' });
+
+  // DrillSimulationAssessmentsSchedules belongsTo Users
+  DrillSimulationAssessmentsSchedules.belongsTo(Users, { foreignKey: 'assessor_id', as: 'assessor' });
+  Users.hasMany(DrillSimulationAssessmentsSchedules, { foreignKey: 'assessor_id', as: 'drillSimulationAssessmentsSchedules' });
+
+  // DrillSimulationAssessmentsSchedules belongsTo DrillSimulationAssessmentsMeetings
+  DrillSimulationAssessmentsSchedules.belongsTo(DrillSimulationAssessmentsMeetings, { foreignKey: 'meeting_id', as: 'meeting' });
+  DrillSimulationAssessmentsMeetings.hasMany(DrillSimulationAssessmentsSchedules, { foreignKey: 'meeting_id', as: 'drillSimulationAssessmentsSchedules' });
+
+  // EventParticipants belongsTo Events
+  EventParticipants.belongsTo(Events, { foreignKey: 'event_id', as: 'event' });
+  Events.hasMany(EventParticipants, { foreignKey: 'event_id', as: 'eventParticipants' });
+
+  // EventsParticipants belongsTo Events
+  EventsParticipants.belongsTo(Events, { foreignKey: 'event_id', as: 'event' });
+  Events.hasMany(EventsParticipants, { foreignKey: 'event_id', as: 'eventsParticipants' });
+
+  // EventsParticipants belongsTo Users
+  EventsParticipants.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(EventsParticipants, { foreignKey: 'user_id', as: 'eventsParticipants' });
+
+  // GradingRubrics belongsTo Users
+  GradingRubrics.belongsTo(Users, { foreignKey: 'created_by', as: 'createdBy' });
+  Users.hasMany(GradingRubrics, { foreignKey: 'created_by', as: 'gradingRubrics' });
+
+  // GradingRubricsCriteriaDetails belongsTo GradingRubricsCriteria
+  GradingRubricsCriteriaDetails.belongsTo(GradingRubricsCriteria, { foreignKey: 'criterion_id', as: 'criterion' });
+  GradingRubricsCriteria.hasMany(GradingRubricsCriteriaDetails, { foreignKey: 'criterion_id', as: 'gradingRubricsCriteriaDetails' });
+
+  // GradingRubricsCriteria belongsTo GradingRubrics
+  GradingRubricsCriteria.belongsTo(GradingRubrics, { foreignKey: 'rubric_id', as: 'rubric' });
+  GradingRubrics.hasMany(GradingRubricsCriteria, { foreignKey: 'rubric_id', as: 'gradingRubricsCriterias' });
+
+  // GradingRubrics belongsTo Majors
+  GradingRubrics.belongsTo(Majors, { foreignKey: 'major_id', as: 'major' });
+  Majors.hasMany(GradingRubrics, { foreignKey: 'major_id', as: 'gradingRubrics' });
+
+  // InboxMessages belongsTo Users
+  InboxMessages.belongsTo(Users, { foreignKey: 'receiver_id', as: 'receiver' });
+  Users.hasMany(InboxMessages, { foreignKey: 'receiver_id', as: 'inboxMessages' });
+
+  // InboxMessages belongsTo Users
+  InboxMessages.belongsTo(Users, { foreignKey: 'sender_id', as: 'sender' });
+  Users.hasMany(InboxMessages, { foreignKey: 'sender_id', as: 'inboxMessages' });
+
+  // InternshipStudentMentors belongsTo Mentors
+  InternshipStudentMentors.belongsTo(Mentors, { foreignKey: 'mentor_id', as: 'mentor' });
+  Mentors.hasMany(InternshipStudentMentors, { foreignKey: 'mentor_id', as: 'internshipStudentMentors' });
+
+  // InternshipStudentMentors belongsTo Users
+  InternshipStudentMentors.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
+  Users.hasMany(InternshipStudentMentors, { foreignKey: 'student_id', as: 'internshipStudentMentors' });
+
+  // JobApplications belongsTo Jobs
+  JobApplications.belongsTo(Jobs, { foreignKey: 'job_id', as: 'job' });
+  Jobs.hasMany(JobApplications, { foreignKey: 'job_id', as: 'jobApplications' });
+
+  // JobApplications belongsTo Users
+  JobApplications.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(JobApplications, { foreignKey: 'user_id', as: 'jobApplications' });
+
+  // LeaderboardHistories belongsTo Users
+  LeaderboardHistories.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
+  Users.hasMany(LeaderboardHistories, { foreignKey: 'student_id', as: 'leaderboardHistories' });
+
+  // Majors belongsTo Faculties
+  Majors.belongsTo(Faculties, { foreignKey: 'faculty_id', as: 'faculty' });
+  Faculties.hasMany(Majors, { foreignKey: 'faculty_id', as: 'majors' });
+
+  // Majors belongsTo Users
+  Majors.belongsTo(Users, { foreignKey: 'major_head_id', as: 'majorHead' });
+  Users.hasMany(Majors, { foreignKey: 'major_head_id', as: 'majors' });
+
+  // Meetings belongsTo Users
+  Meetings.belongsTo(Users, { foreignKey: 'assessor_id', as: 'assessor' });
+  Users.hasMany(Meetings, { foreignKey: 'assessor_id', as: 'meetings' });
+
+  // Meetings belongsTo Users
+  Meetings.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
+  Users.hasMany(Meetings, { foreignKey: 'student_id', as: 'meetings' });
+
+  // Mentors belongsTo Partners
+  Mentors.belongsTo(Partners, { foreignKey: 'partner_id', as: 'partner' });
+  Partners.hasMany(Mentors, { foreignKey: 'partner_id', as: 'mentors' });
+
+  // ModulesAdmin belongsTo Sessions
+  ModulesAdmin.belongsTo(Sessions, { foreignKey: 'session_id', as: 'session' });
+  Sessions.hasMany(ModulesAdmin, { foreignKey: 'session_id', as: 'modulesAdmins' });
+
+  // ModulesArticles belongsTo Modules
+  ModulesArticles.belongsTo(Modules, { foreignKey: 'module_id', as: 'module' });
+  Modules.hasMany(ModulesArticles, { foreignKey: 'module_id', as: 'modulesArticles' });
+
+  // ModulesDocuments belongsTo Modules
+  ModulesDocuments.belongsTo(Modules, { foreignKey: 'module_id', as: 'module' });
+  Modules.hasMany(ModulesDocuments, { foreignKey: 'module_id', as: 'modulesDocuments' });
+
+  // ModulesJournals belongsTo Modules
+  ModulesJournals.belongsTo(Modules, { foreignKey: 'module_id', as: 'module' });
+  Modules.hasMany(ModulesJournals, { foreignKey: 'module_id', as: 'modulesJournals' });
+
+  // Modules belongsTo Sessions
+  Modules.belongsTo(Sessions, { foreignKey: 'session_id', as: 'session' });
+  Sessions.hasMany(Modules, { foreignKey: 'session_id', as: 'modules' });
+
+  // ModulesVideos belongsTo Modules
+  ModulesVideos.belongsTo(Modules, { foreignKey: 'module_id', as: 'module' });
+  Modules.hasMany(ModulesVideos, { foreignKey: 'module_id', as: 'modulesVideos' });
+
+  // Notifications belongsTo Users
+  Notifications.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(Notifications, { foreignKey: 'user_id', as: 'notifications' });
+
+  // PartnersProposals belongsTo Partners
+  PartnersProposals.belongsTo(Partners, { foreignKey: 'partner_id', as: 'partner' });
+  Partners.hasMany(PartnersProposals, { foreignKey: 'partner_id', as: 'partnersProposals' });
+
+  // Partners belongsTo Users
+  Partners.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(Partners, { foreignKey: 'user_id', as: 'partners' });
+
+  // PositionSkills belongsTo Positions
+  PositionSkills.belongsTo(Positions, { foreignKey: 'position_id', as: 'position' });
+  Positions.hasMany(PositionSkills, { foreignKey: 'position_id', as: 'positionSkills' });
+
+  // Positions belongsTo Partners
+  Positions.belongsTo(Partners, { foreignKey: 'partner_id', as: 'partner' });
+  Partners.hasMany(Positions, { foreignKey: 'partner_id', as: 'positions' });
+
+  // PositionsSkills belongsTo Positions
+  PositionsSkills.belongsTo(Positions, { foreignKey: 'position_id', as: 'position' });
+  Positions.hasMany(PositionsSkills, { foreignKey: 'position_id', as: 'positionsSkills' });
+
+  // PositionsSkills belongsTo ProgramPositions
+  PositionsSkills.belongsTo(ProgramPositions, { foreignKey: 'position_id', as: 'position' });
+  ProgramPositions.hasMany(PositionsSkills, { foreignKey: 'position_id', as: 'positionsSkills' });
+
+  // PositionsSkills belongsTo ProgramPositions
+  PositionsSkills.belongsTo(ProgramPositions, { foreignKey: 'program_position_id', as: 'programPosition' });
+  ProgramPositions.hasMany(PositionsSkills, { foreignKey: 'program_position_id', as: 'positionsSkills' });
+
+  // ProgramPositionSkills belongsTo ProgramPositions
+  ProgramPositionSkills.belongsTo(ProgramPositions, { foreignKey: 'position_id', as: 'position' });
+  ProgramPositions.hasMany(ProgramPositionSkills, { foreignKey: 'position_id', as: 'programPositionSkills' });
+
+  // ProgramPositions belongsTo Cycles
+  ProgramPositions.belongsTo(Cycles, { foreignKey: 'cycle_id', as: 'cycle' });
+  Cycles.hasMany(ProgramPositions, { foreignKey: 'cycle_id', as: 'programPositions' });
+
+  // ProgramPositions belongsTo Partners
+  ProgramPositions.belongsTo(Partners, { foreignKey: 'partner_id', as: 'partner' });
+  Partners.hasMany(ProgramPositions, { foreignKey: 'partner_id', as: 'programPositions' });
+
+  // ProgramPositions belongsTo PartnersProposals
+  ProgramPositions.belongsTo(PartnersProposals, { foreignKey: 'proposal_id', as: 'proposal' });
+  PartnersProposals.hasMany(ProgramPositions, { foreignKey: 'proposal_id', as: 'programPositions' });
+
+  // ProgramsPositionSkills belongsTo ProgramPositions
+  ProgramsPositionSkills.belongsTo(ProgramPositions, { foreignKey: 'position_id', as: 'position' });
+  ProgramPositions.hasMany(ProgramsPositionSkills, { foreignKey: 'position_id', as: 'programsPositionSkills' });
+
+  // ProgressQuestionAnswers belongsTo QuizzesAnswers
+  ProgressQuestionAnswers.belongsTo(QuizzesAnswers, { foreignKey: 'answer_id', as: 'answer' });
+  QuizzesAnswers.hasMany(ProgressQuestionAnswers, { foreignKey: 'answer_id', as: 'progressQuestionAnswers' });
+
+  // ProgressQuestionAnswers belongsTo StudentSessionProgress
+  ProgressQuestionAnswers.belongsTo(StudentSessionProgress, { foreignKey: 'progress_id', as: 'progress' });
+  StudentSessionProgress.hasMany(ProgressQuestionAnswers, { foreignKey: 'progress_id', as: 'progressQuestionAnswers' });
+
+  // ProgressQuestionAnswers belongsTo QuizzesQuestions
+  ProgressQuestionAnswers.belongsTo(QuizzesQuestions, { foreignKey: 'question_id', as: 'question' });
+  QuizzesQuestions.hasMany(ProgressQuestionAnswers, { foreignKey: 'question_id', as: 'progressQuestionAnswers' });
+
+  // QuizzesAnswers belongsTo QuizzesQuestions
+  QuizzesAnswers.belongsTo(QuizzesQuestions, { foreignKey: 'question_id', as: 'question' });
+  QuizzesQuestions.hasMany(QuizzesAnswers, { foreignKey: 'question_id', as: 'quizzesAnswers' });
+
+  // QuizzesQuestions belongsTo Quizzes
+  QuizzesQuestions.belongsTo(Quizzes, { foreignKey: 'quiz_id', as: 'quiz' });
+  Quizzes.hasMany(QuizzesQuestions, { foreignKey: 'quiz_id', as: 'quizzesQuestions' });
+
+  // Quizzes belongsTo Sessions
+  Quizzes.belongsTo(Sessions, { foreignKey: 'session_id', as: 'session' });
+  Sessions.hasMany(Quizzes, { foreignKey: 'session_id', as: 'quizzes' });
+
+  // RecruitmentAgendas belongsTo RecruitmentDepartments
+  RecruitmentAgendas.belongsTo(RecruitmentDepartments, { foreignKey: 'department_id', as: 'department' });
+  RecruitmentDepartments.hasMany(RecruitmentAgendas, { foreignKey: 'department_id', as: 'recruitmentAgendas' });
+
+  // RecruitmentAgendas belongsTo RecruitmentParticipants
+  RecruitmentAgendas.belongsTo(RecruitmentParticipants, { foreignKey: 'participant_id', as: 'participant' });
+  RecruitmentParticipants.hasMany(RecruitmentAgendas, { foreignKey: 'participant_id', as: 'recruitmentAgendas' });
+
+  // RecruitmentAgendas belongsTo RecruitmentSchedules
+  RecruitmentAgendas.belongsTo(RecruitmentSchedules, { foreignKey: 'schedule_id', as: 'schedule' });
+  RecruitmentSchedules.hasMany(RecruitmentAgendas, { foreignKey: 'schedule_id', as: 'recruitmentAgendas' });
+
+  // RecruitmentAgendas belongsTo Users
+  RecruitmentAgendas.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
+  Users.hasMany(RecruitmentAgendas, { foreignKey: 'student_id', as: 'recruitmentAgendas' });
+
+  // RecruitmentParticipants belongsTo RecruitmentDepartments
+  RecruitmentParticipants.belongsTo(RecruitmentDepartments, { foreignKey: 'department_id', as: 'department' });
+  RecruitmentDepartments.hasMany(RecruitmentParticipants, { foreignKey: 'department_id', as: 'recruitmentParticipants' });
+
+  // RecruitmentSchedules belongsTo RecruitmentDepartments
+  RecruitmentSchedules.belongsTo(RecruitmentDepartments, { foreignKey: 'department_id', as: 'department' });
+  RecruitmentDepartments.hasMany(RecruitmentSchedules, { foreignKey: 'department_id', as: 'recruitmentSchedules' });
+
+  // ReportActions belongsTo Reports
+  ReportActions.belongsTo(Reports, { foreignKey: 'report_id', as: 'report' });
+  Reports.hasMany(ReportActions, { foreignKey: 'report_id', as: 'reportActions' });
+
+  // ReportActions belongsTo Users
+  ReportActions.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(ReportActions, { foreignKey: 'user_id', as: 'reportActions' });
+
+  // ReportDetails belongsTo Reports
+  ReportDetails.belongsTo(Reports, { foreignKey: 'report_id', as: 'report' });
+  Reports.hasMany(ReportDetails, { foreignKey: 'report_id', as: 'reportDetails' });
+
+  // ReportDetails belongsTo Users
+  ReportDetails.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(ReportDetails, { foreignKey: 'user_id', as: 'reportDetails' });
+
+  // Reports belongsTo Activities
+  Reports.belongsTo(Activities, { foreignKey: 'activity_id', as: 'activity' });
+  Activities.hasMany(Reports, { foreignKey: 'activity_id', as: 'reports' });
+
+  // Reports belongsTo Users
+  Reports.belongsTo(Users, { foreignKey: 'user__id', as: 'user' });
+  Users.hasMany(Reports, { foreignKey: 'user__id', as: 'reports' });
+
+  // Reports belongsTo Users
+  Reports.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(Reports, { foreignKey: 'user_id', as: 'reports' });
+
+  // Roleplays belongsTo Users
+  Roleplays.belongsTo(Users, { foreignKey: 'created_by', as: 'createdBy' });
+  Users.hasMany(Roleplays, { foreignKey: 'created_by', as: 'roleplays' });
+
+  // Roleplays belongsTo GradingRubrics
+  Roleplays.belongsTo(GradingRubrics, { foreignKey: 'rubric_id', as: 'rubric' });
+  GradingRubrics.hasMany(Roleplays, { foreignKey: 'rubric_id', as: 'roleplays' });
+
+  // Roleplays belongsTo Sessions
+  Roleplays.belongsTo(Sessions, { foreignKey: 'session_id', as: 'session' });
+  Sessions.hasMany(Roleplays, { foreignKey: 'session_id', as: 'roleplays' });
+
+  // Roleplays belongsTo Subjects
+  Roleplays.belongsTo(Subjects, { foreignKey: 'subject_id', as: 'subject' });
+  Subjects.hasMany(Roleplays, { foreignKey: 'subject_id', as: 'roleplays' });
+
+  // RoleplaysTeams belongsTo Users
+  RoleplaysTeams.belongsTo(Users, { foreignKey: 'master_id', as: 'master' });
+  Users.hasMany(RoleplaysTeams, { foreignKey: 'master_id', as: 'roleplaysTeams' });
+
+  // RoleplaysTeamsMembers belongsTo RoleplaysTeamsSchedules
+  RoleplaysTeamsMembers.belongsTo(RoleplaysTeamsSchedules, { foreignKey: 'schedule_id', as: 'schedule' });
+  RoleplaysTeamsSchedules.hasMany(RoleplaysTeamsMembers, { foreignKey: 'schedule_id', as: 'roleplaysTeamsMembers' });
+
+  // RoleplaysTeamsMembers belongsTo Users
+  RoleplaysTeamsMembers.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(RoleplaysTeamsMembers, { foreignKey: 'user_id', as: 'roleplaysTeamsMembers' });
+
+  // RoleplaysTeams belongsTo Roleplays
+  RoleplaysTeams.belongsTo(Roleplays, { foreignKey: 'roleplay_id', as: 'roleplay' });
+  Roleplays.hasMany(RoleplaysTeams, { foreignKey: 'roleplay_id', as: 'roleplaysTeams' });
+
+  // RoleplaysTeams belongsTo Users
+  RoleplaysTeams.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
+  Users.hasMany(RoleplaysTeams, { foreignKey: 'student_id', as: 'roleplaysTeams' });
+
+  // SavedPositions belongsTo ProgramPositions
+  SavedPositions.belongsTo(ProgramPositions, { foreignKey: 'position_id', as: 'position' });
+  ProgramPositions.hasMany(SavedPositions, { foreignKey: 'position_id', as: 'savedPositions' });
+
+  // SavedPositions belongsTo Users
+  SavedPositions.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
+  Users.hasMany(SavedPositions, { foreignKey: 'student_id', as: 'savedPositions' });
+
+  // SessionsMentorings belongsTo Users
+  SessionsMentorings.belongsTo(Users, { foreignKey: 'teacher_id', as: 'teacher' });
+  Users.hasMany(SessionsMentorings, { foreignKey: 'teacher_id', as: 'sessionsMentorings' });
+
+  // SessionsReflectionsComments belongsTo SessionsReflections
+  SessionsReflectionsComments.belongsTo(SessionsReflections, { foreignKey: 'reflection_id', as: 'reflection' });
+  SessionsReflections.hasMany(SessionsReflectionsComments, { foreignKey: 'reflection_id', as: 'sessionsReflectionsComments' });
+
+  // SessionsReflectionsCommentsReplies belongsTo SessionsReflectionsComments
+  SessionsReflectionsCommentsReplies.belongsTo(SessionsReflectionsComments, { foreignKey: 'comment_id', as: 'comment' });
+  SessionsReflectionsComments.hasMany(SessionsReflectionsCommentsReplies, { foreignKey: 'comment_id', as: 'sessionsReflectionsCommentsReplies' });
+
+  // SessionsReflectionsCommentsReplies belongsTo Users
+  SessionsReflectionsCommentsReplies.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(SessionsReflectionsCommentsReplies, { foreignKey: 'user_id', as: 'sessionsReflectionsCommentsReplies' });
+
+  // SessionsReflectionsComments belongsTo Users
+  SessionsReflectionsComments.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(SessionsReflectionsComments, { foreignKey: 'user_id', as: 'sessionsReflectionsComments' });
+
+  // SessionsReflectionsLikes belongsTo SessionsReflections
+  SessionsReflectionsLikes.belongsTo(SessionsReflections, { foreignKey: 'reflection_id', as: 'reflection' });
+  SessionsReflections.hasMany(SessionsReflectionsLikes, { foreignKey: 'reflection_id', as: 'sessionsReflectionsLikes' });
+
+  // SessionsReflectionsLikes belongsTo Users
+  SessionsReflectionsLikes.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(SessionsReflectionsLikes, { foreignKey: 'user_id', as: 'sessionsReflectionsLikes' });
+
+  // SessionsReflections belongsTo Sessions
+  SessionsReflections.belongsTo(Sessions, { foreignKey: 'session_id', as: 'session' });
+  Sessions.hasMany(SessionsReflections, { foreignKey: 'session_id', as: 'sessionsReflections' });
+
+  // SessionsReflections belongsTo Users
+  SessionsReflections.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
+  Users.hasMany(SessionsReflections, { foreignKey: 'student_id', as: 'sessionsReflections' });
+
+  // Sessions belongsTo Subjects
+  Sessions.belongsTo(Subjects, { foreignKey: 'subject_id', as: 'subject' });
+  Subjects.hasMany(Sessions, { foreignKey: 'subject_id', as: 'sessions' });
+
+  // SessionsTeacherAssessment belongsTo Subjects
+  SessionsTeacherAssessment.belongsTo(Subjects, { foreignKey: 'subject_id', as: 'subject' });
+  Subjects.hasMany(SessionsTeacherAssessment, { foreignKey: 'subject_id', as: 'sessionsTeacherAssessments' });
+
+  // StudentEvents belongsTo Events
+  StudentEvents.belongsTo(Events, { foreignKey: 'event_id', as: 'event' });
+  Events.hasMany(StudentEvents, { foreignKey: 'event_id', as: 'studentEvents' });
+
+  // StudentEvents belongsTo Users
+  StudentEvents.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
+  Users.hasMany(StudentEvents, { foreignKey: 'student_id', as: 'studentEvents' });
+
+  // StudentMajors belongsTo Majors
+  StudentMajors.belongsTo(Majors, { foreignKey: 'major_id', as: 'major' });
+  Majors.hasMany(StudentMajors, { foreignKey: 'major_id', as: 'studentMajors' });
+
+  // StudentMajors belongsTo Semesters
+  StudentMajors.belongsTo(Semesters, { foreignKey: 'semester_id', as: 'semester' });
+  Semesters.hasMany(StudentMajors, { foreignKey: 'semester_id', as: 'studentMajors' });
+
+  // StudentMajors belongsTo Users
+  StudentMajors.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
+  Users.hasMany(StudentMajors, { foreignKey: 'student_id', as: 'studentMajors' });
+
+  // StudentSessionProgress belongsTo Sessions
+  StudentSessionProgress.belongsTo(Sessions, { foreignKey: 'session_id', as: 'session' });
+  Sessions.hasMany(StudentSessionProgress, { foreignKey: 'session_id', as: 'studentSessionProgress' });
+
+  // StudentSessionProgress belongsTo Users
+  StudentSessionProgress.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
+  Users.hasMany(StudentSessionProgress, { foreignKey: 'student_id', as: 'studentSessionProgress' });
+
+  // StudentSessionProgress belongsTo Subjects
+  StudentSessionProgress.belongsTo(Subjects, { foreignKey: 'subject_id', as: 'subject' });
+  Subjects.hasMany(StudentSessionProgress, { foreignKey: 'subject_id', as: 'studentSessionProgress' });
+
+  // StudentSessions belongsTo Sessions
+  StudentSessions.belongsTo(Sessions, { foreignKey: 'session_id', as: 'session' });
+  Sessions.hasMany(StudentSessions, { foreignKey: 'session_id', as: 'studentSessions' });
+
+  // StudentSessions belongsTo Users
+  StudentSessions.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
+  Users.hasMany(StudentSessions, { foreignKey: 'student_id', as: 'studentSessions' });
+
+  // StudentSubjects belongsTo Semesters
+  StudentSubjects.belongsTo(Semesters, { foreignKey: 'semester_id', as: 'semester' });
+  Semesters.hasMany(StudentSubjects, { foreignKey: 'semester_id', as: 'studentSubjects' });
+
+  // StudentSubjects belongsTo Users
+  StudentSubjects.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
+  Users.hasMany(StudentSubjects, { foreignKey: 'student_id', as: 'studentSubjects' });
+
+  // StudentSubjects belongsTo Subjects
+  StudentSubjects.belongsTo(Subjects, { foreignKey: 'subject_id', as: 'subject' });
+  Subjects.hasMany(StudentSubjects, { foreignKey: 'subject_id', as: 'studentSubjects' });
+
+  // SubjectMajors belongsTo Majors
+  SubjectMajors.belongsTo(Majors, { foreignKey: 'major_id', as: 'major' });
+  Majors.hasMany(SubjectMajors, { foreignKey: 'major_id', as: 'subjectMajors' });
+
+  // SubjectMajors belongsTo Semesters
+  SubjectMajors.belongsTo(Semesters, { foreignKey: 'semester_id', as: 'semester' });
+  Semesters.hasMany(SubjectMajors, { foreignKey: 'semester_id', as: 'subjectMajors' });
+
+  // SubjectMajors belongsTo Subjects
+  SubjectMajors.belongsTo(Subjects, { foreignKey: 'subject_id', as: 'subject' });
+  Subjects.hasMany(SubjectMajors, { foreignKey: 'subject_id', as: 'subjectMajors' });
+
+  // SubjectsOutcomes belongsTo Subjects
+  SubjectsOutcomes.belongsTo(Subjects, { foreignKey: 'subject_id', as: 'subject' });
+  Subjects.hasMany(SubjectsOutcomes, { foreignKey: 'subject_id', as: 'subjectsOutcomes' });
+
+  // SubjectsSessionsContentOrders belongsTo Sessions
+  SubjectsSessionsContentOrders.belongsTo(Sessions, { foreignKey: 'session_id', as: 'session' });
+  Sessions.hasMany(SubjectsSessionsContentOrders, { foreignKey: 'session_id', as: 'subjectsSessionsContentOrders' });
+
+  // Subjects belongsTo Users
+  Subjects.belongsTo(Users, { foreignKey: 'teacher_id', as: 'teacher' });
+  Users.hasMany(Subjects, { foreignKey: 'teacher_id', as: 'subjects' });
+
+  // SubmissionDocuments belongsTo StudentSessionProgress
+  SubmissionDocuments.belongsTo(StudentSessionProgress, { foreignKey: 'progress_id', as: 'progress' });
+  StudentSessionProgress.hasMany(SubmissionDocuments, { foreignKey: 'progress_id', as: 'submissionDocuments' });
+
+  // Submissions belongsTo AssignmentsAdmin
+  Submissions.belongsTo(AssignmentsAdmin, { foreignKey: 'assignment_id', as: 'assignment' });
+  AssignmentsAdmin.hasMany(Submissions, { foreignKey: 'assignment_id', as: 'submissions' });
+
+  // SurveysQuestionsAnswers belongsTo SurveysQuestions
+  SurveysQuestionsAnswers.belongsTo(SurveysQuestions, { foreignKey: 'question_id', as: 'question' });
+  SurveysQuestions.hasMany(SurveysQuestionsAnswers, { foreignKey: 'question_id', as: 'surveysQuestionsAnswers' });
+
+  // SurveysQuestions belongsTo Surveys
+  SurveysQuestions.belongsTo(Surveys, { foreignKey: 'survey_id', as: 'survey' });
+  Surveys.hasMany(SurveysQuestions, { foreignKey: 'survey_id', as: 'surveysQuestions' });
+
+  // SurveysResponsesAnswers belongsTo SurveysQuestions
+  SurveysResponsesAnswers.belongsTo(SurveysQuestions, { foreignKey: 'question_id', as: 'question' });
+  SurveysQuestions.hasMany(SurveysResponsesAnswers, { foreignKey: 'question_id', as: 'surveysResponsesAnswers' });
+
+  // SurveysResponsesAnswers belongsTo SurveysResponses
+  SurveysResponsesAnswers.belongsTo(SurveysResponses, { foreignKey: 'response_id', as: 'response' });
+  SurveysResponses.hasMany(SurveysResponsesAnswers, { foreignKey: 'response_id', as: 'surveysResponsesAnswers' });
+
+  // SurveysResponsesAnswers belongsTo Users
+  SurveysResponsesAnswers.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(SurveysResponsesAnswers, { foreignKey: 'user_id', as: 'surveysResponsesAnswers' });
+
+  // SurveysResponses belongsTo Surveys
+  SurveysResponses.belongsTo(Surveys, { foreignKey: 'survey_id', as: 'survey' });
+  Surveys.hasMany(SurveysResponses, { foreignKey: 'survey_id', as: 'surveysResponses' });
+
+  // SurveysResponses belongsTo Users
+  SurveysResponses.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(SurveysResponses, { foreignKey: 'user_id', as: 'surveysResponses' });
+
+  // TopicsSubjects belongsTo Subjects
+  TopicsSubjects.belongsTo(Subjects, { foreignKey: 'subject_id', as: 'subject' });
+  Subjects.hasMany(TopicsSubjects, { foreignKey: 'subject_id', as: 'topicsSubjects' });
+
+  // TopicsSubjects belongsTo Topics
+  TopicsSubjects.belongsTo(Topics, { foreignKey: 'topic_id', as: 'topic' });
+  Topics.hasMany(TopicsSubjects, { foreignKey: 'topic_id', as: 'topicsSubjects' });
+
+  // UserRoles belongsTo Roles
+  UserRoles.belongsTo(Roles, { foreignKey: 'role_id', as: 'role' });
+  Roles.hasMany(UserRoles, { foreignKey: 'role_id', as: 'userRoles' });
+
+  // UserRoles belongsTo Users
+  UserRoles.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(UserRoles, { foreignKey: 'user_id', as: 'userRoles' });
+
+  // UserSessions belongsTo Users
+  UserSessions.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(UserSessions, { foreignKey: 'user_id', as: 'userSessions' });
+
+  // UsersActives belongsTo Users
+  UsersActives.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(UsersActives, { foreignKey: 'user_id', as: 'usersActives' });
+
+  // UsersAdministrations belongsTo Cycles
+  UsersAdministrations.belongsTo(Cycles, { foreignKey: 'cycle_id', as: 'cycle' });
+  Cycles.hasMany(UsersAdministrations, { foreignKey: 'cycle_id', as: 'usersAdministrations' });
+
+  // UsersAdministrations belongsTo Users
+  UsersAdministrations.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(UsersAdministrations, { foreignKey: 'user_id', as: 'usersAdministrations' });
+
+  // UsersSearchHistories belongsTo Users
+  UsersSearchHistories.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(UsersSearchHistories, { foreignKey: 'user_id', as: 'usersSearchHistories' });
+
+  // UsersSocketConnections belongsTo Users
+  UsersSocketConnections.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
+  Users.hasMany(UsersSocketConnections, { foreignKey: 'user_id', as: 'usersSocketConnections' });
+
+  // WatchedVideoProgress belongsTo ModulesVideos
+  WatchedVideoProgress.belongsTo(ModulesVideos, { foreignKey: 'video_id', as: 'video' });
+  ModulesVideos.hasMany(WatchedVideoProgress, { foreignKey: 'video_id', as: 'watchedVideoProgress' });
 
 
   return {
-    SequelizeMeta: SequelizeMeta,
-    Activities: Activities,
-    AdminAttendence: AdminAttendence,
-    AdminPanelLogs: AdminPanelLogs,
-    AdminReflection: AdminReflection,
-    Administrations: Administrations,
-    AdministrationsBiodatas: AdministrationsBiodatas,
-    AdministrationsFamilials: AdministrationsFamilials,
-    AdministrationsFiles: AdministrationsFiles,
-    AnalyticVisits: AnalyticVisits,
-    ArticleFavorites: ArticleFavorites,
-    ArticleLikes: ArticleLikes,
-    Articles: Articles,
-    ArticlesCategories: ArticlesCategories,
-    ArticlesFavorites: ArticlesFavorites,
-    ArticlesTags: ArticlesTags,
-    AvailabilitySchedules: AvailabilitySchedules,
-    Banner: Banner,
-    Certificates: Certificates,
-    ChatsConversations: ChatsConversations,
-    ChatsConversationsParticipants: ChatsConversationsParticipants,
-    ChatsMessages: ChatsMessages,
-    ChatsRooms: ChatsRooms,
-    ChatsRoomsMembers: ChatsRoomsMembers,
-    ChatsRoomsMessages: ChatsRoomsMessages,
-    Companies: Companies,
-    CompaniesDepartments: CompaniesDepartments,
-    CompaniesEmployees: CompaniesEmployees,
-    CompaniesEmployeesRoles: CompaniesEmployeesRoles,
-    ConsultationRoomMessages: ConsultationRoomMessages,
-    ConsultationRooms: ConsultationRooms,
-    ConsultationTypes: ConsultationTypes,
-    Cycles: Cycles,
-    Dictionarys: Dictionarys,
-    DiscussionForumComments: DiscussionForumComments,
-    DiscussionForumReplies: DiscussionForumReplies,
-    DiscussionForums: DiscussionForums,
-    DiscussionLikes: DiscussionLikes,
-    DiscussionReports: DiscussionReports,
-    DonationProofs: DonationProofs,
-    ErrorLogs: ErrorLogs,
-    EventParticipants: EventParticipants,
-    Events: Events,
-    EventsParticipants: EventsParticipants,
-    GuidesBooks: GuidesBooks,
-    GuidesDictionaries: GuidesDictionaries,
-    GuidesFrequentlyAskedQuestions: GuidesFrequentlyAskedQuestions,
-    GuidesVideos: GuidesVideos,
-    InboxMessages: InboxMessages,
-    JobApplications: JobApplications,
-    Jobs: Jobs,
-    LeaderboardHistories: LeaderboardHistories,
-    Meetings: Meetings,
-    Notifications: Notifications,
-    NotificationsMessages: NotificationsMessages,
-    NotificationsTemplates: NotificationsTemplates,
-    Otps: Otps,
-    Partners: Partners,
-    PartnersProposals: PartnersProposals,
-    PaymentTransactions: PaymentTransactions,
-    PaymentTrasactionItems: PaymentTrasactionItems,
-    PositionSkills: PositionSkills,
-    Positions: Positions,
-    PositionsSkills: PositionsSkills,
-    ProgramPositionSkills: ProgramPositionSkills,
-    ProgramPositions: ProgramPositions,
-    ProgramsPositionSkills: ProgramsPositionSkills,
-    ProgressQuestionAnswers: ProgressQuestionAnswers,
-    Quizzes: Quizzes,
-    QuizzesAnswers: QuizzesAnswers,
-    QuizzesQuestions: QuizzesQuestions,
-    RecruitmentAgendas: RecruitmentAgendas,
-    RecruitmentDepartments: RecruitmentDepartments,
-    RecruitmentParticipants: RecruitmentParticipants,
-    RecruitmentSchedules: RecruitmentSchedules,
-    Referrals: Referrals,
-    ReferralsAccesses: ReferralsAccesses,
-    ReferralsRegistrations: ReferralsRegistrations,
-    ReportActions: ReportActions,
-    ReportDetails: ReportDetails,
-    Reports: Reports,
-    Roleplay: Roleplay,
-    RoleplayPair: RoleplayPair,
-    RoleplayPairs: RoleplayPairs,
-    Roleplays: Roleplays,
-    RoleplaysTeams: RoleplaysTeams,
-    RoleplaysTeamsMembers: RoleplaysTeamsMembers,
-    RoleplaysTeamsSchedules: RoleplaysTeamsSchedules,
-    Roles: Roles,
-    SavedPositions: SavedPositions,
-    ServerAttributes: ServerAttributes,
-    ServerLogs: ServerLogs,
-    StoragesFiles: StoragesFiles,
-    StoragesFilesHistories: StoragesFilesHistories,
-    Surveys: Surveys,
-    SurveysQuestions: SurveysQuestions,
-    SurveysQuestionsAnswers: SurveysQuestionsAnswers,
-    SurveysResponses: SurveysResponses,
-    SurveysResponsesAnswers: SurveysResponsesAnswers,
-    Tags: Tags,
-    UserRoles: UserRoles,
-    Users: Users,
-    UsersActives: UsersActives,
-    UsersAdministrations: UsersAdministrations,
-    UsersDelete: UsersDelete,
-    UsersScreenTimes: UsersScreenTimes,
-    UsersSearchHistories: UsersSearchHistories,
-    UsersSocialMedia: UsersSocialMedia,
-    UsersSocketConnections: UsersSocketConnections,
-    Videos: Videos,
-    WatchedVideoProgress: WatchedVideoProgress,
+    Activities,
+    AdminAttendence,
+    AdminPanelLogs,
+    AdminReflection,
+    Administrations,
+    AdministrationsBiodatas,
+    AdministrationsFamilials,
+    AdministrationsFiles,
+    AnalyticVisits,
+    ArticleFavorites,
+    ArticleLikes,
+    Articles,
+    ArticlesCategories,
+    ArticlesFavorites,
+    ArticlesTags,
+    AssessmentCompetencyTests,
+    AssessmentCompetencyTestsSchedules,
+    Assessments,
+    AssessmentsAssessors,
+    AssessmentsAssessorsAvailabilities,
+    AssessmentsSessions,
+    AssessmentsSessionsPartners,
+    AssessmentsSessionsRubricsResults,
+    AssessmentsSessionsSubmissions,
+    AssessmentsSubjectsProgresses,
+    AssessmentsSubjectsProgressesAnswers,
+    AssignmentDocuments,
+    AssignmentFiles,
+    Assignments,
+    AssignmentsAdmin,
+    AvailabilitySchedules,
+    Banner,
+    BootcampTopics,
+    Certificates,
+    ChatsConversations,
+    ChatsConversationsParticipants,
+    ChatsMessages,
+    ChatsRooms,
+    ChatsRoomsMembers,
+    ChatsRoomsMessages,
+    CollegeAcademicCohorts,
+    CollegeClassEnrollments,
+    CollegeClasses,
+    CollegeProgramOfferings,
+    CollegeStudentRegistrations,
+    Companies,
+    CompaniesDepartments,
+    CompaniesEmployees,
+    CompaniesEmployeesRoles,
+    ConsultationRoomMessages,
+    ConsultationRooms,
+    ConsultationTypes,
+    CreditConvertionRequests,
+    CreditConvertionRequestsSubjects,
+    Cycles,
+    Dictionarys,
+    DiscussionForumComments,
+    DiscussionForumReplies,
+    DiscussionForums,
+    DiscussionLikes,
+    DiscussionReports,
+    DonationProofs,
+    DrillSimulationAssessmentsMeetings,
+    DrillSimulationAssessmentsSchedules,
+    Drills,
+    ErrorLogs,
+    EventParticipants,
+    Events,
+    EventsParticipants,
+    Faculties,
+    GradingRubrics,
+    GradingRubricsCriteria,
+    GradingRubricsCriteriaDetails,
+    GuidesBooks,
+    GuidesDictionaries,
+    GuidesFrequentlyAskedQuestions,
+    GuidesVideos,
+    InboxMessages,
+    InternshipStudentMentors,
+    JobApplications,
+    Jobs,
+    LeaderboardHistories,
+    Majors,
+    Meetings,
+    Mentors,
+    Modules,
+    ModulesAdmin,
+    ModulesArticles,
+    ModulesDocuments,
+    ModulesJournals,
+    ModulesVideos,
+    Notifications,
+    NotificationsMessages,
+    NotificationsTemplates,
+    Otps,
+    Partners,
+    PartnersProposals,
+    PaymentTransactions,
+    PaymentTrasactionItems,
+    PositionSkills,
+    Positions,
+    PositionsSkills,
+    ProgramPositionSkills,
+    ProgramPositions,
+    ProgramsPositionSkills,
+    ProgressQuestionAnswers,
+    Quizzes,
+    QuizzesAnswers,
+    QuizzesQuestions,
+    RecruitmentAgendas,
+    RecruitmentDepartments,
+    RecruitmentParticipants,
+    RecruitmentSchedules,
+    Referrals,
+    ReferralsAccesses,
+    ReferralsRegistrations,
+    ReportActions,
+    ReportDetails,
+    Reports,
+    Roleplay,
+    RoleplayPair,
+    RoleplayPairs,
+    Roleplays,
+    RoleplaysSessions,
+    RoleplaysTeams,
+    RoleplaysTeamsMembers,
+    RoleplaysTeamsSchedules,
+    Roles,
+    SavedPositions,
+    Semesters,
+    ServerAttributes,
+    ServerLogs,
+    Sessions,
+    SessionsMentorings,
+    SessionsReflections,
+    SessionsReflectionsComments,
+    SessionsReflectionsCommentsReplies,
+    SessionsReflectionsLikes,
+    SessionsTeacherAssessment,
+    SessionsTeacherAssessmentQuestions,
+    SessionsTeacherAssessmentQuestionsAnswers,
+    SessionsTeacherAssessmentSessionsQuestions,
+    SessionsTeacherAssessmentStudentsAnswers,
+    SimulationGroupStudents,
+    SimulationGroups,
+    Simulations,
+    StoragesFiles,
+    StoragesFilesHistories,
+    StudentEvents,
+    StudentMajors,
+    StudentProfiles,
+    StudentSessionProgress,
+    StudentSessions,
+    StudentSubjects,
+    SubjectMajors,
+    SubjectSessions,
+    Subjects,
+    SubjectsOutcomes,
+    SubjectsSessionsActivities,
+    SubjectsSessionsAssessments,
+    SubjectsSessionsContentOrders,
+    SubmissionDocuments,
+    Submissions,
+    Surveys,
+    SurveysQuestions,
+    SurveysQuestionsAnswers,
+    SurveysResponses,
+    SurveysResponsesAnswers,
+    Tags,
+    TeachersRegistrations,
+    Topics,
+    TopicsSubjects,
+    UserRoles,
+    UserSessions,
+    Users,
+    UsersActives,
+    UsersAdministrations,
+    UsersDelete,
+    UsersScreenTimes,
+    UsersSearchHistories,
+    UsersSocialMedia,
+    UsersSocketConnections,
+    Videos,
+    WatchedVideoProgress,
   };
 }
+
+export {
+  Activities,
+  AdminAttendence,
+  AdminPanelLogs,
+  AdminReflection,
+  Administrations,
+  AdministrationsBiodatas,
+  AdministrationsFamilials,
+  AdministrationsFiles,
+  AnalyticVisits,
+  ArticleFavorites,
+  ArticleLikes,
+  Articles,
+  ArticlesCategories,
+  ArticlesFavorites,
+  ArticlesTags,
+  AssessmentCompetencyTests,
+  AssessmentCompetencyTestsSchedules,
+  Assessments,
+  AssessmentsAssessors,
+  AssessmentsAssessorsAvailabilities,
+  AssessmentsSessions,
+  AssessmentsSessionsPartners,
+  AssessmentsSessionsRubricsResults,
+  AssessmentsSessionsSubmissions,
+  AssessmentsSubjectsProgresses,
+  AssessmentsSubjectsProgressesAnswers,
+  AssignmentDocuments,
+  AssignmentFiles,
+  Assignments,
+  AssignmentsAdmin,
+  AvailabilitySchedules,
+  Banner,
+  BootcampTopics,
+  Certificates,
+  ChatsConversations,
+  ChatsConversationsParticipants,
+  ChatsMessages,
+  ChatsRooms,
+  ChatsRoomsMembers,
+  ChatsRoomsMessages,
+  CollegeAcademicCohorts,
+  CollegeClassEnrollments,
+  CollegeClasses,
+  CollegeProgramOfferings,
+  CollegeStudentRegistrations,
+  Companies,
+  CompaniesDepartments,
+  CompaniesEmployees,
+  CompaniesEmployeesRoles,
+  ConsultationRoomMessages,
+  ConsultationRooms,
+  ConsultationTypes,
+  CreditConvertionRequests,
+  CreditConvertionRequestsSubjects,
+  Cycles,
+  Dictionarys,
+  DiscussionForumComments,
+  DiscussionForumReplies,
+  DiscussionForums,
+  DiscussionLikes,
+  DiscussionReports,
+  DonationProofs,
+  DrillSimulationAssessmentsMeetings,
+  DrillSimulationAssessmentsSchedules,
+  Drills,
+  ErrorLogs,
+  EventParticipants,
+  Events,
+  EventsParticipants,
+  Faculties,
+  GradingRubrics,
+  GradingRubricsCriteria,
+  GradingRubricsCriteriaDetails,
+  GuidesBooks,
+  GuidesDictionaries,
+  GuidesFrequentlyAskedQuestions,
+  GuidesVideos,
+  InboxMessages,
+  InternshipStudentMentors,
+  JobApplications,
+  Jobs,
+  LeaderboardHistories,
+  Majors,
+  Meetings,
+  Mentors,
+  Modules,
+  ModulesAdmin,
+  ModulesArticles,
+  ModulesDocuments,
+  ModulesJournals,
+  ModulesVideos,
+  Notifications,
+  NotificationsMessages,
+  NotificationsTemplates,
+  Otps,
+  Partners,
+  PartnersProposals,
+  PaymentTransactions,
+  PaymentTrasactionItems,
+  PositionSkills,
+  Positions,
+  PositionsSkills,
+  ProgramPositionSkills,
+  ProgramPositions,
+  ProgramsPositionSkills,
+  ProgressQuestionAnswers,
+  Quizzes,
+  QuizzesAnswers,
+  QuizzesQuestions,
+  RecruitmentAgendas,
+  RecruitmentDepartments,
+  RecruitmentParticipants,
+  RecruitmentSchedules,
+  Referrals,
+  ReferralsAccesses,
+  ReferralsRegistrations,
+  ReportActions,
+  ReportDetails,
+  Reports,
+  Roleplay,
+  RoleplayPair,
+  RoleplayPairs,
+  Roleplays,
+  RoleplaysSessions,
+  RoleplaysTeams,
+  RoleplaysTeamsMembers,
+  RoleplaysTeamsSchedules,
+  Roles,
+  SavedPositions,
+  Semesters,
+  ServerAttributes,
+  ServerLogs,
+  Sessions,
+  SessionsMentorings,
+  SessionsReflections,
+  SessionsReflectionsComments,
+  SessionsReflectionsCommentsReplies,
+  SessionsReflectionsLikes,
+  SessionsTeacherAssessment,
+  SessionsTeacherAssessmentQuestions,
+  SessionsTeacherAssessmentQuestionsAnswers,
+  SessionsTeacherAssessmentSessionsQuestions,
+  SessionsTeacherAssessmentStudentsAnswers,
+  SimulationGroupStudents,
+  SimulationGroups,
+  Simulations,
+  StoragesFiles,
+  StoragesFilesHistories,
+  StudentEvents,
+  StudentMajors,
+  StudentProfiles,
+  StudentSessionProgress,
+  StudentSessions,
+  StudentSubjects,
+  SubjectMajors,
+  SubjectSessions,
+  Subjects,
+  SubjectsOutcomes,
+  SubjectsSessionsActivities,
+  SubjectsSessionsAssessments,
+  SubjectsSessionsContentOrders,
+  SubmissionDocuments,
+  Submissions,
+  Surveys,
+  SurveysQuestions,
+  SurveysQuestionsAnswers,
+  SurveysResponses,
+  SurveysResponsesAnswers,
+  Tags,
+  TeachersRegistrations,
+  Topics,
+  TopicsSubjects,
+  UserRoles,
+  UserSessions,
+  Users,
+  UsersActives,
+  UsersAdministrations,
+  UsersDelete,
+  UsersScreenTimes,
+  UsersSearchHistories,
+  UsersSocialMedia,
+  UsersSocketConnections,
+  Videos,
+  WatchedVideoProgress,
+};

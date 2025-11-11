@@ -1,0 +1,9 @@
+export enum PartnersProposalsStatusEnum {
+  DRAFT = 'DRAFT',
+  NEED_REVISION = 'NEED_REVISION',
+  PUBLISH = 'PUBLISH',
+  REJECTED = 'REJECTED',
+  PUBLISHED = 'PUBLISHED',
+  SUBMITED = 'SUBMITED',
+  APPROVED = 'APPROVED'
+}
