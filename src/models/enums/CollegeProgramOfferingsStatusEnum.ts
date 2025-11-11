@@ -1,0 +1,6 @@
+export enum CollegeProgramOfferingsStatusEnum {
+  COMING_SOON = 'COMING_SOON',
+  OPEN_FOR_REGISTRATION = 'OPEN_FOR_REGISTRATION',
+  ONGOING = 'ONGOING',
+  COMPLETED = 'COMPLETED'
+}
