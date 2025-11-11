@@ -13,13 +13,18 @@ export class MyStudyController {
           s.id, s.title, s.description, s.thumbnail,
           us.progress_percentage, us.enrolled_at, us.completed_at,
           COUNT(DISTINCT sess.id) as total_sessions,
-          COUNT(DISTINCT CASE WHEN usp.completed_at IS NOT NULL THEN sess.id END) as completed_sessions
+          COUNT(DISTINCT CASE 
+            WHEN EXISTS (
+              SELECT 1 FROM modules m
+              LEFT JOIN user_module_progress ump ON m.id = ump.module_id AND ump.user_id = $1
+              WHERE m.session_id = sess.id 
+                AND m.deleted_at IS NULL
+                AND ump.completed_at IS NOT NULL
+            ) THEN sess.id 
+          END) as completed_sessions
         FROM subjects s
         LEFT JOIN user_subjects us ON s.id = us.subject_id AND us.user_id = $1
-        LEFT JOIN sessions sess ON s.id = sess.subject_id
-        LEFT JOIN user_module_progress usp ON sess.id IN (
-          SELECT session_id FROM modules WHERE id = usp.module_id
-        )
+        LEFT JOIN sessions sess ON s.id = sess.subject_id AND sess.deleted_at IS NULL
         WHERE s.deleted_at IS NULL
         GROUP BY s.id, us.id
         ORDER BY s.created_at DESC`,
