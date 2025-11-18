@@ -3,40 +3,53 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface GradingRubricsCriteriaAttributes {
   pk: number;
   id?: string;
-  rubric_id: number;
+  rubricId: number;
   aspect: string;
   description?: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type GradingRubricsCriteriaCreationAttributes = Optional<GradingRubricsCriteriaAttributes, 'id' | 'description' | 'deleted_at'>;
+export type GradingRubricsCriteriaCreationAttributes = Optional<GradingRubricsCriteriaAttributes, 'id' | 'description' | 'deletedAt'>;
 
 export class GradingRubricsCriteria extends Model<GradingRubricsCriteriaAttributes, GradingRubricsCriteriaCreationAttributes> implements GradingRubricsCriteriaAttributes {
   declare pk: number;
   declare id?: string;
-  declare rubric_id: number;
+  declare rubricId: number;
   declare aspect: string;
   declare description?: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof GradingRubricsCriteria {
     GradingRubricsCriteria.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        rubric_id: { type: DataTypes.INTEGER, allowNull: false },
-        aspect: { type: DataTypes.STRING, allowNull: false },
-        description: { type: DataTypes.TEXT, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        rubricId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'rubric_id'
+        },
+        aspect: { type: DataTypes.STRING, allowNull: false,
+            field: 'aspect'
+        },
+        description: { type: DataTypes.TEXT, allowNull: true,
+            field: 'description'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

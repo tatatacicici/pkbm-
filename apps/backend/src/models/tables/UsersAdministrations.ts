@@ -3,40 +3,58 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface UsersAdministrationsAttributes {
   id?: number;
   uuid?: string;
-  user_id: string;
-  cycle_id: number;
+  userId: string;
+  cycleId: number;
   type: string;
   status: string;
   actions?: any;
-  approved_by?: string;
-  approved_at?: Date;
+  approvedBy?: string;
+  approvedAt?: Date;
 }
 
-export type UsersAdministrationsCreationAttributes = Optional<UsersAdministrationsAttributes, 'id' | 'uuid' | 'actions' | 'approved_by' | 'approved_at'>;
+export type UsersAdministrationsCreationAttributes = Optional<UsersAdministrationsAttributes, 'id' | 'uuid' | 'actions' | 'approvedBy' | 'approvedAt'>;
 
 export class UsersAdministrations extends Model<UsersAdministrationsAttributes, UsersAdministrationsCreationAttributes> implements UsersAdministrationsAttributes {
   declare id?: number;
   declare uuid?: string;
-  declare user_id: string;
-  declare cycle_id: number;
+  declare userId: string;
+  declare cycleId: number;
   declare type: string;
   declare status: string;
   declare actions?: any;
-  declare approved_by?: string;
-  declare approved_at?: Date;
+  declare approvedBy?: string;
+  declare approvedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof UsersAdministrations {
     UsersAdministrations.init(
       {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        uuid: { type: DataTypes.UUID, allowNull: true },
-        user_id: { type: DataTypes.UUID, allowNull: false },
-        cycle_id: { type: DataTypes.INTEGER, allowNull: false },
-        type: { type: DataTypes.STRING, allowNull: false },
-        status: { type: DataTypes.STRING, allowNull: false },
-        actions: { type: DataTypes.JSON, allowNull: true },
-        approved_by: { type: DataTypes.STRING, allowNull: true },
-        approved_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,
+            field: 'id'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: true,
+            field: 'uuid'
+        },
+        userId: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_id'
+        },
+        cycleId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'cycle_id'
+        },
+        type: { type: DataTypes.STRING, allowNull: false,
+            field: 'type'
+        },
+        status: { type: DataTypes.STRING, allowNull: false,
+            field: 'status'
+        },
+        actions: { type: DataTypes.JSON, allowNull: true,
+            field: 'actions'
+        },
+        approvedBy: { type: DataTypes.STRING, allowNull: true,
+            field: 'approved_by'
+        },
+        approvedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'approved_at'
+        }
       },
       {
         sequelize,

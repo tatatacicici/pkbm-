@@ -5,38 +5,51 @@ export interface ServerLogsAttributes {
   log: string;
   type: string;
   useragent?: string;
-  ip_address?: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  ipAddress?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type ServerLogsCreationAttributes = Optional<ServerLogsAttributes, 'id' | 'useragent' | 'ip_address' | 'deleted_at'>;
+export type ServerLogsCreationAttributes = Optional<ServerLogsAttributes, 'id' | 'useragent' | 'ipAddress' | 'deletedAt'>;
 
 export class ServerLogs extends Model<ServerLogsAttributes, ServerLogsCreationAttributes> implements ServerLogsAttributes {
   declare id?: string;
   declare log: string;
   declare type: string;
   declare useragent?: string;
-  declare ip_address?: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare ipAddress?: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof ServerLogs {
     ServerLogs.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        log: { type: DataTypes.TEXT, allowNull: false },
-        type: { type: DataTypes.STRING, allowNull: false },
-        useragent: { type: DataTypes.TEXT, allowNull: true },
-        ip_address: { type: DataTypes.STRING, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        log: { type: DataTypes.TEXT, allowNull: false,
+            field: 'log'
+        },
+        type: { type: DataTypes.STRING, allowNull: false,
+            field: 'type'
+        },
+        useragent: { type: DataTypes.TEXT, allowNull: true,
+            field: 'useragent'
+        },
+        ipAddress: { type: DataTypes.STRING, allowNull: true,
+            field: 'ip_address'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

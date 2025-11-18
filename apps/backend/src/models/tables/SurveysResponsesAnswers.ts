@@ -3,43 +3,58 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface SurveysResponsesAnswersAttributes {
   pk: number;
   uuid?: string;
-  response_id: number;
-  question_id: number;
+  responseId: number;
+  questionId: number;
   answer?: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  user_id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  userId: string;
 }
 
-export type SurveysResponsesAnswersCreationAttributes = Optional<SurveysResponsesAnswersAttributes, 'id' | 'uuid' | 'answer' | 'deleted_at'>;
+export type SurveysResponsesAnswersCreationAttributes = Optional<SurveysResponsesAnswersAttributes, 'id' | 'uuid' | 'answer' | 'deletedAt'>;
 
 export class SurveysResponsesAnswers extends Model<SurveysResponsesAnswersAttributes, SurveysResponsesAnswersCreationAttributes> implements SurveysResponsesAnswersAttributes {
   declare pk: number;
   declare uuid?: string;
-  declare response_id: number;
-  declare question_id: number;
+  declare responseId: number;
+  declare questionId: number;
   declare answer?: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare user_id: string;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare userId: string;
 
   public static initModel(sequelize: Sequelize): typeof SurveysResponsesAnswers {
     SurveysResponsesAnswers.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        uuid: { type: DataTypes.UUID, allowNull: true },
-        response_id: { type: DataTypes.INTEGER, allowNull: false },
-        question_id: { type: DataTypes.INTEGER, allowNull: false },
-        answer: { type: DataTypes.TEXT, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        user_id: { type: DataTypes.UUID, allowNull: false }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: true,
+            field: 'uuid'
+        },
+        responseId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'response_id'
+        },
+        questionId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'question_id'
+        },
+        answer: { type: DataTypes.TEXT, allowNull: true,
+            field: 'answer'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        userId: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_id'
+        }
       },
       {
         sequelize,

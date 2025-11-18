@@ -8,13 +8,13 @@ export interface DrillSimulationAssessmentsMeetingsAttributes {
   thumbnail?: string;
   type: string;
   place: string;
-  assessor_id: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  assessorId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type DrillSimulationAssessmentsMeetingsCreationAttributes = Optional<DrillSimulationAssessmentsMeetingsAttributes, 'id' | 'uuid' | 'thumbnail' | 'deleted_at'>;
+export type DrillSimulationAssessmentsMeetingsCreationAttributes = Optional<DrillSimulationAssessmentsMeetingsAttributes, 'id' | 'uuid' | 'thumbnail' | 'deletedAt'>;
 
 export class DrillSimulationAssessmentsMeetings extends Model<DrillSimulationAssessmentsMeetingsAttributes, DrillSimulationAssessmentsMeetingsCreationAttributes> implements DrillSimulationAssessmentsMeetingsAttributes {
   declare id?: number;
@@ -24,28 +24,47 @@ export class DrillSimulationAssessmentsMeetings extends Model<DrillSimulationAss
   declare thumbnail?: string;
   declare type: string;
   declare place: string;
-  declare assessor_id: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare assessorId: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof DrillSimulationAssessmentsMeetings {
     DrillSimulationAssessmentsMeetings.init(
       {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        uuid: { type: DataTypes.UUID, allowNull: true },
-        topic: { type: DataTypes.STRING, allowNull: false },
-        description: { type: DataTypes.STRING, allowNull: false },
-        thumbnail: { type: DataTypes.STRING, allowNull: true },
-        type: { type: DataTypes.STRING, allowNull: false },
-        place: { type: DataTypes.STRING, allowNull: false },
-        assessor_id: { type: DataTypes.UUID, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,
+            field: 'id'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: true,
+            field: 'uuid'
+        },
+        topic: { type: DataTypes.STRING, allowNull: false,
+            field: 'topic'
+        },
+        description: { type: DataTypes.STRING, allowNull: false,
+            field: 'description'
+        },
+        thumbnail: { type: DataTypes.STRING, allowNull: true,
+            field: 'thumbnail'
+        },
+        type: { type: DataTypes.STRING, allowNull: false,
+            field: 'type'
+        },
+        place: { type: DataTypes.STRING, allowNull: false,
+            field: 'place'
+        },
+        assessorId: { type: DataTypes.UUID, allowNull: false,
+            field: 'assessor_id'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

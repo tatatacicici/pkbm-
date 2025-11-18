@@ -5,41 +5,56 @@ export interface FacultiesAttributes {
   name: string;
   thumbnail: string;
   slug: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  thumbnail_id?: number;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  thumbnailId?: number;
   code?: string;
 }
 
-export type FacultiesCreationAttributes = Optional<FacultiesAttributes, 'id' | 'deleted_at' | 'thumbnail_id' | 'code'>;
+export type FacultiesCreationAttributes = Optional<FacultiesAttributes, 'id' | 'deletedAt' | 'thumbnailId' | 'code'>;
 
 export class Faculties extends Model<FacultiesAttributes, FacultiesCreationAttributes> implements FacultiesAttributes {
   declare id?: string;
   declare name: string;
   declare thumbnail: string;
   declare slug: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare thumbnail_id?: number;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare thumbnailId?: number;
   declare code?: string;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof Faculties {
     Faculties.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        name: { type: DataTypes.STRING, allowNull: false },
-        thumbnail: { type: DataTypes.STRING, allowNull: false },
-        slug: { type: DataTypes.STRING, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        thumbnail_id: { type: DataTypes.INTEGER, allowNull: true },
-        code: { type: DataTypes.STRING, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        name: { type: DataTypes.STRING, allowNull: false,
+            field: 'name'
+        },
+        thumbnail: { type: DataTypes.STRING, allowNull: false,
+            field: 'thumbnail'
+        },
+        slug: { type: DataTypes.STRING, allowNull: false,
+            field: 'slug'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        thumbnailId: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'thumbnail_id'
+        },
+        code: { type: DataTypes.STRING, allowNull: true,
+            field: 'code'
+        }
       },
       {
         sequelize,

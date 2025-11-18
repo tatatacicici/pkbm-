@@ -2,47 +2,64 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface DiscussionForumsAttributes {
   id?: string;
-  user_id: string;
-  session_id: string;
+  userId: string;
+  sessionId: string;
   title?: string;
   content: string;
-  is_global?: boolean;
+  isGlobal?: boolean;
   images?: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type DiscussionForumsCreationAttributes = Optional<DiscussionForumsAttributes, 'id' | 'title' | 'is_global' | 'images' | 'deleted_at'>;
+export type DiscussionForumsCreationAttributes = Optional<DiscussionForumsAttributes, 'id' | 'title' | 'isGlobal' | 'images' | 'deletedAt'>;
 
 export class DiscussionForums extends Model<DiscussionForumsAttributes, DiscussionForumsCreationAttributes> implements DiscussionForumsAttributes {
   declare id?: string;
-  declare user_id: string;
-  declare session_id: string;
+  declare userId: string;
+  declare sessionId: string;
   declare title?: string;
   declare content: string;
-  declare is_global?: boolean;
+  declare isGlobal?: boolean;
   declare images?: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof DiscussionForums {
     DiscussionForums.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        user_id: { type: DataTypes.UUID, allowNull: false },
-        session_id: { type: DataTypes.UUID, allowNull: false },
-        title: { type: DataTypes.STRING, allowNull: true },
-        content: { type: DataTypes.TEXT, allowNull: false },
-        is_global: { type: DataTypes.BOOLEAN },
-        images: { type: DataTypes.STRING, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        userId: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_id'
+        },
+        sessionId: { type: DataTypes.UUID, allowNull: false,
+            field: 'session_id'
+        },
+        title: { type: DataTypes.STRING, allowNull: true,
+            field: 'title'
+        },
+        content: { type: DataTypes.TEXT, allowNull: false,
+            field: 'content'
+        },
+        isGlobal: { type: DataTypes.BOOLEAN,
+            field: 'is_global'
+        },
+        images: { type: DataTypes.STRING, allowNull: true,
+            field: 'images'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

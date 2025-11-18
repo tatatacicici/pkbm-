@@ -2,44 +2,59 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AssignmentsAttributes {
   id?: string;
-  session_id: string;
+  sessionId: string;
   title: string;
-  duration_days: number;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  module_id?: string;
+  durationDays: number;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  moduleId?: string;
   exercise?: string;
 }
 
-export type AssignmentsCreationAttributes = Optional<AssignmentsAttributes, 'id' | 'deleted_at' | 'module_id' | 'exercise'>;
+export type AssignmentsCreationAttributes = Optional<AssignmentsAttributes, 'id' | 'deletedAt' | 'moduleId' | 'exercise'>;
 
 export class Assignments extends Model<AssignmentsAttributes, AssignmentsCreationAttributes> implements AssignmentsAttributes {
   declare id?: string;
-  declare session_id: string;
+  declare sessionId: string;
   declare title: string;
-  declare duration_days: number;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare module_id?: string;
+  declare durationDays: number;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare moduleId?: string;
   declare exercise?: string;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof Assignments {
     Assignments.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        session_id: { type: DataTypes.UUID, allowNull: false },
-        title: { type: DataTypes.STRING, allowNull: false },
-        duration_days: { type: DataTypes.INTEGER, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        module_id: { type: DataTypes.UUID, allowNull: true },
-        exercise: { type: DataTypes.TEXT, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        sessionId: { type: DataTypes.UUID, allowNull: false,
+            field: 'session_id'
+        },
+        title: { type: DataTypes.STRING, allowNull: false,
+            field: 'title'
+        },
+        durationDays: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'duration_days'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        moduleId: { type: DataTypes.UUID, allowNull: true,
+            field: 'module_id'
+        },
+        exercise: { type: DataTypes.TEXT, allowNull: true,
+            field: 'exercise'
+        }
       },
       {
         sequelize,

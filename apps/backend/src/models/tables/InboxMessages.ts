@@ -2,50 +2,69 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface InboxMessagesAttributes {
   id?: string;
-  sender_id: string;
-  receiver_id: string;
+  senderId: string;
+  receiverId: string;
   content: string;
-  attachment_id?: number;
-  attachment_url?: string;
-  is_seen: boolean;
-  seen_at?: Date;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  attachmentId?: number;
+  attachmentUrl?: string;
+  isSeen: boolean;
+  seenAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type InboxMessagesCreationAttributes = Optional<InboxMessagesAttributes, 'id' | 'attachment_id' | 'attachment_url' | 'seen_at' | 'deleted_at'>;
+export type InboxMessagesCreationAttributes = Optional<InboxMessagesAttributes, 'id' | 'attachmentId' | 'attachmentUrl' | 'seenAt' | 'deletedAt'>;
 
 export class InboxMessages extends Model<InboxMessagesAttributes, InboxMessagesCreationAttributes> implements InboxMessagesAttributes {
   declare id?: string;
-  declare sender_id: string;
-  declare receiver_id: string;
+  declare senderId: string;
+  declare receiverId: string;
   declare content: string;
-  declare attachment_id?: number;
-  declare attachment_url?: string;
-  declare is_seen: boolean;
-  declare seen_at?: Date;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare attachmentId?: number;
+  declare attachmentUrl?: string;
+  declare isSeen: boolean;
+  declare seenAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof InboxMessages {
     InboxMessages.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        sender_id: { type: DataTypes.UUID, allowNull: false },
-        receiver_id: { type: DataTypes.UUID, allowNull: false },
-        content: { type: DataTypes.TEXT, allowNull: false },
-        attachment_id: { type: DataTypes.INTEGER, allowNull: true },
-        attachment_url: { type: DataTypes.TEXT, allowNull: true },
-        is_seen: { type: DataTypes.BOOLEAN, allowNull: false },
-        seen_at: { type: DataTypes.DATE, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        senderId: { type: DataTypes.UUID, allowNull: false,
+            field: 'sender_id'
+        },
+        receiverId: { type: DataTypes.UUID, allowNull: false,
+            field: 'receiver_id'
+        },
+        content: { type: DataTypes.TEXT, allowNull: false,
+            field: 'content'
+        },
+        attachmentId: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'attachment_id'
+        },
+        attachmentUrl: { type: DataTypes.TEXT, allowNull: true,
+            field: 'attachment_url'
+        },
+        isSeen: { type: DataTypes.BOOLEAN, allowNull: false,
+            field: 'is_seen'
+        },
+        seenAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'seen_at'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

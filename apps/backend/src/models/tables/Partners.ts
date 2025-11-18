@@ -2,65 +2,99 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface PartnersAttributes {
   id?: string;
-  user_id?: string;
-  official_name: string;
-  category_name: string;
-  organization_name: string;
-  industrial_sector: string;
-  main_office_address: string;
-  province_name: string;
-  regency_name: string;
+  userId?: string;
+  officialName: string;
+  categoryName: string;
+  organizationName: string;
+  industrialSector: string;
+  mainOfficeAddress: string;
+  provinceName: string;
+  regencyName: string;
   website?: string;
-  contact_person: string;
-  contact_phone_number: string;
+  contactPerson: string;
+  contactPhoneNumber: string;
   logo?: string;
-  province_code: string;
-  regency_code: string;
+  provinceCode: string;
+  regencyCode: string;
   description?: string;
   slogan?: string;
 }
 
-export type PartnersCreationAttributes = Optional<PartnersAttributes, 'id' | 'user_id' | 'website' | 'logo' | 'description' | 'slogan'>;
+export type PartnersCreationAttributes = Optional<PartnersAttributes, 'id' | 'userId' | 'website' | 'logo' | 'description' | 'slogan'>;
 
 export class Partners extends Model<PartnersAttributes, PartnersCreationAttributes> implements PartnersAttributes {
   declare id?: string;
-  declare user_id?: string;
-  declare official_name: string;
-  declare category_name: string;
-  declare organization_name: string;
-  declare industrial_sector: string;
-  declare main_office_address: string;
-  declare province_name: string;
-  declare regency_name: string;
+  declare userId?: string;
+  declare officialName: string;
+  declare categoryName: string;
+  declare organizationName: string;
+  declare industrialSector: string;
+  declare mainOfficeAddress: string;
+  declare provinceName: string;
+  declare regencyName: string;
   declare website?: string;
-  declare contact_person: string;
-  declare contact_phone_number: string;
+  declare contactPerson: string;
+  declare contactPhoneNumber: string;
   declare logo?: string;
-  declare province_code: string;
-  declare regency_code: string;
+  declare provinceCode: string;
+  declare regencyCode: string;
   declare description?: string;
   declare slogan?: string;
 
   public static initModel(sequelize: Sequelize): typeof Partners {
     Partners.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        user_id: { type: DataTypes.UUID, allowNull: true },
-        official_name: { type: DataTypes.STRING, allowNull: false },
-        category_name: { type: DataTypes.STRING, allowNull: false },
-        organization_name: { type: DataTypes.STRING, allowNull: false },
-        industrial_sector: { type: DataTypes.STRING, allowNull: false },
-        main_office_address: { type: DataTypes.TEXT, allowNull: false },
-        province_name: { type: DataTypes.STRING, allowNull: false },
-        regency_name: { type: DataTypes.STRING, allowNull: false },
-        website: { type: DataTypes.STRING, allowNull: true },
-        contact_person: { type: DataTypes.STRING, allowNull: false },
-        contact_phone_number: { type: DataTypes.STRING, allowNull: false },
-        logo: { type: DataTypes.STRING, allowNull: true },
-        province_code: { type: DataTypes.STRING, allowNull: false },
-        regency_code: { type: DataTypes.STRING, allowNull: false },
-        description: { type: DataTypes.STRING, allowNull: true },
-        slogan: { type: DataTypes.STRING, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        userId: { type: DataTypes.UUID, allowNull: true,
+            field: 'user_id'
+        },
+        officialName: { type: DataTypes.STRING, allowNull: false,
+            field: 'official_name'
+        },
+        categoryName: { type: DataTypes.STRING, allowNull: false,
+            field: 'category_name'
+        },
+        organizationName: { type: DataTypes.STRING, allowNull: false,
+            field: 'organization_name'
+        },
+        industrialSector: { type: DataTypes.STRING, allowNull: false,
+            field: 'industrial_sector'
+        },
+        mainOfficeAddress: { type: DataTypes.TEXT, allowNull: false,
+            field: 'main_office_address'
+        },
+        provinceName: { type: DataTypes.STRING, allowNull: false,
+            field: 'province_name'
+        },
+        regencyName: { type: DataTypes.STRING, allowNull: false,
+            field: 'regency_name'
+        },
+        website: { type: DataTypes.STRING, allowNull: true,
+            field: 'website'
+        },
+        contactPerson: { type: DataTypes.STRING, allowNull: false,
+            field: 'contact_person'
+        },
+        contactPhoneNumber: { type: DataTypes.STRING, allowNull: false,
+            field: 'contact_phone_number'
+        },
+        logo: { type: DataTypes.STRING, allowNull: true,
+            field: 'logo'
+        },
+        provinceCode: { type: DataTypes.STRING, allowNull: false,
+            field: 'province_code'
+        },
+        regencyCode: { type: DataTypes.STRING, allowNull: false,
+            field: 'regency_code'
+        },
+        description: { type: DataTypes.STRING, allowNull: true,
+            field: 'description'
+        },
+        slogan: { type: DataTypes.STRING, allowNull: true,
+            field: 'slogan'
+        }
       },
       {
         sequelize,

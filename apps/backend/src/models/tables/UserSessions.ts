@@ -2,56 +2,79 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface UserSessionsAttributes {
   id?: string;
-  user_id: string;
+  userId: string;
   status: string;
-  user_agent: string;
-  access_token?: string;
-  refresh_token?: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  ip_address?: string;
-  expires_at?: Date;
-  last_active_at?: Date;
-  last_active?: Date;
+  userAgent: string;
+  accessToken?: string;
+  refreshToken?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  ipAddress?: string;
+  expiresAt?: Date;
+  lastActiveAt?: Date;
+  lastActive?: Date;
 }
 
-export type UserSessionsCreationAttributes = Optional<UserSessionsAttributes, 'id' | 'access_token' | 'refresh_token' | 'deleted_at' | 'ip_address' | 'expires_at' | 'last_active_at' | 'last_active'>;
+export type UserSessionsCreationAttributes = Optional<UserSessionsAttributes, 'id' | 'accessToken' | 'refreshToken' | 'deletedAt' | 'ipAddress' | 'expiresAt' | 'lastActiveAt' | 'lastActive'>;
 
 export class UserSessions extends Model<UserSessionsAttributes, UserSessionsCreationAttributes> implements UserSessionsAttributes {
   declare id?: string;
-  declare user_id: string;
+  declare userId: string;
   declare status: string;
-  declare user_agent: string;
-  declare access_token?: string;
-  declare refresh_token?: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare ip_address?: string;
-  declare expires_at?: Date;
-  declare last_active_at?: Date;
-  declare last_active?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare userAgent: string;
+  declare accessToken?: string;
+  declare refreshToken?: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare ipAddress?: string;
+  declare expiresAt?: Date;
+  declare lastActiveAt?: Date;
+  declare lastActive?: Date;
 
   public static initModel(sequelize: Sequelize): typeof UserSessions {
     UserSessions.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        user_id: { type: DataTypes.UUID, allowNull: false },
-        status: { type: DataTypes.STRING, allowNull: false },
-        user_agent: { type: DataTypes.STRING, allowNull: false },
-        access_token: { type: DataTypes.STRING, allowNull: true },
-        refresh_token: { type: DataTypes.STRING, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        ip_address: { type: DataTypes.STRING, allowNull: true },
-        expires_at: { type: DataTypes.DATE, allowNull: true },
-        last_active_at: { type: DataTypes.DATE, allowNull: true },
-        last_active: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        userId: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_id'
+        },
+        status: { type: DataTypes.STRING, allowNull: false,
+            field: 'status'
+        },
+        userAgent: { type: DataTypes.STRING, allowNull: false,
+            field: 'user_agent'
+        },
+        accessToken: { type: DataTypes.STRING, allowNull: true,
+            field: 'access_token'
+        },
+        refreshToken: { type: DataTypes.STRING, allowNull: true,
+            field: 'refresh_token'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        ipAddress: { type: DataTypes.STRING, allowNull: true,
+            field: 'ip_address'
+        },
+        expiresAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'expires_at'
+        },
+        lastActiveAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'last_active_at'
+        },
+        lastActive: { type: DataTypes.DATE, allowNull: true,
+            field: 'last_active'
+        }
       },
       {
         sequelize,

@@ -5,62 +5,91 @@ export interface RoleplaysAttributes {
   id?: string;
   topic: string;
   description?: string;
-  case_study?: string;
+  caseStudy?: string;
   rules?: string;
   duration: number;
-  subject_id: string;
-  session_id: string;
-  rubric_id: number;
-  start_at: Date;
-  end_at: Date;
-  created_by: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  subjectId: string;
+  sessionId: string;
+  rubricId: number;
+  startAt: Date;
+  endAt: Date;
+  createdBy: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type RoleplaysCreationAttributes = Optional<RoleplaysAttributes, 'id' | 'description' | 'case_study' | 'rules' | 'deleted_at'>;
+export type RoleplaysCreationAttributes = Optional<RoleplaysAttributes, 'id' | 'description' | 'caseStudy' | 'rules' | 'deletedAt'>;
 
 export class Roleplays extends Model<RoleplaysAttributes, RoleplaysCreationAttributes> implements RoleplaysAttributes {
   declare pk: number;
   declare id?: string;
   declare topic: string;
   declare description?: string;
-  declare case_study?: string;
+  declare caseStudy?: string;
   declare rules?: string;
   declare duration: number;
-  declare subject_id: string;
-  declare session_id: string;
-  declare rubric_id: number;
-  declare start_at: Date;
-  declare end_at: Date;
-  declare created_by: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare subjectId: string;
+  declare sessionId: string;
+  declare rubricId: number;
+  declare startAt: Date;
+  declare endAt: Date;
+  declare createdBy: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof Roleplays {
     Roleplays.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        topic: { type: DataTypes.STRING, allowNull: false },
-        description: { type: DataTypes.TEXT, allowNull: true },
-        case_study: { type: DataTypes.TEXT, allowNull: true },
-        rules: { type: DataTypes.TEXT, allowNull: true },
-        duration: { type: DataTypes.INTEGER, allowNull: false },
-        subject_id: { type: DataTypes.UUID, allowNull: false },
-        session_id: { type: DataTypes.UUID, allowNull: false },
-        rubric_id: { type: DataTypes.INTEGER, allowNull: false },
-        start_at: { type: DataTypes.DATE, allowNull: false },
-        end_at: { type: DataTypes.DATE, allowNull: false },
-        created_by: { type: DataTypes.UUID, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        topic: { type: DataTypes.STRING, allowNull: false,
+            field: 'topic'
+        },
+        description: { type: DataTypes.TEXT, allowNull: true,
+            field: 'description'
+        },
+        caseStudy: { type: DataTypes.TEXT, allowNull: true,
+            field: 'case_study'
+        },
+        rules: { type: DataTypes.TEXT, allowNull: true,
+            field: 'rules'
+        },
+        duration: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'duration'
+        },
+        subjectId: { type: DataTypes.UUID, allowNull: false,
+            field: 'subject_id'
+        },
+        sessionId: { type: DataTypes.UUID, allowNull: false,
+            field: 'session_id'
+        },
+        rubricId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'rubric_id'
+        },
+        startAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'start_at'
+        },
+        endAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'end_at'
+        },
+        createdBy: { type: DataTypes.UUID, allowNull: false,
+            field: 'created_by'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

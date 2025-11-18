@@ -3,46 +3,63 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface RoleplaysTeamsAttributes {
   pk: number;
   id?: string;
-  roleplay_id: number;
-  master_id: string;
+  roleplayId: number;
+  masterId: string;
   number: string;
   status: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  student_id?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  studentId?: string;
 }
 
-export type RoleplaysTeamsCreationAttributes = Optional<RoleplaysTeamsAttributes, 'id' | 'deleted_at' | 'student_id'>;
+export type RoleplaysTeamsCreationAttributes = Optional<RoleplaysTeamsAttributes, 'id' | 'deletedAt' | 'studentId'>;
 
 export class RoleplaysTeams extends Model<RoleplaysTeamsAttributes, RoleplaysTeamsCreationAttributes> implements RoleplaysTeamsAttributes {
   declare pk: number;
   declare id?: string;
-  declare roleplay_id: number;
-  declare master_id: string;
+  declare roleplayId: number;
+  declare masterId: string;
   declare number: string;
   declare status: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare student_id?: string;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare studentId?: string;
 
   public static initModel(sequelize: Sequelize): typeof RoleplaysTeams {
     RoleplaysTeams.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        roleplay_id: { type: DataTypes.INTEGER, allowNull: false },
-        master_id: { type: DataTypes.UUID, allowNull: false },
-        number: { type: DataTypes.STRING, allowNull: false },
-        status: { type: DataTypes.STRING, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        student_id: { type: DataTypes.UUID, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        roleplayId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'roleplay_id'
+        },
+        masterId: { type: DataTypes.UUID, allowNull: false,
+            field: 'master_id'
+        },
+        number: { type: DataTypes.STRING, allowNull: false,
+            field: 'number'
+        },
+        status: { type: DataTypes.STRING, allowNull: false,
+            field: 'status'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        studentId: { type: DataTypes.UUID, allowNull: true,
+            field: 'student_id'
+        }
       },
       {
         sequelize,

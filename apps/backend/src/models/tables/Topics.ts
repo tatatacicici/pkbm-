@@ -3,34 +3,43 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface TopicsAttributes {
   id?: string;
   name: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
   slug: string;
 }
 
-export type TopicsCreationAttributes = Optional<TopicsAttributes, 'id' | 'deleted_at'>;
+export type TopicsCreationAttributes = Optional<TopicsAttributes, 'id' | 'deletedAt'>;
 
 export class Topics extends Model<TopicsAttributes, TopicsCreationAttributes> implements TopicsAttributes {
   declare id?: string;
   declare name: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
   declare slug: string;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof Topics {
     Topics.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        name: { type: DataTypes.STRING, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        slug: { type: DataTypes.STRING, allowNull: false }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        name: { type: DataTypes.STRING, allowNull: false,
+            field: 'name'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        slug: { type: DataTypes.STRING, allowNull: false,
+            field: 'slug'
+        }
       },
       {
         sequelize,

@@ -3,9 +3,9 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface SessionsMentoringsAttributes {
   pk: number;
   id?: string;
-  subject_id: string;
-  session_id: string;
-  teacher_id: string;
+  subjectId: string;
+  sessionId: string;
+  teacherId: string;
   session?: number;
   title: string;
   content: string;
@@ -13,21 +13,21 @@ export interface SessionsMentoringsAttributes {
   location: string;
   date: Date;
   link: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  module_id?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  moduleId?: string;
   type?: string;
 }
 
-export type SessionsMentoringsCreationAttributes = Optional<SessionsMentoringsAttributes, 'id' | 'session' | 'deleted_at' | 'module_id' | 'type'>;
+export type SessionsMentoringsCreationAttributes = Optional<SessionsMentoringsAttributes, 'id' | 'session' | 'deletedAt' | 'moduleId' | 'type'>;
 
 export class SessionsMentorings extends Model<SessionsMentoringsAttributes, SessionsMentoringsCreationAttributes> implements SessionsMentoringsAttributes {
   declare pk: number;
   declare id?: string;
-  declare subject_id: string;
-  declare session_id: string;
-  declare teacher_id: string;
+  declare subjectId: string;
+  declare sessionId: string;
+  declare teacherId: string;
   declare session?: number;
   declare title: string;
   declare content: string;
@@ -35,35 +35,66 @@ export class SessionsMentorings extends Model<SessionsMentoringsAttributes, Sess
   declare location: string;
   declare date: Date;
   declare link: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare module_id?: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare moduleId?: string;
   declare type?: string;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof SessionsMentorings {
     SessionsMentorings.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        subject_id: { type: DataTypes.UUID, allowNull: false },
-        session_id: { type: DataTypes.UUID, allowNull: false },
-        teacher_id: { type: DataTypes.UUID, allowNull: false },
-        session: { type: DataTypes.INTEGER, allowNull: true },
-        title: { type: DataTypes.TEXT, allowNull: false },
-        content: { type: DataTypes.TEXT, allowNull: false },
-        duration: { type: DataTypes.STRING, allowNull: false },
-        location: { type: DataTypes.STRING, allowNull: false },
-        date: { type: DataTypes.DATE, allowNull: false },
-        link: { type: DataTypes.STRING, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        module_id: { type: DataTypes.UUID, allowNull: true },
-        type: { type: DataTypes.STRING, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        subjectId: { type: DataTypes.UUID, allowNull: false,
+            field: 'subject_id'
+        },
+        sessionId: { type: DataTypes.UUID, allowNull: false,
+            field: 'session_id'
+        },
+        teacherId: { type: DataTypes.UUID, allowNull: false,
+            field: 'teacher_id'
+        },
+        session: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'session'
+        },
+        title: { type: DataTypes.TEXT, allowNull: false,
+            field: 'title'
+        },
+        content: { type: DataTypes.TEXT, allowNull: false,
+            field: 'content'
+        },
+        duration: { type: DataTypes.STRING, allowNull: false,
+            field: 'duration'
+        },
+        location: { type: DataTypes.STRING, allowNull: false,
+            field: 'location'
+        },
+        date: { type: DataTypes.DATE, allowNull: false,
+            field: 'date'
+        },
+        link: { type: DataTypes.STRING, allowNull: false,
+            field: 'link'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        moduleId: { type: DataTypes.UUID, allowNull: true,
+            field: 'module_id'
+        },
+        type: { type: DataTypes.STRING, allowNull: true,
+            field: 'type'
+        }
       },
       {
         sequelize,

@@ -7,17 +7,17 @@ export interface DrillsAttributes {
   description: string;
   session: string;
   roleplay: string;
-  assessor_id: string;
-  student_id: string;
+  assessorId: string;
+  studentId: string;
   accepted?: boolean;
   score?: number;
   feedback?: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type DrillsCreationAttributes = Optional<DrillsAttributes, 'id' | 'uuid' | 'accepted' | 'score' | 'feedback' | 'deleted_at'>;
+export type DrillsCreationAttributes = Optional<DrillsAttributes, 'id' | 'uuid' | 'accepted' | 'score' | 'feedback' | 'deletedAt'>;
 
 export class Drills extends Model<DrillsAttributes, DrillsCreationAttributes> implements DrillsAttributes {
   declare id?: number;
@@ -26,35 +26,60 @@ export class Drills extends Model<DrillsAttributes, DrillsCreationAttributes> im
   declare description: string;
   declare session: string;
   declare roleplay: string;
-  declare assessor_id: string;
-  declare student_id: string;
+  declare assessorId: string;
+  declare studentId: string;
   declare accepted?: boolean;
   declare score?: number;
   declare feedback?: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof Drills {
     Drills.init(
       {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        uuid: { type: DataTypes.UUID, allowNull: true },
-        topic: { type: DataTypes.STRING, allowNull: false },
-        description: { type: DataTypes.STRING, allowNull: false },
-        session: { type: DataTypes.UUID, allowNull: false },
-        roleplay: { type: DataTypes.UUID, allowNull: false },
-        assessor_id: { type: DataTypes.UUID, allowNull: false },
-        student_id: { type: DataTypes.UUID, allowNull: false },
-        accepted: { type: DataTypes.BOOLEAN },
-        score: { type: DataTypes.INTEGER, allowNull: true },
-        feedback: { type: DataTypes.TEXT, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,
+            field: 'id'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: true,
+            field: 'uuid'
+        },
+        topic: { type: DataTypes.STRING, allowNull: false,
+            field: 'topic'
+        },
+        description: { type: DataTypes.STRING, allowNull: false,
+            field: 'description'
+        },
+        session: { type: DataTypes.UUID, allowNull: false,
+            field: 'session'
+        },
+        roleplay: { type: DataTypes.UUID, allowNull: false,
+            field: 'roleplay'
+        },
+        assessorId: { type: DataTypes.UUID, allowNull: false,
+            field: 'assessor_id'
+        },
+        studentId: { type: DataTypes.UUID, allowNull: false,
+            field: 'student_id'
+        },
+        accepted: { type: DataTypes.BOOLEAN,
+            field: 'accepted'
+        },
+        score: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'score'
+        },
+        feedback: { type: DataTypes.TEXT, allowNull: true,
+            field: 'feedback'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

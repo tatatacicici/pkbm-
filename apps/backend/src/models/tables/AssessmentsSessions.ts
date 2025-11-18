@@ -3,52 +3,73 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface AssessmentsSessionsAttributes {
   pk: number;
   id?: string;
-  assessment_id: number;
+  assessmentId: number;
   type: string;
   status: string;
   day: string;
-  booked_by: string;
-  booked_at: Date;
-  rubric_score?: number;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  bookedBy: string;
+  bookedAt: Date;
+  rubricScore?: number;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type AssessmentsSessionsCreationAttributes = Optional<AssessmentsSessionsAttributes, 'id' | 'rubric_score' | 'deleted_at'>;
+export type AssessmentsSessionsCreationAttributes = Optional<AssessmentsSessionsAttributes, 'id' | 'rubricScore' | 'deletedAt'>;
 
 export class AssessmentsSessions extends Model<AssessmentsSessionsAttributes, AssessmentsSessionsCreationAttributes> implements AssessmentsSessionsAttributes {
   declare pk: number;
   declare id?: string;
-  declare assessment_id: number;
+  declare assessmentId: number;
   declare type: string;
   declare status: string;
   declare day: string;
-  declare booked_by: string;
-  declare booked_at: Date;
-  declare rubric_score?: number;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare bookedBy: string;
+  declare bookedAt: Date;
+  declare rubricScore?: number;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof AssessmentsSessions {
     AssessmentsSessions.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        assessment_id: { type: DataTypes.INTEGER, allowNull: false },
-        type: { type: DataTypes.STRING, allowNull: false },
-        status: { type: DataTypes.STRING, allowNull: false },
-        day: { type: DataTypes.STRING, allowNull: false },
-        booked_by: { type: DataTypes.UUID, allowNull: false },
-        booked_at: { type: DataTypes.DATE, allowNull: false },
-        rubric_score: { type: DataTypes.INTEGER, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        assessmentId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'assessment_id'
+        },
+        type: { type: DataTypes.STRING, allowNull: false,
+            field: 'type'
+        },
+        status: { type: DataTypes.STRING, allowNull: false,
+            field: 'status'
+        },
+        day: { type: DataTypes.STRING, allowNull: false,
+            field: 'day'
+        },
+        bookedBy: { type: DataTypes.UUID, allowNull: false,
+            field: 'booked_by'
+        },
+        bookedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'booked_at'
+        },
+        rubricScore: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'rubric_score'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

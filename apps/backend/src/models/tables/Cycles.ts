@@ -6,17 +6,17 @@ export interface CyclesAttributes {
   name: string;
   cycle: number;
   type: string;
-  start_duration: Date;
-  start_registration: Date;
-  end_registration: Date;
-  end_duration: Date;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  startDuration: Date;
+  startRegistration: Date;
+  endRegistration: Date;
+  endDuration: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
   status: string;
 }
 
-export type CyclesCreationAttributes = Optional<CyclesAttributes, 'id' | 'uuid' | 'deleted_at'>;
+export type CyclesCreationAttributes = Optional<CyclesAttributes, 'id' | 'uuid' | 'deletedAt'>;
 
 export class Cycles extends Model<CyclesAttributes, CyclesCreationAttributes> implements CyclesAttributes {
   declare id?: number;
@@ -24,34 +24,57 @@ export class Cycles extends Model<CyclesAttributes, CyclesCreationAttributes> im
   declare name: string;
   declare cycle: number;
   declare type: string;
-  declare start_duration: Date;
-  declare start_registration: Date;
-  declare end_registration: Date;
-  declare end_duration: Date;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
+  declare startDuration: Date;
+  declare startRegistration: Date;
+  declare endRegistration: Date;
+  declare endDuration: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
   declare status: string;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof Cycles {
     Cycles.init(
       {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        uuid: { type: DataTypes.UUID, allowNull: true },
-        name: { type: DataTypes.STRING, allowNull: false },
-        cycle: { type: DataTypes.INTEGER, allowNull: false },
-        type: { type: DataTypes.STRING, allowNull: false },
-        start_duration: { type: DataTypes.DATE, allowNull: false },
-        start_registration: { type: DataTypes.DATE, allowNull: false },
-        end_registration: { type: DataTypes.DATE, allowNull: false },
-        end_duration: { type: DataTypes.DATE, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        status: { type: DataTypes.STRING, allowNull: false }
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,
+            field: 'id'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: true,
+            field: 'uuid'
+        },
+        name: { type: DataTypes.STRING, allowNull: false,
+            field: 'name'
+        },
+        cycle: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'cycle'
+        },
+        type: { type: DataTypes.STRING, allowNull: false,
+            field: 'type'
+        },
+        startDuration: { type: DataTypes.DATE, allowNull: false,
+            field: 'start_duration'
+        },
+        startRegistration: { type: DataTypes.DATE, allowNull: false,
+            field: 'start_registration'
+        },
+        endRegistration: { type: DataTypes.DATE, allowNull: false,
+            field: 'end_registration'
+        },
+        endDuration: { type: DataTypes.DATE, allowNull: false,
+            field: 'end_duration'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        status: { type: DataTypes.STRING, allowNull: false,
+            field: 'status'
+        }
       },
       {
         sequelize,

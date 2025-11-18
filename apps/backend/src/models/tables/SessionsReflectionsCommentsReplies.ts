@@ -2,41 +2,54 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SessionsReflectionsCommentsRepliesAttributes {
   id?: string;
-  reflection_id: number;
-  comment_id: string;
-  user_id: string;
+  reflectionId: number;
+  commentId: string;
+  userId: string;
   content: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type SessionsReflectionsCommentsRepliesCreationAttributes = Optional<SessionsReflectionsCommentsRepliesAttributes, 'id' | 'deleted_at'>;
+export type SessionsReflectionsCommentsRepliesCreationAttributes = Optional<SessionsReflectionsCommentsRepliesAttributes, 'id' | 'deletedAt'>;
 
 export class SessionsReflectionsCommentsReplies extends Model<SessionsReflectionsCommentsRepliesAttributes, SessionsReflectionsCommentsRepliesCreationAttributes> implements SessionsReflectionsCommentsRepliesAttributes {
   declare id?: string;
-  declare reflection_id: number;
-  declare comment_id: string;
-  declare user_id: string;
+  declare reflectionId: number;
+  declare commentId: string;
+  declare userId: string;
   declare content: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof SessionsReflectionsCommentsReplies {
     SessionsReflectionsCommentsReplies.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        reflection_id: { type: DataTypes.INTEGER, allowNull: false },
-        comment_id: { type: DataTypes.UUID, allowNull: false },
-        user_id: { type: DataTypes.UUID, allowNull: false },
-        content: { type: DataTypes.TEXT, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        reflectionId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'reflection_id'
+        },
+        commentId: { type: DataTypes.UUID, allowNull: false,
+            field: 'comment_id'
+        },
+        userId: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_id'
+        },
+        content: { type: DataTypes.TEXT, allowNull: false,
+            field: 'content'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

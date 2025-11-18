@@ -3,8 +3,8 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface AssignmentFilesAttributes {
   pk: number;
   id?: string;
-  assignment_id: number;
-  file_path: string;
+  assignmentId: number;
+  filePath: string;
   name: string;
 }
 
@@ -13,18 +13,28 @@ export type AssignmentFilesCreationAttributes = Optional<AssignmentFilesAttribut
 export class AssignmentFiles extends Model<AssignmentFilesAttributes, AssignmentFilesCreationAttributes> implements AssignmentFilesAttributes {
   declare pk: number;
   declare id?: string;
-  declare assignment_id: number;
-  declare file_path: string;
+  declare assignmentId: number;
+  declare filePath: string;
   declare name: string;
 
   public static initModel(sequelize: Sequelize): typeof AssignmentFiles {
     AssignmentFiles.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        assignment_id: { type: DataTypes.INTEGER, allowNull: false },
-        file_path: { type: DataTypes.STRING, allowNull: false },
-        name: { type: DataTypes.STRING, allowNull: false }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        assignmentId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'assignment_id'
+        },
+        filePath: { type: DataTypes.STRING, allowNull: false,
+            field: 'file_path'
+        },
+        name: { type: DataTypes.STRING, allowNull: false,
+            field: 'name'
+        }
       },
       {
         sequelize,

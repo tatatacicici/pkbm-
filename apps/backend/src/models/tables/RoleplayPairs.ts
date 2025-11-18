@@ -3,55 +3,78 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface RoleplayPairsAttributes {
   id?: number;
   uuid?: string;
-  user_invitor: string;
-  user_invitee: string;
+  userInvitor: string;
+  userInvitee: string;
   accepted?: boolean;
-  roleplay_id: string;
-  video_link?: string;
-  invitor_input?: string;
-  invitee_input?: string;
+  roleplayId: string;
+  videoLink?: string;
+  invitorInput?: string;
+  inviteeInput?: string;
   score?: number;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type RoleplayPairsCreationAttributes = Optional<RoleplayPairsAttributes, 'id' | 'uuid' | 'accepted' | 'video_link' | 'invitor_input' | 'invitee_input' | 'score' | 'deleted_at'>;
+export type RoleplayPairsCreationAttributes = Optional<RoleplayPairsAttributes, 'id' | 'uuid' | 'accepted' | 'videoLink' | 'invitorInput' | 'inviteeInput' | 'score' | 'deletedAt'>;
 
 export class RoleplayPairs extends Model<RoleplayPairsAttributes, RoleplayPairsCreationAttributes> implements RoleplayPairsAttributes {
   declare id?: number;
   declare uuid?: string;
-  declare user_invitor: string;
-  declare user_invitee: string;
+  declare userInvitor: string;
+  declare userInvitee: string;
   declare accepted?: boolean;
-  declare roleplay_id: string;
-  declare video_link?: string;
-  declare invitor_input?: string;
-  declare invitee_input?: string;
+  declare roleplayId: string;
+  declare videoLink?: string;
+  declare invitorInput?: string;
+  declare inviteeInput?: string;
   declare score?: number;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof RoleplayPairs {
     RoleplayPairs.init(
       {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        uuid: { type: DataTypes.UUID, allowNull: true },
-        user_invitor: { type: DataTypes.UUID, allowNull: false },
-        user_invitee: { type: DataTypes.UUID, allowNull: false },
-        accepted: { type: DataTypes.BOOLEAN },
-        roleplay_id: { type: DataTypes.UUID, allowNull: false },
-        video_link: { type: DataTypes.STRING, allowNull: true },
-        invitor_input: { type: DataTypes.TEXT, allowNull: true },
-        invitee_input: { type: DataTypes.TEXT, allowNull: true },
-        score: { type: DataTypes.INTEGER, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,
+            field: 'id'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: true,
+            field: 'uuid'
+        },
+        userInvitor: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_invitor'
+        },
+        userInvitee: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_invitee'
+        },
+        accepted: { type: DataTypes.BOOLEAN,
+            field: 'accepted'
+        },
+        roleplayId: { type: DataTypes.UUID, allowNull: false,
+            field: 'roleplay_id'
+        },
+        videoLink: { type: DataTypes.STRING, allowNull: true,
+            field: 'video_link'
+        },
+        invitorInput: { type: DataTypes.TEXT, allowNull: true,
+            field: 'invitor_input'
+        },
+        inviteeInput: { type: DataTypes.TEXT, allowNull: true,
+            field: 'invitee_input'
+        },
+        score: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'score'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

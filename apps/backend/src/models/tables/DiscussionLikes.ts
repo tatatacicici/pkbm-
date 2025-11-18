@@ -2,38 +2,49 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface DiscussionLikesAttributes {
   id?: string;
-  user_id: string;
-  resource_type: string;
-  resource_id: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  userId: string;
+  resourceType: string;
+  resourceId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type DiscussionLikesCreationAttributes = Optional<DiscussionLikesAttributes, 'id' | 'deleted_at'>;
+export type DiscussionLikesCreationAttributes = Optional<DiscussionLikesAttributes, 'id' | 'deletedAt'>;
 
 export class DiscussionLikes extends Model<DiscussionLikesAttributes, DiscussionLikesCreationAttributes> implements DiscussionLikesAttributes {
   declare id?: string;
-  declare user_id: string;
-  declare resource_type: string;
-  declare resource_id: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare userId: string;
+  declare resourceType: string;
+  declare resourceId: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof DiscussionLikes {
     DiscussionLikes.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        user_id: { type: DataTypes.UUID, allowNull: false },
-        resource_type: { type: DataTypes.STRING, allowNull: false },
-        resource_id: { type: DataTypes.UUID, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        userId: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_id'
+        },
+        resourceType: { type: DataTypes.STRING, allowNull: false,
+            field: 'resource_type'
+        },
+        resourceId: { type: DataTypes.UUID, allowNull: false,
+            field: 'resource_id'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

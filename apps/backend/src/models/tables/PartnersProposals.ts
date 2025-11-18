@@ -3,73 +3,108 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface PartnersProposalsAttributes {
   id?: number;
   uuid: string;
-  partner_id: string;
+  partnerId: string;
   name: string;
   type: string;
-  start_registration: Date;
-  end_registration: Date;
-  start_duration: Date;
-  end_duration: Date;
-  credits_count: number;
+  startRegistration: Date;
+  endRegistration: Date;
+  startDuration: Date;
+  endDuration: Date;
+  creditsCount: number;
   location: string;
   description: string;
-  optional_notes?: string;
+  optionalNotes?: string;
   status: string;
-  actioner_id?: string;
-  actioned_at?: Date;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  actionerId?: string;
+  actionedAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type PartnersProposalsCreationAttributes = Optional<PartnersProposalsAttributes, 'id' | 'optional_notes' | 'actioner_id' | 'actioned_at' | 'deleted_at'>;
+export type PartnersProposalsCreationAttributes = Optional<PartnersProposalsAttributes, 'id' | 'optionalNotes' | 'actionerId' | 'actionedAt' | 'deletedAt'>;
 
 export class PartnersProposals extends Model<PartnersProposalsAttributes, PartnersProposalsCreationAttributes> implements PartnersProposalsAttributes {
   declare id?: number;
   declare uuid: string;
-  declare partner_id: string;
+  declare partnerId: string;
   declare name: string;
   declare type: string;
-  declare start_registration: Date;
-  declare end_registration: Date;
-  declare start_duration: Date;
-  declare end_duration: Date;
-  declare credits_count: number;
+  declare startRegistration: Date;
+  declare endRegistration: Date;
+  declare startDuration: Date;
+  declare endDuration: Date;
+  declare creditsCount: number;
   declare location: string;
   declare description: string;
-  declare optional_notes?: string;
+  declare optionalNotes?: string;
   declare status: string;
-  declare actioner_id?: string;
-  declare actioned_at?: Date;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare actionerId?: string;
+  declare actionedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof PartnersProposals {
     PartnersProposals.init(
       {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        uuid: { type: DataTypes.UUID, allowNull: false },
-        partner_id: { type: DataTypes.UUID, allowNull: false },
-        name: { type: DataTypes.STRING, allowNull: false },
-        type: { type: DataTypes.STRING, allowNull: false },
-        start_registration: { type: DataTypes.DATE, allowNull: false },
-        end_registration: { type: DataTypes.DATE, allowNull: false },
-        start_duration: { type: DataTypes.DATE, allowNull: false },
-        end_duration: { type: DataTypes.DATE, allowNull: false },
-        credits_count: { type: DataTypes.INTEGER, allowNull: false },
-        location: { type: DataTypes.STRING, allowNull: false },
-        description: { type: DataTypes.TEXT, allowNull: false },
-        optional_notes: { type: DataTypes.TEXT, allowNull: true },
-        status: { type: DataTypes.STRING, allowNull: false },
-        actioner_id: { type: DataTypes.UUID, allowNull: true },
-        actioned_at: { type: DataTypes.DATE, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,
+            field: 'id'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: false,
+            field: 'uuid'
+        },
+        partnerId: { type: DataTypes.UUID, allowNull: false,
+            field: 'partner_id'
+        },
+        name: { type: DataTypes.STRING, allowNull: false,
+            field: 'name'
+        },
+        type: { type: DataTypes.STRING, allowNull: false,
+            field: 'type'
+        },
+        startRegistration: { type: DataTypes.DATE, allowNull: false,
+            field: 'start_registration'
+        },
+        endRegistration: { type: DataTypes.DATE, allowNull: false,
+            field: 'end_registration'
+        },
+        startDuration: { type: DataTypes.DATE, allowNull: false,
+            field: 'start_duration'
+        },
+        endDuration: { type: DataTypes.DATE, allowNull: false,
+            field: 'end_duration'
+        },
+        creditsCount: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'credits_count'
+        },
+        location: { type: DataTypes.STRING, allowNull: false,
+            field: 'location'
+        },
+        description: { type: DataTypes.TEXT, allowNull: false,
+            field: 'description'
+        },
+        optionalNotes: { type: DataTypes.TEXT, allowNull: true,
+            field: 'optional_notes'
+        },
+        status: { type: DataTypes.STRING, allowNull: false,
+            field: 'status'
+        },
+        actionerId: { type: DataTypes.UUID, allowNull: true,
+            field: 'actioner_id'
+        },
+        actionedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'actioned_at'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

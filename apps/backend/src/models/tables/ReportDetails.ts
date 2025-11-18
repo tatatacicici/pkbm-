@@ -3,46 +3,63 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface ReportDetailsAttributes {
   id?: number;
   uuid: string;
-  user_id: string;
-  report_id: number;
+  userId: string;
+  reportId: number;
   detail: string;
-  expresion_level: number;
+  expresionLevel: number;
   date: Date;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type ReportDetailsCreationAttributes = Optional<ReportDetailsAttributes, 'id' | 'deleted_at'>;
+export type ReportDetailsCreationAttributes = Optional<ReportDetailsAttributes, 'id' | 'deletedAt'>;
 
 export class ReportDetails extends Model<ReportDetailsAttributes, ReportDetailsCreationAttributes> implements ReportDetailsAttributes {
   declare id?: number;
   declare uuid: string;
-  declare user_id: string;
-  declare report_id: number;
+  declare userId: string;
+  declare reportId: number;
   declare detail: string;
-  declare expresion_level: number;
+  declare expresionLevel: number;
   declare date: Date;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof ReportDetails {
     ReportDetails.init(
       {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        uuid: { type: DataTypes.UUID, allowNull: false },
-        user_id: { type: DataTypes.UUID, allowNull: false },
-        report_id: { type: DataTypes.INTEGER, allowNull: false },
-        detail: { type: DataTypes.TEXT, allowNull: false },
-        expresion_level: { type: DataTypes.INTEGER, allowNull: false },
-        date: { type: DataTypes.DATE, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,
+            field: 'id'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: false,
+            field: 'uuid'
+        },
+        userId: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_id'
+        },
+        reportId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'report_id'
+        },
+        detail: { type: DataTypes.TEXT, allowNull: false,
+            field: 'detail'
+        },
+        expresionLevel: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'expresion_level'
+        },
+        date: { type: DataTypes.DATE, allowNull: false,
+            field: 'date'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

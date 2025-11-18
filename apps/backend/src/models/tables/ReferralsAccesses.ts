@@ -2,44 +2,59 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ReferralsAccessesAttributes {
   id?: string;
-  referral_id: string;
-  user_id?: string;
+  referralId: string;
+  userId?: string;
   useragent: string;
-  ip_address: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  is_valid?: boolean;
+  ipAddress: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  isValid?: boolean;
 }
 
-export type ReferralsAccessesCreationAttributes = Optional<ReferralsAccessesAttributes, 'id' | 'user_id' | 'deleted_at' | 'is_valid'>;
+export type ReferralsAccessesCreationAttributes = Optional<ReferralsAccessesAttributes, 'id' | 'userId' | 'deletedAt' | 'isValid'>;
 
 export class ReferralsAccesses extends Model<ReferralsAccessesAttributes, ReferralsAccessesCreationAttributes> implements ReferralsAccessesAttributes {
   declare id?: string;
-  declare referral_id: string;
-  declare user_id?: string;
+  declare referralId: string;
+  declare userId?: string;
   declare useragent: string;
-  declare ip_address: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare is_valid?: boolean;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare ipAddress: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare isValid?: boolean;
 
   public static initModel(sequelize: Sequelize): typeof ReferralsAccesses {
     ReferralsAccesses.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        referral_id: { type: DataTypes.UUID, allowNull: false },
-        user_id: { type: DataTypes.UUID, allowNull: true },
-        useragent: { type: DataTypes.STRING, allowNull: false },
-        ip_address: { type: DataTypes.STRING, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        is_valid: { type: DataTypes.BOOLEAN }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        referralId: { type: DataTypes.UUID, allowNull: false,
+            field: 'referral_id'
+        },
+        userId: { type: DataTypes.UUID, allowNull: true,
+            field: 'user_id'
+        },
+        useragent: { type: DataTypes.STRING, allowNull: false,
+            field: 'useragent'
+        },
+        ipAddress: { type: DataTypes.STRING, allowNull: false,
+            field: 'ip_address'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        isValid: { type: DataTypes.BOOLEAN,
+            field: 'is_valid'
+        }
       },
       {
         sequelize,

@@ -3,40 +3,53 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface ReportActionsAttributes {
   id?: number;
   uuid: string;
-  user_id: string;
-  report_id: number;
-  mentor_id: string;
+  userId: string;
+  reportId: number;
+  mentorId: string;
   note: string;
-  created_at?: Date;
-  updated_at?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
-export type ReportActionsCreationAttributes = Optional<ReportActionsAttributes, 'id' | 'created_at' | 'updated_at'>;
+export type ReportActionsCreationAttributes = Optional<ReportActionsAttributes, 'id' | 'createdAt' | 'updatedAt'>;
 
 export class ReportActions extends Model<ReportActionsAttributes, ReportActionsCreationAttributes> implements ReportActionsAttributes {
   declare id?: number;
   declare uuid: string;
-  declare user_id: string;
-  declare report_id: number;
-  declare mentor_id: string;
+  declare userId: string;
+  declare reportId: number;
+  declare mentorId: string;
   declare note: string;
-  declare created_at?: Date;
-  declare updated_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt?: Date;
+  declare updatedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof ReportActions {
     ReportActions.init(
       {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        uuid: { type: DataTypes.UUID, allowNull: false },
-        user_id: { type: DataTypes.UUID, allowNull: false },
-        report_id: { type: DataTypes.INTEGER, allowNull: false },
-        mentor_id: { type: DataTypes.UUID, allowNull: false },
-        note: { type: DataTypes.TEXT, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: true },
-        updated_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,
+            field: 'id'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: false,
+            field: 'uuid'
+        },
+        userId: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_id'
+        },
+        reportId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'report_id'
+        },
+        mentorId: { type: DataTypes.UUID, allowNull: false,
+            field: 'mentor_id'
+        },
+        note: { type: DataTypes.TEXT, allowNull: false,
+            field: 'note'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'updated_at'
+        }
       },
       {
         sequelize,

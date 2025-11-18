@@ -3,37 +3,48 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface SimulationGroupsAttributes {
   id?: number;
   uuid?: string;
-  assessor_id: string;
+  assessorId: string;
   simulation: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type SimulationGroupsCreationAttributes = Optional<SimulationGroupsAttributes, 'id' | 'uuid' | 'deleted_at'>;
+export type SimulationGroupsCreationAttributes = Optional<SimulationGroupsAttributes, 'id' | 'uuid' | 'deletedAt'>;
 
 export class SimulationGroups extends Model<SimulationGroupsAttributes, SimulationGroupsCreationAttributes> implements SimulationGroupsAttributes {
   declare id?: number;
   declare uuid?: string;
-  declare assessor_id: string;
+  declare assessorId: string;
   declare simulation: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof SimulationGroups {
     SimulationGroups.init(
       {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        uuid: { type: DataTypes.UUID, allowNull: true },
-        assessor_id: { type: DataTypes.UUID, allowNull: false },
-        simulation: { type: DataTypes.UUID, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,
+            field: 'id'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: true,
+            field: 'uuid'
+        },
+        assessorId: { type: DataTypes.UUID, allowNull: false,
+            field: 'assessor_id'
+        },
+        simulation: { type: DataTypes.UUID, allowNull: false,
+            field: 'simulation'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

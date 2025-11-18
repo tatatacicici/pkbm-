@@ -3,61 +3,88 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface AssessmentsSessionsRubricsResultsAttributes {
   pk: number;
   id?: string;
-  assessment_id: number;
-  assessment_session_id: number;
-  student_id: string;
-  rubric_id: number;
-  competency_id: string;
-  score_id: string;
+  assessmentId: number;
+  assessmentSessionId: number;
+  studentId: string;
+  rubricId: number;
+  competencyId: string;
+  scoreId: string;
   note?: string;
   result: number;
-  scored_by: string;
-  scored_at: Date;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  scoredBy: string;
+  scoredAt: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type AssessmentsSessionsRubricsResultsCreationAttributes = Optional<AssessmentsSessionsRubricsResultsAttributes, 'id' | 'note' | 'deleted_at'>;
+export type AssessmentsSessionsRubricsResultsCreationAttributes = Optional<AssessmentsSessionsRubricsResultsAttributes, 'id' | 'note' | 'deletedAt'>;
 
 export class AssessmentsSessionsRubricsResults extends Model<AssessmentsSessionsRubricsResultsAttributes, AssessmentsSessionsRubricsResultsCreationAttributes> implements AssessmentsSessionsRubricsResultsAttributes {
   declare pk: number;
   declare id?: string;
-  declare assessment_id: number;
-  declare assessment_session_id: number;
-  declare student_id: string;
-  declare rubric_id: number;
-  declare competency_id: string;
-  declare score_id: string;
+  declare assessmentId: number;
+  declare assessmentSessionId: number;
+  declare studentId: string;
+  declare rubricId: number;
+  declare competencyId: string;
+  declare scoreId: string;
   declare note?: string;
   declare result: number;
-  declare scored_by: string;
-  declare scored_at: Date;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare scoredBy: string;
+  declare scoredAt: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof AssessmentsSessionsRubricsResults {
     AssessmentsSessionsRubricsResults.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        assessment_id: { type: DataTypes.INTEGER, allowNull: false },
-        assessment_session_id: { type: DataTypes.INTEGER, allowNull: false },
-        student_id: { type: DataTypes.UUID, allowNull: false },
-        rubric_id: { type: DataTypes.INTEGER, allowNull: false },
-        competency_id: { type: DataTypes.STRING, allowNull: false },
-        score_id: { type: DataTypes.STRING, allowNull: false },
-        note: { type: DataTypes.TEXT, allowNull: true },
-        result: { type: DataTypes.INTEGER, allowNull: false },
-        scored_by: { type: DataTypes.UUID, allowNull: false },
-        scored_at: { type: DataTypes.DATE, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        assessmentId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'assessment_id'
+        },
+        assessmentSessionId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'assessment_session_id'
+        },
+        studentId: { type: DataTypes.UUID, allowNull: false,
+            field: 'student_id'
+        },
+        rubricId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'rubric_id'
+        },
+        competencyId: { type: DataTypes.STRING, allowNull: false,
+            field: 'competency_id'
+        },
+        scoreId: { type: DataTypes.STRING, allowNull: false,
+            field: 'score_id'
+        },
+        note: { type: DataTypes.TEXT, allowNull: true,
+            field: 'note'
+        },
+        result: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'result'
+        },
+        scoredBy: { type: DataTypes.UUID, allowNull: false,
+            field: 'scored_by'
+        },
+        scoredAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'scored_at'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

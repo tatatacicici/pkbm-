@@ -2,32 +2,39 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface CollegeStudentRegistrationsAttributes {
   id?: string;
-  student_id: string;
-  college_program_offering_id: string;
-  created_at?: Date;
-  updated_at?: Date;
+  studentId: string;
+  collegeProgramOfferingId: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
-export type CollegeStudentRegistrationsCreationAttributes = Optional<CollegeStudentRegistrationsAttributes, 'id' | 'created_at' | 'updated_at'>;
+export type CollegeStudentRegistrationsCreationAttributes = Optional<CollegeStudentRegistrationsAttributes, 'id' | 'createdAt' | 'updatedAt'>;
 
 export class CollegeStudentRegistrations extends Model<CollegeStudentRegistrationsAttributes, CollegeStudentRegistrationsCreationAttributes> implements CollegeStudentRegistrationsAttributes {
   declare id?: string;
-  declare student_id: string;
-  declare college_program_offering_id: string;
-  declare created_at?: Date;
-  declare updated_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare studentId: string;
+  declare collegeProgramOfferingId: string;
+  declare createdAt?: Date;
+  declare updatedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof CollegeStudentRegistrations {
     CollegeStudentRegistrations.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        student_id: { type: DataTypes.UUID, allowNull: false },
-        college_program_offering_id: { type: DataTypes.UUID, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: true },
-        updated_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        studentId: { type: DataTypes.UUID, allowNull: false,
+            field: 'student_id'
+        },
+        collegeProgramOfferingId: { type: DataTypes.UUID, allowNull: false,
+            field: 'college_program_offering_id'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'updated_at'
+        }
       },
       {
         sequelize,

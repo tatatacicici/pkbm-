@@ -3,49 +3,68 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface RoleplaysSessionsAttributes {
   pk: number;
   id?: string;
-  roleplay_id: number;
-  team_id: number;
-  schedule_id: number;
+  roleplayId: number;
+  teamId: number;
+  scheduleId: number;
   status: string;
-  start_at: Date;
-  end_at?: Date;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  startAt: Date;
+  endAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type RoleplaysSessionsCreationAttributes = Optional<RoleplaysSessionsAttributes, 'id' | 'end_at' | 'deleted_at'>;
+export type RoleplaysSessionsCreationAttributes = Optional<RoleplaysSessionsAttributes, 'id' | 'endAt' | 'deletedAt'>;
 
 export class RoleplaysSessions extends Model<RoleplaysSessionsAttributes, RoleplaysSessionsCreationAttributes> implements RoleplaysSessionsAttributes {
   declare pk: number;
   declare id?: string;
-  declare roleplay_id: number;
-  declare team_id: number;
-  declare schedule_id: number;
+  declare roleplayId: number;
+  declare teamId: number;
+  declare scheduleId: number;
   declare status: string;
-  declare start_at: Date;
-  declare end_at?: Date;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare startAt: Date;
+  declare endAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof RoleplaysSessions {
     RoleplaysSessions.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        roleplay_id: { type: DataTypes.INTEGER, allowNull: false },
-        team_id: { type: DataTypes.INTEGER, allowNull: false },
-        schedule_id: { type: DataTypes.INTEGER, allowNull: false },
-        status: { type: DataTypes.STRING, allowNull: false },
-        start_at: { type: DataTypes.DATE, allowNull: false },
-        end_at: { type: DataTypes.DATE, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        roleplayId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'roleplay_id'
+        },
+        teamId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'team_id'
+        },
+        scheduleId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'schedule_id'
+        },
+        status: { type: DataTypes.STRING, allowNull: false,
+            field: 'status'
+        },
+        startAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'start_at'
+        },
+        endAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'end_at'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

@@ -1,6 +1,7 @@
+import path from 'path';
 import dotenv from 'dotenv';
-dotenv.config();
 
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
 import app from './app';
 import sequelize from './config/database';
 import { initModels } from './models/init-models';

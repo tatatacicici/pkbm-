@@ -2,71 +2,104 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface TeachersRegistrationsAttributes {
   id?: string;
-  full_name: string;
+  fullName: string;
   email?: string;
-  phone_number: string;
+  phoneNumber: string;
   address: string;
   organization: string;
-  linkedin_url: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  linkedinUrl: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
   department: string;
-  last_education: string;
-  birth_date: Date;
-  interest_field: string;
+  lastEducation: string;
+  birthDate: Date;
+  interestField: string;
   feedback: string;
   contributions?: string;
-  user_id?: string;
+  userId?: string;
   status?: string;
 }
 
-export type TeachersRegistrationsCreationAttributes = Optional<TeachersRegistrationsAttributes, 'id' | 'email' | 'deleted_at' | 'contributions' | 'user_id' | 'status'>;
+export type TeachersRegistrationsCreationAttributes = Optional<TeachersRegistrationsAttributes, 'id' | 'email' | 'deletedAt' | 'contributions' | 'userId' | 'status'>;
 
 export class TeachersRegistrations extends Model<TeachersRegistrationsAttributes, TeachersRegistrationsCreationAttributes> implements TeachersRegistrationsAttributes {
   declare id?: string;
-  declare full_name: string;
+  declare fullName: string;
   declare email?: string;
-  declare phone_number: string;
+  declare phoneNumber: string;
   declare address: string;
   declare organization: string;
-  declare linkedin_url: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
+  declare linkedinUrl: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
   declare department: string;
-  declare last_education: string;
-  declare birth_date: Date;
-  declare interest_field: string;
+  declare lastEducation: string;
+  declare birthDate: Date;
+  declare interestField: string;
   declare feedback: string;
   declare contributions?: string;
-  declare user_id?: string;
+  declare userId?: string;
   declare status?: string;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof TeachersRegistrations {
     TeachersRegistrations.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        full_name: { type: DataTypes.STRING, allowNull: false },
-        email: { type: DataTypes.STRING, allowNull: true },
-        phone_number: { type: DataTypes.STRING, allowNull: false },
-        address: { type: DataTypes.TEXT, allowNull: false },
-        organization: { type: DataTypes.STRING, allowNull: false },
-        linkedin_url: { type: DataTypes.STRING, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        department: { type: DataTypes.STRING, allowNull: false },
-        last_education: { type: DataTypes.STRING, allowNull: false },
-        birth_date: { type: DataTypes.DATE, allowNull: false },
-        interest_field: { type: DataTypes.STRING, allowNull: false },
-        feedback: { type: DataTypes.TEXT, allowNull: false },
-        contributions: { type: DataTypes.STRING, allowNull: true },
-        user_id: { type: DataTypes.UUID, allowNull: true },
-        status: { type: DataTypes.STRING, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        fullName: { type: DataTypes.STRING, allowNull: false,
+            field: 'full_name'
+        },
+        email: { type: DataTypes.STRING, allowNull: true,
+            field: 'email'
+        },
+        phoneNumber: { type: DataTypes.STRING, allowNull: false,
+            field: 'phone_number'
+        },
+        address: { type: DataTypes.TEXT, allowNull: false,
+            field: 'address'
+        },
+        organization: { type: DataTypes.STRING, allowNull: false,
+            field: 'organization'
+        },
+        linkedinUrl: { type: DataTypes.STRING, allowNull: false,
+            field: 'linkedin_url'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        department: { type: DataTypes.STRING, allowNull: false,
+            field: 'department'
+        },
+        lastEducation: { type: DataTypes.STRING, allowNull: false,
+            field: 'last_education'
+        },
+        birthDate: { type: DataTypes.DATE, allowNull: false,
+            field: 'birth_date'
+        },
+        interestField: { type: DataTypes.STRING, allowNull: false,
+            field: 'interest_field'
+        },
+        feedback: { type: DataTypes.TEXT, allowNull: false,
+            field: 'feedback'
+        },
+        contributions: { type: DataTypes.STRING, allowNull: true,
+            field: 'contributions'
+        },
+        userId: { type: DataTypes.UUID, allowNull: true,
+            field: 'user_id'
+        },
+        status: { type: DataTypes.STRING, allowNull: true,
+            field: 'status'
+        }
       },
       {
         sequelize,

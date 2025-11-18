@@ -2,38 +2,49 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface MentorsAttributes {
   id?: string;
-  user_id: string;
-  partner_id: string;
+  userId: string;
+  partnerId: string;
   nik: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type MentorsCreationAttributes = Optional<MentorsAttributes, 'id' | 'deleted_at'>;
+export type MentorsCreationAttributes = Optional<MentorsAttributes, 'id' | 'deletedAt'>;
 
 export class Mentors extends Model<MentorsAttributes, MentorsCreationAttributes> implements MentorsAttributes {
   declare id?: string;
-  declare user_id: string;
-  declare partner_id: string;
+  declare userId: string;
+  declare partnerId: string;
   declare nik: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof Mentors {
     Mentors.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        user_id: { type: DataTypes.UUID, allowNull: false },
-        partner_id: { type: DataTypes.UUID, allowNull: false },
-        nik: { type: DataTypes.STRING, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        userId: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_id'
+        },
+        partnerId: { type: DataTypes.UUID, allowNull: false,
+            field: 'partner_id'
+        },
+        nik: { type: DataTypes.STRING, allowNull: false,
+            field: 'nik'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

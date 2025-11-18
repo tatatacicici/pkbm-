@@ -3,43 +3,58 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface AssignmentsAdminAttributes {
   pk: number;
   id?: string;
-  session_id: string;
-  module_id: string;
+  sessionId: string;
+  moduleId: string;
   title: string;
   deadline: number;
-  created_at?: Date;
-  updated_at?: Date;
-  deleted_at?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
+  deletedAt?: Date;
 }
 
-export type AssignmentsAdminCreationAttributes = Optional<AssignmentsAdminAttributes, 'id' | 'created_at' | 'updated_at' | 'deleted_at'>;
+export type AssignmentsAdminCreationAttributes = Optional<AssignmentsAdminAttributes, 'id' | 'createdAt' | 'updatedAt' | 'deletedAt'>;
 
 export class AssignmentsAdmin extends Model<AssignmentsAdminAttributes, AssignmentsAdminCreationAttributes> implements AssignmentsAdminAttributes {
   declare pk: number;
   declare id?: string;
-  declare session_id: string;
-  declare module_id: string;
+  declare sessionId: string;
+  declare moduleId: string;
   declare title: string;
   declare deadline: number;
-  declare created_at?: Date;
-  declare updated_at?: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt?: Date;
+  declare updatedAt?: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof AssignmentsAdmin {
     AssignmentsAdmin.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        session_id: { type: DataTypes.UUID, allowNull: false },
-        module_id: { type: DataTypes.UUID, allowNull: false },
-        title: { type: DataTypes.STRING, allowNull: false },
-        deadline: { type: DataTypes.INTEGER, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: true },
-        updated_at: { type: DataTypes.DATE, allowNull: true },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        sessionId: { type: DataTypes.UUID, allowNull: false,
+            field: 'session_id'
+        },
+        moduleId: { type: DataTypes.UUID, allowNull: false,
+            field: 'module_id'
+        },
+        title: { type: DataTypes.STRING, allowNull: false,
+            field: 'title'
+        },
+        deadline: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'deadline'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

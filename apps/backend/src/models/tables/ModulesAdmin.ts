@@ -3,43 +3,58 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface ModulesAdminAttributes {
   pk: number;
   id?: string;
-  session_id: string;
+  sessionId: string;
   title: string;
   description: string;
-  document_id?: string;
-  video_id?: string;
-  created_at: Date;
-  updated_at: Date;
+  documentId?: string;
+  videoId?: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-export type ModulesAdminCreationAttributes = Optional<ModulesAdminAttributes, 'id' | 'document_id' | 'video_id'>;
+export type ModulesAdminCreationAttributes = Optional<ModulesAdminAttributes, 'id' | 'documentId' | 'videoId'>;
 
 export class ModulesAdmin extends Model<ModulesAdminAttributes, ModulesAdminCreationAttributes> implements ModulesAdminAttributes {
   declare pk: number;
   declare id?: string;
-  declare session_id: string;
+  declare sessionId: string;
   declare title: string;
   declare description: string;
-  declare document_id?: string;
-  declare video_id?: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare documentId?: string;
+  declare videoId?: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
 
   public static initModel(sequelize: Sequelize): typeof ModulesAdmin {
     ModulesAdmin.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        session_id: { type: DataTypes.UUID, allowNull: false },
-        title: { type: DataTypes.STRING, allowNull: false },
-        description: { type: DataTypes.STRING, allowNull: false },
-        document_id: { type: DataTypes.STRING, allowNull: true },
-        video_id: { type: DataTypes.STRING, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        sessionId: { type: DataTypes.UUID, allowNull: false,
+            field: 'session_id'
+        },
+        title: { type: DataTypes.STRING, allowNull: false,
+            field: 'title'
+        },
+        description: { type: DataTypes.STRING, allowNull: false,
+            field: 'description'
+        },
+        documentId: { type: DataTypes.STRING, allowNull: true,
+            field: 'document_id'
+        },
+        videoId: { type: DataTypes.STRING, allowNull: true,
+            field: 'video_id'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        }
       },
       {
         sequelize,

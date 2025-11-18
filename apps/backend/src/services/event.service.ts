@@ -1,5 +1,5 @@
-import { Events, EventsAttributes, EventsCreationAttributes } from '../models/Events';
-import { EventParticipants } from '../models/EventParticipants';
+import { Events, EventsAttributes, EventsCreationAttributes } from '../models/tables/Events';
+import { EventParticipants } from '../models/tables/EventParticipants';
 import { v4 as uuidv4 } from 'uuid';
 import { Op } from 'sequelize';
 

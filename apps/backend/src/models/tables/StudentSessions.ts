@@ -2,44 +2,59 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface StudentSessionsAttributes {
   id?: string;
-  session_id: string;
-  student_id: string;
-  date_present?: Date;
-  final_score?: number;
-  is_present?: boolean;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  sessionId: string;
+  studentId: string;
+  datePresent?: Date;
+  finalScore?: number;
+  isPresent?: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type StudentSessionsCreationAttributes = Optional<StudentSessionsAttributes, 'id' | 'date_present' | 'final_score' | 'is_present' | 'deleted_at'>;
+export type StudentSessionsCreationAttributes = Optional<StudentSessionsAttributes, 'id' | 'datePresent' | 'finalScore' | 'isPresent' | 'deletedAt'>;
 
 export class StudentSessions extends Model<StudentSessionsAttributes, StudentSessionsCreationAttributes> implements StudentSessionsAttributes {
   declare id?: string;
-  declare session_id: string;
-  declare student_id: string;
-  declare date_present?: Date;
-  declare final_score?: number;
-  declare is_present?: boolean;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare sessionId: string;
+  declare studentId: string;
+  declare datePresent?: Date;
+  declare finalScore?: number;
+  declare isPresent?: boolean;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof StudentSessions {
     StudentSessions.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        session_id: { type: DataTypes.UUID, allowNull: false },
-        student_id: { type: DataTypes.UUID, allowNull: false },
-        date_present: { type: DataTypes.DATE, allowNull: true },
-        final_score: { type: DataTypes.DOUBLE, allowNull: true },
-        is_present: { type: DataTypes.BOOLEAN, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        sessionId: { type: DataTypes.UUID, allowNull: false,
+            field: 'session_id'
+        },
+        studentId: { type: DataTypes.UUID, allowNull: false,
+            field: 'student_id'
+        },
+        datePresent: { type: DataTypes.DATE, allowNull: true,
+            field: 'date_present'
+        },
+        finalScore: { type: DataTypes.DOUBLE, allowNull: true,
+            field: 'final_score'
+        },
+        isPresent: { type: DataTypes.BOOLEAN, allowNull: true,
+            field: 'is_present'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

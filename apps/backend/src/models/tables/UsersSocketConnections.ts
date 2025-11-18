@@ -2,50 +2,69 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface UsersSocketConnectionsAttributes {
   id?: string;
-  user_id: string;
-  socket_id: string;
-  connected_at: Date;
-  disconnected_at?: Date;
-  connection_duration?: number;
-  url_origin?: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  active_duration?: number;
+  userId: string;
+  socketId: string;
+  connectedAt: Date;
+  disconnectedAt?: Date;
+  connectionDuration?: number;
+  urlOrigin?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  activeDuration?: number;
 }
 
-export type UsersSocketConnectionsCreationAttributes = Optional<UsersSocketConnectionsAttributes, 'id' | 'disconnected_at' | 'connection_duration' | 'url_origin' | 'deleted_at' | 'active_duration'>;
+export type UsersSocketConnectionsCreationAttributes = Optional<UsersSocketConnectionsAttributes, 'id' | 'disconnectedAt' | 'connectionDuration' | 'urlOrigin' | 'deletedAt' | 'activeDuration'>;
 
 export class UsersSocketConnections extends Model<UsersSocketConnectionsAttributes, UsersSocketConnectionsCreationAttributes> implements UsersSocketConnectionsAttributes {
   declare id?: string;
-  declare user_id: string;
-  declare socket_id: string;
-  declare connected_at: Date;
-  declare disconnected_at?: Date;
-  declare connection_duration?: number;
-  declare url_origin?: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare active_duration?: number;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare userId: string;
+  declare socketId: string;
+  declare connectedAt: Date;
+  declare disconnectedAt?: Date;
+  declare connectionDuration?: number;
+  declare urlOrigin?: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare activeDuration?: number;
 
   public static initModel(sequelize: Sequelize): typeof UsersSocketConnections {
     UsersSocketConnections.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        user_id: { type: DataTypes.UUID, allowNull: false },
-        socket_id: { type: DataTypes.STRING, allowNull: false },
-        connected_at: { type: DataTypes.DATE, allowNull: false },
-        disconnected_at: { type: DataTypes.DATE, allowNull: true },
-        connection_duration: { type: DataTypes.INTEGER, allowNull: true },
-        url_origin: { type: DataTypes.STRING, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        active_duration: { type: DataTypes.INTEGER, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        userId: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_id'
+        },
+        socketId: { type: DataTypes.STRING, allowNull: false,
+            field: 'socket_id'
+        },
+        connectedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'connected_at'
+        },
+        disconnectedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'disconnected_at'
+        },
+        connectionDuration: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'connection_duration'
+        },
+        urlOrigin: { type: DataTypes.STRING, allowNull: true,
+            field: 'url_origin'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        activeDuration: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'active_duration'
+        }
       },
       {
         sequelize,

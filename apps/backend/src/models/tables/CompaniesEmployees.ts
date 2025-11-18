@@ -2,41 +2,54 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface CompaniesEmployeesAttributes {
   id?: string;
-  company_id: string;
-  employee_id: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  assigned_at?: Date;
-  company_department_id?: string;
+  companyId: string;
+  employeeId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  assignedAt?: Date;
+  companyDepartmentId?: string;
 }
 
-export type CompaniesEmployeesCreationAttributes = Optional<CompaniesEmployeesAttributes, 'id' | 'deleted_at' | 'assigned_at' | 'company_department_id'>;
+export type CompaniesEmployeesCreationAttributes = Optional<CompaniesEmployeesAttributes, 'id' | 'deletedAt' | 'assignedAt' | 'companyDepartmentId'>;
 
 export class CompaniesEmployees extends Model<CompaniesEmployeesAttributes, CompaniesEmployeesCreationAttributes> implements CompaniesEmployeesAttributes {
   declare id?: string;
-  declare company_id: string;
-  declare employee_id: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare assigned_at?: Date;
-  declare company_department_id?: string;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare companyId: string;
+  declare employeeId: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare assignedAt?: Date;
+  declare companyDepartmentId?: string;
 
   public static initModel(sequelize: Sequelize): typeof CompaniesEmployees {
     CompaniesEmployees.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        company_id: { type: DataTypes.UUID, allowNull: false },
-        employee_id: { type: DataTypes.UUID, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        assigned_at: { type: DataTypes.DATE, allowNull: true },
-        company_department_id: { type: DataTypes.UUID, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        companyId: { type: DataTypes.UUID, allowNull: false,
+            field: 'company_id'
+        },
+        employeeId: { type: DataTypes.UUID, allowNull: false,
+            field: 'employee_id'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        assignedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'assigned_at'
+        },
+        companyDepartmentId: { type: DataTypes.UUID, allowNull: true,
+            field: 'company_department_id'
+        }
       },
       {
         sequelize,

@@ -3,61 +3,88 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface ProgramPositionsAttributes {
   id?: number;
   uuid: string;
-  proposal_id: number;
-  partner_id: string;
+  proposalId: number;
+  partnerId: string;
   name: string;
   quota: number;
-  activity_type: string;
+  activityType: string;
   requirement: string;
   salary?: number;
   location: string;
-  location_code: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  cycle_id: number;
+  locationCode: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  cycleId: number;
 }
 
-export type ProgramPositionsCreationAttributes = Optional<ProgramPositionsAttributes, 'id' | 'salary' | 'deleted_at'>;
+export type ProgramPositionsCreationAttributes = Optional<ProgramPositionsAttributes, 'id' | 'salary' | 'deletedAt'>;
 
 export class ProgramPositions extends Model<ProgramPositionsAttributes, ProgramPositionsCreationAttributes> implements ProgramPositionsAttributes {
   declare id?: number;
   declare uuid: string;
-  declare proposal_id: number;
-  declare partner_id: string;
+  declare proposalId: number;
+  declare partnerId: string;
   declare name: string;
   declare quota: number;
-  declare activity_type: string;
+  declare activityType: string;
   declare requirement: string;
   declare salary?: number;
   declare location: string;
-  declare location_code: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare cycle_id: number;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare locationCode: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare cycleId: number;
 
   public static initModel(sequelize: Sequelize): typeof ProgramPositions {
     ProgramPositions.init(
       {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        uuid: { type: DataTypes.UUID, allowNull: false },
-        proposal_id: { type: DataTypes.INTEGER, allowNull: false },
-        partner_id: { type: DataTypes.UUID, allowNull: false },
-        name: { type: DataTypes.STRING, allowNull: false },
-        quota: { type: DataTypes.INTEGER, allowNull: false },
-        activity_type: { type: DataTypes.STRING, allowNull: false },
-        requirement: { type: DataTypes.STRING, allowNull: false },
-        salary: { type: DataTypes.INTEGER, allowNull: true },
-        location: { type: DataTypes.STRING, allowNull: false },
-        location_code: { type: DataTypes.STRING, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        cycle_id: { type: DataTypes.INTEGER, allowNull: false }
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,
+            field: 'id'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: false,
+            field: 'uuid'
+        },
+        proposalId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'proposal_id'
+        },
+        partnerId: { type: DataTypes.UUID, allowNull: false,
+            field: 'partner_id'
+        },
+        name: { type: DataTypes.STRING, allowNull: false,
+            field: 'name'
+        },
+        quota: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'quota'
+        },
+        activityType: { type: DataTypes.STRING, allowNull: false,
+            field: 'activity_type'
+        },
+        requirement: { type: DataTypes.STRING, allowNull: false,
+            field: 'requirement'
+        },
+        salary: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'salary'
+        },
+        location: { type: DataTypes.STRING, allowNull: false,
+            field: 'location'
+        },
+        locationCode: { type: DataTypes.STRING, allowNull: false,
+            field: 'location_code'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        cycleId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'cycle_id'
+        }
       },
       {
         sequelize,

@@ -3,79 +3,118 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface EventsAttributes {
   id?: string;
   name: string;
-  registration_close_date: Date;
-  date_start: Date;
-  date_end: Date;
+  registrationCloseDate: Date;
+  dateStart: Date;
+  dateEnd: Date;
   description: string;
   capacity: number;
   thumbnail: string;
-  contact_person_name: string;
-  contact_person_phone: string;
-  contact_person_email: string;
-  type_order: string;
-  type_event: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  registration_start_date?: Date;
+  contactPersonName: string;
+  contactPersonPhone: string;
+  contactPersonEmail: string;
+  typeOrder: string;
+  typeEvent: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  registrationStartDate?: Date;
   price?: number;
-  contact_person_position?: string;
+  contactPersonPosition?: string;
   location?: string;
-  thumbnail_id?: number;
+  thumbnailId?: number;
 }
 
-export type EventsCreationAttributes = Optional<EventsAttributes, 'id' | 'deleted_at' | 'registration_start_date' | 'price' | 'contact_person_position' | 'location' | 'thumbnail_id'>;
+export type EventsCreationAttributes = Optional<EventsAttributes, 'id' | 'deletedAt' | 'registrationStartDate' | 'price' | 'contactPersonPosition' | 'location' | 'thumbnailId'>;
 
 export class Events extends Model<EventsAttributes, EventsCreationAttributes> implements EventsAttributes {
   declare id?: string;
   declare name: string;
-  declare registration_close_date: Date;
-  declare date_start: Date;
-  declare date_end: Date;
+  declare registrationCloseDate: Date;
+  declare dateStart: Date;
+  declare dateEnd: Date;
   declare description: string;
   declare capacity: number;
   declare thumbnail: string;
-  declare contact_person_name: string;
-  declare contact_person_phone: string;
-  declare contact_person_email: string;
-  declare type_order: string;
-  declare type_event: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare registration_start_date?: Date;
+  declare contactPersonName: string;
+  declare contactPersonPhone: string;
+  declare contactPersonEmail: string;
+  declare typeOrder: string;
+  declare typeEvent: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare registrationStartDate?: Date;
   declare price?: number;
-  declare contact_person_position?: string;
+  declare contactPersonPosition?: string;
   declare location?: string;
-  declare thumbnail_id?: number;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare thumbnailId?: number;
 
   public static initModel(sequelize: Sequelize): typeof Events {
     Events.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        name: { type: DataTypes.STRING, allowNull: false },
-        registration_close_date: { type: DataTypes.DATE, allowNull: false },
-        date_start: { type: DataTypes.DATE, allowNull: false },
-        date_end: { type: DataTypes.DATE, allowNull: false },
-        description: { type: DataTypes.STRING, allowNull: false },
-        capacity: { type: DataTypes.INTEGER, allowNull: false },
-        thumbnail: { type: DataTypes.STRING, allowNull: false },
-        contact_person_name: { type: DataTypes.STRING, allowNull: false },
-        contact_person_phone: { type: DataTypes.STRING, allowNull: false },
-        contact_person_email: { type: DataTypes.STRING, allowNull: false },
-        type_order: { type: DataTypes.STRING, allowNull: false },
-        type_event: { type: DataTypes.STRING, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        registration_start_date: { type: DataTypes.DATE, allowNull: true },
-        price: { type: DataTypes.INTEGER, allowNull: true },
-        contact_person_position: { type: DataTypes.STRING, allowNull: true },
-        location: { type: DataTypes.STRING, allowNull: true },
-        thumbnail_id: { type: DataTypes.INTEGER, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        name: { type: DataTypes.STRING, allowNull: false,
+            field: 'name'
+        },
+        registrationCloseDate: { type: DataTypes.DATE, allowNull: false,
+            field: 'registration_close_date'
+        },
+        dateStart: { type: DataTypes.DATE, allowNull: false,
+            field: 'date_start'
+        },
+        dateEnd: { type: DataTypes.DATE, allowNull: false,
+            field: 'date_end'
+        },
+        description: { type: DataTypes.STRING, allowNull: false,
+            field: 'description'
+        },
+        capacity: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'capacity'
+        },
+        thumbnail: { type: DataTypes.STRING, allowNull: false,
+            field: 'thumbnail'
+        },
+        contactPersonName: { type: DataTypes.STRING, allowNull: false,
+            field: 'contact_person_name'
+        },
+        contactPersonPhone: { type: DataTypes.STRING, allowNull: false,
+            field: 'contact_person_phone'
+        },
+        contactPersonEmail: { type: DataTypes.STRING, allowNull: false,
+            field: 'contact_person_email'
+        },
+        typeOrder: { type: DataTypes.STRING, allowNull: false,
+            field: 'type_order'
+        },
+        typeEvent: { type: DataTypes.STRING, allowNull: false,
+            field: 'type_event'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        registrationStartDate: { type: DataTypes.DATE, allowNull: true,
+            field: 'registration_start_date'
+        },
+        price: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'price'
+        },
+        contactPersonPosition: { type: DataTypes.STRING, allowNull: true,
+            field: 'contact_person_position'
+        },
+        location: { type: DataTypes.STRING, allowNull: true,
+            field: 'location'
+        },
+        thumbnailId: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'thumbnail_id'
+        }
       },
       {
         sequelize,

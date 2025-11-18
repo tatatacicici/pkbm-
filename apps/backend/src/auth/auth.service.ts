@@ -1,9 +1,9 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { Op } from 'sequelize';
-import { Users } from '../models/Users';
-import { UsersAttributes } from '../models/Users';
-import { Otps } from '../models/Otps';
+import { Users } from '../models/tables/Users';
+import { UsersAttributes } from '../models/tables/Users';
+import { Otps } from '../models/tables/Otps';
 import { v4 as uuidv4 } from 'uuid';
 
 if (!process.env.JWT_SECRET) {
@@ -42,11 +42,9 @@ export class AuthService {
       userName: data.userName,
       isEmailVerified: false,
       isPhoneVerified: false,
-      createdAt: new Date(),
-      updatedAt: new Date(),
     } as any);
 
-    const token = this.generateToken(user.id, user.email);
+    const token = this.generateToken(user.id!, user.email!);
 
     const userWithoutPassword = {
       id: user.id,
@@ -81,7 +79,7 @@ export class AuthService {
       throw new Error('Invalid credentials');
     }
 
-    const token = this.generateToken(user.id, user.email);
+    const token = this.generateToken(user.id!, user.email!);
 
     const userWithoutPassword = {
       id: user.id,

@@ -1,42 +1,55 @@
 import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface StudentProfilesAttributes {
-  user_id: string;
-  national_student_number?: string;
-  current_gpa?: number;
-  graduation_date?: Date;
-  diploma_number?: string;
-  deleted_at?: Date;
-  created_at?: Date;
-  updated_at?: Date;
+  userId: string;
+  nationalStudentNumber?: string;
+  currentGpa?: number;
+  graduationDate?: Date;
+  diplomaNumber?: string;
+  deletedAt?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
-export type StudentProfilesCreationAttributes = Optional<StudentProfilesAttributes, 'national_student_number' | 'current_gpa' | 'graduation_date' | 'diploma_number' | 'deleted_at' | 'created_at' | 'updated_at'>;
+export type StudentProfilesCreationAttributes = Optional<StudentProfilesAttributes, 'nationalStudentNumber' | 'currentGpa' | 'graduationDate' | 'diplomaNumber' | 'deletedAt' | 'createdAt' | 'updatedAt'>;
 
 export class StudentProfiles extends Model<StudentProfilesAttributes, StudentProfilesCreationAttributes> implements StudentProfilesAttributes {
-  declare user_id: string;
-  declare national_student_number?: string;
-  declare current_gpa?: number;
-  declare graduation_date?: Date;
-  declare diploma_number?: string;
-  declare deleted_at?: Date;
-  declare created_at?: Date;
-  declare updated_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare userId: string;
+  declare nationalStudentNumber?: string;
+  declare currentGpa?: number;
+  declare graduationDate?: Date;
+  declare diplomaNumber?: string;
+  declare deletedAt?: Date;
+  declare createdAt?: Date;
+  declare updatedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof StudentProfiles {
     StudentProfiles.init(
       {
-        user_id: { type: DataTypes.UUID, allowNull: false },
-        national_student_number: { type: DataTypes.STRING, allowNull: true },
-        current_gpa: { type: DataTypes.DECIMAL, allowNull: true },
-        graduation_date: { type: DataTypes.DATE, allowNull: true },
-        diploma_number: { type: DataTypes.STRING, allowNull: true },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: true },
-        updated_at: { type: DataTypes.DATE, allowNull: true }
+        userId: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_id'
+        },
+        nationalStudentNumber: { type: DataTypes.STRING, allowNull: true,
+            field: 'national_student_number'
+        },
+        currentGpa: { type: DataTypes.DECIMAL, allowNull: true,
+            field: 'current_gpa'
+        },
+        graduationDate: { type: DataTypes.DATE, allowNull: true,
+            field: 'graduation_date'
+        },
+        diplomaNumber: { type: DataTypes.STRING, allowNull: true,
+            field: 'diploma_number'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'updated_at'
+        }
       },
       {
         sequelize,
