@@ -12,7 +12,7 @@ export interface CreditConvertionRequestsSubjectsAttributes {
   deletedAt?: Date;
 }
 
-export type CreditConvertionRequestsSubjectsCreationAttributes = Optional<CreditConvertionRequestsSubjectsAttributes, 'id' | 'uuid' | 'totalSession' | 'deletedAt'>;
+export type CreditConvertionRequestsSubjectsCreationAttributes = Optional<CreditConvertionRequestsSubjectsAttributes, 'pk' | 'uuid' | 'totalSession' | 'deletedAt'>;
 
 export class CreditConvertionRequestsSubjects extends Model<CreditConvertionRequestsSubjectsAttributes, CreditConvertionRequestsSubjectsCreationAttributes> implements CreditConvertionRequestsSubjectsAttributes {
   declare pk: number;

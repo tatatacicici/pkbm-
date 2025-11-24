@@ -12,7 +12,7 @@ export interface RecruitmentAgendasAttributes {
   deletedAt?: Date;
 }
 
-export type RecruitmentAgendasCreationAttributes = Optional<RecruitmentAgendasAttributes, 'id' | 'uuid' | 'deletedAt'>;
+export type RecruitmentAgendasCreationAttributes = Optional<RecruitmentAgendasAttributes, 'pk' | 'uuid' | 'deletedAt'>;
 
 export class RecruitmentAgendas extends Model<RecruitmentAgendasAttributes, RecruitmentAgendasCreationAttributes> implements RecruitmentAgendasAttributes {
   declare pk: number;

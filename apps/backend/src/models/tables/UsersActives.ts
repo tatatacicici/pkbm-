@@ -11,7 +11,7 @@ export interface UsersActivesAttributes {
   lastActive?: Date;
 }
 
-export type UsersActivesCreationAttributes = Optional<UsersActivesAttributes, 'id' | 'uuid' | 'deletedAt' | 'lastActive'>;
+export type UsersActivesCreationAttributes = Optional<UsersActivesAttributes, 'pk' | 'uuid' | 'deletedAt' | 'lastActive'>;
 
 export class UsersActives extends Model<UsersActivesAttributes, UsersActivesCreationAttributes> implements UsersActivesAttributes {
   declare pk: number;

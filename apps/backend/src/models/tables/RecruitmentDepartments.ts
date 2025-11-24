@@ -11,7 +11,7 @@ export interface RecruitmentDepartmentsAttributes {
   deletedAt?: Date;
 }
 
-export type RecruitmentDepartmentsCreationAttributes = Optional<RecruitmentDepartmentsAttributes, 'id' | 'uuid' | 'quota' | 'deletedAt'>;
+export type RecruitmentDepartmentsCreationAttributes = Optional<RecruitmentDepartmentsAttributes, 'pk' | 'uuid' | 'quota' | 'deletedAt'>;
 
 export class RecruitmentDepartments extends Model<RecruitmentDepartmentsAttributes, RecruitmentDepartmentsCreationAttributes> implements RecruitmentDepartmentsAttributes {
   declare pk: number;

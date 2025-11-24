@@ -12,7 +12,7 @@ export interface SurveysResponsesAnswersAttributes {
   userId: string;
 }
 
-export type SurveysResponsesAnswersCreationAttributes = Optional<SurveysResponsesAnswersAttributes, 'id' | 'uuid' | 'answer' | 'deletedAt'>;
+export type SurveysResponsesAnswersCreationAttributes = Optional<SurveysResponsesAnswersAttributes, 'pk' | 'uuid' | 'answer' | 'deletedAt'>;
 
 export class SurveysResponsesAnswers extends Model<SurveysResponsesAnswersAttributes, SurveysResponsesAnswersCreationAttributes> implements SurveysResponsesAnswersAttributes {
   declare pk: number;

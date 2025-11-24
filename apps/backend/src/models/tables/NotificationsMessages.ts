@@ -13,7 +13,7 @@ export interface NotificationsMessagesAttributes {
   userId: string;
 }
 
-export type NotificationsMessagesCreationAttributes = Optional<NotificationsMessagesAttributes, 'id' | 'deliveredAt' | 'deletedAt'>;
+export type NotificationsMessagesCreationAttributes = Optional<NotificationsMessagesAttributes, 'pk' | 'deliveredAt' | 'deletedAt'>;
 
 export class NotificationsMessages extends Model<NotificationsMessagesAttributes, NotificationsMessagesCreationAttributes> implements NotificationsMessagesAttributes {
   declare pk: number;

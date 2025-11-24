@@ -13,7 +13,7 @@ export interface EventParticipantsAttributes {
   deletedAt?: Date;
 }
 
-export type EventParticipantsCreationAttributes = Optional<EventParticipantsAttributes, 'id' | 'uuid' | 'deletedAt'>;
+export type EventParticipantsCreationAttributes = Optional<EventParticipantsAttributes, 'pk' | 'uuid' | 'deletedAt'>;
 
 export class EventParticipants extends Model<EventParticipantsAttributes, EventParticipantsCreationAttributes> implements EventParticipantsAttributes {
   declare pk: number;

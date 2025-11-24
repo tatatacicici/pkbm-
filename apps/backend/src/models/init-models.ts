@@ -604,7 +604,7 @@ export function initModels(sequelize: Sequelize): Models {
   Users.hasMany(Articles, { foreignKey: 'author_id', as: 'articles' });
 
   // Articles belongsTo ArticlesCategories
-  Articles.belongsTo(ArticlesCategories, { foreignKey: 'category_id', as: 'category' });
+  Articles.belongsTo(ArticlesCategories, { foreignKey: 'category_id', as: 'categoryRelation' });
   ArticlesCategories.hasMany(Articles, { foreignKey: 'category_id', as: 'articles' });
 
   // ArticlesFavorites belongsTo Articles
@@ -639,10 +639,9 @@ export function initModels(sequelize: Sequelize): Models {
   AssessmentsAssessorsAvailabilities.belongsTo(Users, { foreignKey: 'assessor_id', as: 'assessor' });
   Users.hasMany(AssessmentsAssessorsAvailabilities, { foreignKey: 'assessor_id', as: 'assessmentsAssessorsAvailabilities' });
 
-  // Assessments belongsTo Users
-  Assessments.belongsTo(Users, { foreignKey: 'created_by', as: 'createdBy' });
-  Users.hasMany(Assessments, { foreignKey: 'created_by', as: 'assessments' });
-
+    // Assessments belongsTo Users
+  Assessments.belongsTo(Users, { foreignKey: 'created_by', as: 'creatorUser' });
+  Users.hasMany(Assessments, { foreignKey: 'created_by', as: 'createdAssessments' });
   // Assessments belongsTo Majors
   Assessments.belongsTo(Majors, { foreignKey: 'major_id', as: 'major' });
   Majors.hasMany(Assessments, { foreignKey: 'major_id', as: 'assessments' });
@@ -656,8 +655,8 @@ export function initModels(sequelize: Sequelize): Models {
   Assessments.hasMany(AssessmentsSessions, { foreignKey: 'assessment_id', as: 'assessmentsSessions' });
 
   // AssessmentsSessions belongsTo Users
-  AssessmentsSessions.belongsTo(Users, { foreignKey: 'booked_by', as: 'bookedBy' });
-  Users.hasMany(AssessmentsSessions, { foreignKey: 'booked_by', as: 'assessmentsSessions' });
+  AssessmentsSessions.belongsTo(Users, { foreignKey: 'booked_by', as: 'booker' });
+  Users.hasMany(AssessmentsSessions, { foreignKey: 'booked_by', as: 'bookedSession' });
 
   // AssessmentsSessionsPartners belongsTo Assessments
   AssessmentsSessionsPartners.belongsTo(Assessments, { foreignKey: 'assessment_id', as: 'assessment' });
@@ -688,7 +687,7 @@ export function initModels(sequelize: Sequelize): Models {
   Subjects.hasMany(Assessments, { foreignKey: 'subject_id', as: 'assessments' });
 
   // Assessments belongsTo StoragesFiles
-  Assessments.belongsTo(StoragesFiles, { foreignKey: 'thumbnail_id', as: 'thumbnail' });
+  Assessments.belongsTo(StoragesFiles, { foreignKey: 'thumbnail_id', as: 'thumbnailFile' });
   StoragesFiles.hasMany(Assessments, { foreignKey: 'thumbnail_id', as: 'assessments' });
 
   // AssignmentDocuments belongsTo Assignments
@@ -739,17 +738,18 @@ export function initModels(sequelize: Sequelize): Models {
   ChatsConversationsParticipants.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
   Users.hasMany(ChatsConversationsParticipants, { foreignKey: 'user_id', as: 'chatsConversationsParticipants' });
 
-  // ChatsMessages belongsTo Users
+  // Receiver
   ChatsMessages.belongsTo(Users, { foreignKey: 'receiver_id', as: 'receiver' });
-  Users.hasMany(ChatsMessages, { foreignKey: 'receiver_id', as: 'chatsMessages' });
+  Users.hasMany(ChatsMessages, { foreignKey: 'receiver_id', as: 'receivedMessages' });
 
-  // ChatsMessages belongsTo Users
+  // Sender
   ChatsMessages.belongsTo(Users, { foreignKey: 'sender_id', as: 'sender' });
-  Users.hasMany(ChatsMessages, { foreignKey: 'sender_id', as: 'chatsMessages' });
+  Users.hasMany(ChatsMessages, { foreignKey: 'sender_id', as: 'sentMessages' });
 
   // ChatsRooms belongsTo Users
-  ChatsRooms.belongsTo(Users, { foreignKey: 'created_by', as: 'createdBy' });
-  Users.hasMany(ChatsRooms, { foreignKey: 'created_by', as: 'chatsRooms' });
+  ChatsRooms.belongsTo(Users, { foreignKey: 'created_by', as: 'creator' });
+  Users.hasMany(ChatsRooms, { foreignKey: 'created_by', as: 'roomsCreated' });
+
 
   // ChatsRoomsMembers belongsTo ChatsRooms
   ChatsRoomsMembers.belongsTo(ChatsRooms, { foreignKey: 'room_id', as: 'room' });
@@ -795,25 +795,28 @@ export function initModels(sequelize: Sequelize): Models {
   ConsultationRoomMessages.belongsTo(Users, { foreignKey: 'sender_id', as: 'sender' });
   Users.hasMany(ConsultationRoomMessages, { foreignKey: 'sender_id', as: 'consultationRoomMessages' });
 
-  // ConsultationRooms belongsTo Users
+  // ConsultationRooms belongsTo Users (client)
   ConsultationRooms.belongsTo(Users, { foreignKey: 'client_id', as: 'client' });
-  Users.hasMany(ConsultationRooms, { foreignKey: 'client_id', as: 'consultationRooms' });
+  Users.hasMany(ConsultationRooms, { foreignKey: 'client_id', as: 'clientConsultationRooms' });
 
-  // ConsultationRooms belongsTo Users
+  // ConsultationRooms belongsTo Users (consultant)
   ConsultationRooms.belongsTo(Users, { foreignKey: 'consultant_id', as: 'consultant' });
-  Users.hasMany(ConsultationRooms, { foreignKey: 'consultant_id', as: 'consultationRooms' });
+  Users.hasMany(ConsultationRooms, { foreignKey: 'consultant_id', as: 'consultantConsultationRooms' });
 
   // ConsultationRooms belongsTo ConsultationTypes
   ConsultationRooms.belongsTo(ConsultationTypes, { foreignKey: 'consultation_type_id', as: 'consultationType' });
-  ConsultationTypes.hasMany(ConsultationRooms, { foreignKey: 'consultation_type_id', as: 'consultationRooms' });
+  ConsultationTypes.hasMany(ConsultationRooms, { foreignKey: 'consultation_type_id', as: 'typeConsultationRooms' });
+
 
   // ConsultationTypes belongsTo Users
   ConsultationTypes.belongsTo(Users, { foreignKey: 'current_consultant_id', as: 'currentConsultant' });
   Users.hasMany(ConsultationTypes, { foreignKey: 'current_consultant_id', as: 'consultationTypes' });
 
   // CreditConvertionRequests belongsTo Users
-  CreditConvertionRequests.belongsTo(Users, { foreignKey: 'action_by', as: 'actionBy' });
-  Users.hasMany(CreditConvertionRequests, { foreignKey: 'action_by', as: 'creditConvertionRequests' });
+  // CreditConvertionRequests belongsTo Users
+  CreditConvertionRequests.belongsTo(Users, { foreignKey: 'action_by', as: 'actionByUser' });
+  Users.hasMany(CreditConvertionRequests, { foreignKey: 'action_by', as: 'actionByRequests' });
+
 
   // CreditConvertionRequests belongsTo Users
   CreditConvertionRequests.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
@@ -888,8 +891,8 @@ export function initModels(sequelize: Sequelize): Models {
   Users.hasMany(EventsParticipants, { foreignKey: 'user_id', as: 'eventsParticipants' });
 
   // GradingRubrics belongsTo Users
-  GradingRubrics.belongsTo(Users, { foreignKey: 'created_by', as: 'createdBy' });
-  Users.hasMany(GradingRubrics, { foreignKey: 'created_by', as: 'gradingRubrics' });
+  GradingRubrics.belongsTo(Users, { foreignKey: 'created_by', as: 'createdByUser' });
+  Users.hasMany(GradingRubrics, { foreignKey: 'created_by', as: 'createdGradingRubrics' });
 
   // GradingRubricsCriteriaDetails belongsTo GradingRubricsCriteria
   GradingRubricsCriteriaDetails.belongsTo(GradingRubricsCriteria, { foreignKey: 'criterion_id', as: 'criterion' });
@@ -905,11 +908,11 @@ export function initModels(sequelize: Sequelize): Models {
 
   // InboxMessages belongsTo Users
   InboxMessages.belongsTo(Users, { foreignKey: 'receiver_id', as: 'receiver' });
-  Users.hasMany(InboxMessages, { foreignKey: 'receiver_id', as: 'inboxMessages' });
+  Users.hasMany(InboxMessages, {foreignKey: 'receiver_id',as: 'receivedInboxMessages',});
 
   // InboxMessages belongsTo Users
   InboxMessages.belongsTo(Users, { foreignKey: 'sender_id', as: 'sender' });
-  Users.hasMany(InboxMessages, { foreignKey: 'sender_id', as: 'inboxMessages' });
+  Users.hasMany(InboxMessages, {foreignKey: 'sender_id',as: 'sentInboxMessages',});
 
   // InternshipStudentMentors belongsTo Mentors
   InternshipStudentMentors.belongsTo(Mentors, { foreignKey: 'mentor_id', as: 'mentor' });
@@ -941,11 +944,11 @@ export function initModels(sequelize: Sequelize): Models {
 
   // Meetings belongsTo Users
   Meetings.belongsTo(Users, { foreignKey: 'assessor_id', as: 'assessor' });
-  Users.hasMany(Meetings, { foreignKey: 'assessor_id', as: 'meetings' });
+  Users.hasMany(Meetings, { foreignKey: 'assessor_id', as: 'meetingsAssesor' });
 
   // Meetings belongsTo Users
   Meetings.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
-  Users.hasMany(Meetings, { foreignKey: 'student_id', as: 'meetings' });
+  Users.hasMany(Meetings, { foreignKey: 'student_id', as: 'meetingsStudent' });
 
   // Mentors belongsTo Partners
   Mentors.belongsTo(Partners, { foreignKey: 'partner_id', as: 'partner' });
@@ -1000,16 +1003,16 @@ export function initModels(sequelize: Sequelize): Models {
   Positions.hasMany(PositionsSkills, { foreignKey: 'position_id', as: 'positionsSkills' });
 
   // PositionsSkills belongsTo ProgramPositions
-  PositionsSkills.belongsTo(ProgramPositions, { foreignKey: 'position_id', as: 'position' });
+  PositionsSkills.belongsTo(ProgramPositions, { foreignKey: 'position_id', as: 'programPositionById' });
   ProgramPositions.hasMany(PositionsSkills, { foreignKey: 'position_id', as: 'positionsSkills' });
 
   // PositionsSkills belongsTo ProgramPositions
   PositionsSkills.belongsTo(ProgramPositions, { foreignKey: 'program_position_id', as: 'programPosition' });
-  ProgramPositions.hasMany(PositionsSkills, { foreignKey: 'program_position_id', as: 'positionsSkills' });
+  ProgramPositions.hasMany(PositionsSkills, { foreignKey: 'program_position_id', as: 'positionsSkillsById' });
 
   // ProgramPositionSkills belongsTo ProgramPositions
-  ProgramPositionSkills.belongsTo(ProgramPositions, { foreignKey: 'position_id', as: 'position' });
-  ProgramPositions.hasMany(ProgramPositionSkills, { foreignKey: 'position_id', as: 'programPositionSkills' });
+  ProgramPositionSkills.belongsTo(ProgramPositions, { foreignKey: 'position_id', as: 'programPositionFromPositionId' });
+  ProgramPositions.hasMany(ProgramPositionSkills, { foreignKey: 'position_id', as: 'positionsSkillsByProgramPosition' });
 
   // ProgramPositions belongsTo Cycles
   ProgramPositions.belongsTo(Cycles, { foreignKey: 'cycle_id', as: 'cycle' });
@@ -1096,16 +1099,16 @@ export function initModels(sequelize: Sequelize): Models {
   Activities.hasMany(Reports, { foreignKey: 'activity_id', as: 'reports' });
 
   // Reports belongsTo Users
-  Reports.belongsTo(Users, { foreignKey: 'user__id', as: 'user' });
-  Users.hasMany(Reports, { foreignKey: 'user__id', as: 'reports' });
+  Reports.belongsTo(Users, { foreignKey: 'user__id', as: 'userAlt' });
+  Users.hasMany(Reports, { foreignKey: 'user__id', as: 'reportsAlt' });
 
   // Reports belongsTo Users
   Reports.belongsTo(Users, { foreignKey: 'user_id', as: 'user' });
   Users.hasMany(Reports, { foreignKey: 'user_id', as: 'reports' });
 
   // Roleplays belongsTo Users
-  Roleplays.belongsTo(Users, { foreignKey: 'created_by', as: 'createdBy' });
-  Users.hasMany(Roleplays, { foreignKey: 'created_by', as: 'roleplays' });
+  Roleplays.belongsTo(Users, { foreignKey: 'created_by', as: 'creator' });
+  Users.hasMany(Roleplays, { foreignKey: 'created_by', as: 'roleplaysCreated' });
 
   // Roleplays belongsTo GradingRubrics
   Roleplays.belongsTo(GradingRubrics, { foreignKey: 'rubric_id', as: 'rubric' });
@@ -1133,12 +1136,10 @@ export function initModels(sequelize: Sequelize): Models {
 
   // RoleplaysTeams belongsTo Roleplays
   RoleplaysTeams.belongsTo(Roleplays, { foreignKey: 'roleplay_id', as: 'roleplay' });
-  Roleplays.hasMany(RoleplaysTeams, { foreignKey: 'roleplay_id', as: 'roleplaysTeams' });
-
+  Roleplays.hasMany(RoleplaysTeams, { foreignKey: 'roleplay_id', as: 'teams' });
   // RoleplaysTeams belongsTo Users
   RoleplaysTeams.belongsTo(Users, { foreignKey: 'student_id', as: 'student' });
-  Users.hasMany(RoleplaysTeams, { foreignKey: 'student_id', as: 'roleplaysTeams' });
-
+  Users.hasMany(RoleplaysTeams, {   foreignKey: 'student_id', as: 'roleplayTeamsAsStudent' });
   // SavedPositions belongsTo ProgramPositions
   SavedPositions.belongsTo(ProgramPositions, { foreignKey: 'position_id', as: 'position' });
   ProgramPositions.hasMany(SavedPositions, { foreignKey: 'position_id', as: 'savedPositions' });

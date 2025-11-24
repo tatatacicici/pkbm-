@@ -12,7 +12,7 @@ export interface SurveysResponsesAttributes {
   deletedAt?: Date;
 }
 
-export type SurveysResponsesCreationAttributes = Optional<SurveysResponsesAttributes, 'id' | 'uuid' | 'endDate' | 'deletedAt'>;
+export type SurveysResponsesCreationAttributes = Optional<SurveysResponsesAttributes, 'pk' | 'uuid' | 'endDate' | 'deletedAt'>;
 
 export class SurveysResponses extends Model<SurveysResponsesAttributes, SurveysResponsesCreationAttributes> implements SurveysResponsesAttributes {
   declare pk: number;

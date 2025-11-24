@@ -7,7 +7,11 @@ export interface ChatsConversationsParticipantsAttributes {
   userId: string;
 }
 
-export type ChatsConversationsParticipantsCreationAttributes = Optional<ChatsConversationsParticipantsAttributes, 'id'>;
+export type ChatsConversationsParticipantsCreationAttributes = Optional<
+  ChatsConversationsParticipantsAttributes,
+  'createdAt' | 'updatedAt'
+>;
+
 
 export class ChatsConversationsParticipants extends Model<ChatsConversationsParticipantsAttributes, ChatsConversationsParticipantsCreationAttributes> implements ChatsConversationsParticipantsAttributes {
   declare createdAt: Date;

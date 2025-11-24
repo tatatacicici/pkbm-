@@ -9,7 +9,7 @@ export interface NotificationsTemplatesAttributes {
   deletedAt?: Date;
 }
 
-export type NotificationsTemplatesCreationAttributes = Optional<NotificationsTemplatesAttributes, 'id' | 'deletedAt'>;
+export type NotificationsTemplatesCreationAttributes = Optional<NotificationsTemplatesAttributes, 'pk' | 'deletedAt'>;
 
 export class NotificationsTemplates extends Model<NotificationsTemplatesAttributes, NotificationsTemplatesCreationAttributes> implements NotificationsTemplatesAttributes {
   declare pk: number;

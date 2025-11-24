@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { successResponse, errorResponse } from '../utils/response';
-import { sequelize } from '../models';
+import sequelize from '../config/database';
 import { QueryTypes } from 'sequelize';
 
 export class MyStudyController {

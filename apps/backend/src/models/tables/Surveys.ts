@@ -13,7 +13,7 @@ export interface SurveysAttributes {
   deletedAt?: Date;
 }
 
-export type SurveysCreationAttributes = Optional<SurveysAttributes, 'id' | 'uuid' | 'description' | 'isActive' | 'endDate' | 'deletedAt'>;
+export type SurveysCreationAttributes = Optional<SurveysAttributes, 'pk' | 'uuid' | 'description' | 'isActive' | 'endDate' | 'deletedAt'>;
 
 export class Surveys extends Model<SurveysAttributes, SurveysCreationAttributes> implements SurveysAttributes {
   declare pk: number;

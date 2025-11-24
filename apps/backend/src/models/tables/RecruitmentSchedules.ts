@@ -10,7 +10,7 @@ export interface RecruitmentSchedulesAttributes {
   deletedAt?: Date;
 }
 
-export type RecruitmentSchedulesCreationAttributes = Optional<RecruitmentSchedulesAttributes, 'id' | 'uuid' | 'deletedAt'>;
+export type RecruitmentSchedulesCreationAttributes = Optional<RecruitmentSchedulesAttributes, 'pk' | 'uuid' | 'deletedAt'>;
 
 export class RecruitmentSchedules extends Model<RecruitmentSchedulesAttributes, RecruitmentSchedulesCreationAttributes> implements RecruitmentSchedulesAttributes {
   declare pk: number;

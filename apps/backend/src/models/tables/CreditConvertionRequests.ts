@@ -13,7 +13,7 @@ export interface CreditConvertionRequestsAttributes {
   deletedAt?: Date;
 }
 
-export type CreditConvertionRequestsCreationAttributes = Optional<CreditConvertionRequestsAttributes, 'id' | 'uuid' | 'fileReport' | 'actionBy' | 'actionAt' | 'deletedAt'>;
+export type CreditConvertionRequestsCreationAttributes = Optional<CreditConvertionRequestsAttributes, 'pk' | 'uuid' | 'fileReport' | 'actionBy' | 'actionAt' | 'deletedAt'>;
 
 export class CreditConvertionRequests extends Model<CreditConvertionRequestsAttributes, CreditConvertionRequestsCreationAttributes> implements CreditConvertionRequestsAttributes {
   declare pk: number;

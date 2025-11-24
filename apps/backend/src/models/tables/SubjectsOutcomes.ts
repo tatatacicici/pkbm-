@@ -7,7 +7,7 @@ export interface SubjectsOutcomesAttributes {
   subjectId: string;
 }
 
-export type SubjectsOutcomesCreationAttributes = Optional<SubjectsOutcomesAttributes, 'id' | 'uuid' | 'criteria'>;
+export type SubjectsOutcomesCreationAttributes = Optional<SubjectsOutcomesAttributes, 'pk' | 'uuid' | 'criteria'>;
 
 export class SubjectsOutcomes extends Model<SubjectsOutcomesAttributes, SubjectsOutcomesCreationAttributes> implements SubjectsOutcomesAttributes {
   declare pk: number;

@@ -15,7 +15,7 @@ export interface StoragesFilesHistoriesAttributes {
   deletedAt?: Date;
 }
 
-export type StoragesFilesHistoriesCreationAttributes = Optional<StoragesFilesHistoriesAttributes, 'id' | 'fileId' | 'deletedAt'>;
+export type StoragesFilesHistoriesCreationAttributes = Optional<StoragesFilesHistoriesAttributes, 'pk' | 'fileId' | 'deletedAt'>;
 
 export class StoragesFilesHistories extends Model<StoragesFilesHistoriesAttributes, StoragesFilesHistoriesCreationAttributes> implements StoragesFilesHistoriesAttributes {
   declare pk: number;
