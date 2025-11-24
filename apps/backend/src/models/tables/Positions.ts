@@ -3,15 +3,15 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface PositionsAttributes {
   id?: number;
   uuid: string;
-  proposal_id: number;
-  partner_id: string;
+  proposalId: number;
+  partnerId: string;
   name: string;
   quota: number;
-  activity_type: string;
+  activityType: string;
   requirement: string;
   salary?: number;
   location: string;
-  location_code: string;
+  locationCode: string;
 }
 
 export type PositionsCreationAttributes = Optional<PositionsAttributes, 'id' | 'salary'>;
@@ -19,30 +19,52 @@ export type PositionsCreationAttributes = Optional<PositionsAttributes, 'id' | '
 export class Positions extends Model<PositionsAttributes, PositionsCreationAttributes> implements PositionsAttributes {
   declare id?: number;
   declare uuid: string;
-  declare proposal_id: number;
-  declare partner_id: string;
+  declare proposalId: number;
+  declare partnerId: string;
   declare name: string;
   declare quota: number;
-  declare activity_type: string;
+  declare activityType: string;
   declare requirement: string;
   declare salary?: number;
   declare location: string;
-  declare location_code: string;
+  declare locationCode: string;
 
   public static initModel(sequelize: Sequelize): typeof Positions {
     Positions.init(
       {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        uuid: { type: DataTypes.UUID, allowNull: false },
-        proposal_id: { type: DataTypes.INTEGER, allowNull: false },
-        partner_id: { type: DataTypes.UUID, allowNull: false },
-        name: { type: DataTypes.STRING, allowNull: false },
-        quota: { type: DataTypes.INTEGER, allowNull: false },
-        activity_type: { type: DataTypes.STRING, allowNull: false },
-        requirement: { type: DataTypes.STRING, allowNull: false },
-        salary: { type: DataTypes.INTEGER, allowNull: true },
-        location: { type: DataTypes.STRING, allowNull: false },
-        location_code: { type: DataTypes.STRING, allowNull: false }
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,
+            field: 'id'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: false,
+            field: 'uuid'
+        },
+        proposalId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'proposal_id'
+        },
+        partnerId: { type: DataTypes.UUID, allowNull: false,
+            field: 'partner_id'
+        },
+        name: { type: DataTypes.STRING, allowNull: false,
+            field: 'name'
+        },
+        quota: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'quota'
+        },
+        activityType: { type: DataTypes.STRING, allowNull: false,
+            field: 'activity_type'
+        },
+        requirement: { type: DataTypes.STRING, allowNull: false,
+            field: 'requirement'
+        },
+        salary: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'salary'
+        },
+        location: { type: DataTypes.STRING, allowNull: false,
+            field: 'location'
+        },
+        locationCode: { type: DataTypes.STRING, allowNull: false,
+            field: 'location_code'
+        }
       },
       {
         sequelize,

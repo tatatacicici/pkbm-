@@ -1,4 +1,4 @@
-import { Certificates } from '../models/Certificates';
+import { Certificates } from '../models/tables/Certificates';
 
 export class CertificateService {
   async getUserCertificates(userId: string) {

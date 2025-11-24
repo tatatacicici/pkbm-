@@ -6,14 +6,14 @@ export interface GradingRubricsAttributes {
   title: string;
   description?: string;
   type: string;
-  major_id: string;
-  created_by: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  majorId: string;
+  createdBy: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type GradingRubricsCreationAttributes = Optional<GradingRubricsAttributes, 'id' | 'description' | 'deleted_at'>;
+export type GradingRubricsCreationAttributes = Optional<GradingRubricsAttributes, 'id' | 'description' | 'deletedAt'>;
 
 export class GradingRubrics extends Model<GradingRubricsAttributes, GradingRubricsCreationAttributes> implements GradingRubricsAttributes {
   declare pk: number;
@@ -21,28 +21,45 @@ export class GradingRubrics extends Model<GradingRubricsAttributes, GradingRubri
   declare title: string;
   declare description?: string;
   declare type: string;
-  declare major_id: string;
-  declare created_by: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare majorId: string;
+  declare createdBy: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof GradingRubrics {
     GradingRubrics.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        title: { type: DataTypes.STRING, allowNull: false },
-        description: { type: DataTypes.TEXT, allowNull: true },
-        type: { type: DataTypes.STRING, allowNull: false },
-        major_id: { type: DataTypes.UUID, allowNull: false },
-        created_by: { type: DataTypes.UUID, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        title: { type: DataTypes.STRING, allowNull: false,
+            field: 'title'
+        },
+        description: { type: DataTypes.TEXT, allowNull: true,
+            field: 'description'
+        },
+        type: { type: DataTypes.STRING, allowNull: false,
+            field: 'type'
+        },
+        majorId: { type: DataTypes.UUID, allowNull: false,
+            field: 'major_id'
+        },
+        createdBy: { type: DataTypes.UUID, allowNull: false,
+            field: 'created_by'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

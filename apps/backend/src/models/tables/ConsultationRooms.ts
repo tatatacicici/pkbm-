@@ -2,38 +2,49 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ConsultationRoomsAttributes {
   id?: string;
-  consultation_type_id: string;
-  consultant_id: string;
-  client_id: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  consultationTypeId: string;
+  consultantId: string;
+  clientId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type ConsultationRoomsCreationAttributes = Optional<ConsultationRoomsAttributes, 'id' | 'deleted_at'>;
+export type ConsultationRoomsCreationAttributes = Optional<ConsultationRoomsAttributes, 'id' | 'deletedAt'>;
 
 export class ConsultationRooms extends Model<ConsultationRoomsAttributes, ConsultationRoomsCreationAttributes> implements ConsultationRoomsAttributes {
   declare id?: string;
-  declare consultation_type_id: string;
-  declare consultant_id: string;
-  declare client_id: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare consultationTypeId: string;
+  declare consultantId: string;
+  declare clientId: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof ConsultationRooms {
     ConsultationRooms.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        consultation_type_id: { type: DataTypes.UUID, allowNull: false },
-        consultant_id: { type: DataTypes.UUID, allowNull: false },
-        client_id: { type: DataTypes.UUID, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        consultationTypeId: { type: DataTypes.UUID, allowNull: false,
+            field: 'consultation_type_id'
+        },
+        consultantId: { type: DataTypes.UUID, allowNull: false,
+            field: 'consultant_id'
+        },
+        clientId: { type: DataTypes.UUID, allowNull: false,
+            field: 'client_id'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

@@ -3,43 +3,58 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface PaymentTrasactionItemsAttributes {
   pk: number;
   id?: string;
-  transaction_id: number;
+  transactionId: number;
   detail: string;
   amount: number;
   quantity: number;
-  created_at?: Date;
-  updated_at?: Date;
-  deleted_at?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
+  deletedAt?: Date;
 }
 
-export type PaymentTrasactionItemsCreationAttributes = Optional<PaymentTrasactionItemsAttributes, 'id' | 'created_at' | 'updated_at' | 'deleted_at'>;
+export type PaymentTrasactionItemsCreationAttributes = Optional<PaymentTrasactionItemsAttributes, 'id' | 'createdAt' | 'updatedAt' | 'deletedAt'>;
 
 export class PaymentTrasactionItems extends Model<PaymentTrasactionItemsAttributes, PaymentTrasactionItemsCreationAttributes> implements PaymentTrasactionItemsAttributes {
   declare pk: number;
   declare id?: string;
-  declare transaction_id: number;
+  declare transactionId: number;
   declare detail: string;
   declare amount: number;
   declare quantity: number;
-  declare created_at?: Date;
-  declare updated_at?: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt?: Date;
+  declare updatedAt?: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof PaymentTrasactionItems {
     PaymentTrasactionItems.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        transaction_id: { type: DataTypes.INTEGER, allowNull: false },
-        detail: { type: DataTypes.STRING, allowNull: false },
-        amount: { type: DataTypes.INTEGER, allowNull: false },
-        quantity: { type: DataTypes.INTEGER, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: true },
-        updated_at: { type: DataTypes.DATE, allowNull: true },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        transactionId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'transaction_id'
+        },
+        detail: { type: DataTypes.STRING, allowNull: false,
+            field: 'detail'
+        },
+        amount: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'amount'
+        },
+        quantity: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'quantity'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

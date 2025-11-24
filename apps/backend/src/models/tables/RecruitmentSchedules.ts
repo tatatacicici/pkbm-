@@ -3,37 +3,48 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface RecruitmentSchedulesAttributes {
   pk: number;
   uuid?: string;
-  department_id: number;
+  departmentId: number;
   schedule: Date;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type RecruitmentSchedulesCreationAttributes = Optional<RecruitmentSchedulesAttributes, 'id' | 'uuid' | 'deleted_at'>;
+export type RecruitmentSchedulesCreationAttributes = Optional<RecruitmentSchedulesAttributes, 'pk' | 'uuid' | 'deletedAt'>;
 
 export class RecruitmentSchedules extends Model<RecruitmentSchedulesAttributes, RecruitmentSchedulesCreationAttributes> implements RecruitmentSchedulesAttributes {
   declare pk: number;
   declare uuid?: string;
-  declare department_id: number;
+  declare departmentId: number;
   declare schedule: Date;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof RecruitmentSchedules {
     RecruitmentSchedules.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        uuid: { type: DataTypes.UUID, allowNull: true },
-        department_id: { type: DataTypes.INTEGER, allowNull: false },
-        schedule: { type: DataTypes.DATE, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: true,
+            field: 'uuid'
+        },
+        departmentId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'department_id'
+        },
+        schedule: { type: DataTypes.DATE, allowNull: false,
+            field: 'schedule'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

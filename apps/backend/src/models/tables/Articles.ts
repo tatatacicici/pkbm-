@@ -2,74 +2,109 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ArticlesAttributes {
   id?: string;
-  author_id: string;
-  category_id: string;
+  authorId: string;
+  categoryId: string;
   title: string;
   content: string;
   thumbnail: string;
   slug: string;
   views?: number;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  thumbnail_id?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  thumbnailId?: string;
   excerpt?: string;
-  featured_image?: string;
+  featuredImage?: string;
   tags?: string;
   category?: string;
-  view_count?: number;
-  like_count?: number;
-  published_at?: Date;
+  viewCount?: number;
+  likeCount?: number;
+  publishedAt?: Date;
 }
 
-export type ArticlesCreationAttributes = Optional<ArticlesAttributes, 'id' | 'views' | 'deleted_at' | 'thumbnail_id' | 'excerpt' | 'featured_image' | 'tags' | 'category' | 'view_count' | 'like_count' | 'published_at'>;
+export type ArticlesCreationAttributes = Optional<ArticlesAttributes, 'id' | 'views' | 'deletedAt' | 'thumbnailId' | 'excerpt' | 'featuredImage' | 'tags' | 'category' | 'viewCount' | 'likeCount' | 'publishedAt'>;
 
 export class Articles extends Model<ArticlesAttributes, ArticlesCreationAttributes> implements ArticlesAttributes {
   declare id?: string;
-  declare author_id: string;
-  declare category_id: string;
+  declare authorId: string;
+  declare categoryId: string;
   declare title: string;
   declare content: string;
   declare thumbnail: string;
   declare slug: string;
   declare views?: number;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare thumbnail_id?: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare thumbnailId?: string;
   declare excerpt?: string;
-  declare featured_image?: string;
+  declare featuredImage?: string;
   declare tags?: string;
   declare category?: string;
-  declare view_count?: number;
-  declare like_count?: number;
-  declare published_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare viewCount?: number;
+  declare likeCount?: number;
+  declare publishedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof Articles {
     Articles.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        author_id: { type: DataTypes.UUID, allowNull: false },
-        category_id: { type: DataTypes.UUID, allowNull: false },
-        title: { type: DataTypes.STRING, allowNull: false },
-        content: { type: DataTypes.TEXT, allowNull: false },
-        thumbnail: { type: DataTypes.STRING, allowNull: false },
-        slug: { type: DataTypes.STRING, allowNull: false },
-        views: { type: DataTypes.INTEGER },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        thumbnail_id: { type: DataTypes.UUID, allowNull: true },
-        excerpt: { type: DataTypes.TEXT, allowNull: true },
-        featured_image: { type: DataTypes.STRING, allowNull: true },
-        tags: { type: DataTypes.STRING, allowNull: true },
-        category: { type: DataTypes.STRING, allowNull: true },
-        view_count: { type: DataTypes.INTEGER },
-        like_count: { type: DataTypes.INTEGER },
-        published_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        authorId: { type: DataTypes.UUID, allowNull: false,
+            field: 'author_id'
+        },
+        categoryId: { type: DataTypes.UUID, allowNull: false,
+            field: 'category_id'
+        },
+        title: { type: DataTypes.STRING, allowNull: false,
+            field: 'title'
+        },
+        content: { type: DataTypes.TEXT, allowNull: false,
+            field: 'content'
+        },
+        thumbnail: { type: DataTypes.STRING, allowNull: false,
+            field: 'thumbnail'
+        },
+        slug: { type: DataTypes.STRING, allowNull: false,
+            field: 'slug'
+        },
+        views: { type: DataTypes.INTEGER,
+            field: 'views'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        thumbnailId: { type: DataTypes.UUID, allowNull: true,
+            field: 'thumbnail_id'
+        },
+        excerpt: { type: DataTypes.TEXT, allowNull: true,
+            field: 'excerpt'
+        },
+        featuredImage: { type: DataTypes.STRING, allowNull: true,
+            field: 'featured_image'
+        },
+        tags: { type: DataTypes.STRING, allowNull: true,
+            field: 'tags'
+        },
+        category: { type: DataTypes.STRING, allowNull: true,
+            field: 'category'
+        },
+        viewCount: { type: DataTypes.INTEGER,
+            field: 'view_count'
+        },
+        likeCount: { type: DataTypes.INTEGER,
+            field: 'like_count'
+        },
+        publishedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'published_at'
+        }
       },
       {
         sequelize,

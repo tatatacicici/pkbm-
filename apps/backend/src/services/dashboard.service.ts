@@ -1,6 +1,6 @@
-import { EventParticipants } from '../models/EventParticipants';
-import { Notifications } from '../models/Notifications';
-import { Users } from '../models/Users';
+import { EventParticipants } from '../models/tables/EventParticipants';
+import { Notifications } from '../models/tables/Notifications';
+import { Users } from '../models/tables/Users';
 
 export class DashboardService {
   async getDashboardData(userId: string) {

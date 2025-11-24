@@ -2,26 +2,34 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ProgressQuestionAnswersAttributes {
   id?: string;
-  question_id: string;
-  answer_id?: string;
-  progress_id: string;
+  questionId: string;
+  answerId?: string;
+  progressId: string;
 }
 
-export type ProgressQuestionAnswersCreationAttributes = Optional<ProgressQuestionAnswersAttributes, 'id' | 'answer_id'>;
+export type ProgressQuestionAnswersCreationAttributes = Optional<ProgressQuestionAnswersAttributes, 'id' | 'answerId'>;
 
 export class ProgressQuestionAnswers extends Model<ProgressQuestionAnswersAttributes, ProgressQuestionAnswersCreationAttributes> implements ProgressQuestionAnswersAttributes {
   declare id?: string;
-  declare question_id: string;
-  declare answer_id?: string;
-  declare progress_id: string;
+  declare questionId: string;
+  declare answerId?: string;
+  declare progressId: string;
 
   public static initModel(sequelize: Sequelize): typeof ProgressQuestionAnswers {
     ProgressQuestionAnswers.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        question_id: { type: DataTypes.UUID, allowNull: false },
-        answer_id: { type: DataTypes.UUID, allowNull: true },
-        progress_id: { type: DataTypes.UUID, allowNull: false }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        questionId: { type: DataTypes.UUID, allowNull: false,
+            field: 'question_id'
+        },
+        answerId: { type: DataTypes.UUID, allowNull: true,
+            field: 'answer_id'
+        },
+        progressId: { type: DataTypes.UUID, allowNull: false,
+            field: 'progress_id'
+        }
       },
       {
         sequelize,

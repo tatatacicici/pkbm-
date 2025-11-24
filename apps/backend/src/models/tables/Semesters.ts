@@ -4,45 +4,62 @@ export interface SemestersAttributes {
   id?: string;
   semester: number;
   batchyear: number;
-  plan_date_start: Date;
-  plan_date_end: Date;
-  program_date_start: Date;
-  program_date_end: Date;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  planDateStart: Date;
+  planDateEnd: Date;
+  programDateStart: Date;
+  programDateEnd: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type SemestersCreationAttributes = Optional<SemestersAttributes, 'id' | 'deleted_at'>;
+export type SemestersCreationAttributes = Optional<SemestersAttributes, 'id' | 'deletedAt'>;
 
 export class Semesters extends Model<SemestersAttributes, SemestersCreationAttributes> implements SemestersAttributes {
   declare id?: string;
   declare semester: number;
   declare batchyear: number;
-  declare plan_date_start: Date;
-  declare plan_date_end: Date;
-  declare program_date_start: Date;
-  declare program_date_end: Date;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare planDateStart: Date;
+  declare planDateEnd: Date;
+  declare programDateStart: Date;
+  declare programDateEnd: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof Semesters {
     Semesters.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        semester: { type: DataTypes.INTEGER, allowNull: false },
-        batchyear: { type: DataTypes.INTEGER, allowNull: false },
-        plan_date_start: { type: DataTypes.DATE, allowNull: false },
-        plan_date_end: { type: DataTypes.DATE, allowNull: false },
-        program_date_start: { type: DataTypes.DATE, allowNull: false },
-        program_date_end: { type: DataTypes.DATE, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        semester: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'semester'
+        },
+        batchyear: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'batchyear'
+        },
+        planDateStart: { type: DataTypes.DATE, allowNull: false,
+            field: 'plan_date_start'
+        },
+        planDateEnd: { type: DataTypes.DATE, allowNull: false,
+            field: 'plan_date_end'
+        },
+        programDateStart: { type: DataTypes.DATE, allowNull: false,
+            field: 'program_date_start'
+        },
+        programDateEnd: { type: DataTypes.DATE, allowNull: false,
+            field: 'program_date_end'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

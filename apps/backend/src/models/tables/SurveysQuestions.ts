@@ -3,40 +3,53 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface SurveysQuestionsAttributes {
   pk: number;
   uuid?: string;
-  survey_id: number;
+  surveyId: number;
   question: string;
   type: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type SurveysQuestionsCreationAttributes = Optional<SurveysQuestionsAttributes, 'id' | 'uuid' | 'deleted_at'>;
+export type SurveysQuestionsCreationAttributes = Optional<SurveysQuestionsAttributes, 'pk' | 'uuid' | 'deletedAt'>;
 
 export class SurveysQuestions extends Model<SurveysQuestionsAttributes, SurveysQuestionsCreationAttributes> implements SurveysQuestionsAttributes {
   declare pk: number;
   declare uuid?: string;
-  declare survey_id: number;
+  declare surveyId: number;
   declare question: string;
   declare type: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof SurveysQuestions {
     SurveysQuestions.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        uuid: { type: DataTypes.UUID, allowNull: true },
-        survey_id: { type: DataTypes.INTEGER, allowNull: false },
-        question: { type: DataTypes.TEXT, allowNull: false },
-        type: { type: DataTypes.STRING, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: true,
+            field: 'uuid'
+        },
+        surveyId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'survey_id'
+        },
+        question: { type: DataTypes.TEXT, allowNull: false,
+            field: 'question'
+        },
+        type: { type: DataTypes.STRING, allowNull: false,
+            field: 'type'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

@@ -4,54 +4,77 @@ export interface LeaderboardHistoriesAttributes {
   pk: number;
   id?: string;
   code: string;
-  student_id: string;
+  studentId: string;
   type: string;
-  current_score: number;
-  current_rank: number;
-  previous_score: number;
-  previous_rank: number;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  subject_id?: string;
+  currentScore: number;
+  currentRank: number;
+  previousScore: number;
+  previousRank: number;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  subjectId?: string;
 }
 
-export type LeaderboardHistoriesCreationAttributes = Optional<LeaderboardHistoriesAttributes, 'id' | 'deleted_at' | 'subject_id'>;
+export type LeaderboardHistoriesCreationAttributes = Optional<LeaderboardHistoriesAttributes, 'id' | 'deletedAt' | 'subjectId'>;
 
 export class LeaderboardHistories extends Model<LeaderboardHistoriesAttributes, LeaderboardHistoriesCreationAttributes> implements LeaderboardHistoriesAttributes {
   declare pk: number;
   declare id?: string;
   declare code: string;
-  declare student_id: string;
+  declare studentId: string;
   declare type: string;
-  declare current_score: number;
-  declare current_rank: number;
-  declare previous_score: number;
-  declare previous_rank: number;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare subject_id?: string;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare currentScore: number;
+  declare currentRank: number;
+  declare previousScore: number;
+  declare previousRank: number;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare subjectId?: string;
 
   public static initModel(sequelize: Sequelize): typeof LeaderboardHistories {
     LeaderboardHistories.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        code: { type: DataTypes.STRING, allowNull: false },
-        student_id: { type: DataTypes.UUID, allowNull: false },
-        type: { type: DataTypes.STRING, allowNull: false },
-        current_score: { type: DataTypes.INTEGER, allowNull: false },
-        current_rank: { type: DataTypes.INTEGER, allowNull: false },
-        previous_score: { type: DataTypes.INTEGER, allowNull: false },
-        previous_rank: { type: DataTypes.INTEGER, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        subject_id: { type: DataTypes.UUID, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        code: { type: DataTypes.STRING, allowNull: false,
+            field: 'code'
+        },
+        studentId: { type: DataTypes.UUID, allowNull: false,
+            field: 'student_id'
+        },
+        type: { type: DataTypes.STRING, allowNull: false,
+            field: 'type'
+        },
+        currentScore: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'current_score'
+        },
+        currentRank: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'current_rank'
+        },
+        previousScore: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'previous_score'
+        },
+        previousRank: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'previous_rank'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        subjectId: { type: DataTypes.UUID, allowNull: true,
+            field: 'subject_id'
+        }
       },
       {
         sequelize,

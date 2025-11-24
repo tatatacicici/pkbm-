@@ -3,43 +3,58 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface AssessmentsAssessorsAttributes {
   pk: number;
   id?: string;
-  assessment_id: number;
-  assessor_id: string;
+  assessmentId: number;
+  assessorId: string;
   role: string;
-  assigned_at: Date;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  assignedAt: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type AssessmentsAssessorsCreationAttributes = Optional<AssessmentsAssessorsAttributes, 'id' | 'deleted_at'>;
+export type AssessmentsAssessorsCreationAttributes = Optional<AssessmentsAssessorsAttributes, 'id' | 'deletedAt'>;
 
 export class AssessmentsAssessors extends Model<AssessmentsAssessorsAttributes, AssessmentsAssessorsCreationAttributes> implements AssessmentsAssessorsAttributes {
   declare pk: number;
   declare id?: string;
-  declare assessment_id: number;
-  declare assessor_id: string;
+  declare assessmentId: number;
+  declare assessorId: string;
   declare role: string;
-  declare assigned_at: Date;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare assignedAt: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof AssessmentsAssessors {
     AssessmentsAssessors.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        assessment_id: { type: DataTypes.INTEGER, allowNull: false },
-        assessor_id: { type: DataTypes.UUID, allowNull: false },
-        role: { type: DataTypes.STRING, allowNull: false },
-        assigned_at: { type: DataTypes.DATE, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        assessmentId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'assessment_id'
+        },
+        assessorId: { type: DataTypes.UUID, allowNull: false,
+            field: 'assessor_id'
+        },
+        role: { type: DataTypes.STRING, allowNull: false,
+            field: 'role'
+        },
+        assignedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'assigned_at'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

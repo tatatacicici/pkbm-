@@ -1,4 +1,4 @@
-import { Notifications } from '../models/Notifications';
+import { Notifications } from '../models/tables/Notifications';
 
 interface GetNotificationsParams {
   page: number;

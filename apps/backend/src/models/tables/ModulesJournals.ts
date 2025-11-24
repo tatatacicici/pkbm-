@@ -5,47 +5,66 @@ export interface ModulesJournalsAttributes {
   title?: string;
   content?: string;
   url?: string;
-  module_id: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  duration_in_seconds?: number;
-  document_id?: number;
-  document_filename?: string;
+  moduleId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  durationInSeconds?: number;
+  documentId?: number;
+  documentFilename?: string;
 }
 
-export type ModulesJournalsCreationAttributes = Optional<ModulesJournalsAttributes, 'id' | 'title' | 'content' | 'url' | 'deleted_at' | 'duration_in_seconds' | 'document_id' | 'document_filename'>;
+export type ModulesJournalsCreationAttributes = Optional<ModulesJournalsAttributes, 'id' | 'title' | 'content' | 'url' | 'deletedAt' | 'durationInSeconds' | 'documentId' | 'documentFilename'>;
 
 export class ModulesJournals extends Model<ModulesJournalsAttributes, ModulesJournalsCreationAttributes> implements ModulesJournalsAttributes {
   declare id?: string;
   declare title?: string;
   declare content?: string;
   declare url?: string;
-  declare module_id: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare duration_in_seconds?: number;
-  declare document_id?: number;
-  declare document_filename?: string;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare moduleId: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare durationInSeconds?: number;
+  declare documentId?: number;
+  declare documentFilename?: string;
 
   public static initModel(sequelize: Sequelize): typeof ModulesJournals {
     ModulesJournals.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        title: { type: DataTypes.STRING, allowNull: true },
-        content: { type: DataTypes.TEXT, allowNull: true },
-        url: { type: DataTypes.TEXT, allowNull: true },
-        module_id: { type: DataTypes.UUID, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        duration_in_seconds: { type: DataTypes.INTEGER, allowNull: true },
-        document_id: { type: DataTypes.INTEGER, allowNull: true },
-        document_filename: { type: DataTypes.STRING, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        title: { type: DataTypes.STRING, allowNull: true,
+            field: 'title'
+        },
+        content: { type: DataTypes.TEXT, allowNull: true,
+            field: 'content'
+        },
+        url: { type: DataTypes.TEXT, allowNull: true,
+            field: 'url'
+        },
+        moduleId: { type: DataTypes.UUID, allowNull: false,
+            field: 'module_id'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        durationInSeconds: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'duration_in_seconds'
+        },
+        documentId: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'document_id'
+        },
+        documentFilename: { type: DataTypes.STRING, allowNull: true,
+            field: 'document_filename'
+        }
       },
       {
         sequelize,

@@ -3,49 +3,68 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface SubmissionsAttributes {
   pk: number;
   id?: string;
-  user_id: string;
-  assignment_id: number;
+  userId: string;
+  assignmentId: number;
   status: string;
-  is_graded: boolean;
+  isGraded: boolean;
   score: number;
-  document_path: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  documentPath: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type SubmissionsCreationAttributes = Optional<SubmissionsAttributes, 'id' | 'deleted_at'>;
+export type SubmissionsCreationAttributes = Optional<SubmissionsAttributes, 'id' | 'deletedAt'>;
 
 export class Submissions extends Model<SubmissionsAttributes, SubmissionsCreationAttributes> implements SubmissionsAttributes {
   declare pk: number;
   declare id?: string;
-  declare user_id: string;
-  declare assignment_id: number;
+  declare userId: string;
+  declare assignmentId: number;
   declare status: string;
-  declare is_graded: boolean;
+  declare isGraded: boolean;
   declare score: number;
-  declare document_path: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare documentPath: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof Submissions {
     Submissions.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        user_id: { type: DataTypes.STRING, allowNull: false },
-        assignment_id: { type: DataTypes.INTEGER, allowNull: false },
-        status: { type: DataTypes.STRING, allowNull: false },
-        is_graded: { type: DataTypes.BOOLEAN, allowNull: false },
-        score: { type: DataTypes.INTEGER, allowNull: false },
-        document_path: { type: DataTypes.STRING, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        userId: { type: DataTypes.STRING, allowNull: false,
+            field: 'user_id'
+        },
+        assignmentId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'assignment_id'
+        },
+        status: { type: DataTypes.STRING, allowNull: false,
+            field: 'status'
+        },
+        isGraded: { type: DataTypes.BOOLEAN, allowNull: false,
+            field: 'is_graded'
+        },
+        score: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'score'
+        },
+        documentPath: { type: DataTypes.STRING, allowNull: false,
+            field: 'document_path'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

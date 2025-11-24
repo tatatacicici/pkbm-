@@ -1,5 +1,5 @@
-import { Users } from '../models/Users';
-import { UsersAttributes } from '../models/Users';
+import { Users } from '../models/tables/Users';
+import { UsersAttributes } from '../models/tables/Users';
 
 export class UserService {
   async getUserProfile(userId: string): Promise<Partial<UsersAttributes> | null> {

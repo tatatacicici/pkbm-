@@ -2,74 +2,109 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AdministrationsFilesAttributes {
   id?: string;
-  administration_id: string;
-  id_card?: string;
-  diploma_certificate?: string;
-  family_card?: string;
+  administrationId: string;
+  idCard?: string;
+  diplomaCertificate?: string;
+  familyCard?: string;
   photo?: string;
   transcript?: string;
-  letter_of_recommendation?: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  id_card_id?: number;
-  diploma_certificate_id?: number;
-  family_card_id?: number;
-  photo_id?: number;
-  transcript_id?: number;
-  letter_of_recommendation_id?: number;
-  student_card_id?: number;
-  student_card?: string;
+  letterOfRecommendation?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  idCardId?: number;
+  diplomaCertificateId?: number;
+  familyCardId?: number;
+  photoId?: number;
+  transcriptId?: number;
+  letterOfRecommendationId?: number;
+  studentCardId?: number;
+  studentCard?: string;
 }
 
-export type AdministrationsFilesCreationAttributes = Optional<AdministrationsFilesAttributes, 'id' | 'id_card' | 'diploma_certificate' | 'family_card' | 'photo' | 'transcript' | 'letter_of_recommendation' | 'deleted_at' | 'id_card_id' | 'diploma_certificate_id' | 'family_card_id' | 'photo_id' | 'transcript_id' | 'letter_of_recommendation_id' | 'student_card_id' | 'student_card'>;
+export type AdministrationsFilesCreationAttributes = Optional<AdministrationsFilesAttributes, 'id' | 'idCard' | 'diplomaCertificate' | 'familyCard' | 'photo' | 'transcript' | 'letterOfRecommendation' | 'deletedAt' | 'idCardId' | 'diplomaCertificateId' | 'familyCardId' | 'photoId' | 'transcriptId' | 'letterOfRecommendationId' | 'studentCardId' | 'studentCard'>;
 
 export class AdministrationsFiles extends Model<AdministrationsFilesAttributes, AdministrationsFilesCreationAttributes> implements AdministrationsFilesAttributes {
   declare id?: string;
-  declare administration_id: string;
-  declare id_card?: string;
-  declare diploma_certificate?: string;
-  declare family_card?: string;
+  declare administrationId: string;
+  declare idCard?: string;
+  declare diplomaCertificate?: string;
+  declare familyCard?: string;
   declare photo?: string;
   declare transcript?: string;
-  declare letter_of_recommendation?: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare id_card_id?: number;
-  declare diploma_certificate_id?: number;
-  declare family_card_id?: number;
-  declare photo_id?: number;
-  declare transcript_id?: number;
-  declare letter_of_recommendation_id?: number;
-  declare student_card_id?: number;
-  declare student_card?: string;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare letterOfRecommendation?: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare idCardId?: number;
+  declare diplomaCertificateId?: number;
+  declare familyCardId?: number;
+  declare photoId?: number;
+  declare transcriptId?: number;
+  declare letterOfRecommendationId?: number;
+  declare studentCardId?: number;
+  declare studentCard?: string;
 
   public static initModel(sequelize: Sequelize): typeof AdministrationsFiles {
     AdministrationsFiles.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        administration_id: { type: DataTypes.UUID, allowNull: false },
-        id_card: { type: DataTypes.TEXT, allowNull: true },
-        diploma_certificate: { type: DataTypes.TEXT, allowNull: true },
-        family_card: { type: DataTypes.TEXT, allowNull: true },
-        photo: { type: DataTypes.TEXT, allowNull: true },
-        transcript: { type: DataTypes.TEXT, allowNull: true },
-        letter_of_recommendation: { type: DataTypes.TEXT, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        id_card_id: { type: DataTypes.INTEGER, allowNull: true },
-        diploma_certificate_id: { type: DataTypes.INTEGER, allowNull: true },
-        family_card_id: { type: DataTypes.INTEGER, allowNull: true },
-        photo_id: { type: DataTypes.INTEGER, allowNull: true },
-        transcript_id: { type: DataTypes.INTEGER, allowNull: true },
-        letter_of_recommendation_id: { type: DataTypes.INTEGER, allowNull: true },
-        student_card_id: { type: DataTypes.INTEGER, allowNull: true },
-        student_card: { type: DataTypes.TEXT, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        administrationId: { type: DataTypes.UUID, allowNull: false,
+            field: 'administration_id'
+        },
+        idCard: { type: DataTypes.TEXT, allowNull: true,
+            field: 'id_card'
+        },
+        diplomaCertificate: { type: DataTypes.TEXT, allowNull: true,
+            field: 'diploma_certificate'
+        },
+        familyCard: { type: DataTypes.TEXT, allowNull: true,
+            field: 'family_card'
+        },
+        photo: { type: DataTypes.TEXT, allowNull: true,
+            field: 'photo'
+        },
+        transcript: { type: DataTypes.TEXT, allowNull: true,
+            field: 'transcript'
+        },
+        letterOfRecommendation: { type: DataTypes.TEXT, allowNull: true,
+            field: 'letter_of_recommendation'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        idCardId: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'id_card_id'
+        },
+        diplomaCertificateId: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'diploma_certificate_id'
+        },
+        familyCardId: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'family_card_id'
+        },
+        photoId: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'photo_id'
+        },
+        transcriptId: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'transcript_id'
+        },
+        letterOfRecommendationId: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'letter_of_recommendation_id'
+        },
+        studentCardId: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'student_card_id'
+        },
+        studentCard: { type: DataTypes.TEXT, allowNull: true,
+            field: 'student_card'
+        }
       },
       {
         sequelize,

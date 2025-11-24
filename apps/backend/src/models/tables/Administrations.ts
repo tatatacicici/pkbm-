@@ -2,53 +2,57 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface AdministrationsAttributes {
   id?: string;
-  user_id: string;
+  userId: string;
   type: string;
   status: string;
-  action_by?: string;
-  created_at: Date;
-  updated_at: Date;
+  actionBy?: string;
+  createdAt: Date;
+  updatedAt: Date;
   reason?: string;
-  deleted_at?: Date;
+  deletedAt?: Date;
   category?: string;
-  approved_by?: string;
-  approved_at?: Date;
+  approvedBy?: string;
+  approvedAt?: Date;
 }
 
-export type AdministrationsCreationAttributes = Optional<AdministrationsAttributes, 'id' | 'action_by' | 'reason' | 'deleted_at' | 'category' | 'approved_by' | 'approved_at'>;
+export type AdministrationsCreationAttributes = Optional<
+  AdministrationsAttributes,
+  'id' | 'actionBy' | 'reason' | 'deletedAt' | 'category' | 'approvedBy' | 'approvedAt'
+>;
 
-export class Administrations extends Model<AdministrationsAttributes, AdministrationsCreationAttributes> implements AdministrationsAttributes {
+export class Administrations extends Model<
+  AdministrationsAttributes,
+  AdministrationsCreationAttributes
+> implements AdministrationsAttributes {
   declare id?: string;
-  declare user_id: string;
+  declare userId: string;
   declare type: string;
   declare status: string;
-  declare action_by?: string;
-  declare created_at: Date;
-  declare updated_at: Date;
+  declare actionBy?: string;
   declare reason?: string;
-  declare deleted_at?: Date;
+  declare deletedAt?: Date;
   declare category?: string;
-  declare approved_by?: string;
-  declare approved_at?: Date;
+  declare approvedBy?: string;
+  declare approvedAt?: Date;
 
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare readonly createdAt: Date;
+  declare readonly updatedAt: Date;
 
   public static initModel(sequelize: Sequelize): typeof Administrations {
     Administrations.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        user_id: { type: DataTypes.UUID, allowNull: false },
-        type: { type: DataTypes.STRING, allowNull: false },
-        status: { type: DataTypes.STRING, allowNull: false },
-        action_by: { type: DataTypes.STRING, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        reason: { type: DataTypes.STRING, allowNull: true },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        category: { type: DataTypes.STRING, allowNull: true },
-        approved_by: { type: DataTypes.UUID, allowNull: true },
-        approved_at: { type: DataTypes.DATE, allowNull: true }
+        id: { field: 'id', type: DataTypes.UUID, primaryKey: true },
+        userId: { field: 'user_id', type: DataTypes.UUID, allowNull: false },
+        type: { field: 'type', type: DataTypes.STRING, allowNull: false },
+        status: { field: 'status', type: DataTypes.STRING, allowNull: false },
+        actionBy: { field: 'action_by', type: DataTypes.STRING, allowNull: true },
+        createdAt: { field: 'created_at', type: DataTypes.DATE, allowNull: false },
+        updatedAt: { field: 'updated_at', type: DataTypes.DATE, allowNull: false },
+        reason: { field: 'reason', type: DataTypes.STRING, allowNull: true },
+        deletedAt: { field: 'deleted_at', type: DataTypes.DATE, allowNull: true },
+        category: { field: 'category', type: DataTypes.STRING, allowNull: true },
+        approvedBy: { field: 'approved_by', type: DataTypes.UUID, allowNull: true },
+        approvedAt: { field: 'approved_at', type: DataTypes.DATE, allowNull: true },
       },
       {
         sequelize,

@@ -3,103 +3,158 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface SubjectsAttributes {
   id?: string;
   name: string;
-  subject_code: string;
-  duration_hours?: number;
+  subjectCode: string;
+  durationHours?: number;
   level?: number;
-  teacher_id?: string;
+  teacherId?: string;
   indicator?: string;
-  study_experience?: string;
-  teaching_materials?: string;
-  basic_competencies?: string;
-  tools_needed?: string;
+  studyExperience?: string;
+  teachingMaterials?: string;
+  basicCompetencies?: string;
+  toolsNeeded?: string;
   scoring?: string;
   description?: string;
   thumbnail: string;
   credit?: number;
   slug: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  thumbnail_id?: number;
-  is_available?: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  thumbnailId?: number;
+  isAvailable?: boolean;
   type?: string;
-  start_at?: Date;
+  startAt?: Date;
   brochure?: string;
-  link_whatsapp_group?: string;
+  linkWhatsappGroup?: string;
   category?: string;
   credits?: number;
   semester?: number;
-  instructor_id?: string;
+  instructorId?: string;
 }
 
-export type SubjectsCreationAttributes = Optional<SubjectsAttributes, 'id' | 'duration_hours' | 'level' | 'teacher_id' | 'indicator' | 'study_experience' | 'teaching_materials' | 'basic_competencies' | 'tools_needed' | 'scoring' | 'description' | 'credit' | 'deleted_at' | 'thumbnail_id' | 'is_available' | 'type' | 'start_at' | 'brochure' | 'link_whatsapp_group' | 'category' | 'credits' | 'semester' | 'instructor_id'>;
+export type SubjectsCreationAttributes = Optional<SubjectsAttributes, 'id' | 'durationHours' | 'level' | 'teacherId' | 'indicator' | 'studyExperience' | 'teachingMaterials' | 'basicCompetencies' | 'toolsNeeded' | 'scoring' | 'description' | 'credit' | 'deletedAt' | 'thumbnailId' | 'isAvailable' | 'type' | 'startAt' | 'brochure' | 'linkWhatsappGroup' | 'category' | 'credits' | 'semester' | 'instructorId'>;
 
 export class Subjects extends Model<SubjectsAttributes, SubjectsCreationAttributes> implements SubjectsAttributes {
   declare id?: string;
   declare name: string;
-  declare subject_code: string;
-  declare duration_hours?: number;
+  declare subjectCode: string;
+  declare durationHours?: number;
   declare level?: number;
-  declare teacher_id?: string;
+  declare teacherId?: string;
   declare indicator?: string;
-  declare study_experience?: string;
-  declare teaching_materials?: string;
-  declare basic_competencies?: string;
-  declare tools_needed?: string;
+  declare studyExperience?: string;
+  declare teachingMaterials?: string;
+  declare basicCompetencies?: string;
+  declare toolsNeeded?: string;
   declare scoring?: string;
   declare description?: string;
   declare thumbnail: string;
   declare credit?: number;
   declare slug: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare thumbnail_id?: number;
-  declare is_available?: boolean;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare thumbnailId?: number;
+  declare isAvailable?: boolean;
   declare type?: string;
-  declare start_at?: Date;
+  declare startAt?: Date;
   declare brochure?: string;
-  declare link_whatsapp_group?: string;
+  declare linkWhatsappGroup?: string;
   declare category?: string;
   declare credits?: number;
   declare semester?: number;
-  declare instructor_id?: string;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare instructorId?: string;
 
   public static initModel(sequelize: Sequelize): typeof Subjects {
     Subjects.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        name: { type: DataTypes.STRING, allowNull: false },
-        subject_code: { type: DataTypes.STRING, allowNull: false },
-        duration_hours: { type: DataTypes.INTEGER, allowNull: true },
-        level: { type: DataTypes.INTEGER, allowNull: true },
-        teacher_id: { type: DataTypes.UUID, allowNull: true },
-        indicator: { type: DataTypes.TEXT, allowNull: true },
-        study_experience: { type: DataTypes.TEXT, allowNull: true },
-        teaching_materials: { type: DataTypes.TEXT, allowNull: true },
-        basic_competencies: { type: DataTypes.TEXT, allowNull: true },
-        tools_needed: { type: DataTypes.TEXT, allowNull: true },
-        scoring: { type: DataTypes.TEXT, allowNull: true },
-        description: { type: DataTypes.TEXT, allowNull: true },
-        thumbnail: { type: DataTypes.TEXT, allowNull: false },
-        credit: { type: DataTypes.INTEGER, allowNull: true },
-        slug: { type: DataTypes.STRING, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        thumbnail_id: { type: DataTypes.INTEGER, allowNull: true },
-        is_available: { type: DataTypes.BOOLEAN, allowNull: true },
-        type: { type: DataTypes.STRING, allowNull: true },
-        start_at: { type: DataTypes.DATE, allowNull: true },
-        brochure: { type: DataTypes.TEXT, allowNull: true },
-        link_whatsapp_group: { type: DataTypes.STRING, allowNull: true },
-        category: { type: DataTypes.STRING, allowNull: true },
-        credits: { type: DataTypes.INTEGER },
-        semester: { type: DataTypes.INTEGER, allowNull: true },
-        instructor_id: { type: DataTypes.UUID, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        name: { type: DataTypes.STRING, allowNull: false,
+            field: 'name'
+        },
+        subjectCode: { type: DataTypes.STRING, allowNull: false,
+            field: 'subject_code'
+        },
+        durationHours: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'duration_hours'
+        },
+        level: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'level'
+        },
+        teacherId: { type: DataTypes.UUID, allowNull: true,
+            field: 'teacher_id'
+        },
+        indicator: { type: DataTypes.TEXT, allowNull: true,
+            field: 'indicator'
+        },
+        studyExperience: { type: DataTypes.TEXT, allowNull: true,
+            field: 'study_experience'
+        },
+        teachingMaterials: { type: DataTypes.TEXT, allowNull: true,
+            field: 'teaching_materials'
+        },
+        basicCompetencies: { type: DataTypes.TEXT, allowNull: true,
+            field: 'basic_competencies'
+        },
+        toolsNeeded: { type: DataTypes.TEXT, allowNull: true,
+            field: 'tools_needed'
+        },
+        scoring: { type: DataTypes.TEXT, allowNull: true,
+            field: 'scoring'
+        },
+        description: { type: DataTypes.TEXT, allowNull: true,
+            field: 'description'
+        },
+        thumbnail: { type: DataTypes.TEXT, allowNull: false,
+            field: 'thumbnail'
+        },
+        credit: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'credit'
+        },
+        slug: { type: DataTypes.STRING, allowNull: false,
+            field: 'slug'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        thumbnailId: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'thumbnail_id'
+        },
+        isAvailable: { type: DataTypes.BOOLEAN, allowNull: true,
+            field: 'is_available'
+        },
+        type: { type: DataTypes.STRING, allowNull: true,
+            field: 'type'
+        },
+        startAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'start_at'
+        },
+        brochure: { type: DataTypes.TEXT, allowNull: true,
+            field: 'brochure'
+        },
+        linkWhatsappGroup: { type: DataTypes.STRING, allowNull: true,
+            field: 'link_whatsapp_group'
+        },
+        category: { type: DataTypes.STRING, allowNull: true,
+            field: 'category'
+        },
+        credits: { type: DataTypes.INTEGER,
+            field: 'credits'
+        },
+        semester: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'semester'
+        },
+        instructorId: { type: DataTypes.UUID, allowNull: true,
+            field: 'instructor_id'
+        }
       },
       {
         sequelize,

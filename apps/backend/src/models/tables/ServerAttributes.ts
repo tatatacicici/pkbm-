@@ -16,9 +16,15 @@ export class ServerAttributes extends Model<ServerAttributesAttributes, ServerAt
   public static initModel(sequelize: Sequelize): typeof ServerAttributes {
     ServerAttributes.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        key: { type: DataTypes.TEXT, allowNull: false },
-        value: { type: DataTypes.TEXT, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        key: { type: DataTypes.TEXT, allowNull: false,
+            field: 'key'
+        },
+        value: { type: DataTypes.TEXT, allowNull: true,
+            field: 'value'
+        }
       },
       {
         sequelize,

@@ -1,5 +1,5 @@
-import { Articles, ArticlesAttributes, ArticlesCreationAttributes } from '../models/Articles';
-import { ArticlesFavorites } from '../models/ArticlesFavorites';
+import { Articles, ArticlesAttributes, ArticlesCreationAttributes } from '../models/tables/Articles';
+import { ArticlesFavorites } from '../models/tables/ArticlesFavorites';
 import { v4 as uuidv4 } from 'uuid';
 import { Op } from 'sequelize';
 

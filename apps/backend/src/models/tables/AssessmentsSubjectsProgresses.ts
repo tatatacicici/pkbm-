@@ -3,55 +3,78 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface AssessmentsSubjectsProgressesAttributes {
   pk: number;
   id?: string;
-  subject_id: string;
-  student_id: string;
-  rubric_id: number;
+  subjectId: string;
+  studentId: string;
+  rubricId: number;
   type: string;
   status: string;
-  final_score?: number;
-  started_at: Date;
-  completed_at?: Date;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  finalScore?: number;
+  startedAt: Date;
+  completedAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type AssessmentsSubjectsProgressesCreationAttributes = Optional<AssessmentsSubjectsProgressesAttributes, 'id' | 'final_score' | 'completed_at' | 'deleted_at'>;
+export type AssessmentsSubjectsProgressesCreationAttributes = Optional<AssessmentsSubjectsProgressesAttributes, 'id' | 'finalScore' | 'completedAt' | 'deletedAt'>;
 
 export class AssessmentsSubjectsProgresses extends Model<AssessmentsSubjectsProgressesAttributes, AssessmentsSubjectsProgressesCreationAttributes> implements AssessmentsSubjectsProgressesAttributes {
   declare pk: number;
   declare id?: string;
-  declare subject_id: string;
-  declare student_id: string;
-  declare rubric_id: number;
+  declare subjectId: string;
+  declare studentId: string;
+  declare rubricId: number;
   declare type: string;
   declare status: string;
-  declare final_score?: number;
-  declare started_at: Date;
-  declare completed_at?: Date;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare finalScore?: number;
+  declare startedAt: Date;
+  declare completedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof AssessmentsSubjectsProgresses {
     AssessmentsSubjectsProgresses.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        subject_id: { type: DataTypes.UUID, allowNull: false },
-        student_id: { type: DataTypes.UUID, allowNull: false },
-        rubric_id: { type: DataTypes.INTEGER, allowNull: false },
-        type: { type: DataTypes.STRING, allowNull: false },
-        status: { type: DataTypes.STRING, allowNull: false },
-        final_score: { type: DataTypes.INTEGER, allowNull: true },
-        started_at: { type: DataTypes.DATE, allowNull: false },
-        completed_at: { type: DataTypes.DATE, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        subjectId: { type: DataTypes.UUID, allowNull: false,
+            field: 'subject_id'
+        },
+        studentId: { type: DataTypes.UUID, allowNull: false,
+            field: 'student_id'
+        },
+        rubricId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'rubric_id'
+        },
+        type: { type: DataTypes.STRING, allowNull: false,
+            field: 'type'
+        },
+        status: { type: DataTypes.STRING, allowNull: false,
+            field: 'status'
+        },
+        finalScore: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'final_score'
+        },
+        startedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'started_at'
+        },
+        completedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'completed_at'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

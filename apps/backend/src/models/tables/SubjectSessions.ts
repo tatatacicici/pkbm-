@@ -2,47 +2,64 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface SubjectSessionsAttributes {
   id?: string;
-  subject_id: string;
+  subjectId: string;
   title: string;
   description?: string;
-  session_number: number;
-  duration_minutes?: number;
-  published_at?: Date;
-  created_at?: Date;
-  updated_at?: Date;
-  deleted_at?: Date;
+  sessionNumber: number;
+  durationMinutes?: number;
+  publishedAt?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
+  deletedAt?: Date;
 }
 
-export type SubjectSessionsCreationAttributes = Optional<SubjectSessionsAttributes, 'id' | 'description' | 'duration_minutes' | 'published_at' | 'created_at' | 'updated_at' | 'deleted_at'>;
+export type SubjectSessionsCreationAttributes = Optional<SubjectSessionsAttributes, 'id' | 'description' | 'durationMinutes' | 'publishedAt' | 'createdAt' | 'updatedAt' | 'deletedAt'>;
 
 export class SubjectSessions extends Model<SubjectSessionsAttributes, SubjectSessionsCreationAttributes> implements SubjectSessionsAttributes {
   declare id?: string;
-  declare subject_id: string;
+  declare subjectId: string;
   declare title: string;
   declare description?: string;
-  declare session_number: number;
-  declare duration_minutes?: number;
-  declare published_at?: Date;
-  declare created_at?: Date;
-  declare updated_at?: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare sessionNumber: number;
+  declare durationMinutes?: number;
+  declare publishedAt?: Date;
+  declare createdAt?: Date;
+  declare updatedAt?: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof SubjectSessions {
     SubjectSessions.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        subject_id: { type: DataTypes.UUID, allowNull: false },
-        title: { type: DataTypes.STRING, allowNull: false },
-        description: { type: DataTypes.TEXT, allowNull: true },
-        session_number: { type: DataTypes.INTEGER, allowNull: false },
-        duration_minutes: { type: DataTypes.INTEGER, allowNull: true },
-        published_at: { type: DataTypes.DATE, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: true },
-        updated_at: { type: DataTypes.DATE, allowNull: true },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        subjectId: { type: DataTypes.UUID, allowNull: false,
+            field: 'subject_id'
+        },
+        title: { type: DataTypes.STRING, allowNull: false,
+            field: 'title'
+        },
+        description: { type: DataTypes.TEXT, allowNull: true,
+            field: 'description'
+        },
+        sessionNumber: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'session_number'
+        },
+        durationMinutes: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'duration_minutes'
+        },
+        publishedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'published_at'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

@@ -2,47 +2,64 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface CollegeClassesAttributes {
   id?: string;
-  subject_id: string;
-  college_academic_cohort_id: string;
-  lecturer_id?: string;
-  major_id?: string;
-  class_code: string;
-  package_semester?: number;
-  deleted_at?: Date;
-  created_at?: Date;
-  updated_at?: Date;
+  subjectId: string;
+  collegeAcademicCohortId: string;
+  lecturerId?: string;
+  majorId?: string;
+  classCode: string;
+  packageSemester?: number;
+  deletedAt?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
-export type CollegeClassesCreationAttributes = Optional<CollegeClassesAttributes, 'id' | 'lecturer_id' | 'major_id' | 'package_semester' | 'deleted_at' | 'created_at' | 'updated_at'>;
+export type CollegeClassesCreationAttributes = Optional<CollegeClassesAttributes, 'id' | 'lecturerId' | 'majorId' | 'packageSemester' | 'deletedAt' | 'createdAt' | 'updatedAt'>;
 
 export class CollegeClasses extends Model<CollegeClassesAttributes, CollegeClassesCreationAttributes> implements CollegeClassesAttributes {
   declare id?: string;
-  declare subject_id: string;
-  declare college_academic_cohort_id: string;
-  declare lecturer_id?: string;
-  declare major_id?: string;
-  declare class_code: string;
-  declare package_semester?: number;
-  declare deleted_at?: Date;
-  declare created_at?: Date;
-  declare updated_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare subjectId: string;
+  declare collegeAcademicCohortId: string;
+  declare lecturerId?: string;
+  declare majorId?: string;
+  declare classCode: string;
+  declare packageSemester?: number;
+  declare deletedAt?: Date;
+  declare createdAt?: Date;
+  declare updatedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof CollegeClasses {
     CollegeClasses.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        subject_id: { type: DataTypes.UUID, allowNull: false },
-        college_academic_cohort_id: { type: DataTypes.UUID, allowNull: false },
-        lecturer_id: { type: DataTypes.UUID, allowNull: true },
-        major_id: { type: DataTypes.UUID, allowNull: true },
-        class_code: { type: DataTypes.STRING, allowNull: false },
-        package_semester: { type: DataTypes.INTEGER, allowNull: true },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: true },
-        updated_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        subjectId: { type: DataTypes.UUID, allowNull: false,
+            field: 'subject_id'
+        },
+        collegeAcademicCohortId: { type: DataTypes.UUID, allowNull: false,
+            field: 'college_academic_cohort_id'
+        },
+        lecturerId: { type: DataTypes.UUID, allowNull: true,
+            field: 'lecturer_id'
+        },
+        majorId: { type: DataTypes.UUID, allowNull: true,
+            field: 'major_id'
+        },
+        classCode: { type: DataTypes.STRING, allowNull: false,
+            field: 'class_code'
+        },
+        packageSemester: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'package_semester'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'updated_at'
+        }
       },
       {
         sequelize,

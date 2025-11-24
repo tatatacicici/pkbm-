@@ -5,35 +5,46 @@ export interface GuidesVideosAttributes {
   url?: string;
   title?: string;
   description?: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type GuidesVideosCreationAttributes = Optional<GuidesVideosAttributes, 'id' | 'url' | 'title' | 'description' | 'deleted_at'>;
+export type GuidesVideosCreationAttributes = Optional<GuidesVideosAttributes, 'id' | 'url' | 'title' | 'description' | 'deletedAt'>;
 
 export class GuidesVideos extends Model<GuidesVideosAttributes, GuidesVideosCreationAttributes> implements GuidesVideosAttributes {
   declare id?: string;
   declare url?: string;
   declare title?: string;
   declare description?: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof GuidesVideos {
     GuidesVideos.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        url: { type: DataTypes.STRING, allowNull: true },
-        title: { type: DataTypes.TEXT, allowNull: true },
-        description: { type: DataTypes.TEXT, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        url: { type: DataTypes.STRING, allowNull: true,
+            field: 'url'
+        },
+        title: { type: DataTypes.TEXT, allowNull: true,
+            field: 'title'
+        },
+        description: { type: DataTypes.TEXT, allowNull: true,
+            field: 'description'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

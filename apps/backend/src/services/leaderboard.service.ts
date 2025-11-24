@@ -1,5 +1,5 @@
-import { LeaderboardHistories } from '../models/LeaderboardHistories';
-import { Users } from '../models/Users';
+import { LeaderboardHistories } from '../models/tables/LeaderboardHistories';
+import { Users } from '../models/tables/Users';
 
 interface LeaderboardParams {
   page: number;

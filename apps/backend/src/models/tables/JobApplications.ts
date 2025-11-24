@@ -2,50 +2,69 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface JobApplicationsAttributes {
   id?: string;
-  user_id: string;
-  job_id: string;
-  full_name: string;
-  phone_number: string;
+  userId: string;
+  jobId: string;
+  fullName: string;
+  phoneNumber: string;
   cv: string;
   portofolio: string;
-  application_letter: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  applicationLetter: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type JobApplicationsCreationAttributes = Optional<JobApplicationsAttributes, 'id' | 'deleted_at'>;
+export type JobApplicationsCreationAttributes = Optional<JobApplicationsAttributes, 'id' | 'deletedAt'>;
 
 export class JobApplications extends Model<JobApplicationsAttributes, JobApplicationsCreationAttributes> implements JobApplicationsAttributes {
   declare id?: string;
-  declare user_id: string;
-  declare job_id: string;
-  declare full_name: string;
-  declare phone_number: string;
+  declare userId: string;
+  declare jobId: string;
+  declare fullName: string;
+  declare phoneNumber: string;
   declare cv: string;
   declare portofolio: string;
-  declare application_letter: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare applicationLetter: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof JobApplications {
     JobApplications.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        user_id: { type: DataTypes.UUID, allowNull: false },
-        job_id: { type: DataTypes.UUID, allowNull: false },
-        full_name: { type: DataTypes.STRING, allowNull: false },
-        phone_number: { type: DataTypes.STRING, allowNull: false },
-        cv: { type: DataTypes.STRING, allowNull: false },
-        portofolio: { type: DataTypes.STRING, allowNull: false },
-        application_letter: { type: DataTypes.TEXT, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        userId: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_id'
+        },
+        jobId: { type: DataTypes.UUID, allowNull: false,
+            field: 'job_id'
+        },
+        fullName: { type: DataTypes.STRING, allowNull: false,
+            field: 'full_name'
+        },
+        phoneNumber: { type: DataTypes.STRING, allowNull: false,
+            field: 'phone_number'
+        },
+        cv: { type: DataTypes.STRING, allowNull: false,
+            field: 'cv'
+        },
+        portofolio: { type: DataTypes.STRING, allowNull: false,
+            field: 'portofolio'
+        },
+        applicationLetter: { type: DataTypes.TEXT, allowNull: false,
+            field: 'application_letter'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

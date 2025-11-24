@@ -2,59 +2,84 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface ReportsAttributes {
   id?: number;
-  user_id: string;
+  userId: string;
   type: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
   uuid: string;
-  activity_id: number;
+  activityId: number;
   status: string;
-  lessons_learned?: string;
-  week_number: number;
-  start_date: Date;
-  end_date: Date;
-  user__id?: string;
+  lessonsLearned?: string;
+  weekNumber: number;
+  startDate: Date;
+  endDate: Date;
+  user_Id?: string;
 }
 
-export type ReportsCreationAttributes = Optional<ReportsAttributes, 'id' | 'deleted_at' | 'lessons_learned' | 'user__id'>;
+export type ReportsCreationAttributes = Optional<ReportsAttributes, 'id' | 'deletedAt' | 'lessonsLearned' | 'user_Id'>;
 
 export class Reports extends Model<ReportsAttributes, ReportsCreationAttributes> implements ReportsAttributes {
   declare id?: number;
-  declare user_id: string;
+  declare userId: string;
   declare type: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
   declare uuid: string;
-  declare activity_id: number;
+  declare activityId: number;
   declare status: string;
-  declare lessons_learned?: string;
-  declare week_number: number;
-  declare start_date: Date;
-  declare end_date: Date;
-  declare user__id?: string;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare lessonsLearned?: string;
+  declare weekNumber: number;
+  declare startDate: Date;
+  declare endDate: Date;
+  declare user_Id?: string;
 
   public static initModel(sequelize: Sequelize): typeof Reports {
     Reports.init(
       {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        user_id: { type: DataTypes.UUID, allowNull: false },
-        type: { type: DataTypes.STRING, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        uuid: { type: DataTypes.UUID, allowNull: false },
-        activity_id: { type: DataTypes.INTEGER, allowNull: false },
-        status: { type: DataTypes.STRING, allowNull: false },
-        lessons_learned: { type: DataTypes.TEXT, allowNull: true },
-        week_number: { type: DataTypes.INTEGER, allowNull: false },
-        start_date: { type: DataTypes.DATE, allowNull: false },
-        end_date: { type: DataTypes.DATE, allowNull: false },
-        user__id: { type: DataTypes.UUID, allowNull: true }
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,
+            field: 'id'
+        },
+        userId: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_id'
+        },
+        type: { type: DataTypes.STRING, allowNull: false,
+            field: 'type'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: false,
+            field: 'uuid'
+        },
+        activityId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'activity_id'
+        },
+        status: { type: DataTypes.STRING, allowNull: false,
+            field: 'status'
+        },
+        lessonsLearned: { type: DataTypes.TEXT, allowNull: true,
+            field: 'lessons_learned'
+        },
+        weekNumber: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'week_number'
+        },
+        startDate: { type: DataTypes.DATE, allowNull: false,
+            field: 'start_date'
+        },
+        endDate: { type: DataTypes.DATE, allowNull: false,
+            field: 'end_date'
+        },
+        user_Id: { type: DataTypes.UUID, allowNull: true,
+            field: 'user__id'
+        }
       },
       {
         sequelize,

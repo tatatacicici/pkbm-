@@ -21,19 +21,7 @@ export class UserController {
   }
 
   async getProfileMe(req: Request, res: Response): Promise<Response> {
-    try {
-      const userId = (req as any).userId;
-      const user = await userService.getUserProfile(userId);
-      
-      if (!user) {
-        return errorResponse(res, 'User not found', 404);
-      }
-
-      return successResponse(res, 'Profile retrieved successfully', user);
-    } catch (error: any) {
-      return errorResponse(res, 'Failed to retrieve profile', 500, error.message);
-    }
-  }
+      return this.getProfile(req, res);}
 
   async updateProfile(req: Request, res: Response): Promise<Response> {
     try {

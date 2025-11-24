@@ -2,50 +2,69 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface StudentSubjectsAttributes {
   id?: string;
-  student_id: string;
-  subject_id: string;
-  semester_id?: string;
-  date_taken?: Date;
-  date_finished?: Date;
+  studentId: string;
+  subjectId: string;
+  semesterId?: string;
+  dateTaken?: Date;
+  dateFinished?: Date;
   status: string;
-  final_score?: number;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  finalScore?: number;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type StudentSubjectsCreationAttributes = Optional<StudentSubjectsAttributes, 'id' | 'semester_id' | 'date_taken' | 'date_finished' | 'final_score' | 'deleted_at'>;
+export type StudentSubjectsCreationAttributes = Optional<StudentSubjectsAttributes, 'id' | 'semesterId' | 'dateTaken' | 'dateFinished' | 'finalScore' | 'deletedAt'>;
 
 export class StudentSubjects extends Model<StudentSubjectsAttributes, StudentSubjectsCreationAttributes> implements StudentSubjectsAttributes {
   declare id?: string;
-  declare student_id: string;
-  declare subject_id: string;
-  declare semester_id?: string;
-  declare date_taken?: Date;
-  declare date_finished?: Date;
+  declare studentId: string;
+  declare subjectId: string;
+  declare semesterId?: string;
+  declare dateTaken?: Date;
+  declare dateFinished?: Date;
   declare status: string;
-  declare final_score?: number;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare finalScore?: number;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof StudentSubjects {
     StudentSubjects.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        student_id: { type: DataTypes.UUID, allowNull: false },
-        subject_id: { type: DataTypes.UUID, allowNull: false },
-        semester_id: { type: DataTypes.UUID, allowNull: true },
-        date_taken: { type: DataTypes.DATE, allowNull: true },
-        date_finished: { type: DataTypes.DATE, allowNull: true },
-        status: { type: DataTypes.STRING, allowNull: false },
-        final_score: { type: DataTypes.DOUBLE, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        studentId: { type: DataTypes.UUID, allowNull: false,
+            field: 'student_id'
+        },
+        subjectId: { type: DataTypes.UUID, allowNull: false,
+            field: 'subject_id'
+        },
+        semesterId: { type: DataTypes.UUID, allowNull: true,
+            field: 'semester_id'
+        },
+        dateTaken: { type: DataTypes.DATE, allowNull: true,
+            field: 'date_taken'
+        },
+        dateFinished: { type: DataTypes.DATE, allowNull: true,
+            field: 'date_finished'
+        },
+        status: { type: DataTypes.STRING, allowNull: false,
+            field: 'status'
+        },
+        finalScore: { type: DataTypes.DOUBLE, allowNull: true,
+            field: 'final_score'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

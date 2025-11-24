@@ -3,7 +3,7 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface ProgramPositionSkillsAttributes {
   id?: number;
   uuid: string;
-  position_id: number;
+  positionId: number;
   name: string;
   target: string;
   detail: string;
@@ -15,7 +15,7 @@ export type ProgramPositionSkillsCreationAttributes = Optional<ProgramPositionSk
 export class ProgramPositionSkills extends Model<ProgramPositionSkillsAttributes, ProgramPositionSkillsCreationAttributes> implements ProgramPositionSkillsAttributes {
   declare id?: number;
   declare uuid: string;
-  declare position_id: number;
+  declare positionId: number;
   declare name: string;
   declare target: string;
   declare detail: string;
@@ -24,13 +24,27 @@ export class ProgramPositionSkills extends Model<ProgramPositionSkillsAttributes
   public static initModel(sequelize: Sequelize): typeof ProgramPositionSkills {
     ProgramPositionSkills.init(
       {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        uuid: { type: DataTypes.UUID, allowNull: false },
-        position_id: { type: DataTypes.INTEGER, allowNull: false },
-        name: { type: DataTypes.STRING, allowNull: false },
-        target: { type: DataTypes.STRING, allowNull: false },
-        detail: { type: DataTypes.STRING, allowNull: false },
-        method: { type: DataTypes.STRING, allowNull: false }
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,
+            field: 'id'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: false,
+            field: 'uuid'
+        },
+        positionId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'position_id'
+        },
+        name: { type: DataTypes.STRING, allowNull: false,
+            field: 'name'
+        },
+        target: { type: DataTypes.STRING, allowNull: false,
+            field: 'target'
+        },
+        detail: { type: DataTypes.STRING, allowNull: false,
+            field: 'detail'
+        },
+        method: { type: DataTypes.STRING, allowNull: false,
+            field: 'method'
+        }
       },
       {
         sequelize,

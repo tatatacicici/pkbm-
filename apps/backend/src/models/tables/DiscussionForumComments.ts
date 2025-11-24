@@ -2,44 +2,59 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 
 export interface DiscussionForumCommentsAttributes {
   id?: string;
-  user_id: string;
-  df_id: string;
+  userId: string;
+  dfId: string;
   content: string;
   image?: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  image_id?: number;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  imageId?: number;
 }
 
-export type DiscussionForumCommentsCreationAttributes = Optional<DiscussionForumCommentsAttributes, 'id' | 'image' | 'deleted_at' | 'image_id'>;
+export type DiscussionForumCommentsCreationAttributes = Optional<DiscussionForumCommentsAttributes, 'id' | 'image' | 'deletedAt' | 'imageId'>;
 
 export class DiscussionForumComments extends Model<DiscussionForumCommentsAttributes, DiscussionForumCommentsCreationAttributes> implements DiscussionForumCommentsAttributes {
   declare id?: string;
-  declare user_id: string;
-  declare df_id: string;
+  declare userId: string;
+  declare dfId: string;
   declare content: string;
   declare image?: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare image_id?: number;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare imageId?: number;
 
   public static initModel(sequelize: Sequelize): typeof DiscussionForumComments {
     DiscussionForumComments.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        user_id: { type: DataTypes.UUID, allowNull: false },
-        df_id: { type: DataTypes.UUID, allowNull: false },
-        content: { type: DataTypes.TEXT, allowNull: false },
-        image: { type: DataTypes.STRING, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        image_id: { type: DataTypes.INTEGER, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        userId: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_id'
+        },
+        dfId: { type: DataTypes.UUID, allowNull: false,
+            field: 'df_id'
+        },
+        content: { type: DataTypes.TEXT, allowNull: false,
+            field: 'content'
+        },
+        image: { type: DataTypes.STRING, allowNull: true,
+            field: 'image'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        imageId: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'image_id'
+        }
       },
       {
         sequelize,

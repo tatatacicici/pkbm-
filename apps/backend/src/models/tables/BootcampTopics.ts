@@ -4,36 +4,47 @@ export interface BootcampTopicsAttributes {
   id?: string;
   title: string;
   description?: string;
-  duration_weeks?: number;
-  created_at?: Date;
-  updated_at?: Date;
-  deleted_at?: Date;
+  durationWeeks?: number;
+  createdAt?: Date;
+  updatedAt?: Date;
+  deletedAt?: Date;
 }
 
-export type BootcampTopicsCreationAttributes = Optional<BootcampTopicsAttributes, 'id' | 'description' | 'duration_weeks' | 'created_at' | 'updated_at' | 'deleted_at'>;
+export type BootcampTopicsCreationAttributes = Optional<BootcampTopicsAttributes, 'id' | 'description' | 'durationWeeks' | 'createdAt' | 'updatedAt' | 'deletedAt'>;
 
 export class BootcampTopics extends Model<BootcampTopicsAttributes, BootcampTopicsCreationAttributes> implements BootcampTopicsAttributes {
   declare id?: string;
   declare title: string;
   declare description?: string;
-  declare duration_weeks?: number;
-  declare created_at?: Date;
-  declare updated_at?: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare durationWeeks?: number;
+  declare createdAt?: Date;
+  declare updatedAt?: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof BootcampTopics {
     BootcampTopics.init(
       {
-        id: { type: DataTypes.UUID, primaryKey: true },
-        title: { type: DataTypes.STRING, allowNull: false },
-        description: { type: DataTypes.TEXT, allowNull: true },
-        duration_weeks: { type: DataTypes.INTEGER, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: true },
-        updated_at: { type: DataTypes.DATE, allowNull: true },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        title: { type: DataTypes.STRING, allowNull: false,
+            field: 'title'
+        },
+        description: { type: DataTypes.TEXT, allowNull: true,
+            field: 'description'
+        },
+        durationWeeks: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'duration_weeks'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

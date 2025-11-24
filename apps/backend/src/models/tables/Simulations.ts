@@ -5,41 +5,56 @@ export interface SimulationsAttributes {
   uuid?: string;
   topic: string;
   description: string;
-  assessor_id: string;
+  assessorId: string;
   session: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type SimulationsCreationAttributes = Optional<SimulationsAttributes, 'id' | 'uuid' | 'deleted_at'>;
+export type SimulationsCreationAttributes = Optional<SimulationsAttributes, 'id' | 'uuid' | 'deletedAt'>;
 
 export class Simulations extends Model<SimulationsAttributes, SimulationsCreationAttributes> implements SimulationsAttributes {
   declare id?: number;
   declare uuid?: string;
   declare topic: string;
   declare description: string;
-  declare assessor_id: string;
+  declare assessorId: string;
   declare session: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof Simulations {
     Simulations.init(
       {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        uuid: { type: DataTypes.UUID, allowNull: true },
-        topic: { type: DataTypes.STRING, allowNull: false },
-        description: { type: DataTypes.STRING, allowNull: false },
-        assessor_id: { type: DataTypes.UUID, allowNull: false },
-        session: { type: DataTypes.UUID, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,
+            field: 'id'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: true,
+            field: 'uuid'
+        },
+        topic: { type: DataTypes.STRING, allowNull: false,
+            field: 'topic'
+        },
+        description: { type: DataTypes.STRING, allowNull: false,
+            field: 'description'
+        },
+        assessorId: { type: DataTypes.UUID, allowNull: false,
+            field: 'assessor_id'
+        },
+        session: { type: DataTypes.UUID, allowNull: false,
+            field: 'session'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

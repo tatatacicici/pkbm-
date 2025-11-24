@@ -3,46 +3,63 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface AvailabilitySchedulesAttributes {
   id?: number;
   uuid?: string;
-  scheduler_id: string;
-  scheduler_role: string;
-  time_start?: Date;
+  schedulerId: string;
+  schedulerRole: string;
+  timeStart?: Date;
   duration?: number;
   taken?: boolean;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type AvailabilitySchedulesCreationAttributes = Optional<AvailabilitySchedulesAttributes, 'id' | 'uuid' | 'time_start' | 'duration' | 'taken' | 'deleted_at'>;
+export type AvailabilitySchedulesCreationAttributes = Optional<AvailabilitySchedulesAttributes, 'id' | 'uuid' | 'timeStart' | 'duration' | 'taken' | 'deletedAt'>;
 
 export class AvailabilitySchedules extends Model<AvailabilitySchedulesAttributes, AvailabilitySchedulesCreationAttributes> implements AvailabilitySchedulesAttributes {
   declare id?: number;
   declare uuid?: string;
-  declare scheduler_id: string;
-  declare scheduler_role: string;
-  declare time_start?: Date;
+  declare schedulerId: string;
+  declare schedulerRole: string;
+  declare timeStart?: Date;
   declare duration?: number;
   declare taken?: boolean;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof AvailabilitySchedules {
     AvailabilitySchedules.init(
       {
-        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-        uuid: { type: DataTypes.UUID, allowNull: true },
-        scheduler_id: { type: DataTypes.UUID, allowNull: false },
-        scheduler_role: { type: DataTypes.STRING, allowNull: false },
-        time_start: { type: DataTypes.DATE, allowNull: true },
-        duration: { type: DataTypes.INTEGER, allowNull: true },
-        taken: { type: DataTypes.BOOLEAN },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true,
+            field: 'id'
+        },
+        uuid: { type: DataTypes.UUID, allowNull: true,
+            field: 'uuid'
+        },
+        schedulerId: { type: DataTypes.UUID, allowNull: false,
+            field: 'scheduler_id'
+        },
+        schedulerRole: { type: DataTypes.STRING, allowNull: false,
+            field: 'scheduler_role'
+        },
+        timeStart: { type: DataTypes.DATE, allowNull: true,
+            field: 'time_start'
+        },
+        duration: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'duration'
+        },
+        taken: { type: DataTypes.BOOLEAN,
+            field: 'taken'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

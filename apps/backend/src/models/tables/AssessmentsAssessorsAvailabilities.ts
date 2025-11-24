@@ -3,46 +3,63 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface AssessmentsAssessorsAvailabilitiesAttributes {
   pk: number;
   id?: string;
-  assessment_id: number;
-  assessor_id: string;
+  assessmentId: number;
+  assessorId: string;
   day: string;
-  start_time: string;
-  end_time: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  startTime: string;
+  endTime: string;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type AssessmentsAssessorsAvailabilitiesCreationAttributes = Optional<AssessmentsAssessorsAvailabilitiesAttributes, 'id' | 'deleted_at'>;
+export type AssessmentsAssessorsAvailabilitiesCreationAttributes = Optional<AssessmentsAssessorsAvailabilitiesAttributes, 'id' | 'deletedAt'>;
 
 export class AssessmentsAssessorsAvailabilities extends Model<AssessmentsAssessorsAvailabilitiesAttributes, AssessmentsAssessorsAvailabilitiesCreationAttributes> implements AssessmentsAssessorsAvailabilitiesAttributes {
   declare pk: number;
   declare id?: string;
-  declare assessment_id: number;
-  declare assessor_id: string;
+  declare assessmentId: number;
+  declare assessorId: string;
   declare day: string;
-  declare start_time: string;
-  declare end_time: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare startTime: string;
+  declare endTime: string;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof AssessmentsAssessorsAvailabilities {
     AssessmentsAssessorsAvailabilities.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        assessment_id: { type: DataTypes.INTEGER, allowNull: false },
-        assessor_id: { type: DataTypes.UUID, allowNull: false },
-        day: { type: DataTypes.STRING, allowNull: false },
-        start_time: { type: DataTypes.STRING, allowNull: false },
-        end_time: { type: DataTypes.STRING, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        assessmentId: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'assessment_id'
+        },
+        assessorId: { type: DataTypes.UUID, allowNull: false,
+            field: 'assessor_id'
+        },
+        day: { type: DataTypes.STRING, allowNull: false,
+            field: 'day'
+        },
+        startTime: { type: DataTypes.STRING, allowNull: false,
+            field: 'start_time'
+        },
+        endTime: { type: DataTypes.STRING, allowNull: false,
+            field: 'end_time'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

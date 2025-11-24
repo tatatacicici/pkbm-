@@ -3,55 +3,78 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface PaymentTransactionsAttributes {
   pk: number;
   id?: string;
-  user_id: string;
-  total_item: number;
-  final_amount: number;
+  userId: string;
+  totalItem: number;
+  finalAmount: number;
   status: string;
   type: string;
   method: string;
-  snap_token: string;
-  snap_redirect_url: string;
-  created_at?: Date;
-  updated_at?: Date;
-  deleted_at?: Date;
+  snapToken: string;
+  snapRedirectUrl: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  deletedAt?: Date;
 }
 
-export type PaymentTransactionsCreationAttributes = Optional<PaymentTransactionsAttributes, 'id' | 'created_at' | 'updated_at' | 'deleted_at'>;
+export type PaymentTransactionsCreationAttributes = Optional<PaymentTransactionsAttributes, 'id' | 'createdAt' | 'updatedAt' | 'deletedAt'>;
 
 export class PaymentTransactions extends Model<PaymentTransactionsAttributes, PaymentTransactionsCreationAttributes> implements PaymentTransactionsAttributes {
   declare pk: number;
   declare id?: string;
-  declare user_id: string;
-  declare total_item: number;
-  declare final_amount: number;
+  declare userId: string;
+  declare totalItem: number;
+  declare finalAmount: number;
   declare status: string;
   declare type: string;
   declare method: string;
-  declare snap_token: string;
-  declare snap_redirect_url: string;
-  declare created_at?: Date;
-  declare updated_at?: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare snapToken: string;
+  declare snapRedirectUrl: string;
+  declare createdAt?: Date;
+  declare updatedAt?: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof PaymentTransactions {
     PaymentTransactions.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        user_id: { type: DataTypes.STRING, allowNull: false },
-        total_item: { type: DataTypes.INTEGER, allowNull: false },
-        final_amount: { type: DataTypes.INTEGER, allowNull: false },
-        status: { type: DataTypes.STRING, allowNull: false },
-        type: { type: DataTypes.STRING, allowNull: false },
-        method: { type: DataTypes.STRING, allowNull: false },
-        snap_token: { type: DataTypes.STRING, allowNull: false },
-        snap_redirect_url: { type: DataTypes.STRING, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: true },
-        updated_at: { type: DataTypes.DATE, allowNull: true },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        userId: { type: DataTypes.STRING, allowNull: false,
+            field: 'user_id'
+        },
+        totalItem: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'total_item'
+        },
+        finalAmount: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'final_amount'
+        },
+        status: { type: DataTypes.STRING, allowNull: false,
+            field: 'status'
+        },
+        type: { type: DataTypes.STRING, allowNull: false,
+            field: 'type'
+        },
+        method: { type: DataTypes.STRING, allowNull: false,
+            field: 'method'
+        },
+        snapToken: { type: DataTypes.STRING, allowNull: false,
+            field: 'snap_token'
+        },
+        snapRedirectUrl: { type: DataTypes.STRING, allowNull: false,
+            field: 'snap_redirect_url'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,

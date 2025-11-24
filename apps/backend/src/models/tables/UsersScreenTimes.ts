@@ -3,58 +3,83 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface UsersScreenTimesAttributes {
   pk: number;
   id?: string;
-  user_id: string;
-  session_id: string;
+  userId: string;
+  sessionId: string;
   token: string;
   type: string;
   page: string;
   seconds?: number;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
-  last_refreshed_at?: Date;
-  total_refreshed?: number;
-  submitted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
+  lastRefreshedAt?: Date;
+  totalRefreshed?: number;
+  submittedAt?: Date;
 }
 
-export type UsersScreenTimesCreationAttributes = Optional<UsersScreenTimesAttributes, 'id' | 'seconds' | 'deleted_at' | 'last_refreshed_at' | 'total_refreshed' | 'submitted_at'>;
+export type UsersScreenTimesCreationAttributes = Optional<UsersScreenTimesAttributes, 'id' | 'seconds' | 'deletedAt' | 'lastRefreshedAt' | 'totalRefreshed' | 'submittedAt'>;
 
 export class UsersScreenTimes extends Model<UsersScreenTimesAttributes, UsersScreenTimesCreationAttributes> implements UsersScreenTimesAttributes {
   declare pk: number;
   declare id?: string;
-  declare user_id: string;
-  declare session_id: string;
+  declare userId: string;
+  declare sessionId: string;
   declare token: string;
   declare type: string;
   declare page: string;
   declare seconds?: number;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-  declare last_refreshed_at?: Date;
-  declare total_refreshed?: number;
-  declare submitted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
+  declare lastRefreshedAt?: Date;
+  declare totalRefreshed?: number;
+  declare submittedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof UsersScreenTimes {
     UsersScreenTimes.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        user_id: { type: DataTypes.STRING, allowNull: false },
-        session_id: { type: DataTypes.STRING, allowNull: false },
-        token: { type: DataTypes.TEXT, allowNull: false },
-        type: { type: DataTypes.STRING, allowNull: false },
-        page: { type: DataTypes.STRING, allowNull: false },
-        seconds: { type: DataTypes.INTEGER, allowNull: true },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true },
-        last_refreshed_at: { type: DataTypes.DATE, allowNull: true },
-        total_refreshed: { type: DataTypes.INTEGER, allowNull: true },
-        submitted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        userId: { type: DataTypes.STRING, allowNull: false,
+            field: 'user_id'
+        },
+        sessionId: { type: DataTypes.STRING, allowNull: false,
+            field: 'session_id'
+        },
+        token: { type: DataTypes.TEXT, allowNull: false,
+            field: 'token'
+        },
+        type: { type: DataTypes.STRING, allowNull: false,
+            field: 'type'
+        },
+        page: { type: DataTypes.STRING, allowNull: false,
+            field: 'page'
+        },
+        seconds: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'seconds'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        },
+        lastRefreshedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'last_refreshed_at'
+        },
+        totalRefreshed: { type: DataTypes.INTEGER, allowNull: true,
+            field: 'total_refreshed'
+        },
+        submittedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'submitted_at'
+        }
       },
       {
         sequelize,

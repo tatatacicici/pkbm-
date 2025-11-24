@@ -3,43 +3,58 @@ import { Model, DataTypes, Sequelize, Optional } from 'sequelize';
 export interface AdminAttendenceAttributes {
   pk: number;
   id?: string;
-  session_id: string;
-  user_id: string;
-  is_present?: boolean;
+  sessionId: string;
+  userId: string;
+  isPresent?: boolean;
   status: string;
-  created_at: Date;
-  updated_at: Date;
-  deleted_at?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  deletedAt?: Date;
 }
 
-export type AdminAttendenceCreationAttributes = Optional<AdminAttendenceAttributes, 'id' | 'is_present' | 'deleted_at'>;
+export type AdminAttendenceCreationAttributes = Optional<AdminAttendenceAttributes, 'id' | 'isPresent' | 'deletedAt'>;
 
 export class AdminAttendence extends Model<AdminAttendenceAttributes, AdminAttendenceCreationAttributes> implements AdminAttendenceAttributes {
   declare pk: number;
   declare id?: string;
-  declare session_id: string;
-  declare user_id: string;
-  declare is_present?: boolean;
+  declare sessionId: string;
+  declare userId: string;
+  declare isPresent?: boolean;
   declare status: string;
-  declare created_at: Date;
-  declare updated_at: Date;
-  declare deleted_at?: Date;
-
-  declare readonly createdAt?: Date;
-  declare readonly updatedAt?: Date;
+  declare createdAt: Date;
+  declare updatedAt: Date;
+  declare deletedAt?: Date;
 
   public static initModel(sequelize: Sequelize): typeof AdminAttendence {
     AdminAttendence.init(
       {
-        pk: { type: DataTypes.INTEGER, allowNull: false },
-        id: { type: DataTypes.UUID, primaryKey: true },
-        session_id: { type: DataTypes.UUID, allowNull: false },
-        user_id: { type: DataTypes.UUID, allowNull: false },
-        is_present: { type: DataTypes.BOOLEAN },
-        status: { type: DataTypes.STRING, allowNull: false },
-        created_at: { type: DataTypes.DATE, allowNull: false },
-        updated_at: { type: DataTypes.DATE, allowNull: false },
-        deleted_at: { type: DataTypes.DATE, allowNull: true }
+        pk: { type: DataTypes.INTEGER, allowNull: false,
+            field: 'pk'
+        },
+        id: { type: DataTypes.UUID, primaryKey: true,
+            field: 'id'
+        },
+        sessionId: { type: DataTypes.UUID, allowNull: false,
+            field: 'session_id'
+        },
+        userId: { type: DataTypes.UUID, allowNull: false,
+            field: 'user_id'
+        },
+        isPresent: { type: DataTypes.BOOLEAN,
+            field: 'is_present'
+        },
+        status: { type: DataTypes.STRING, allowNull: false,
+            field: 'status'
+        },
+        createdAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'created_at'
+        },
+        updatedAt: { type: DataTypes.DATE, allowNull: false,
+            field: 'updated_at'
+        },
+        deletedAt: { type: DataTypes.DATE, allowNull: true,
+            field: 'deleted_at'
+        }
       },
       {
         sequelize,
