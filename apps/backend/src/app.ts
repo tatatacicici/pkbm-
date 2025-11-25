@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import cors from 'cors';
+import path from 'path';
 import { logger } from './middlewares/logger';
 import { errorHandler, notFoundHandler } from './middlewares/errorHandler';
 import routes from './routes';
@@ -23,6 +24,8 @@ app.get('/', (_req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api', routes);
+
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 app.use(notFoundHandler);
 app.use(errorHandler);
