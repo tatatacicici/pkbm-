@@ -5,6 +5,7 @@ import { logger } from './middlewares/logger';
 import { errorHandler, notFoundHandler } from './middlewares/errorHandler';
 import routes from './routes';
 import authRoutes from './auth/auth.routes';
+import cookieParser from 'cookie-parser';
 
 const app: Application = express();
 
@@ -24,7 +25,7 @@ app.get('/', (_req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api', routes);
-
+app.use(cookieParser());
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 app.use(notFoundHandler);
