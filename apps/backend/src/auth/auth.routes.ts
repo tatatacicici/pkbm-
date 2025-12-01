@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import {authLimiter, otpLimiter} from '../middlewares/rateLimits';
 import { AuthController } from './auth.controller';
 import { authMiddleware } from '../middlewares/authMiddleware';
 import { validate } from '../middlewares/validation';
@@ -12,12 +13,12 @@ import {
 const router = Router();
 const authController = new AuthController();
 
-router.post('/register', validate(registerSchema), (req, res) => authController.register(req, res));
-router.post('/login', validate(loginSchema), (req, res) => authController.login(req, res));
+router.post('/register', authLimiter,validate(registerSchema), (req, res) => authController.register(req, res));
+router.post('/login', authLimiter, validate(loginSchema), (req, res) => authController.login(req, res));
 router.post('/logout', authMiddleware, (req, res) => authController.logout(req, res));
 router.post('/refresh', (req, res) => authController.refreshToken(req, res));
-router.post('/change-password', authMiddleware, validate(changePasswordSchema), (req, res) => authController.changePassword(req, res));
-router.post('/reset-password', validate(resetPasswordSchema), (req, res) => authController.resetPassword(req, res));
+router.post('/change-password', otpLimiter, authMiddleware, validate(changePasswordSchema), (req, res) => authController.changePassword(req, res));
+router.post('/reset-password', otpLimiter, validate(resetPasswordSchema), (req, res) => authController.resetPassword(req, res));
 
 router.get('/profile', authMiddleware, (req, res) => authController.getProfile(req, res));
 
