@@ -1,0 +1,39 @@
+{
+  "name": "backend",
+  "projectType": "application",
+  "sourceRoot": "apps/backend/src",
+  "targets": {
+    "serve": {
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "backend:build",
+        "watch": false
+      }
+    },
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/backend",
+        "main": "apps/backend/src/server.ts",
+        "tsConfig": "apps/backend/tsconfig.json",
+        "assets": ["apps/backend/.env"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/backend/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/backend"],
+      "options": {
+        "jestConfig": "apps/backend/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

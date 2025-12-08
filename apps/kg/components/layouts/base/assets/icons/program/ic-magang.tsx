@@ -1,0 +1,19 @@
+const MagangIcon = () => {
+  return (
+    <svg
+      width="36"
+      height="36"
+      viewBox="0 0 36 36"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect width="36" height="36" rx="5" fill="#106FA5" />
+      <path
+        d="M18 13V11C18 9.9 17.1 9 16 9H10C8.9 9 8 9.9 8 11V25C8 26.1 8.9 27 10 27H26C27.1 27 28 26.1 28 25V15C28 13.9 27.1 13 26 13H18ZM12 25H10V23H12V25ZM12 21H10V19H12V21ZM12 17H10V15H12V17ZM12 13H10V11H12V13ZM16 25H14V23H16V25ZM16 21H14V19H16V21ZM16 17H14V15H16V17ZM16 13H14V11H16V13ZM25 25H18V23H20V21H18V19H20V17H18V15H25C25.55 15 26 15.45 26 16V24C26 24.55 25.55 25 25 25ZM24 17H22V19H24V17ZM24 21H22V23H24V21Z"
+        fill="#FBCB50"
+      />
+    </svg>
+  );
+};
+
+export default MagangIcon;
