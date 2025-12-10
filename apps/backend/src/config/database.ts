@@ -3,15 +3,20 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 const sequelize = new Sequelize(process.env.DATABASE_URL || '', {
   dialect: 'postgres',
   logging: false,
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
+  dialectOptions: isProduction
+    ? {
+        // ONLY production uses SSL
+        ssl: {
+          require: true,
+          rejectUnauthorized: false,
+        },
+      }
+    : {}, // local dev: NO SSL
   pool: {
     max: 5,
     min: 0,
