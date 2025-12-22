@@ -3,9 +3,12 @@ import { MyStudyController } from '../controllers/mystudy.controller';
 import { authMiddleware } from '../middlewares/authMiddleware';
 import { QuizController } from '../controllers/quiz.controller';
 
+
+const quizController = new QuizController();
+
 const router = Router();
 const myStudyController = new MyStudyController();
-const quizController = new QuizController();
+
 router.get('/v1/studi-ku/user', authMiddleware, (req, res) => myStudyController.getMyStudy(req, res));
 router.get('/v2/my-study', authMiddleware, (req, res) => myStudyController.getMyStudyV2(req, res));
 
