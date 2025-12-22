@@ -1,6 +1,10 @@
 import { Router } from 'express';
 import { MyStudyController } from '../controllers/mystudy.controller';
 import { authMiddleware } from '../middlewares/authMiddleware';
+import { QuizController } from '../controllers/quiz.controller';
+
+
+const quizController = new QuizController();
 
 const router = Router();
 const myStudyController = new MyStudyController();
@@ -27,5 +31,9 @@ router.post('/v2/my-study/subjects/:subject_id/sessions/:session_id/assignments/
 router.delete('/v2/my-study/subjects/:subject_id/sessions/:session_id/assignments/:assignment_id/files/:file_id', authMiddleware, (req, res) => myStudyController.deleteAssignmentFile(req, res));
 
 router.post('/v1/watched-video-progress/video/:id/taken', authMiddleware, (req, res) => myStudyController.markVideoWatched(req, res));
+
+router.get('/v2/my-study/quizzes/:id', authMiddleware, (req, res) => quizController.takeQuiz(req, res));
+router.post('/v2/my-study/quizzes/:id/submit', authMiddleware, (req, res) => quizController.submitQuiz(req, res));
+router.get('/v2/my-study/quizzes/:id/result', authMiddleware, (req, res) => quizController.getQuizResult(req, res));
 
 export default router;
