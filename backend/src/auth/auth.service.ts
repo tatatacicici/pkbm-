@@ -42,11 +42,9 @@ export class AuthService {
       userName: data.userName,
       isEmailVerified: false,
       isPhoneVerified: false,
-      createdAt: new Date(),
-      updatedAt: new Date(),
     } as any);
 
-    const token = this.generateToken(user.id, user.email);
+    const token = this.generateToken(user.id!, user.email!);
 
     const userWithoutPassword = {
       id: user.id,
@@ -81,7 +79,7 @@ export class AuthService {
       throw new Error('Invalid credentials');
     }
 
-    const token = this.generateToken(user.id, user.email);
+    const token = this.generateToken(user.id!, user.email!);
 
     const userWithoutPassword = {
       id: user.id,
