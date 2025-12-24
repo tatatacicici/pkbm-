@@ -1,8 +1,10 @@
-import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
+dotenv.config();
+import { Sequelize } from 'sequelize';
+
 import { initModels } from '../models/init-models';
 
-dotenv.config();
+
 
 const sequelize = new Sequelize(process.env.DATABASE_URL || '', {
   dialect: 'postgres',
