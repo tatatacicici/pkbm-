@@ -20,7 +20,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL || '', {
     initModels(sequelize);
 
     // Sync all models
-    await sequelize.sync({ alter: true });
+    await sequelize.sync({ alter: false });
     console.log('📦 Models synchronized to the database (sync + alter)');
   } catch (err) {
     console.error('❌ Error starting server:', err);

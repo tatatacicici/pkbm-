@@ -15,6 +15,7 @@ export interface ActivitiesAttributes {
   deletedAt?: Date;
 }
 
+
 export type ActivitiesCreationAttributes = Optional<ActivitiesAttributes, 'id' | 'startDate' | 'endDate' | 'isExpired' | 'deletedAt'>;
 
 export class Activities extends Model<ActivitiesAttributes, ActivitiesCreationAttributes> implements ActivitiesAttributes {

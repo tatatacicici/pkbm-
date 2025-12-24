@@ -647,8 +647,8 @@ export function initModels(sequelize: Sequelize): Models {
   Majors.hasMany(Assessments, { foreignKey: 'major_id', as: 'assessments' });
 
   // Assessments belongsTo GradingRubrics
-  Assessments.belongsTo(GradingRubrics, { foreignKey: 'rubric_id', as: 'rubric' });
-  GradingRubrics.hasMany(Assessments, { foreignKey: 'rubric_id', as: 'assessments' });
+  Assessments.belongsTo(GradingRubrics, { foreignKey: 'rubric_id', as: 'GradingAssementrubric' });
+  GradingRubrics.hasMany(Assessments, { foreignKey: 'rubric_id', as: 'assessmentsHasbenGrading' });
 
   // AssessmentsSessions belongsTo Assessments
   AssessmentsSessions.belongsTo(Assessments, { foreignKey: 'assessment_id', as: 'assessment' });
@@ -667,7 +667,7 @@ export function initModels(sequelize: Sequelize): Models {
   AssessmentsSessions.hasMany(AssessmentsSessionsPartners, { foreignKey: 'assessment_session_id', as: 'assessmentsSessionsPartners' });
 
   // AssessmentsSessionsRubricsResults belongsTo GradingRubrics
-  AssessmentsSessionsRubricsResults.belongsTo(GradingRubrics, { foreignKey: 'rubric_id', as: 'rubric' });
+  AssessmentsSessionsRubricsResults.belongsTo(GradingRubrics, { foreignKey: 'rubric_id', as: 'rubricSessionResult' });
   GradingRubrics.hasMany(AssessmentsSessionsRubricsResults, { foreignKey: 'rubric_id', as: 'assessmentsSessionsRubricsResults' });
 
   // AssessmentsSessionsSubmissions belongsTo Assessments
@@ -686,11 +686,18 @@ export function initModels(sequelize: Sequelize): Models {
   Assessments.belongsTo(Subjects, { foreignKey: 'subject_id', as: 'subject' });
   Subjects.hasMany(Assessments, { foreignKey: 'subject_id', as: 'assessments' });
 
-  // Assessments belongsTo StoragesFiles
-  Assessments.belongsTo(StoragesFiles, { foreignKey: 'thumbnail_id', as: 'thumbnailFile' });
-  StoragesFiles.hasMany(Assessments, { foreignKey: 'thumbnail_id', as: 'assessments' });
-
-  // AssignmentDocuments belongsTo Assignments
+  Assessments.belongsTo(GradingRubrics, {
+    foreignKey: 'rubric_id',
+    targetKey: 'pk',          // pakai pk (integer) sebagai target key
+    as: 'gradingRubric',      // ubah alias supaya unik juga
+    constraints: true
+  });
+  GradingRubrics.hasMany(Assessments, {
+    foreignKey: 'rubric_id',
+    sourceKey: 'pk',
+    as: 'assessmentsByRubric',
+    constraints: true
+  });  // AssignmentDocuments belongsTo Assignments
   AssignmentDocuments.belongsTo(Assignments, { foreignKey: 'assignment_id', as: 'assignment' });
   Assignments.hasMany(AssignmentDocuments, { foreignKey: 'assignment_id', as: 'assignmentDocuments' });
 
@@ -899,7 +906,7 @@ export function initModels(sequelize: Sequelize): Models {
   GradingRubricsCriteria.hasMany(GradingRubricsCriteriaDetails, { foreignKey: 'criterion_id', as: 'gradingRubricsCriteriaDetails' });
 
   // GradingRubricsCriteria belongsTo GradingRubrics
-  GradingRubricsCriteria.belongsTo(GradingRubrics, { foreignKey: 'rubric_id', as: 'rubric' });
+  GradingRubricsCriteria.belongsTo(GradingRubrics, { foreignKey: 'rubric_id', as: 'rubricCriteria' });
   GradingRubrics.hasMany(GradingRubricsCriteria, { foreignKey: 'rubric_id', as: 'gradingRubricsCriterias' });
 
   // GradingRubrics belongsTo Majors
@@ -1111,7 +1118,7 @@ export function initModels(sequelize: Sequelize): Models {
   Users.hasMany(Roleplays, { foreignKey: 'created_by', as: 'roleplaysCreated' });
 
   // Roleplays belongsTo GradingRubrics
-  Roleplays.belongsTo(GradingRubrics, { foreignKey: 'rubric_id', as: 'rubric' });
+  Roleplays.belongsTo(GradingRubrics, { foreignKey: 'rubric_id', as: 'rubricRoleplay' });
   GradingRubrics.hasMany(Roleplays, { foreignKey: 'rubric_id', as: 'roleplays' });
 
   // Roleplays belongsTo Sessions
