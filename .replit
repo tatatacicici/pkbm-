@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 modules = ["nodejs-20", "web"]
+=======
+modules = ["nodejs-20", "web", "postgresql-16"]
+>>>>>>> origin/main
 [agent]
 expertMode = true
 
