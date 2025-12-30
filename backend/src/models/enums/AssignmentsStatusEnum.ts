@@ -1,6 +1,6 @@
 export enum AssignmentsStatusEnum {
-  DRAFT = 'draft',
-  PUBLISHED = 'published',
   DRAFT = 'DRAFT',
-  PUBLISHED = 'PUBLISHED'
+  PUBLISHED = 'PUBLISHED',
+  COMPLETED = 'COMPLETED',
+  ARCHIVED = 'ARCHIVED'
 }
