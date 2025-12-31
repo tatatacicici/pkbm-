@@ -5,11 +5,21 @@
 import { AssignmentsService } from '../../services/study/assignments.service';
 import { testUsers } from '../../seeds/users.seed';
 import { testAssignments } from '../../seeds/assignments.seed';
+import { testSessions } from '../../seeds/sessions.seed';
+
+// Type for assignment with status
+interface AssignmentWithStatus {
+  id: string;
+  title: string;
+  status: string;
+  submission_id?: string;
+  [key: string]: any;
+}
 
 describe('AssignmentsService', () => {
   let assignmentsService: AssignmentsService;
   const studentUserId = testUsers[2].id;
-  const sessionId = 'session-1111-1111-1111-111111111111';
+  const sessionId = testSessions[0].id; // Use valid UUID from seeds
   const assignmentId = testAssignments[0].id;
 
   beforeAll(() => {
@@ -25,7 +35,7 @@ describe('AssignmentsService', () => {
     });
 
     it('should include submission status for each assignment', async () => {
-      const result = await assignmentsService.getAssignments(studentUserId, sessionId);
+      const result = await assignmentsService.getAssignments(studentUserId, sessionId) as AssignmentWithStatus[];
       
       if (result.length > 0) {
         expect(result[0]).toHaveProperty('status');
@@ -34,7 +44,8 @@ describe('AssignmentsService', () => {
     });
 
     it('should return empty array for non-existent session', async () => {
-      const result = await assignmentsService.getAssignments(studentUserId, 'non-existent-session');
+      // Use valid UUID format that doesn't exist in database
+      const result = await assignmentsService.getAssignments(studentUserId, '00000000-0000-0000-0000-000000000000');
       
       expect(Array.isArray(result)).toBe(true);
       expect(result.length).toBe(0);
@@ -54,7 +65,8 @@ describe('AssignmentsService', () => {
     });
 
     it('should return empty array for non-existent assignment', async () => {
-      const result = await assignmentsService.getAssignmentDetail(studentUserId, 'non-existent-assignment');
+      // Use valid UUID format that doesn't exist in database
+      const result = await assignmentsService.getAssignmentDetail(studentUserId, '00000000-0000-0000-0000-000000000000');
       
       expect(Array.isArray(result)).toBe(true);
       expect(result.length).toBe(0);
@@ -116,17 +128,24 @@ describe('AssignmentsService', () => {
         ['https://example.com/to-delete.pdf', 'https://example.com/keep.pdf']
       );
 
-      // Get the submission id - this would typically come from the detail
-      const details = await assignmentsService.getAssignmentDetail(studentUserId, assignmentId);
+      // Get the submission detail to find document ids
+      const details = await assignmentsService.getAssignmentDetail(studentUserId, assignmentId) as any[];
       
-      if (details.length > 0 && details[0].submission_id) {
+      if (details.length > 0 && details[0].documents && details[0].documents.length > 0) {
+        const documentId = details[0].documents[0].id;
         const result = await assignmentsService.deleteAssignmentFile(
           studentUserId,
-          details[0].submission_id,
-          0
+          documentId
         );
         
         expect(result).toBeDefined();
+        expect(result.success).toBe(true);
+      } else {
+        // No documents to delete, just verify the function works
+        const result = await assignmentsService.deleteAssignmentFile(
+          studentUserId,
+          '00000000-0000-0000-0000-000000000000'
+        );
         expect(result.success).toBe(true);
       }
     });

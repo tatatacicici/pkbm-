@@ -28,7 +28,8 @@ describe('MyStudyService', () => {
     });
 
     it('should return empty array for user with no enrollments', async () => {
-      const result = await myStudyService.getMyStudy('non-existent-user-id');
+      // Use valid UUID format that doesn't exist in database
+      const result = await myStudyService.getMyStudy('00000000-0000-0000-0000-000000000000');
       
       expect(Array.isArray(result)).toBe(true);
       expect(result.length).toBe(0);
@@ -58,7 +59,8 @@ describe('MyStudyService', () => {
     });
 
     it('should return empty array for non-existent subject', async () => {
-      const result = await myStudyService.getSubjectSessions(studentUserId, 'non-existent-subject-id');
+      // Use valid UUID format that doesn't exist in database
+      const result = await myStudyService.getSubjectSessions(studentUserId, '00000000-0000-0000-0000-000000000000');
       
       expect(Array.isArray(result)).toBe(true);
       expect(result.length).toBe(0);
@@ -92,8 +94,9 @@ describe('MyStudyService', () => {
     });
 
     it('should throw error for non-existent module', async () => {
+      // Use valid UUID format that doesn't exist in database
       await expect(
-        myStudyService.getModuleContent(studentUserId, 'non-existent-module-id')
+        myStudyService.getModuleContent(studentUserId, '00000000-0000-0000-0000-000000000000')
       ).rejects.toThrow('Module not found');
     });
   });

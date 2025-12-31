@@ -8,51 +8,57 @@ import sequelize from '../config/database';
 export const testSubjects = [
   {
     id: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
-    title: 'Matematika Dasar',
+    name: 'Matematika Dasar',
     description: 'Pelajaran matematika dasar untuk kesetaraan Paket A/B/C',
-    code: 'MTK-001',
-    status: 'PUBLISHED',
+    subjectCode: 'MTK-001',
+    slug: 'matematika-dasar',
+    thumbnail: 'default-thumbnail.jpg',
   },
   {
     id: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb',
-    title: 'Bahasa Indonesia',
+    name: 'Bahasa Indonesia',
     description: 'Pelajaran Bahasa Indonesia untuk kesetaraan',
-    code: 'BIN-001',
-    status: 'PUBLISHED',
+    subjectCode: 'BIN-001',
+    slug: 'bahasa-indonesia',
+    thumbnail: 'default-thumbnail.jpg',
   },
   {
     id: 'cccccccc-cccc-cccc-cccc-cccccccccccc',
-    title: 'Bahasa Inggris',
+    name: 'Bahasa Inggris',
     description: 'Pelajaran Bahasa Inggris dasar',
-    code: 'BIG-001',
-    status: 'PUBLISHED',
+    subjectCode: 'BIG-001',
+    slug: 'bahasa-inggris',
+    thumbnail: 'default-thumbnail.jpg',
   },
   {
     id: 'dddddddd-dddd-dddd-dddd-dddddddddddd',
-    title: 'Ilmu Pengetahuan Alam',
+    name: 'Ilmu Pengetahuan Alam',
     description: 'Pelajaran IPA untuk kesetaraan',
-    code: 'IPA-001',
-    status: 'DRAFT',
+    subjectCode: 'IPA-001',
+    slug: 'ilmu-pengetahuan-alam',
+    thumbnail: 'default-thumbnail.jpg',
   },
 ];
 
 export async function seedSubjects() {
   for (const subject of testSubjects) {
     await sequelize.query(
-      `INSERT INTO subjects (id, title, description, code, status, created_at, updated_at)
-       VALUES ($1, $2, $3, $4, $5, NOW(), NOW())
+      `INSERT INTO subjects (id, name, description, subject_code, slug, thumbnail, created_at, updated_at)
+       VALUES ($1, $2, $3, $4, $5, $6, NOW(), NOW())
        ON CONFLICT (id) DO UPDATE SET
-         title = EXCLUDED.title,
+         name = EXCLUDED.name,
          description = EXCLUDED.description,
-         status = EXCLUDED.status,
+         subject_code = EXCLUDED.subject_code,
+         slug = EXCLUDED.slug,
          updated_at = NOW()`,
       {
-        bind: [subject.id, subject.title, subject.description, subject.code, subject.status],
+        bind: [subject.id, subject.name, subject.description, subject.subjectCode, subject.slug, subject.thumbnail],
         type: QueryTypes.INSERT,
       }
     );
   }
 
+  
   // Enroll test students to subjects
   const studentIds = [
     '33333333-3333-3333-3333-333333333333',
@@ -60,11 +66,11 @@ export async function seedSubjects() {
   ];
   
   for (const studentId of studentIds) {
-    for (const subject of testSubjects.filter(s => s.status === 'PUBLISHED')) {
+    for (const subject of testSubjects.slice(0, 3)) { // Enroll to first 3 subjects
       await sequelize.query(
-        `INSERT INTO user_subjects (id, user_id, subject_id, enrollment_date, created_at, updated_at)
-         VALUES (gen_random_uuid(), $1, $2, NOW(), NOW(), NOW())
-         ON CONFLICT (user_id, subject_id) DO NOTHING`,
+        `INSERT INTO student_subjects (id, student_id, subject_id, status, created_at, updated_at)
+         VALUES (gen_random_uuid(), $1, $2, 'ACTIVE', NOW(), NOW())
+         ON CONFLICT DO NOTHING`,
         {
           bind: [studentId, subject.id],
           type: QueryTypes.INSERT,

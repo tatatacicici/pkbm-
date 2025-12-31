@@ -10,16 +10,16 @@ export class ScoreService {
       const scores = await sequelize.query(
         `SELECT 
           s.id,
-          s.title,
-          us.user_id,
-          AVG(usp.score) as average_score,
-          MAX(usp.score) as highest_score,
-          COUNT(DISTINCT usp.id) as total_assessments
+          s.name as title,
+          ss.student_id,
+          AVG(ssp.score) as average_score,
+          MAX(ssp.score) as highest_score,
+          COUNT(DISTINCT ssp.id) as total_assessments
         FROM subjects s
-        LEFT JOIN user_subjects us ON s.id = us.subject_id AND us.user_id = $1
-        LEFT JOIN student_session_progress usp ON us.id = usp.user_subject_id
-        WHERE s.deleted_at IS NULL AND us.user_id = $1
-        GROUP BY s.id, us.id
+        INNER JOIN student_subjects ss ON s.id = ss.subject_id AND ss.student_id = $1
+        LEFT JOIN student_session_progress ssp ON s.id = ssp.subject_id AND ssp.student_id = $1
+        WHERE s.deleted_at IS NULL
+        GROUP BY s.id, ss.id
         ORDER BY s.created_at DESC`,
         { bind: [userId], type: QueryTypes.SELECT }
       );
@@ -38,15 +38,15 @@ export class ScoreService {
       const details = await sequelize.query(
         `SELECT 
           s.id,
-          s.title,
+          s.name as title,
           ssp.id as progress_id,
           ssp.score,
-          ssp.completed_at
+          ssp.timestamp_submitted as completed_at
         FROM subjects s
-        LEFT JOIN user_subjects us ON s.id = us.subject_id AND us.user_id = $1
-        LEFT JOIN student_session_progress ssp ON us.id = ssp.user_subject_id
-        WHERE s.id = $2 AND s.deleted_at IS NULL AND us.user_id = $1
-        ORDER BY ssp.completed_at DESC`,
+        INNER JOIN student_subjects ss ON s.id = ss.subject_id AND ss.student_id = $1
+        LEFT JOIN student_session_progress ssp ON s.id = ssp.subject_id AND ssp.student_id = $1
+        WHERE s.id = $2 AND s.deleted_at IS NULL
+        ORDER BY ssp.timestamp_submitted DESC`,
         { bind: [userId, subjectId], type: QueryTypes.SELECT }
       );
 
@@ -64,16 +64,16 @@ export class ScoreService {
       const eligibility = await sequelize.query(
         `SELECT 
           s.id,
-          s.title,
+          s.name as title,
           AVG(ssp.score) as average_score,
           CASE 
             WHEN AVG(ssp.score) >= 70 THEN true 
             ELSE false 
           END as is_eligible
         FROM subjects s
-        LEFT JOIN user_subjects us ON s.id = us.subject_id AND us.user_id = $1
-        LEFT JOIN student_session_progress ssp ON us.id = ssp.user_subject_id
-        WHERE s.deleted_at IS NULL AND us.user_id = $1
+        INNER JOIN student_subjects ss ON s.id = ss.subject_id AND ss.student_id = $1
+        LEFT JOIN student_session_progress ssp ON s.id = ssp.subject_id AND ssp.student_id = $1
+        WHERE s.deleted_at IS NULL
         GROUP BY s.id
         HAVING AVG(ssp.score) IS NOT NULL`,
         { bind: [userId], type: QueryTypes.SELECT }

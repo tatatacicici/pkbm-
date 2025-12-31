@@ -2,15 +2,15 @@
  * Test Setup - Jest Configuration
  */
 
-import sequelize from '../config/database';
+import sequelize, { initializeDatabase } from '../config/database';
 
 // Increase timeout for database operations
 jest.setTimeout(30000);
 
 beforeAll(async () => {
   try {
-    // Connect to database
-    await sequelize.authenticate();
+    // Initialize database (authenticate + init models)
+    await initializeDatabase();
     console.log('✅ Database connected for tests');
   } catch (error) {
     console.error('❌ Database connection failed:', error);

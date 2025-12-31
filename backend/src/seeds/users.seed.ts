@@ -12,7 +12,6 @@ export const testUsers = [
     email: 'admin@pkbm.test',
     password: 'password123',
     fullName: 'Admin PKBM',
-    role: 'ADMIN',
     phone: '081234567890',
   },
   {
@@ -20,7 +19,6 @@ export const testUsers = [
     email: 'teacher@pkbm.test',
     password: 'password123',
     fullName: 'Guru PKBM',
-    role: 'TEACHER',
     phone: '081234567891',
   },
   {
@@ -28,7 +26,6 @@ export const testUsers = [
     email: 'student@pkbm.test',
     password: 'password123',
     fullName: 'Siswa PKBM',
-    role: 'STUDENT',
     phone: '081234567892',
   },
   {
@@ -36,7 +33,6 @@ export const testUsers = [
     email: 'student2@pkbm.test',
     password: 'password123',
     fullName: 'Siswa PKBM 2',
-    role: 'STUDENT',
     phone: '081234567893',
   },
 ];
@@ -46,15 +42,15 @@ export async function seedUsers() {
     const hashedPassword = await bcrypt.hash(user.password, 10);
     
     await sequelize.query(
-      `INSERT INTO users (id, email, password, full_name, role, phone, created_at, updated_at)
-       VALUES ($1, $2, $3, $4, $5, $6, NOW(), NOW())
+      `INSERT INTO users (id, email, password, full_name, phone_number, created_at, updated_at)
+       VALUES ($1, $2, $3, $4, $5, NOW(), NOW())
        ON CONFLICT (id) DO UPDATE SET
          email = EXCLUDED.email,
          full_name = EXCLUDED.full_name,
-         role = EXCLUDED.role,
+         phone_number = EXCLUDED.phone_number,
          updated_at = NOW()`,
       {
-        bind: [user.id, user.email, hashedPassword, user.fullName, user.role, user.phone],
+        bind: [user.id, user.email, hashedPassword, user.fullName, user.phone],
         type: QueryTypes.INSERT,
       }
     );
