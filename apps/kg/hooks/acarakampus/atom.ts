@@ -1,6 +1,3 @@
-import { atom } from 'recoil';
+import { atom } from 'jotai';
 
-export const AcaraKampusState = atom({
-  key: 'acarakampus-data',
-  default: [],
-});
+export const AcaraKampusStateAtom = atom<any[]>([]);

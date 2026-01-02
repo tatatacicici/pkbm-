@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import {
-  modalBerhasil,
-  modalOpenState,
-} from '../../../../recoil/atoms/rencana-studi';
+  modalBerhasilAtom,
+  modalOpenStateAtom,
+} from '../../../../store/rencana-studi';
 import {
   Button,
   SelectField,
@@ -29,12 +29,12 @@ export const ModalTambahMatkul = ({ majorId }: { majorId: string }) => {
   // console.log(majorId);
   type ValidationSchema = z.infer<typeof validationAddSubject>;
   const queryClient = useQueryClient();
-  const [isModalOpen, setIsModalOpen] = useRecoilState(modalOpenState);
+  const [isModalOpen, setIsModalOpen] = useAtom(modalOpenStateAtom);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const searchParams = useSearchParams();
   const page = searchParams.get('page') || '1';
   const [isModalBerhasilOpen, setIsModalBerhasilOpen] =
-    useRecoilState(modalBerhasil);
+    useAtom(modalBerhasilAtom);
   const { data: userData } = useUser(
     Number(page),
     1000,

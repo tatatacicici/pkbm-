@@ -2,14 +2,13 @@ import { Button } from '@kampus-gratis/components/atoms';
 import { useQueryClient } from '@tanstack/react-query';
 import { FC, ReactElement } from 'react';
 import { FaTrash } from 'react-icons/fa';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useAtomValue, useSetAtom } from 'jotai';
 import { useDeleteDiscussion } from '../../../../../hooks/ruang-diskusi/hooks';
 import {
-  isModalOpen,
-  selectedCommentId,
-  selectedDiscussionId,
-  selectedPostId,
-  selectedReplyId,
+  isModalOpenAtom,
+  selectedCommentIdAtom,
+  selectedDiscussionIdAtom,
+  selectedReplyIdAtom,
 } from '../../store';
 import { TDeleteConfirmationProps } from './types';
 import { toast } from 'react-toastify';
@@ -22,26 +21,21 @@ export const DeleteConfirmationModal: FC<TDeleteConfirmationProps> = ({
   type,
   subject_id,
   session_id,
-  // discussion_id,
-  // comment_id,
-  // reply_id,
 }): ReactElement => {
-  const setOptionOpen = useSetRecoilState(isModalOpen);
-  const getSelectedDiscussionId = useRecoilValue(selectedDiscussionId);
-  const getSelectedCommentId = useRecoilValue(selectedCommentId);
-  const getSelectedReplyId = useRecoilValue(selectedReplyId);
+  const setOptionOpen = useSetAtom(isModalOpenAtom);
+  const getSelectedDiscussionId = useAtomValue(selectedDiscussionIdAtom);
+  const getSelectedCommentId = useAtomValue(selectedCommentIdAtom);
+  const getSelectedReplyId = useAtomValue(selectedReplyIdAtom);
   const queryClient = useQueryClient();
-  const { mutate, isLoading, isSuccess } = useDeleteDiscussion();
+  const { mutate, isLoading } = useDeleteDiscussion();
 
   const {
     mutate: mutateComment,
-    isSuccess: successComment,
     isLoading: isLoadingComment,
   } = useDeleteComment();
 
   const {
     mutate: mutateReply,
-    isSuccess: isSuccessReply,
     isLoading: isLoadingReply,
   } = useDeleteReply();
 

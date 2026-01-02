@@ -8,11 +8,11 @@ import { useQueryClient } from '@tanstack/react-query';
 import { RiSendPlaneFill } from 'react-icons/ri';
 import { RxCross1 } from 'react-icons/rx';
 import { toast } from 'react-toastify';
-import { useSetRecoilState } from 'recoil';
+import { useSetAtom } from 'jotai';
 import { DraggableImageInput } from '../../../../components/draggableImageInput';
 import { useCreateDiscussion } from '../../../../hooks/ruang-diskusi/hooks';
 import { TDiscussionPayload } from '../../../../types/ruang-diskusi';
-import { isModalOpen } from '../../store';
+import { isModalOpenAtom } from '../../store';
 
 type ImagesError = {
   message: string;
@@ -20,7 +20,7 @@ type ImagesError = {
 
 export const PostCreateModal: FC = (): ReactElement => {
   type ValidationSchema = z.infer<typeof validationSchema>;
-  const setOptionOpen = useSetRecoilState(isModalOpen);
+  const setOptionOpen = useSetAtom(isModalOpenAtom);
   const { mutate, isLoading } = useCreateDiscussion();
   const queryClient = useQueryClient();
 

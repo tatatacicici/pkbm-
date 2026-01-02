@@ -28,13 +28,11 @@ import { TBaseLayoutProps } from './types';
 import useScreenTimeTracker from '@kampus-gratis/apps/kg/config/screen-time.hook';
 import { Button, LoadingSpinner } from '@kampus-gratis/components/atoms';
 import { Navbar } from '@kampus-gratis/components/molecules';
-import { MobileNavbarState } from 'libs/components/molecules/src/navbar/section/top-nav/dropdown-menu/store';
 import {
   IoDocumentTextOutline,
   IoHomeOutline,
   IoLogInOutline,
 } from 'react-icons/io5';
-import { useRecoilState } from 'recoil';
 import { useProfile } from '../../../hooks/profile/hook';
 import { BootcampIcon } from './assets/icons/ic-bootcamp';
 import { ConvertionIcon } from './assets/icons/ic-convertion';
@@ -100,6 +98,8 @@ export const BaseLayout: FC<TBaseLayoutProps> = ({
   title,
   addSearch,
 }): ReactElement => {
+  const [getMobileNavbar, setMobileNavbar] = useState(false);
+
   const router = useRouter();
   const pathname = usePathname();
 
@@ -109,7 +109,6 @@ export const BaseLayout: FC<TBaseLayoutProps> = ({
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [isSocketConnected, setIsSocketConnected] = useState<boolean>(false);
   const [retryCount, setRetryCount] = useState<number>(0);
-  const [getMobileNavbar, setMobileNavbar] = useRecoilState(MobileNavbarState);
   const lastPathRef = useRef<string | null>(null);
   const isConnectingRef = useRef<boolean>(false);
   const [isLoading, setIsLoading] = useState(true);

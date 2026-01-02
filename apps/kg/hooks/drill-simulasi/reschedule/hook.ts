@@ -1,4 +1,4 @@
-import { useRecoilState } from "recoil";
+import { useAtom } from "jotai";
 import {
   CategorySimulationTypes,
   ScheduleTypes,
@@ -7,15 +7,15 @@ import {
   ChooseTimeSimulasiTypes,
 } from "../../../types/drillSimulasi";
 import {
-  categorySimulationState,
-  chooseScheduleState,
-  chooseSimulasiState,
-  PopupModalScheduleOpen,
-  ChooseTimeSimulasiState,
-} from "../../../recoil/atoms/drill-simulasi";
+  categorySimulationStateAtom,
+  chooseScheduleStateAtom,
+  chooseSimulasiStateAtom,
+  PopupModalScheduleOpenAtom,
+  ChooseTimeSimulasiStateAtom,
+} from "../../../store/drill-simulasi";
 
 export const useCategorySimulation = (): CategorySimulationTypes => {
-  const [getCategory, setCategory] = useRecoilState(categorySimulationState);
+  const [getCategory, setCategory] = useAtom(categorySimulationStateAtom);
   return {
     setCategorySimulation: (val: string) => setCategory(val),
     getCategorySimulation: getCategory,
@@ -23,7 +23,7 @@ export const useCategorySimulation = (): CategorySimulationTypes => {
 };
 
 export const useScheduleSimulation = (): ScheduleTypes => {
-  const [getSchedule, setSchedule] = useRecoilState(chooseScheduleState);
+  const [getSchedule, setSchedule] = useAtom(chooseScheduleStateAtom);
   return {
     setScheduleSimulation: (val: boolean) => setSchedule(val),
     getScheduleSimulation: getSchedule,
@@ -31,7 +31,7 @@ export const useScheduleSimulation = (): ScheduleTypes => {
 };
 
 export const useChooseSimulation = (): ChooseSimulationTypes => {
-  const [getChoose, setChoose] = useRecoilState(chooseSimulasiState);
+  const [getChoose, setChoose] = useAtom(chooseSimulasiStateAtom);
   return {
     setChooseSimulation: (val: string) => setChoose(val),
     getChooseSimulation: getChoose,
@@ -39,7 +39,7 @@ export const useChooseSimulation = (): ChooseSimulationTypes => {
 };
 
 export const usePopupScheduleStatus = (): ReturnTypesPopupScheduleStatus => {
-  const [get, set] = useRecoilState(PopupModalScheduleOpen);
+  const [get, set] = useAtom(PopupModalScheduleOpenAtom);
   return {
     setPopupStatus: (val: boolean) => set(val),
     getPopupStatus: get,
@@ -47,7 +47,7 @@ export const usePopupScheduleStatus = (): ReturnTypesPopupScheduleStatus => {
 };
 
 export const useChooseTimeSimulation = (): ChooseTimeSimulasiTypes => {
-  const [getTimeReschedule, setTimeReschedule] = useRecoilState(ChooseTimeSimulasiState);
+  const [getTimeReschedule, setTimeReschedule] = useAtom(ChooseTimeSimulasiStateAtom);
   return {
     setChooseTimeSimulation: (val: string) => setTimeReschedule(val),
     getChooseTimeSimulation: getTimeReschedule,

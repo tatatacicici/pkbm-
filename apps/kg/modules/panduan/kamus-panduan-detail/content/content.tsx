@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useAtom, useAtomValue } from 'jotai';
 import { Combobox } from '@headlessui/react';
-import { queryOptionDictionary } from '../../../../recoil/atoms/kamus-kampus-gratis';
+import { queryOptionDictionaryAtom } from '../../../../store';
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
 import {
@@ -10,10 +10,10 @@ import {
 } from '../../../../hooks/panduan/hooks';
 import { TDictionariesResponse } from '../../../../types/panduan';
 import { LoadingSpinner } from '@kampus-gratis/components/atoms';
-import { filterPanduanKamus } from '../../../../recoil/selectors/kampus-kamus-gratis';
+import { filterPanduanKamusAtom } from '../../../../store/selectors/kampus-kamus-gratis';
 
 export const ContentSection = ({ data }: any): ReactElement => {
-  const [query, setQuery] = useRecoilState(queryOptionDictionary);
+  const [query, setQuery] = useAtom(queryOptionDictionaryAtom);
 
   const [selectedKamus, setSelectedKamus] = useState('');
 
@@ -24,7 +24,7 @@ export const ContentSection = ({ data }: any): ReactElement => {
     setDictionariesData(allDictionaries as TDictionariesResponse);
   }, [allDictionaries, setDictionariesData]);
 
-  const getSemuaKamus = useRecoilValue(filterPanduanKamus);
+  const getSemuaKamus = useAtomValue(filterPanduanKamusAtom);
 
   if (isLoading) {
     return <LoadingSpinner />;

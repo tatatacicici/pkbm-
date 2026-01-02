@@ -1,6 +1,3 @@
-import { atom } from 'recoil';
+import { atom } from 'jotai';
 
-export const PopupModalSuccessOpen = atom({
-  key: 'modal-popup-success-1',
-  default: false,
-});
+export const PopupModalSuccessOpenAtom = atom(false);

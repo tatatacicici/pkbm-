@@ -1,9 +1,9 @@
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import { TCalendar, TUseCalendarState } from '../../types';
 import { calendarGetRequest } from './request';
 import { TMetaErrorResponse } from '@kampus-gratis/utils';
-import { calendarDataState } from '../../recoil/atoms/calendar';
+import { calendarDataStateAtom } from '../../store';
 
 export const RequestCalendarData = (): UseQueryResult<
   TCalendar,
@@ -15,7 +15,7 @@ export const RequestCalendarData = (): UseQueryResult<
   });
 
 export const useCalendarDataState = (): TUseCalendarState => {
-  const [get, set] = useRecoilState(calendarDataState);
+  const [get, set] = useAtom(calendarDataStateAtom);
   return {
     calendarData: get,
     setCalendarData: (val: TCalendar) => set(val),

@@ -46,22 +46,17 @@ export const NavbarFeatureMenu: FC<TNavbarFeaturesProps> = ({
           <div className="grid grid-cols-3">
             {features.map((feature, index) => {
               return (
-                <Link
+                <Menu.Item
+                  as={Link}
                   href={feature.link as string}
-                  className="bg-gray-100"
                   key={index}
+                  className="flex flex-col gap-2 hover:bg-gray-200 items-center p-4 cursor-pointer bg-gray-100 h-full transition-all duration-300 ease-in-out"
                 >
-                  <Menu.Item
-                    as="div"
-                    aria-label="User"
-                    className="flex flex-col gap-2 hover:bg-gray-200 items-center p-4 cursor-pointer bg-gray-100 h-full transition-all duration-300 ease-in-out"
-                  >
-                    {feature.icon}
-                    <h1 className="text-gray-800 font-semibold text-xs text-center">
-                      {feature.name}
-                    </h1>
-                  </Menu.Item>
-                </Link>
+                  {feature.icon}
+                  <h1 className="text-gray-800 font-semibold text-xs text-center">
+                    {feature.name}
+                  </h1>
+                </Menu.Item>
               );
             })}
           </div>

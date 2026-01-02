@@ -11,17 +11,17 @@ import ButtonPlus from '../../../components/button-plus/ButtonPlus';
 import Searchbar from '../../../components/searchbar/Searchbar';
 import { ModalTambahFakultas } from './modalTambahFakultas';
 import { ModalPopUpBerhasil } from './popUp/popUpBerhasil';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import {
-  idFacultyState,
-  modalBerhasil,
-  modalConfirmation,
-  modalDelete,
-  modalDeleteSuccess,
-  modalEdit,
-  modalEditSuccess,
-  modalOpenState,
-} from '../../../recoil/atoms/rencana-studi';
+  idFacultyStateAtom,
+  modalBerhasilAtom,
+  modalConfirmationAtom,
+  modalDeleteAtom,
+  modalDeleteSuccessAtom,
+  modalEditAtom,
+  modalEditSuccessAtom,
+  modalOpenStateAtom,
+} from '../../../store/rencana-studi';
 import { ModalPopUpConfirmation } from './popUp/popUpConfirmation';
 import { ModalPopUpDelete } from './popUp/popUpDelete';
 import {
@@ -50,18 +50,18 @@ export function useDebounce(
 
 export const FakultasSection = () => {
   const router = useRouter();
-  const [isModalOpen, setIsModalOpen] = useRecoilState(modalOpenState);
+  const [isModalOpen, setIsModalOpen] = useAtom(modalOpenStateAtom);
   const [isModalBerhasilOpen, setIsModalBerhasilOpen] =
-    useRecoilState(modalBerhasil);
+    useAtom(modalBerhasilAtom);
   const [isModalConfirmOpen, setIsModalConfirmOpen] =
-    useRecoilState(modalConfirmation);
-  const [isModalDeleteOpen, setIsModalDeleteOpen] = useRecoilState(modalDelete);
-  const [isModalEditOpen, setIsModalEditOpen] = useRecoilState(modalEdit);
+    useAtom(modalConfirmationAtom);
+  const [isModalDeleteOpen, setIsModalDeleteOpen] = useAtom(modalDeleteAtom);
+  const [isModalEditOpen, setIsModalEditOpen] = useAtom(modalEditAtom);
   const [isModalDeleteSuccessOpen, setIsModalDeleteSuccessOpen] =
-    useRecoilState(modalDeleteSuccess);
+    useAtom(modalDeleteSuccessAtom);
   const [isModalEditSuccessOpen, setIsModalEditSuccessOpen] =
-    useRecoilState(modalEditSuccess);
-  const [idFaculty, setIdFaculty] = useRecoilState(idFacultyState);
+    useAtom(modalEditSuccessAtom);
+  const [idFaculty, setIdFaculty] = useAtom(idFacultyStateAtom);
   const [countMajor, setCountMajor] = useState('');
   const [facultyDataState, setFacultyDataState] = useState<TFacultyItem>({
     id: '',

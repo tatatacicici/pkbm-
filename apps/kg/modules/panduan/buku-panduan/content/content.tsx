@@ -1,8 +1,8 @@
 import React, { ReactElement, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRecoilValue } from 'recoil';
-import { filterPanduanBook } from '../../../../recoil/selectors/buku-panduan';
+import { useAtomValue } from 'jotai';
+import { filterPanduanBookAtom } from '../../../../store/selectors/buku-panduan';
 import {
   useGetBukuPanduan,
   useGuideBook,
@@ -17,7 +17,7 @@ export const ContentSection = (): ReactElement => {
     setBookData(data as any);
   }, [data, setBookData]);
 
-  const bookDataFilter = useRecoilValue(filterPanduanBook);
+  const bookDataFilter = useAtomValue(filterPanduanBookAtom);
 
   if (isLoading) {
     return <LoadingSpinner />;

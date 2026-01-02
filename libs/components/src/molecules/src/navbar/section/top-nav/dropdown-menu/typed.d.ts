@@ -35,6 +35,8 @@ export type TNavbarUserProps = {
 };
 
 export type TMobileMenuProps = {
+  isOpen: boolean;
+  onToggle: (next: boolean) => void;
   mobileitems: Array<{
     name: string;
     submenus: Array<{

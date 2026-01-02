@@ -1,10 +1,10 @@
 import React from 'react';
 import { tablePembelajaranHeader } from './constant';
-import { useRecoilState } from 'recoil';
-import { detailMatkuConversionState } from '../../../../recoil/atoms/konversi';
+import { useAtom } from 'jotai';
+import { detailMatkuConversionStateAtom } from '../../../../store/konversi';
 
 const Capaian = () => {
-  const [get] = useRecoilState(detailMatkuConversionState);
+  const [get] = useAtom(detailMatkuConversionStateAtom);
 
   const { data } = get;
 

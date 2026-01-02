@@ -8,22 +8,22 @@ import {
   useVideoData,
 } from '../../../../hooks/video-panduan/hooks';
 // import { filterPanduanVideo } from "apps/kg/recoil/selectors/video-panduan";
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useAtom, useAtomValue } from 'jotai';
 import { url } from 'inspector';
 import { LoadingSpinner } from '@kampus-gratis/components/atoms';
-import { filterPanduanVideo } from '../../../../recoil/selectors/video-panduan';
-import { videoIdState } from '../../../../recoil/atoms/video-panduan';
+import { filterPanduanVideoAtom } from '../../../../store/selectors/video-panduan';
+import { videoIdStateAtom } from '../../../../store';
 
 export const ContentSection = (): ReactElement => {
   const { setVideoData, getVideoData } = useVideoData();
-  const [videoIds, setVideoIds] = useRecoilState<string[]>(videoIdState);
+  const [videoIds, setVideoIds] = useAtom<string[]>(videoIdStateAtom);
   const {
     data: videoData,
     refetch: refetchVideo,
     isLoading: isLoadingVideo,
   } = useGetVideoPanduan();
 
-  const videoDataFilter = useRecoilValue(filterPanduanVideo); // Use
+  const videoDataFilter = useAtomValue(filterPanduanVideoAtom); // Use
 
   useEffect(() => {
     setVideoData(videoData as any);

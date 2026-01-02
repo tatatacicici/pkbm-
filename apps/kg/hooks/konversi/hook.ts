@@ -2,13 +2,13 @@ import { TMetaErrorResponse } from '@kampus-gratis/utils';
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
 import { TConversionDetailMatkul } from '../../types/konversi';
 import { detailMatkulConversionRequest } from './request';
-import { useRecoilState } from 'recoil';
-import { detailMatkuConversionState } from '../../recoil/atoms/konversi';
+import { useAtom } from 'jotai';
+import { detailMatkuConversionStateAtom } from '../../store';
 
 export const useGetDetailMatkulConversion = (
   id: string
 ): UseQueryResult<TConversionDetailMatkul, TMetaErrorResponse> => {
-  const [, set] = useRecoilState(detailMatkuConversionState);
+  const [, set] = useAtom(detailMatkuConversionStateAtom);
 
   const options = {
     queryKey: ['detail-matkul-conversion', id],

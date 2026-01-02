@@ -3,3 +3,4 @@ export * from "./user";
 export * from "./mobile";
 export * from "./menu";
 export * from "./notification";
+export * from "./store";

@@ -1,10 +1,10 @@
 import React from 'react';
 import { assignmentTableHeader } from './constant';
-import { useRecoilState } from 'recoil';
-import { detailMatkuConversionState } from '../../../../recoil/atoms/konversi';
+import { useAtom } from 'jotai';
+import { detailMatkuConversionStateAtom } from '../../../../store/konversi';
 
 const DetailPenilaian = () => {
-  const [get] = useRecoilState(detailMatkuConversionState);
+  const [get] = useAtom(detailMatkuConversionStateAtom);
   const { data } = get;
 
   const { sessions_scores, subject } = data;
@@ -35,7 +35,7 @@ const DetailPenilaian = () => {
             </tr>
           </thead>
           <tbody>
-            {sortedSession_scores.map((item, index) => (
+            {sortedSession_scores?.map((item, index) => (
               <tr
                 key={index}
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"

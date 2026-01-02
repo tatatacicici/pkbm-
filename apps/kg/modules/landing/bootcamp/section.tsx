@@ -21,9 +21,9 @@ export default function BootcampSection() {
     ? data?.data?.subjects.filter(
         (subject: TBootcampSubjectItem) => subject.topic_slug === selectedTopic
       )
-    : data?.data?.subjects;
+    : data?.data?.subjects || [];
 
-  if (isLoading || topicIsLoading) return;
+  if (isLoading || topicIsLoading) return null;
 
   return (
     <section className="w-full px-12 2xl:px-0 max-w-[1440px] mx-auto">

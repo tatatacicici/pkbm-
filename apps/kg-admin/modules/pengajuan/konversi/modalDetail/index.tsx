@@ -1,11 +1,11 @@
 import { Dialog, Transition } from '@headlessui/react';
-import { Button } from '../../../../../../libs/components/atoms/src/button/index';
+import { Button } from '@kampus-gratis/components/atoms';
 import { ReusableTable } from '../../../../components/reusable-table/reusable-table';
 // import { useRemainingTimeQuiz } from '../../../../hooks/mystudy/quiz/hook';
 import { useQueryClient } from '@tanstack/react-query';
-import { useAccRejectConversion } from 'apps/kg-admin/hooks/pengajuan/konversi/hooks';
+import { useAccRejectConversion } from '../../../../hooks/pengajuan/konversi/hooks';
 import { FC, Fragment } from 'react';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import { modalAccOpen, modalDetailOpen, modalRejectOpen } from '../store';
 import { TDetailModal } from '../types';
 
@@ -32,10 +32,10 @@ export const ModalDetailKonversi: FC<TDetailModal> = ({
 
   const { mutate } = useAccRejectConversion();
   const [getModalDetailOpen, setModalDetailOpen] =
-    useRecoilState(modalDetailOpen);
-  const [getModalAccOpen, setModalAccOpen] = useRecoilState(modalAccOpen);
+    useAtom(modalDetailOpen);
+  const [getModalAccOpen, setModalAccOpen] = useAtom(modalAccOpen);
   const [getModalRejectOpen, setModalRejectOpen] =
-    useRecoilState(modalRejectOpen);
+    useAtom(modalRejectOpen);
 
   const handleAcceptConversion = () => {
     setModalDetailOpen(false);

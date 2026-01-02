@@ -1,9 +1,8 @@
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
-import { articleDataState } from '../../recoil/atoms/article';
-import { useRecoilState } from 'recoil';
+import { articleDataStateAtom, PopupDeleteOpenArticleAtom } from '../../store/article';
+import { useAtom } from 'jotai';
 import { articleRequest } from './request';
 import { TArticleResponse } from '../../../kg-admin/types';
-import { PopupDeleteOpenArticle } from './atom';
 
 export const useArticle = (
   page: number,
@@ -17,7 +16,7 @@ export const useArticle = (
 };
 
 export const useArticleData = () => {
-  const [get, set] = useRecoilState(articleDataState);
+  const [get, set] = useAtom(articleDataStateAtom);
 
   return {
     getArticleData: get as any,
@@ -29,8 +28,9 @@ type TReturnTypes = {
   setDeleteStatus: (val: boolean) => void;
   getDeleteStatus: boolean;
 };
+
 export const usePopUpDeleteArticle = (): TReturnTypes => {
-  const [get, set] = useRecoilState(PopupDeleteOpenArticle);
+  const [get, set] = useAtom(PopupDeleteOpenArticleAtom);
   return {
     setDeleteStatus: (val) => set(val),
     getDeleteStatus: get,

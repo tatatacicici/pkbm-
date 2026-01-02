@@ -31,6 +31,12 @@ export const logoutRequest = async ({
 }: {
   refresh_token: string;
 }) => {
-  await api.post('v1/auth/logout', { refresh_token });
-  signOut();
+  try {
+    await api.post('v1/auth/logout', { refresh_token });
+  } catch (error) {
+    // Ignore API errors, still proceed with signOut
+    console.error('Logout API error:', error);
+  }
+  // Always sign out from NextAuth
+  signOut({ callbackUrl: '/' });
 };

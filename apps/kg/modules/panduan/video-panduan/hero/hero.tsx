@@ -1,11 +1,11 @@
 import { ReactElement } from 'react';
 import Image from 'next/image';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { queryPanduanVideo } from '../../../../recoil/atoms/video-panduan';
-import { useRecoilState } from 'recoil';
+import { queryPanduanVideoAtom } from '../../../../store';
+import { useAtom } from 'jotai';
 
 export const HeroSection = (): ReactElement => {
-  const [query, setQuery] = useRecoilState(queryPanduanVideo);
+  const [query, setQuery] = useAtom(queryPanduanVideoAtom);
 
   return (
     <div className="lg:grid lg:grid-cols-2 px-6 md:px-8 w-full lg:px-16 mt-[10px] mb-[50px] max-w-[1440px] mx-auto 2xl:px-0">

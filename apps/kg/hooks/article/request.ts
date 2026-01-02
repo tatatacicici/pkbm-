@@ -18,10 +18,25 @@ export const articleGetRequest = async (
   limit: number,
   search: string
 ): Promise<TArticleResponse> => {
-  const { data } = await api.get(
-    `${ARTICLE_FILTER}?page=${page.toString()}&limit=${limit.toString()}&search=${search}&sort_by=TITLE&type=newest`
-  );
-  return data;
+  try {
+    const { data } = await api.get(
+      `${ARTICLE_FILTER}?page=${page.toString()}&limit=${limit.toString()}&search=${search}&sort_by=TITLE&type=newest`
+    );
+    return data;
+  } catch (error) {
+    return {
+      code: 503,
+      status: 'error',
+      message: 'Service unavailable',
+      data: {
+        data: [],
+        page_size: limit,
+        total_data: 0,
+        current_page: page,
+        max_page: 0,
+      },
+    };
+  }
 };
 
 export const articlesGetRequestInfinite = async ({
@@ -31,11 +46,25 @@ export const articlesGetRequestInfinite = async ({
   pageParam: number;
   search: string;
 }): Promise<TArticleResponse> => {
-  const { data } = await api.get(
-    `/v1/article/filter?page=${pageParam}&limit=8&type=newest&search=${search}`
-  );
-
-  return data;
+  try {
+    const { data } = await api.get(
+      `/v1/article/filter?page=${pageParam}&limit=8&type=newest&search=${search}`
+    );
+    return data;
+  } catch (error) {
+    return {
+      code: 503,
+      status: 'error',
+      message: 'Service unavailable',
+      data: {
+        data: [],
+        page_size: 0,
+        total_data: 0,
+        current_page: pageParam,
+        max_page: 0,
+      },
+    };
+  }
 };
 
 export const articlesFavorieGetRequestInfinite = async ({
@@ -45,16 +74,39 @@ export const articlesFavorieGetRequestInfinite = async ({
   pageParam: number;
   search: string;
 }): Promise<TArticleResponse> => {
-  const { data } = await api.get(
-    `/v1/article/favorite?page=${pageParam}&limit=8&search=${search}`
-  );
-
-  return data;
+  try {
+    const { data } = await api.get(
+      `/v1/article/favorite?page=${pageParam}&limit=8&search=${search}`
+    );
+    return data;
+  } catch (error) {
+    return {
+      code: 503,
+      status: 'error',
+      message: 'Service unavailable',
+      data: {
+        data: [],
+        page_size: 0,
+        total_data: 0,
+        current_page: pageParam,
+        max_page: 0,
+      },
+    };
+  }
 };
 
 export const allArticleGetRequest = async (): Promise<TAllArticleResponse> => {
-  const { data } = await api.get(`/v1/article`);
-  return data;
+  try {
+    const { data } = await api.get(`/v1/article`);
+    return data;
+  } catch (error) {
+    return {
+      code: 503,
+      status: 'error',
+      message: 'Service unavailable',
+      data: [],
+    };
+  }
 };
 
 export const articleDetailGetRequest = async (
@@ -76,8 +128,17 @@ export const articleRelatedGetRequest = async (
   id: string,
   limit: number
 ): Promise<TDetailArticleResponse> => {
-  const response = await api.get(`${ARTICLE_RELATED}/${id}?limit=${limit}`);
-  return response.data;
+  try {
+    const response = await api.get(`${ARTICLE_RELATED}/${id}?limit=${limit}`);
+    return response.data;
+  } catch (error) {
+    return {
+      code: 503,
+      status: 'error',
+      message: 'Service unavailable',
+      data: {} as any,
+    };
+  }
 };
 
 export const articleFavoriteRequest = async (

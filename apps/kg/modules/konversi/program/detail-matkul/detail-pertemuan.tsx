@@ -1,10 +1,10 @@
 import React from 'react';
 import { tableHeader } from './constant';
-import { useRecoilState } from 'recoil';
-import { detailMatkuConversionState } from '../../../../recoil/atoms/konversi';
+import { useAtom } from 'jotai';
+import { detailMatkuConversionStateAtom } from '../../../../store/konversi';
 
 const DetailPertemuan = () => {
-  const [get] = useRecoilState(detailMatkuConversionState);
+  const [get] = useAtom(detailMatkuConversionStateAtom);
 
   const { data } = get;
 
@@ -36,10 +36,6 @@ const DetailPertemuan = () => {
             </tr>
           </thead>
           <tbody>
-            {
-              /* make sort base on sessions_details[].session_no */
-              // sessions_details.sort((a,b) => a.session_no - b.session_no)
-            }
             {sortedSesssion_details?.map((item, index) => (
               <tr
                 key={index}

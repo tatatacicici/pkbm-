@@ -22,11 +22,11 @@ import {
   libraryGetRequest,
   libraryRelatedGetRequest,
 } from './request';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import {
-  libraryDataState,
-  libraryFavoriteDataState,
-} from '../../recoil/atoms/library';
+  libraryDataStateAtom,
+  libraryFavoriteDataStateAtom,
+} from '../../store';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 
@@ -52,7 +52,7 @@ export const useGetAllLibrary = (): UseQueryResult<
   });
 
 export const useLibraryData = (): TuseLibraryData => {
-  const [get, set] = useRecoilState(libraryDataState);
+  const [get, set] = useAtom(libraryDataStateAtom);
   return {
     getLibraryData: get,
     setLibraryData: (val) => set(val),
@@ -132,7 +132,7 @@ export const useGetLibraryFavorite = (
 };
 
 export const useLibraryFavoriteData = (): TuseLibraryFavoriteData => {
-  const [get, set] = useRecoilState(libraryFavoriteDataState);
+  const [get, set] = useAtom(libraryFavoriteDataStateAtom);
   return {
     getLibraryFavoriteData: get,
     setLibraryFavoriteData: (val) => set(val),

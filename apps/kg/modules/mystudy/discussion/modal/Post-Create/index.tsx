@@ -7,19 +7,14 @@ import { Button, TextField } from '@kampus-gratis/components/atoms';
 import { useQueryClient } from '@tanstack/react-query';
 import { RiSendPlaneFill } from 'react-icons/ri';
 import { RxCross1 } from 'react-icons/rx';
-import { useSetRecoilState } from 'recoil';
+import { useSetAtom } from 'jotai';
 import { DraggableImageInput } from '../../../../../components/draggableImageInput';
 import { useCreateDiscussion } from '../../../../../hooks/ruang-diskusi/hooks';
 import { TDiscussionPayload } from '../../../../../types/ruang-diskusi';
-import { isModalOpen } from '../../store';
+import { isModalOpenAtom } from '../../store';
 import { toast } from 'react-toastify';
 
 export const PostCreateModal: FC = (): ReactElement => {
-  type ValidationSchema = z.infer<typeof validationSchema>;
-  const setOptionOpen = useSetRecoilState(isModalOpen);
-  const { mutate, isLoading } = useCreateDiscussion();
-  const queryClient = useQueryClient();
-
   const MAX_FILE_SIZE = 3 * 1024 * 1024;
   const ACCEPTED_MEDIA_TYPES = [
     'image/jpeg',
@@ -52,6 +47,11 @@ export const PostCreateModal: FC = (): ReactElement => {
       .optional(),
   });
 
+  type ValidationSchema = z.infer<typeof validationSchema>;
+  const setOptionOpen = useSetAtom(isModalOpenAtom);
+  const { mutate, isLoading } = useCreateDiscussion();
+  const queryClient = useQueryClient();
+
   const {
     control,
     handleSubmit,
@@ -69,13 +69,10 @@ export const PostCreateModal: FC = (): ReactElement => {
 
   const onSubmit = handleSubmit(async (data) => {
     const formData = new FormData();
-
-    // Append title and content as usual
     formData.append('title', data.title);
     formData.append('content', data.content);
-    // Append all image files as an array under the 'images' key
     if (data.images && data.images.length > 0) {
-      data.images.forEach((file, index) => {
+      data.images.forEach((file) => {
         formData.append(`images`, file);
       });
     }
@@ -96,15 +93,13 @@ export const PostCreateModal: FC = (): ReactElement => {
 
   return (
     <section className="bg-neutral-50 min-w-[200px] w-[500px] p-3 md:p-5">
-      <header className=" flex justify-center border-b-[0.5px] pt-2 pb-4 border-neutral-300  relative">
+      <header className="flex justify-center border-b-[0.5px] pt-2 pb-4 border-neutral-300 relative">
         <h1 className="text-lg font-bold text-neutral-900">
           Buat Diskusi Baru
         </h1>
         <RxCross1
           className="absolute right-0 text-xl cursor-pointer text-neutral-400"
-          onClick={() => {
-            setOptionOpen(false);
-          }}
+          onClick={() => setOptionOpen(false)}
         />
       </header>
       <main className="px-4 py-5">

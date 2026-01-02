@@ -5,11 +5,11 @@ import {
   useMutation,
   useQuery,
 } from '@tanstack/react-query';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import {
-  PopupModalConfirmModul,
-  confirmModuleState,
-} from '../../../recoil/atoms/module-content';
+  PopupModalConfirmModulAtom,
+  confirmModuleStateAtom,
+} from '../../../store';
 import {
   ConfirmModulTypes,
   TModuleContentResponse,
@@ -27,7 +27,7 @@ import {
 } from './request';
 
 export const useConfirmModul = (): ConfirmModulTypes => {
-  const [getConfirm, setConfirm] = useRecoilState(confirmModuleState);
+  const [getConfirm, setConfirm] = useAtom(confirmModuleStateAtom);
   return {
     setConfirmModul: (val: boolean) => setConfirm(val),
     getConfirmModul: getConfirm,
@@ -44,7 +44,7 @@ export const useGetModuleById = (
   });
 
 export const usePopupConfirmModul = (): TusePopupConfirmModul => {
-  const [get, set] = useRecoilState(PopupModalConfirmModul);
+  const [get, set] = useAtom(PopupModalConfirmModulAtom);
   return {
     setPopupStatus: (val: boolean) => set(val),
     getPopupStatus: get,

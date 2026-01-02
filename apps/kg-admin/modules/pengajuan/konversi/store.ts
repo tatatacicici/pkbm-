@@ -1,16 +1,8 @@
-import { atom } from 'recoil';
+'use client';
 
-export const modalDetailOpen = atom({
-  key: 'modal-detail',
-  default: false,
-});
-
-export const modalAccOpen = atom({
-  key: 'modal-acc',
-  default: false,
-});
-
-export const modalRejectOpen = atom({
-  key: 'modal-reject',
-  default: false,
-});
+// Re-export from centralized store
+export { 
+  modalDetailOpenAtom as modalDetailOpen,
+  modalAccOpenAtom as modalAccOpen,
+  modalRejectOpenAtom as modalRejectOpen
+} from '../../../store/pengajuan-konversi';

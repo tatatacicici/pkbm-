@@ -1,6 +1,3 @@
-import { atom } from 'recoil';
+import { atom } from 'jotai';
 
-export const penyalurankerjaState = atom({
-  key: 'penyalurankerja-data',
-  default: [],
-});
+export const penyalurankerjaStateAtom = atom<any[]>([]);

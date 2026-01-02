@@ -2,8 +2,8 @@ import { TMetaErrorResponse } from '@kampus-gratis/utils';
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
 import { TPenyaluranKerjaResponse } from '../../types/penyalurankerja';
 import { jobGetRequest } from './api';
-import { useRecoilState } from 'recoil';
-import { penyalurankerjaState } from './atom';
+import { useAtom } from 'jotai';
+import { penyalurankerjaStateAtom } from './atom';
 
 export const useGetJob = (
   page: string
@@ -14,7 +14,7 @@ export const useGetJob = (
   });
 
 export const useJob = () => {
-  const [get, set] = useRecoilState(penyalurankerjaState);
+  const [get, set] = useAtom(penyalurankerjaStateAtom);
 
   return {
     getPenyaluranKerja: get as any,

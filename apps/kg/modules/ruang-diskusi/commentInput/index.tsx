@@ -6,14 +6,14 @@ import { Controller, useForm } from 'react-hook-form';
 import { FaTelegramPlane } from 'react-icons/fa';
 import { MdCameraAlt } from 'react-icons/md';
 import { toast } from 'react-toastify';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import { z } from 'zod';
 import { DraggableImageInput } from '../../../components/draggableImageInput';
 import {
   useCreateComment,
   useCreateReply,
 } from '../../../hooks/ruang-diskusi/hooks';
-import { isImageInputOpen, selectedPostId } from '../store';
+import { isImageInputOpenAtom, selectedPostIdAtom } from '../store';
 
 type TCommentInputProps = {
   id: string;
@@ -38,9 +38,9 @@ export const CommentInput: FC<TCommentInputProps> = ({
     isSuccess: isSuccessReply,
   } = useCreateReply(discussion_id, id);
 
-  const [isImageOpen, setIsImageOpen] = useRecoilState(isImageInputOpen);
-  const setSelectedPosId = useSetRecoilState(selectedPostId);
-  const getSelectedPostId = useRecoilValue(selectedPostId);
+  const [isImageOpen, setIsImageOpen] = useAtom(isImageInputOpenAtom);
+  const setSelectedPosId = useSetAtom(selectedPostIdAtom);
+  const getSelectedPostId = useAtomValue(selectedPostIdAtom);
   const queryClient = useQueryClient();
 
   const [file, setFile] = useState<any>();

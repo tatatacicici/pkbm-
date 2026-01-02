@@ -1,6 +1,3 @@
-import { atom } from "recoil";
+import { atom } from "jotai";
 
-export const navSearchKeyword = atom({
-  key: "navbar-searching-keyword",
-  default: "",
-});
+export const navSearchKeywordAtom = atom("");

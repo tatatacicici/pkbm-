@@ -3,16 +3,16 @@ import { FC, ReactElement } from 'react';
 import { AiFillFlag } from 'react-icons/ai';
 import { BsPencilFill, BsThreeDotsVertical } from 'react-icons/bs';
 import { MdDelete } from 'react-icons/md';
-import { useSetRecoilState } from 'recoil';
+import { useSetAtom } from 'jotai';
 
 import { useProfile } from '../../../../hooks/profile/hook';
 import {
-  isModalOpen,
-  selectedCommentId,
-  selectedDiscussionId,
-  selectedOption,
-  selectedPostId,
-  selectedReplyId,
+  isModalOpenAtom,
+  selectedCommentIdAtom,
+  selectedDiscussionIdAtom,
+  selectedOptionAtom,
+  selectedPostIdAtom,
+  selectedReplyIdAtom,
 } from '../store';
 import { TSelectedOptionId } from './types';
 
@@ -79,12 +79,12 @@ export const DiscussionPostOption: FC<TSelectedOptionId> = ({
     }
   }
 
-  const setSeletedOption = useSetRecoilState(selectedOption);
-  const setOptionOpen = useSetRecoilState(isModalOpen);
-  const setSelectedPosId = useSetRecoilState(selectedPostId);
-  const setSelectedCommentId = useSetRecoilState(selectedCommentId);
-  const setSelectedReplyId = useSetRecoilState(selectedReplyId);
-  const setSelectedDiscussionId = useSetRecoilState(selectedDiscussionId);
+  const setSeletedOption = useSetAtom(selectedOptionAtom);
+  const setOptionOpen = useSetAtom(isModalOpenAtom);
+  const setSelectedPosId = useSetAtom(selectedPostIdAtom);
+  const setSelectedCommentId = useSetAtom(selectedCommentIdAtom);
+  const setSelectedReplyId = useSetAtom(selectedReplyIdAtom);
+  const setSelectedDiscussionId = useSetAtom(selectedDiscussionIdAtom);
   return (
     <div className="">
       <Menu

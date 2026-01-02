@@ -1,5 +1,5 @@
-import { useRecoilState } from 'recoil';
-import { PopupModalSuccessOpen } from './atom';
+import { useAtom } from 'jotai';
+import { PopupModalSuccessOpenAtom } from './atom';
 import {
   UseMutationResult,
   UseQueryResult,
@@ -19,7 +19,7 @@ type TReturnTypes = {
   getPopupStatus: boolean;
 };
 export const usePopupEvent = (): TReturnTypes => {
-  const [get, set] = useRecoilState(PopupModalSuccessOpen);
+  const [get, set] = useAtom(PopupModalSuccessOpenAtom);
   return {
     setPopupStatus: (val) => set(val),
     getPopupStatus: get,

@@ -16,6 +16,7 @@ export const Card: FC<TCardProps> = ({
   hasImage,
   imgStyle,
   onClick,
+  alt,
 }): ReactElement => {
   return (
     <>
@@ -29,7 +30,7 @@ export const Card: FC<TCardProps> = ({
               <Image
                 className={`object-cover ${imgStyle}`}
                 src={src}
-                alt="Picture of the author"
+                alt={alt || title || 'Card image'}
                 width={imgwidth}
                 height={imgheight}
               />
@@ -48,7 +49,7 @@ export const Card: FC<TCardProps> = ({
             <Image
               className={`w-full object-cover ${imgStyle}`}
               src={src}
-              alt={title as string}
+              alt={alt || title || 'Card image'}
               width={imgwidth}
               height={imgheight}
             />

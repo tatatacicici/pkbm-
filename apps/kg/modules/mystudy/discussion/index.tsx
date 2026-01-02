@@ -11,7 +11,7 @@ import {
 } from 'next/navigation';
 import { DependencyList, useCallback, useEffect, useState } from 'react';
 import { BiSolidLock } from 'react-icons/bi';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import { useGetAllStudikuDiscussion } from '../../../hooks/mystudy/discussion/hooks';
 import { useGetSubjectDetailsById } from '../../../hooks/mystudy/subject-detail/hook';
 import { CommentSection } from './commentSection';
@@ -22,15 +22,15 @@ import { PostEditModal } from './modal/Post-Edit';
 import { PostEditCommentModal } from './modal/Post-Edit-Comment';
 import { PostReportModal } from './modal/Post-Report';
 import { ReportSuccessModal } from './modal/Report-Success';
-import { isModalOpen, selectedOption } from './store';
+import { isModalOpenAtom, selectedOptionAtom } from './store';
 
 export const DiskusiStudikuModule = () => {
   const { subjectId, sessionId } = useParams();
   const searchParams = useSearchParams();
   const page = searchParams.get('page');
   const { data: dataSubject } = useGetSubjectDetailsById(subjectId as string);
-  const [isOptionOpen, setOptionOpen] = useRecoilState(isModalOpen);
-  const [getSelectedOption] = useRecoilState(selectedOption);
+  const [isOptionOpen, setOptionOpen] = useAtom(isModalOpenAtom);
+  const [getSelectedOption] = useAtom(selectedOptionAtom);
   const [selectedPertemuan, setSelectedPertemuan] = useState<string>(
     sessionId as string
   );

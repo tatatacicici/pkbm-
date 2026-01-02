@@ -11,7 +11,7 @@ import {
 } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { IoMdAddCircleOutline } from 'react-icons/io';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import Pagination from '../../../components/general/pagination';
 import { useProfile } from '../../../hooks/profile/hook';
 import { useGetAllDiscussion } from '../../../hooks/ruang-diskusi/hooks';
@@ -24,7 +24,7 @@ import { PostEditModal } from '../modal/Post-Edit';
 import { PostEditCommentModal } from '../modal/Post-Edit-Comment';
 import { PostReportModal } from '../modal/Post-Report';
 import { ReportSuccessModal } from '../modal/Report-Success';
-import { isModalOpen, selectedOption } from '../store';
+import { isModalOpenAtom, selectedOptionAtom } from '../store';
 
 export function useDebounce(
   effect: VoidFunction,
@@ -41,8 +41,8 @@ export function useDebounce(
 }
 
 export const DiscussionContent: FC = (): ReactElement => {
-  const [isOptionOpen, setOptionOpen] = useRecoilState(isModalOpen);
-  const [getSelectedOption, setSelectedOption] = useRecoilState(selectedOption);
+  const [isOptionOpen, setOptionOpen] = useAtom(isModalOpenAtom);
+  const [getSelectedOption, setSelectedOption] = useAtom(selectedOptionAtom);
   // const [searchQuery, setSearchQuery] = useState<string>('');
   const pathname = usePathname();
   const router = useRouter();

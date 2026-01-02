@@ -1,64 +1,28 @@
-import { atom } from 'recoil';
+import { atom } from 'jotai';
 
-export const selectedOption = atom({
-  key: 'post-option',
-  default: '',
+export const selectedOptionAtom = atom('');
+
+export const isModalOpenAtom = atom(false);
+
+export const reportDetailTitleAtom = atom('');
+
+export const reportDetailTypeAtom = atom('');
+
+export const reportSuccessAtom = atom(false);
+
+export const selectedPostIdAtom = atom('');
+
+export const selectedCommentIdAtom = atom('');
+
+export const selectedReplyIdAtom = atom('');
+
+export const isCommentInputOpenAtom = atom(false);
+
+export const isImageInputOpenAtom = atom(false);
+
+export const postStateAtom = atom({
+  id: '',
+  isCommentOpen: false,
 });
 
-export const isModalOpen = atom({
-  key: 'modal-opened',
-  default: false,
-});
-
-export const reportDetailTitle = atom({
-  key: 'report-detail-title',
-  default: '',
-});
-
-export const reportDetailType = atom({
-  key: 'report-detail-type',
-  default: '',
-});
-
-export const reportSuccess = atom({
-  key: 'report-success',
-  default: false,
-});
-
-export const selectedPostId = atom({
-  key: 'post-id',
-  default: '',
-});
-
-export const selectedCommentId = atom({
-  key: 'comment-id',
-  default: '',
-});
-
-export const selectedReplyId = atom({
-  key: 'reply-id',
-  default: '',
-});
-
-export const isCommentInputOpen = atom({
-  key: 'comment-input-opened',
-  default: false,
-});
-
-export const isImageInputOpen = atom({
-  key: 'image-input-opened',
-  default: false,
-});
-
-export const postState = atom({
-  key: 'post-state',
-  default: {
-    id: '',
-    isCommentOpen: false,
-  },
-});
-
-export const selectedDiscussionId = atom({
-  key: 'discussion-id',
-  default: '',
-});
+export const selectedDiscussionIdAtom = atom('');

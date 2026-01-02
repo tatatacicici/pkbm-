@@ -6,14 +6,14 @@ import { Controller, useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { FaTelegramPlane } from 'react-icons/fa';
 import { LuImagePlus } from 'react-icons/lu';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import { z } from 'zod';
 import { DraggableImageInput } from '../../../../components/draggableImageInput';
 import {
   useCreateComment,
   useCreateReply,
 } from '../../../../hooks/mystudy/discussion/hooks';
-import { isImageInputOpen, selectedPostId } from '../store';
+import { isImageInputOpenAtom, selectedPostIdAtom } from '../store';
 
 type TCommentInputProps = {
   subject_id: string;
@@ -46,9 +46,9 @@ export const CommentInput: FC<TCommentInputProps> = ({
     isSuccess: isSuccessReply,
   } = useCreateReply(subject_id, session_id, discussion_id, id);
 
-  const [isImageOpen, setIsImageOpen] = useRecoilState(isImageInputOpen);
-  const setSelectedPosId = useSetRecoilState(selectedPostId);
-  const getSelectedPostId = useRecoilValue(selectedPostId);
+  const [isImageOpen, setIsImageOpen] = useAtom(isImageInputOpenAtom);
+  const setSelectedPosId = useSetAtom(selectedPostIdAtom);
+  const getSelectedPostId = useAtomValue(selectedPostIdAtom);
   const queryClient = useQueryClient();
 
   const [file, setFile] = useState<any>();
@@ -231,7 +231,6 @@ export const CommentInput: FC<TCommentInputProps> = ({
             status={errors.image ? 'error' : undefined}
             disabled={!(isImageOpen && getSelectedPostId === id)}
             labelStyle={isImageOpen ? 'cursor-pointer' : ''}
-            // message={errors.images?.message}
           />
           {errors.image &&
             (errors.image as ImagesError).map((error, index) =>

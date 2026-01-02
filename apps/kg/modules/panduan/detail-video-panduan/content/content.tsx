@@ -1,7 +1,7 @@
 'use client';
 
 import { FC, Fragment, ReactElement, useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useAtomValue } from 'jotai';
 
 import { redirect, useParams, useRouter } from 'next/navigation';
 
@@ -13,7 +13,7 @@ import {
 } from '../../../../hooks/video-panduan/hooks';
 import { LoadingSpinner } from '@kampus-gratis/components/atoms';
 import { ListVideo } from '../list-video/listVideo';
-import { videoIdState } from '../../../../recoil/atoms/video-panduan';
+import { videoIdStateAtom } from '../../../../store';
 
 export const ContentSection: FC = (): ReactElement => {
   // const videoIds = useRecoilValue(videoIdState);

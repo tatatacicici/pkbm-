@@ -1,11 +1,5 @@
-import { atom } from 'recoil';
+import { atom } from 'jotai';
 
-export const PopupAjukanLamaran = atom({
-  key: 'ajukan-lamaran',
-  default: false,
-});
+export const PopupAjukanLamaranAtom = atom(false);
 
-export const PopupAjukanLamaranLetter = atom({
-  key: 'ajukan-lamaran-letter',
-  default: false,
-});
+export const PopupAjukanLamaranLetterAtom = atom(false);

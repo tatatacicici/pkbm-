@@ -7,8 +7,8 @@ import {
   useMutation,
   useQuery,
 } from '@tanstack/react-query';
-import { useRecoilState } from 'recoil';
-import { quizQuitPopupState, remainingTime } from '../../../recoil/atoms/quiz';
+import { useAtom } from 'jotai';
+import { quizQuitPopupStateAtom, remainingTimeAtom } from '../../../store';
 import {
   TQuizDescResponse,
   TQuizHistoryResponse,
@@ -73,7 +73,7 @@ export const useSubmitQuiz = (): UseMutationResult<
   });
 
 export const useRemainingTimeQuiz = (): TUseRemaingTimeQuiz => {
-  const [get, set] = useRecoilState(remainingTime);
+  const [get, set] = useAtom(remainingTimeAtom);
 
   return {
     setRemainingTime: (val: number) => set(val),
@@ -98,7 +98,7 @@ export const useGetQuizHistoryById = (
   });
 
 export const useQuizQuitPopup = () => {
-  const [get, set] = useRecoilState(quizQuitPopupState);
+  const [get, set] = useAtom(quizQuitPopupStateAtom);
   return {
     getQuizQuitPopup: get,
     setQuizQuitPopup: (val: TQuizQuitPopup) => set(val),

@@ -40,29 +40,10 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    if (error.response.status === 401 && !originalRequest._retry) {
+    // Check if error.response exists before accessing status
+    if (error.response?.status === 401 && !originalRequest._retry) {
       // redirect to login page with signout
       signOut({ callbackUrl: '/auth/login' });
-
-      // window.location.href = '/auth/login';
-
-      // originalRequest._retry = true;
-
-      // const session: Session = (await getSession()) as Session;
-
-      // const refreshToken = session?.user?.token?.refresh_token as string;
-
-      // const { data } = await refreshTokenRequest({
-      //   refresh_token: refreshToken,
-      // });
-
-      // const token = data?.access_token as string;
-
-      // api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-
-      // originalRequest.headers['Authorization'] = `Bearer ${token}`;
-
-      // return api(originalRequest);
     }
     return Promise.reject(error);
   }

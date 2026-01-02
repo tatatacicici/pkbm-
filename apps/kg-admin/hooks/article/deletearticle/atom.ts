@@ -1,6 +1,4 @@
-import { atom } from 'recoil';
+'use client';
 
-export const selectedArticleId = atom({
-  key: 'id-article',
-  default: '',
-});
+// Re-export from centralized store
+export { selectedArticleIdAtom as selectedArticleId } from '../../../store/article';

@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
 import { Button } from '@kampus-gratis/components/atoms';
-import { useRecoilState } from 'recoil';
-import { modalConfirmation } from '../../../../../recoil/atoms/rencana-studi';
+import { useAtom } from 'jotai';
+import { modalConfirmationAtom } from '../../../../../store/rencana-studi';
 
 export const ModalPopUpConfirmation: FC = () => {
   const [isModalConfirmOpen, setIsModalConfirmOpen] =
-    useRecoilState(modalConfirmation);
+    useAtom(modalConfirmationAtom);
   return (
     <div className="flex flex-col items-center justify-center pb-4 px-4 w-[500px]">
       <div className="w-full pb-3 flex flex-col gap-y-2 justify-center items-center">

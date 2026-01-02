@@ -1,20 +1,18 @@
 'use client';
 import Image from 'next/image';
 import { FC, ReactElement } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useAtom, useAtomValue } from 'jotai';
 
-import { querySemuaFitur } from '../../../recoil/atoms/semuafitur';
-import { filterSemuaFitur } from '../../../recoil/selectors/semuafitur';
+import { querySemuaFiturAtom, filterSemuaFiturAtom } from '../../../store/semuafitur';
 import CardSemuaFitur from '../Card/CardSemuaFitur';
 import EmptyState from '../../empty-state';
 
 const Features: FC = (): ReactElement => {
-  const [query, setQuery] = useRecoilState(querySemuaFitur);
-  const getSemuafitur = useRecoilValue(filterSemuaFitur);
+  const [query, setQuery] = useAtom(querySemuaFiturAtom);
+  const getSemuafitur = useAtomValue(filterSemuaFiturAtom);
 
   return (
     <section className="dark:bg-[#222529] w-full max-w-[1440px] mx-auto pb-10 relative">
-      {/* <div className="bg-[#106FA4] w-full max-w-[1440px] h-[300px] absolute"></div> */}
       <div className="bg-sky-base w-full max-w-[1440px] h-[300px] absolute"></div>
 
       <div className="flex absolute z-0 top-0 left-0 lg:top-30">

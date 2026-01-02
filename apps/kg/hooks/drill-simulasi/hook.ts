@@ -1,6 +1,6 @@
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
-import { useRecoilState } from "recoil";
-import { PopupModalSubmissionOpen } from "../../recoil/atoms/drill-simulasi";
+import { useAtom } from "jotai";
+import { PopupModalSubmissionOpenAtom } from "../../store/drill-simulasi";
 import {
   ReturnTypesPopupSubmissionStatus,
   TSimulationHistoryResponse,
@@ -25,7 +25,7 @@ export const useGetHistorySimulation = (): UseQueryResult<
   });
 
 export const usePopupSubmissionStatus = (): ReturnTypesPopupSubmissionStatus => {
-  const [get, set] = useRecoilState(PopupModalSubmissionOpen);
+  const [get, set] = useAtom(PopupModalSubmissionOpenAtom);
   return {
     setPopupStatus: (val: boolean) => set(val),
     getPopupStatus: get,

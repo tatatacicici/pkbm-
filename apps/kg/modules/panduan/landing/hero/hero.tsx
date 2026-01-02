@@ -2,9 +2,9 @@ import { ReactElement, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { Combobox } from '@headlessui/react';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { queryGlobalPanduan } from '../../../../recoil/atoms/panduan';
-import { filterGlobalPanduan } from '../../../../recoil/selectors/panduan';
+import { useAtom, useAtomValue } from 'jotai';
+import { queryGlobalPanduanAtom } from '../../../../store';
+import { filterGlobalPanduanAtom } from '../../../../store/selectors/panduan';
 import Link from 'next/link';
 import { TDictionariesResponse } from '../../../../types/panduan';
 import {
@@ -13,11 +13,11 @@ import {
   useGetDictionary,
   useGuideBook,
 } from '../../../../hooks/panduan/hooks';
-import { filterPanduanBook } from '../../../../recoil/selectors/buku-panduan';
+import { filterPanduanBookAtom } from '../../../../store/selectors/buku-panduan';
 // import PanduanHero from "../../../public/images/panduan/panduan-hero.svg"
 
 export const HeroSection = (): ReactElement => {
-  const [query, setQuery] = useRecoilState(queryGlobalPanduan);
+  const [query, setQuery] = useAtom(queryGlobalPanduanAtom);
   const [selectedGlobal, setSelectedGlobal] = useState('');
 
   const { data, isLoading } = useGetBukuPanduan();
@@ -27,7 +27,7 @@ export const HeroSection = (): ReactElement => {
     setBookData(data as any);
   }, [data, setBookData]);
 
-  const bookDataFilter = useRecoilValue(filterPanduanBook);
+  const bookDataFilter = useAtomValue(filterPanduanBookAtom);
 
   return (
     <div className="md:grid md:grid-cols-2 md:gap-10 md:px-14 2xl:px-0 px-6 mb-4 bg-white max-w-[1440px] mx-auto">

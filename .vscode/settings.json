@@ -2,5 +2,6 @@
   "prettier.prettierPath": "./node_modules/prettier",
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.fontSize": 13
+  "editor.fontSize": 13,
+  "typescript.autoClosingTags": false
 }

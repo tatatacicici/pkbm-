@@ -1,6 +1,4 @@
-import { atom } from 'recoil';
+'use client';
 
-export const PopupDeleteOpenArticle = atom({
-  key: 'modal-popup-success-4',
-  default: false,
-});
+// Re-export from centralized store
+export { PopupDeleteOpenArticleAtom as PopupDeleteOpenArticle } from '../../store/article';

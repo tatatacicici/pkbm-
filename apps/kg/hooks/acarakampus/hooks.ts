@@ -2,8 +2,8 @@ import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import { TEventResponse } from '../../types/acarakampus';
 import { eventGetRequest } from './api';
 import { TMetaErrorResponse } from '@kampus-gratis/utils';
-import { useRecoilState } from 'recoil';
-import { AcaraKampusState } from './atom';
+import { useAtom } from 'jotai';
+import { AcaraKampusStateAtom } from './atom';
 
 // type TEventAcaraKampus = {
 //   setAcaraKampus: (val: boolean) => void;
@@ -18,7 +18,7 @@ export const useGetEvent = (
     queryFn: async () => await eventGetRequest(page),
   });
 export const useAcaraKampus = () => {
-  const [get, set] = useRecoilState(AcaraKampusState);
+  const [get, set] = useAtom(AcaraKampusStateAtom);
 
   return {
     getAcaraKampus: get as any,

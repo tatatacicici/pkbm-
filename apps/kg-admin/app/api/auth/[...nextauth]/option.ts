@@ -34,15 +34,21 @@ export const authOptions: NextAuthOptions = {
 
           return data;
         } catch (error: any) {
-          if (error.response.status === 422) {
-            throw new Error(error.response.data.message);
-          }
+          // Handle case where error.response might be undefined
+          if (error.response) {
+            if (error.response.status === 422) {
+              throw new Error(error.response.data.message);
+            }
 
-          throw new Error(
-            typeof error.response.data === 'string'
-              ? error.response.data
-              : error.response.data?.message
-          );
+            throw new Error(
+              typeof error.response.data === 'string'
+                ? error.response.data
+                : error.response.data?.message
+            );
+          }
+          
+          // Handle network errors or other errors without response
+          throw new Error(error.message || 'Login failed. Please try again.');
         }
       },
     }),

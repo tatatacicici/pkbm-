@@ -60,12 +60,12 @@ export const ArticleSection: FC = (): ReactElement => {
                       <h1 className="font-semibold text-black dark:text-yellow-500 text-xl">
                         {article?.title}
                       </h1>
-                      <p className="flex flex-row items-center gap-x-2 font-normal text-sm flex-wrap">
+                      <div className="flex flex-row items-center gap-x-2 font-normal text-sm flex-wrap">
                         {article?.tags?.map((tag, i) => (
                           <Fragment key={i}>
                             <span>{tag}</span>
                             {article?.tags?.length - 1 !== i && (
-                              <div className="flex items-center">
+                              <span className="flex items-center">
                                 <svg
                                   width="3"
                                   height="2"
@@ -80,11 +80,11 @@ export const ArticleSection: FC = (): ReactElement => {
                                     fill="#A3A3A3"
                                   />
                                 </svg>
-                              </div>
+                              </span>
                             )}
                           </Fragment>
                         ))}
-                      </p>
+                      </div>
                       <p className="font-normal text-end text-sm text-[#A3A3A3] mt-2">
                         {changeFormatByTime(article?.created_at)}
                       </p>

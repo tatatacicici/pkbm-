@@ -5,14 +5,17 @@ import {
   useMutation,
   useQuery,
 } from '@tanstack/react-query';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import {
-  AdministrationStatusState,
-  AdministrationStudentRoleModalState,
-  AdministrationStudentRoleState,
-  FacultyInformationState,
-  SocialMediaInformationState,
-} from '../../recoil/atoms/administration';
+  AdministrationStatusStateAtom,
+  AdministrationStudentRoleModalStateAtom,
+  AdministrationStudentRoleStateAtom,
+  FacultyInformationStateAtom,
+  SocialMediaInformationStateAtom,
+  FileInformationStateAtom,
+  JobInformationStateAtom,
+  PrivateInformationStateAtom,
+} from '../../store/administration';
 import {
   TBiodataAdm,
   TBiodataResponse,
@@ -25,10 +28,13 @@ import {
   TGetAdmResponse,
   TReturnFacultyInformation,
   TReturnSocialMediaInformation,
-  TSocialMediaPayload,
   TStatusReturnAdministration,
   TStatusReturnAdministrationStudentRole,
   TTeacherRegistrationPayload,
+  TReturnFileInformation,
+  TReturnJobInformation,
+  TReturnPrivateInformation,
+  TSocialMediaPayload,
 } from '../../types/administration';
 import {
   constantsRequest,
@@ -41,19 +47,8 @@ import {
   teacherRegistrationRequest
 } from './request';
 
-import {
-  FileInformationState,
-  JobInformationState,
-  PrivateInformationState,
-} from '../../recoil/atoms/administration';
-import {
-  TReturnFileInformation,
-  TReturnJobInformation,
-  TReturnPrivateInformation,
-} from '../../types/administration';
-
 export const useAdministrationStudentRoleModal = () => {
-  const [get, set] = useRecoilState(AdministrationStudentRoleModalState);
+  const [get, set] = useAtom(AdministrationStudentRoleModalStateAtom);
   return {
     setAdministrationStudentRoleModal: (val: boolean) => set(val),
     getAdministrationStudentRoleModal: get,
@@ -62,7 +57,7 @@ export const useAdministrationStudentRoleModal = () => {
 
 export const useAdministrationStudentRole =
   (): TStatusReturnAdministrationStudentRole => {
-    const [get, set] = useRecoilState(AdministrationStudentRoleState);
+    const [get, set] = useAtom(AdministrationStudentRoleStateAtom);
     return {
       setAdministrationStudentRole: (val: 'REGULAR' | 'BOOTCAMP') => set(val),
       getAdministrationStudentRole: get,
@@ -70,7 +65,7 @@ export const useAdministrationStudentRole =
   };
 
 export const useAdministrationStatus = (): TStatusReturnAdministration => {
-  const [getStatus, setStatus] = useRecoilState(AdministrationStatusState);
+  const [getStatus, setStatus] = useAtom(AdministrationStatusStateAtom);
   return {
     setAdministrationStatus: (val: string) => setStatus(val),
     getAdministrationStatus: getStatus,
@@ -78,7 +73,7 @@ export const useAdministrationStatus = (): TStatusReturnAdministration => {
 };
 
 export const useFacultyInformationStatus = (): TReturnFacultyInformation => {
-  const [get, set] = useRecoilState(FacultyInformationState);
+  const [get, set] = useAtom(FacultyInformationStateAtom);
   return {
     setFacultyStatus: (val: boolean) => set(val),
     getFacultyStatus: get,
@@ -86,7 +81,7 @@ export const useFacultyInformationStatus = (): TReturnFacultyInformation => {
 };
 
 export const useSocialMediaInformationStatus = (): TReturnSocialMediaInformation => {
-  const [get, set] = useRecoilState(SocialMediaInformationState);
+  const [get, set] = useAtom(SocialMediaInformationStateAtom);
   return {
     setSocialMediaStatus: (val: boolean) => set(val),
     getSocialMediaStatus: get,
@@ -157,7 +152,7 @@ export const useConstants = (): UseQueryResult<TConstantsResponse> =>
   });
 
 export const usePrivateInformationStatus = (): TReturnPrivateInformation => {
-  const [get, set] = useRecoilState(PrivateInformationState);
+  const [get, set] = useAtom(PrivateInformationStateAtom);
   return {
     setPrivateStatus: (val: boolean) => set(val),
     getPrivateStatus: get,
@@ -165,7 +160,7 @@ export const usePrivateInformationStatus = (): TReturnPrivateInformation => {
 };
 
 export const useJobInformationStatus = (): TReturnJobInformation => {
-  const [get, set] = useRecoilState(JobInformationState);
+  const [get, set] = useAtom(JobInformationStateAtom);
   return {
     setJobStatus: (val: boolean) => set(val),
     getJobStatus: get,
@@ -173,7 +168,7 @@ export const useJobInformationStatus = (): TReturnJobInformation => {
 };
 
 export const useFileInformationStatus = (): TReturnFileInformation => {
-  const [getStatus, setStatus] = useRecoilState(FileInformationState);
+  const [getStatus, setStatus] = useAtom(FileInformationStateAtom);
   return {
     setFileStatus: (val: boolean) => setStatus(val),
     getFileStatus: getStatus,

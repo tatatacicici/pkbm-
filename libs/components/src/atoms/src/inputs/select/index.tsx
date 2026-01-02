@@ -9,6 +9,7 @@ import { ISelect, TOption } from './types';
 export const SelectField = <T extends FieldValues>({
   variant = 'lg',
   defaultValue,
+  helper,
   ...props
 }: ISelect<T>) => {
   const getLabel = (value: string) =>
@@ -22,7 +23,7 @@ export const SelectField = <T extends FieldValues>({
       {...props}
       onChange={(e) => {
         field.onChange(e);
-        props.helper && props.helper(e);
+        helper && helper(e);
       }}
     >
       <div className="flex flex-col gap-y-1 w-auto ">

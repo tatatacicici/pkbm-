@@ -10,7 +10,7 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { IoAddCircleOutline } from 'react-icons/io5';
 import { RiSendPlaneFill } from 'react-icons/ri';
 import { RxCross1 } from 'react-icons/rx';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useAtomValue, useSetAtom } from 'jotai';
 import { DraggableImageInput } from '../../../../../components/draggableImageInput';
 import {
   useGetCommentById,
@@ -18,11 +18,11 @@ import {
   useUpdateDiscussion,
 } from '../../../../../hooks/ruang-diskusi/hooks';
 import { TDiscussionUpdatePayload } from '../../../../../types/ruang-diskusi';
-import { isModalOpen, selectedPostId } from '../../store';
+import { isModalOpenAtom, selectedPostIdAtom } from '../../store';
 import { toast } from 'react-toastify';
 
 export const PostEditModal: FC = (): ReactElement => {
-  const getSelectedPostId = useRecoilValue(selectedPostId);
+  const getSelectedPostId = useAtomValue(selectedPostIdAtom);
   const queryClient = useQueryClient();
   const [deletedImages, setDeletedImages] = useState<number[]>([]);
 
@@ -42,7 +42,7 @@ export const PostEditModal: FC = (): ReactElement => {
   // const { mutate: mutateComment } = useUpdateComment(getSelectedPostId);
 
   const [isEdit, setIsEdit] = useState(false);
-  const setOptionOpen = useSetRecoilState(isModalOpen);
+  const setOptionOpen = useSetAtom(isModalOpenAtom);
   const validationSchema = z.object({
     title: z
       .string()
