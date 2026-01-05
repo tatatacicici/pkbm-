@@ -1,7 +1,7 @@
 import { FC, ReactElement } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { Modal } from '../modal';
-import { TPopupModalProps } from 'libs/components/molecules/src/popup-modal/types';
+import { TPopupModalProps } from '@kampus-gratis/components/molecules';
 
 export const PopupModal: FC<TPopupModalProps> = ({
   popupTitle,

@@ -50,7 +50,7 @@ export const ValidasiKampusModule: FC = (): ReactElement => {
               </label>
               <Combobox
                 value={selectedGlobalPerguruan}
-                onChange={setSelectedGlobalPerguruan}
+                onChange={(value: string | null) => setSelectedGlobalPerguruan(value || '')}
               >
                 <div className="w-full flex bg-white h-[56px] pl-2 focus:outline-none rounded-[8px] border-2">
                   <Combobox.Input
@@ -87,7 +87,7 @@ export const ValidasiKampusModule: FC = (): ReactElement => {
               </label>
               <Combobox
                 value={selectedGlobalProdi}
-                onChange={setSelectedGlobalProdi}
+                onChange={(value: string | null) => setSelectedGlobalProdi(value || '')}
               >
                 <div className="w-full flex bg-white h-[56px] pl-2 focus:outline-none rounded-[8px] border-2">
                   <Combobox.Input
@@ -124,7 +124,7 @@ export const ValidasiKampusModule: FC = (): ReactElement => {
               </label>
               <Combobox
                 value={selectedGlobalJurusan}
-                onChange={setSelectedGlobalJurusan}
+                onChange={(value: string | null) => setSelectedGlobalJurusan(value || '')}
               >
                 <div className="w-full flex bg-white h-[56px] pl-2 focus:outline-none rounded-[8px] border-2">
                   <Combobox.Input

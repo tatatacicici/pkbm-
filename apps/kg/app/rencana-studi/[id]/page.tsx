@@ -1,5 +1,5 @@
 import { BreadCrumb } from '@kampus-gratis/components/atoms';
-import { ReactElement } from 'react';
+import { ReactElement, use } from 'react';
 import { BaseLayout } from '../../../components/layouts/base/section';
 import { StudyProgram } from '../../../modules/study-plan/study-program';
 import { studyProgramBreadCumbs } from '../../../utils/constantAdministrations';
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
     'Platform belajar gratis pertama di Indonesia, belajar mudah dengan paket-c gratis bisa diakses siapapun khususnya kaum marginal',
 };
 
-const FacultyPage = ({ params }: { params: { id: string } }): ReactElement => {
-  const { id } = params;
+const FacultyPage = ({ params }: { params: Promise<{ id: string }> }): ReactElement => {
+  const { id } = use(params);
   return (
     <BaseLayout title="Pilih Program Studi">
       <BreadCrumb bgColor="bg-neutral-50" items={studyProgramBreadCumbs} />

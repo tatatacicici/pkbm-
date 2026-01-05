@@ -39,7 +39,7 @@ export const HeroSection = (): ReactElement => {
           </p>
         </div>
         <div className="lg:w-[700px] h-[56px] w-full rounded-[8px] mt-[48px] flex items-center gap-4 flex-wrap z-10 relative">
-          <Combobox value={selectedGlobal} onChange={setSelectedGlobal}>
+          <Combobox value={selectedGlobal} onChange={(value: string | null) => setSelectedGlobal(value || '')}>
             <div
               className={
                 'w-full flex bg-neutral-100 h-[56px] pl-6 focus:outline-none rounded-[8px]'

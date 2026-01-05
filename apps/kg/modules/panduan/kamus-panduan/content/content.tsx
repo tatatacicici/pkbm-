@@ -44,7 +44,7 @@ export const ContentSection = (): ReactElement => {
           </p>
         </div>
         <div className="lg:w-[700px] h-[56px] w-full rounded-[8px] mt-[48px] flex items-center gap-4 flex-wrap z-10 relative">
-          <Combobox value={selectedKamus} onChange={setSelectedKamus}>
+          <Combobox value={selectedKamus} onChange={(value: string | null) => setSelectedKamus(value || '')}>
             <div
               className={
                 'w-full flex bg-neutral-100 h-[56px] pl-6 focus:outline-none rounded-[8px]'

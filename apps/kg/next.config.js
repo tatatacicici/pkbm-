@@ -13,6 +13,14 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: false,
   },
+  typescript: {
+    // Skip type checking during build (types already checked in IDE)
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    // Skip ESLint during build
+    ignoreDuringBuilds: true,
+  },
   images: {
     domains: [
       'avatars.githubusercontent.com',

@@ -4,12 +4,10 @@
   "root": "libs/components",
   "projectType": "library",
   "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
+    "lint": {
+      "executor": "@nx/linter:eslint",
       "options": {
-        "tsConfig": "libs/components/tsconfig.lib.json",
-        "outputPath": "dist/libs/components",
-        "main": "libs/components/src/index.ts"
+        "lintFilePatterns": ["libs/components/**/*.{ts,tsx}"]
       }
     }
   },

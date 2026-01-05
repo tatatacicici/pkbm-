@@ -6,3 +6,4 @@ export * from './bread-crumb';
 export * from './chart';
 export * from './cs';
 export * from './quiz-timer';
+export * from './utils';
