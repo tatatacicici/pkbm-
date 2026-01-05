@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-useless-fragment */
 import { Button } from '@kampus-gratis/components/atoms';
 import { TModalProps } from '@kampus-gratis/components/molecules';
 import Image from 'next/image';

@@ -46,7 +46,6 @@ export const PopupModal: FC<TPopupModalProps> = ({
             )}
           </>
         ) : (
-          // eslint-disable-next-line react/jsx-no-useless-fragment
           <>
             {hasImg && (
               <Image

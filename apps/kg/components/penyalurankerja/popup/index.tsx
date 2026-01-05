@@ -61,7 +61,6 @@ export const PopupAjukanLamaran: FC<TPopupAjukanLamaran> = ({
             )}
           </>
         ) : (
-          // eslint-disable-next-line react/jsx-no-useless-fragment
           <>
             {hasImg && (
               <Image
