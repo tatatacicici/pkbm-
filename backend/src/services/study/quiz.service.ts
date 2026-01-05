@@ -1,198 +1,294 @@
-import { Op } from 'sequelize';
-import { v4 as uuidv4 } from 'uuid';
-import { Quizzes } from '../../models/tables/Quizzes';
-import { QuizzesQuestions } from '../../models/tables/QuizzesQuestions';
-import { QuizzesAnswers } from '../../models/tables/QuizzesAnswers';
-import { StudentSessionProgress } from '../../models/tables/StudentSessionProgress';
-import { ProgressQuestionAnswers } from '../../models/tables/ProgressQuestionAnswers';
-import { Users } from '../../models/tables/Users';
+import { Quizzes, QuizzesQuestions, QuizzesAnswers, StudentSessionProgress } from '../../models';
+import sequelize from './../../config/database';
+import { QueryTypes } from 'sequelize';
 
 export class QuizService {
   /**
    * Ambil quiz + questions + possible answers
    */
-  async takeQuiz(quizId: string) {
-    const quiz = await Quizzes.findOne({
-      where: { id: quizId, deletedAt: null as any },
-    });
+  async takeQuiz(userId: string, quizId: string) {
+    try {
+      const quiz = await Quizzes.findOne({
+        where: { id: quizId, deletedAt: null as any },
+      });
 
-    if (!quiz) throw new Error('Quiz not found');
+      if (!quiz) {
+        throw new Error('Quiz not found');
+      }
 
-    const questions = await QuizzesQuestions.findAll({
-      where: { quizId: quizId, deletedAt: null as any },
-      order: [['createdAt', 'ASC']],
-    });
+      // Check if user sudah submit quiz (single attempt enforcement)
+      const existingSubmission = await StudentSessionProgress.findOne({
+        where: {
+          studentId: userId,
+          quizId: quizId,
+          type: 'QUIZ',
+          status: 'SUBMITTED',
+        } as any,
+      });
 
-    // attach answers for each question
-    const questionsWithAnswers = await Promise.all(
-      questions.map(async (q) => {
-        const answers = await QuizzesAnswers.findAll({
-          where: { questionId: q.id, deletedAt: null as any },
-          order: [['createdAt', 'ASC']],
+      if (existingSubmission) {
+        throw new Error('You have already submitted this quiz');
+      }
+
+      const questions = await QuizzesQuestions.findAll({
+        where: { quizId: quizId, deletedAt: null as any },
+        order: [['createdAt', 'ASC']],
+      });
+
+      // Attach answers untuk setiap question
+      const questionsWithAnswers = await Promise.all(
+        questions.map(async (q) => {
+          const answers = await QuizzesAnswers.findAll({
+            where: { questionId: q.id, deletedAt: null as any },
+            attributes: ['id', 'answer'],
+            order: [['createdAt', 'ASC']],
+          });
+
+          return {
+            id: q.id,
+            question: (q as any).question,
+            type: (q as any).type,
+            answers: answers.map((a: any) => ({
+              id: a.id,
+              text: (a as any).answer,
+            })),
+          };
+        })
+      );
+
+      return {
+        id: quiz.id,
+        title: (quiz as any).title,
+        description: (quiz as any).description,
+        durationSec: (quiz as any).durationSec || (quiz as any).duration_sec,
+        questions: questionsWithAnswers,
+      };
+    } catch (error: any) {
+      throw new Error(`Failed to retrieve quiz: ${error.message}`);
+    }
+  }
+
+  /**
+   * Submit quiz answers dengan single-attempt enforcement
+   * FIX: Gunakan EXCLUDED keyword yang benar
+   */
+  async submitQuiz(
+    userId: string,
+    quizId: string,
+    answers: Array<{ question_id: string; answer_id: string }>
+  ) {
+    try {
+      // Validation
+      if (!Array.isArray(answers)) {
+        throw new Error('Answers must be an array');
+      }
+
+      // Check quiz exist
+      const quiz = await Quizzes.findOne({
+        where: { id: quizId, deletedAt: null as any },
+      });
+
+      if (!quiz) {
+        throw new Error('Quiz not found');
+      }
+
+      // Check single attempt
+      const existingSubmission = await StudentSessionProgress.findOne({
+        where: {
+          studentId: userId,
+          quizId: quizId,
+          type: 'QUIZ',
+          status: 'SUBMITTED',
+        } as any,
+      });
+
+      if (existingSubmission) {
+        throw new Error('You have already submitted this quiz once');
+      }
+
+      // Calculate score
+      let correctCount = 0;
+      for (const answer of answers) {
+        const correctAnswer = await QuizzesAnswers.findOne({
+          where: {
+            id: answer.answer_id,
+            questionId: answer.question_id,
+            isCorrect: true,
+            deletedAt: null as any,
+          } as any,
         });
 
-        return {
-          id: q.id,
-          question: q.question,
-          answers: answers.map((a) => ({
-            id: a.id,
-            answer: a.answer,
-            // do NOT expose isCorrect to client
-          })),
-        };
-      })
-    );
+        if (correctAnswer) {
+          correctCount++;
+        }
+      }
 
-    return {
-      id: quiz.id,
-      title: quiz.title,
-      description: quiz.description,
-      durationSec: quiz.durationSec,
-      questions: questionsWithAnswers,
-    };
+      const totalQuestions = await QuizzesQuestions.count({
+        where: { quizId: quizId, deletedAt: null as any },
+      });
+
+      const score = (correctCount / totalQuestions) * 100;
+
+      // Get session_id and subject_id from quiz
+      const quizSession = await sequelize.query(
+        `SELECT q.session_id, s.subject_id 
+         FROM quizzes q 
+         JOIN sessions s ON q.session_id = s.id 
+         WHERE q.id = $1`,
+        { bind: [quizId], type: QueryTypes.SELECT }
+      ) as any[];
+
+      const sessionId = quizSession[0]?.session_id;
+      const subjectId = quizSession[0]?.subject_id;
+
+      // Insert or update progress
+      await sequelize.query(
+        `INSERT INTO student_session_progress (
+          id, student_id, session_id, subject_id, quiz_id, type, score, status, timestamp_taken, timestamp_submitted, created_at, updated_at
+        ) VALUES (
+          gen_random_uuid(), $1, $2, $3, $4, 'QUIZ', $5, 'SUBMITTED', NOW(), NOW(), NOW(), NOW()
+        )
+        ON CONFLICT (student_id, session_id, subject_id, module_id, type)
+        DO UPDATE SET
+          score = EXCLUDED.score,
+          status = EXCLUDED.status,
+          timestamp_submitted = EXCLUDED.timestamp_submitted,
+          updated_at = EXCLUDED.updated_at`,
+        { bind: [userId, sessionId, subjectId, quizId, score] }
+      );
+
+      // Get progress_id that was just created/updated
+      const progressResult = await sequelize.query(
+        `SELECT id FROM student_session_progress 
+         WHERE student_id = $1 AND quiz_id = $2 AND type = 'QUIZ' 
+         ORDER BY updated_at DESC LIMIT 1`,
+        { bind: [userId, quizId], type: QueryTypes.SELECT }
+      ) as any[];
+      
+      const progressId = progressResult[0]?.id;
+
+      // Store detailed answers in progress_question_answers
+      if (progressId) {
+        for (const answer of answers) {
+          // Check if already exists
+          const existing = await sequelize.query(
+            `SELECT id FROM progress_question_answers 
+             WHERE progress_id = $1 AND question_id = $2`,
+            { bind: [progressId, answer.question_id], type: QueryTypes.SELECT }
+          ) as any[];
+
+          if (existing.length > 0) {
+            // Update existing
+            await sequelize.query(
+              `UPDATE progress_question_answers 
+               SET answer_id = $1 
+               WHERE progress_id = $2 AND question_id = $3`,
+              { bind: [answer.answer_id, progressId, answer.question_id] }
+            );
+          } else {
+            // Insert new
+            await sequelize.query(
+              `INSERT INTO progress_question_answers (id, progress_id, question_id, answer_id)
+               VALUES (gen_random_uuid(), $1, $2, $3)`,
+              { bind: [progressId, answer.question_id, answer.answer_id] }
+            );
+          }
+        }
+      }
+
+      return {
+        score: Math.round(score),
+        correctAnswers: correctCount,
+        totalQuestions,
+        passed: score >= 70,
+      };
+    } catch (error: any) {
+      throw new Error(`Failed to submit quiz: ${error.message}`);
+    }
   }
 
   /**
-   * Submit quiz answers.
-   * Single-attempt enforcement: kalau ada StudentSessionProgress record untuk quiz (same studentId + quizId + type='QUIZ' and completed), reject.
-   * We store score + timestampSubmitted + create/replace ProgressQuestionAnswers.
-   *
-   * answers: [{ question_id, answer_id }]
-   */
-  async submitQuiz(userId: string, quizId: string, answers: Array<{ question_id: string; answer_id: string }>) {
-    // validation basic
-    if (!Array.isArray(answers)) throw new Error('Answers must be array');
-
-    // check quiz exist
-    const quiz = await Quizzes.findOne({ where: { id: quizId, deletedAt: null as any } });
-    if (!quiz) throw new Error('Quiz not found');
-
-    // try find existing progress row for this user+quiz
-    let progress = await StudentSessionProgress.findOne({
-      where: {
-        studentId: userId,
-        quizId: quizId,
-        type: 'QUIZ',
-        deletedAt: null as any,
-      } as any,
-    });
-
-    if (progress && progress.status === 'COMPLETED') {
-      throw new Error('You have already submitted this quiz');
-    }
-
-    // if no progress, create one
-    if (!progress) {
-      progress = await StudentSessionProgress.create({
-        id: uuidv4(),
-        studentId: userId,
-        sessionId: quiz.sessionId, // keep relation if needed
-        subjectId: (quiz as any).subjectId || null,
-        type: 'QUIZ',
-        status: 'IN_PROGRESS',
-        timestampTaken: new Date(),
-        quizId: quizId,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      } as any);
-    }
-
-    // remove previous answers for this progress (single attempt semantics)
-    await ProgressQuestionAnswers.destroy({
-      where: { progressId: progress.id } as any,
-    });
-
-    // insert new answers and compute score
-    let correctCount = 0;
-    let totalQuestions = 0;
-
-    for (const a of answers) {
-      totalQuestions++;
-
-      // safe-check: ensure that answer belongs to the question and question belongs to the quiz
-      const question = await QuizzesQuestions.findOne({ where: { id: a.question_id, deletedAt: null as any } });
-      if (!question) {
-        // skip invalid question (could also throw)
-        continue;
-      }
-
-      // check that question belongs to this quiz
-      if ((question as any).quizId !== quizId) {
-        continue;
-      }
-
-      const answerRec = await QuizzesAnswers.findOne({ where: { id: a.answer_id, questionId: a.question_id, deletedAt: null as any } });
-      const isCorrect = !!(answerRec && answerRec.isCorrect);
-
-      if (isCorrect) correctCount++;
-
-      // persist answer link
-      await ProgressQuestionAnswers.create({
-        id: uuidv4(),
-        questionId: a.question_id,
-        answerId: a.answer_id,
-        progressId: progress.id,
-      } as any);
-    }
-
-    const score = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
-
-    // finalize progress
-    await progress.update({
-      score,
-      status: 'COMPLETED',
-      timestampSubmitted: new Date(),
-      updatedAt: new Date(),
-    } as any);
-
-    return {
-      progressId: progress.id,
-      score,
-      correctAnswers: correctCount,
-      totalQuestions,
-    };
-  }
-
-  /**
-   * Ambil result (summary) untuk user pada quiz (single-attempt)
+   * Ambil result untuk user pada quiz
    */
   async getQuizResult(userId: string, quizId: string) {
-    const progress = await StudentSessionProgress.findOne({
-      where: {
-        studentId: userId,
-        quizId,
-        type: 'QUIZ',
-        deletedAt: null as any,
-      } as any,
-    });
+    try {
+      const result = await sequelize.query(
+        `SELECT 
+          ssp.id,
+          ssp.score,
+          ssp.timestamp_submitted as completed_at,
+          q.title,
+          q.duration_sec
+        FROM student_session_progress ssp
+        LEFT JOIN quizzes q ON ssp.quiz_id = q.id
+        WHERE ssp.student_id = $1 
+          AND ssp.quiz_id = $2
+          AND ssp.type = 'QUIZ'
+        LIMIT 1`,
+        { bind: [userId, quizId], type: QueryTypes.SELECT }
+      );
 
-    if (!progress) throw new Error('Result not found');
+      if (!result || result.length === 0) {
+        throw new Error('Quiz result not found');
+      }
 
-    // collect answers
-    const answers = await ProgressQuestionAnswers.findAll({
-      where: { progressId: progress.id } as any,
-    });
+      return result[0];
+    } catch (error: any) {
+      throw new Error(`Failed to fetch quiz result: ${error.message}`);
+    }
+  }
 
-    // map detail per question
-    const detail = await Promise.all(
-      answers.map(async (a) => {
-        const question = await QuizzesQuestions.findOne({ where: { id: a.questionId } });
-        const answer = await QuizzesAnswers.findOne({ where: { id: a.answerId } });
-        return {
-          question_id: a.questionId,
-          question: question ? (question as any).question : null,
-          answer_id: a.answerId,
-          answer: answer ? (answer as any).answer : null,
-          isCorrect: answer ? (answer as any).isCorrect : false,
-        };
-      })
-    );
+  /**
+   * Get quizzes for a session
+   */
+  async getQuizzes(sessionId: string) {
+    try {
+      return await Quizzes.findAll({
+        where: { sessionId: sessionId, deletedAt: null as any },
+        order: [['createdAt', 'ASC']],
+      } as any);
+    } catch (error: any) {
+      throw new Error(`Failed to fetch quizzes: ${error.message}`);
+    }
+  }
 
-    return {
-      progressId: progress.id,
-      score: progress.score,
-      submittedAt: progress.timestampSubmitted,
-      details: detail,
-    };
+  /**
+   * Get quiz detail
+   */
+  async getQuizDetail(quizId: string) {
+    try {
+      const quiz = await Quizzes.findByPk(quizId);
+
+      if (!quiz) {
+        throw new Error('Quiz not found');
+      }
+
+      return quiz;
+    } catch (error: any) {
+      throw new Error(`Failed to fetch quiz detail: ${error.message}`);
+    }
+  }
+
+  /**
+   * Get quiz history untuk user
+   */
+  async getQuizHistory(userId: string) {
+    try {
+      return await sequelize.query(
+        `SELECT 
+          ssp.id,
+          ssp.score,
+          ssp.timestamp_submitted as completed_at,
+          q.id as quiz_id,
+          q.title
+        FROM student_session_progress ssp
+        LEFT JOIN quizzes q ON ssp.quiz_id = q.id
+        WHERE ssp.student_id = $1 AND ssp.type = 'QUIZ'
+        ORDER BY ssp.timestamp_submitted DESC`,
+        { bind: [userId], type: QueryTypes.SELECT }
+      );
+    } catch (error: any) {
+      throw new Error(`Failed to fetch quiz history: ${error.message}`);
+    }
   }
 }

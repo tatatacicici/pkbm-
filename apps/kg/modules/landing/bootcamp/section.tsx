@@ -17,8 +17,12 @@ export default function BootcampSection() {
   const { data: topicData, isLoading: topicIsLoading } = useGetBootcampTopic();
   const [selectedTopic, setSelectedTopic] = useState<string>('');
 
-  const filteredData = selectedTopic
-    ? data?.data?.subjects.filter(
+  // 🔹 SELALU jadikan subjects sebuah array, tidak pernah undefined
+  const subjects: TBootcampSubjectItem[] = data?.data?.subjects ?? [];
+
+  // 🔹 filteredData sekarang juga dijamin array
+  const filteredData: TBootcampSubjectItem[] = selectedTopic
+    ? subjects.filter(
         (subject: TBootcampSubjectItem) => subject.topic_slug === selectedTopic
       )
     : data?.data?.subjects || [];
@@ -29,7 +33,6 @@ export default function BootcampSection() {
     <section className="w-full px-12 2xl:px-0 max-w-[1440px] mx-auto">
       <div className="space-y-8" id="bootcamp">
         <div className="">
-          {/* <h2 className="text-3xl font-bold text-blue-base text-center mt-16"> */}
           <h2 className="text-3xl font-bold text-black text-center mt-16">
             Daftar Pelatihan Berbasis Kompetensi
           </h2>
@@ -37,7 +40,9 @@ export default function BootcampSection() {
             Temukan pelatihan yang sesuai dengan minat dan kebutuhan Anda.
           </p>
         </div>
-        {/* {topicData.data.topics ? (
+
+        {/* Filter topik (kalau nanti mau diaktifin lagi tinggal buka comment dan tambahin optional chaining) */}
+        {/* {topicData?.data?.topics ? (
           <div className="flex flex-wrap gap-2 justify-center">
             <Button
               className={`rounded-xl font-semibold px-6 py-2.5 cursor-pointer transition ${
@@ -74,11 +79,15 @@ export default function BootcampSection() {
             </p>
           </div>
         )} */}
+
+        {/* 🔹 Di sini udah aman pakai .length & .map */}
         {filteredData.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-12">
-            {filteredData.map((subject: TSubject, index: number) => (
-              <CardBootcamp key={index} {...subject} />
-            ))}
+            {filteredData.map(
+              (subject: TBootcampSubjectItem, index: number) => (
+                <CardBootcamp key={index} {...subject} />
+              )
+            )}
           </div>
         ) : (
           <div className="flex justify-center items-center w-full h-[300px]">
