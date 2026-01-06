@@ -5,7 +5,6 @@ import {
   useUpdateSingleNotification,
 } from '@kampus-gratis/apps/kg/hooks/notification/hook';
 import { useQueryClient } from '@tanstack/react-query';
-import { DM_Sans } from 'next/font/google';
 import {
   Fragment,
   memo,
@@ -28,10 +27,8 @@ import { IoSchoolOutline } from 'react-icons/io5';
 import { LuCheckCheck, LuClock } from 'react-icons/lu';
 import { RxCross2 } from 'react-icons/rx';
 
-const font = DM_Sans({
-  weight: ['400', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
-});
+// Using system font stack instead of Google Fonts to avoid network dependency during build
+const font = { className: 'font-sans' };
 
 type Notification = {
   id: string;

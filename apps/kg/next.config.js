@@ -8,6 +8,8 @@ const { composePlugins, withNx } = require('@nx/next');
  **/
 const nextConfig = {
   reactStrictMode: false,
+  // Output standalone untuk deployment
+  output: 'standalone',
   nx: {
     // Set this to true if you would like to use SVGR
     // See: https://github.com/gregberge/svgr
@@ -21,6 +23,9 @@ const nextConfig = {
     // Skip ESLint during build
     ignoreDuringBuilds: true,
   },
+  // Skip static generation for error pages
+  skipTrailingSlashRedirect: true,
+  skipMiddlewareUrlNormalize: true,
   images: {
     domains: [
       'avatars.githubusercontent.com',
@@ -40,6 +45,11 @@ const nextConfig = {
       'i0.wp.com',
       'dummyimage.com',
     ],
+  },
+  experimental: {
+    // Workaround for static generation issues
+    workerThreads: false,
+    cpus: 1,
   },
 };
 

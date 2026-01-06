@@ -1,15 +1,12 @@
 import { CheckCircle, Clock, Users } from 'lucide-react';
-import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import { BaseLayout } from '../../components';
 import { Button } from './components/Button';
 import { Card, CardContent, CardHeader } from './components/Card';
 import { DonationForm } from './donation-form';
 
-const inter = Inter({
-  subsets: ['latin', 'cyrillic-ext', 'greek'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-});
+// Using system font stack instead of Google Fonts to avoid network dependency during build
+const inter = { className: 'font-sans' };
 
 const Statistics = ({ value, label, className = '' }: any) => {
   return (

@@ -15,16 +15,10 @@ type Props = {
   params: Promise<{ slug: string }>;
 };
 
+// Return empty array to skip static generation - pages will be generated on-demand
+// This avoids build failures when the API is unreachable during build time
 export async function generateStaticParams() {
-  try {
-    const data = await allArticleGetRequest();
-
-    return data ? data?.data.map(({ slug }) => ({ slug })) : [];
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Error fetching articles:', error);
-    return [];
-  }
+  return [];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

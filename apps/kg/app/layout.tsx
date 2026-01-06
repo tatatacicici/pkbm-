@@ -1,17 +1,18 @@
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import { Metadata } from 'next';
-import { Raleway } from 'next/font/google';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AdsScript from '../components/ads-script';
+import { Analytics } from '../components/analytics';
 import Provider from '../context/provider';
 import './global.css';
 import { openGraphImage } from './image-metadata';
 
-const font = Raleway({
-  weight: ['400', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
-});
+// Force all pages to be dynamic (no static generation)
+// This fixes "Cannot read properties of undefined (reading 'env')" errors
+export const dynamic = 'force-dynamic';
+
+// Using system font stack to avoid network dependency during build
+const font = { className: 'font-sans' };
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://kampusgratis.id/'),
@@ -40,9 +41,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <GoogleAnalytics gaId="G-YWYY60L1FX" />
-      <GoogleTagManager gtmId="AW-16665747725" />
       <body className={font.className}>
+        <Analytics />
         <Provider>
           {children}
           <ToastContainer />
