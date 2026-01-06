@@ -5,7 +5,7 @@ import {
   useMutation,
   useQuery,
 } from '@tanstack/react-query';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import {
   TDataTakeStudyPlanResponse,
   TDetailStudyPlanResponse,
@@ -17,7 +17,7 @@ import {
   TStatusReturnStudyPlanCard,
   TStudyPlanFilter,
 } from '../../types/rencana-studi';
-import { CardStudyPlanState, EmptyStudyPlanState } from './atom';
+import { CardStudyPlanStateAtom, EmptyStudyPlanStateAtom } from './atom';
 import {
   detailStudyPlanRequest,
   getAllMajorRequest,
@@ -29,7 +29,7 @@ import {
 } from './request';
 
 export const useStudyPlanCardStatus = (): TStatusReturnStudyPlanCard => {
-  const [getLoading, setLoading] = useRecoilState(CardStudyPlanState);
+  const [getLoading, setLoading] = useAtom(CardStudyPlanStateAtom);
 
   return {
     setStudyPlanLoading: (val: any) => setLoading(val),
@@ -38,7 +38,7 @@ export const useStudyPlanCardStatus = (): TStatusReturnStudyPlanCard => {
 };
 
 export const useStudyPlanEmpty = (): TStatusReturnEmptyStudyPlan => {
-  const [getEmpty, setEmpty] = useRecoilState(EmptyStudyPlanState);
+  const [getEmpty, setEmpty] = useAtom(EmptyStudyPlanStateAtom);
 
   return {
     setEmptyStudyPlan: (val: any) => setEmpty(val),

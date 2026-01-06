@@ -1,3 +1,5 @@
+'use client';
+
 export * from './navbar';
 // export * from './date_range_picker';
 // export * from './carousel';
@@ -11,3 +13,4 @@ export * from './pagination';
 export * from './popup-modal';
 // export * from './card-cs';
 // export * from './admin-sidebar';
+export * from './navbar/section/top-nav/dropdown-menu';

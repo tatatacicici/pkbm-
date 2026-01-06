@@ -39,12 +39,12 @@ import {
   putMajorRequest,
   putSubjectRequest,
 } from './request';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import {
-  facultyDataState,
-  majorDataState,
-  subjectDataState,
-} from '../../recoil/atoms/rencana-studi';
+  facultyDataStateAtom,
+  majorDataStateAtom,
+  subjectDataStateAtom,
+} from '../../store/rencana-studi';
 import { TMetaErrorResponse } from '../../types/Meta';
 
 export const useGetFacultyWithPagination = (
@@ -67,7 +67,7 @@ export const useGetFaculty = (
 };
 
 export const useFacultyData = (): TuseFacultyData => {
-  const [get, set] = useRecoilState(facultyDataState);
+  const [get, set] = useAtom(facultyDataStateAtom);
   return {
     getFacultyData: get,
     setFacultyData: (val) => set(val),
@@ -180,7 +180,7 @@ export const useDeleteMajor = (): any => {
 };
 
 export const useMajorData = (): TuseMajorData => {
-  const [get, set] = useRecoilState(majorDataState);
+  const [get, set] = useAtom(majorDataStateAtom);
   return {
     getMajorData: get,
     setMajorData: (val) => set(val),
@@ -206,7 +206,7 @@ export const useGetSubjectWithPagination = (
 };
 
 export const useSubjectData = (): TuseSubjectData => {
-  const [get, set] = useRecoilState(subjectDataState);
+  const [get, set] = useAtom(subjectDataStateAtom);
   return {
     getSubjectData: get,
     setSubjectData: (val) => set(val),

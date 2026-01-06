@@ -1,13 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
 import { Button } from '@kampus-gratis/components/atoms';
-import { useRecoilState } from 'recoil';
-import { modalEditSuccess } from '../../../../../recoil/atoms/rencana-studi';
+import { useAtom } from 'jotai';
+import { modalEditSuccessAtom } from '../../../../../store/rencana-studi';
 
 export const ModalEditSuccess = ({title}: { title: string }) => {
 
   const [isModalEditSuccessOpen, setIsModalEditSuccessOpen] =
-  useRecoilState(modalEditSuccess);
+  useAtom(modalEditSuccessAtom);
 
   return (
     <div className="flex flex-col items-center justify-center pb-4 px-4 w-[500px]">

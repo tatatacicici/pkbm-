@@ -2,7 +2,7 @@
 
 import React, { FC, useEffect, useState } from 'react';
 
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 
 import {
   Button,
@@ -24,11 +24,11 @@ import { validationUpdateMajor } from '../../../../../config/validation/rencana-
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
-  modalBerhasil,
-  modalEdit,
-  modalEditSuccess,
-  modalOpenState,
-} from '../../../../../recoil/atoms/rencana-studi';
+  modalBerhasilAtom,
+  modalEditAtom,
+  modalEditSuccessAtom,
+  modalOpenStateAtom,
+} from '../../../../../store/rencana-studi';
 import { RiCloseLine } from 'react-icons/ri';
 import { MdOutlineZoomInMap } from 'react-icons/md';
 import { MdOutlineZoomOutMap } from 'react-icons/md';
@@ -53,12 +53,12 @@ export const ModalEditProdi: FC<ModalPopUpEditProps> = ({ majorData }) => {
   const defaultPlaceholder = 'Nama Kaprodi';
   const defaultDataOptions = ['Nama Kaprodi'];
 
-  const [isModalOpen, setIsModalOpen] = useRecoilState(modalOpenState);
+  const [isModalOpen, setIsModalOpen] = useAtom(modalOpenStateAtom);
   const [isModalBerhasilOpen, setIsModalBerhasilOpen] =
-    useRecoilState(modalBerhasil);
-  const [isModalEditOpen, setIsModalEditOpen] = useRecoilState(modalEdit);
+    useAtom(modalBerhasilAtom);
+  const [isModalEditOpen, setIsModalEditOpen] = useAtom(modalEditAtom);
   const [isModalEditSuccessOpen, setIsModalEditSuccessOpen] =
-    useRecoilState(modalEditSuccess);
+    useAtom(modalEditSuccessAtom);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const searchParams = useSearchParams();
   const page = searchParams.get('page') || '1';

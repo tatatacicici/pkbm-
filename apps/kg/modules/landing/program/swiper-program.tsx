@@ -5,7 +5,7 @@ import { ContentCardProgram } from './constant';
 
 const SwiperProgram = () => {
   const [screenWidth, setScreenWidth] = useState(1);
-  const swiperRef = useRef<SwiperType>();
+  const swiperRef = useRef<SwiperType>(null);
 
   useEffect(() => {
     const handleResize = () => {

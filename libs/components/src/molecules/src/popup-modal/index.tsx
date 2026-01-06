@@ -3,6 +3,8 @@ import Image, { StaticImageData } from 'next/image';
 import { Modal } from '../modal';
 import { TPopupModalProps } from './types';
 
+export type { TPopupModalProps } from './types';
+
 export const PopupModal: FC<TPopupModalProps> = ({
   popupTitle,
   description,

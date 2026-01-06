@@ -5,18 +5,18 @@ import { BiArrowBack } from 'react-icons/bi';
 import { FaFlag } from 'react-icons/fa6';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 import { RxCross1 } from 'react-icons/rx';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useAtomValue, useSetAtom } from 'jotai';
 import {
   useReportComment,
   useReportDiscussion,
   useReportReply,
 } from '../../../../hooks/ruang-diskusi/hooks';
 import {
-  isModalOpen,
-  reportDetailTitle,
-  reportDetailType,
-  selectedOption,
-  selectedPostId,
+  isModalOpenAtom,
+  reportDetailTitleAtom,
+  reportDetailTypeAtom,
+  selectedOptionAtom,
+  selectedPostIdAtom,
 } from '../../store';
 import { TPostReportProps } from './types';
 
@@ -70,14 +70,14 @@ export const PostReportModal: FC<TPostReportProps> = ({
     },
   ];
 
-  const setSelectedOption = useSetRecoilState(selectedOption);
-  const setOptionOpen = useSetRecoilState(isModalOpen);
-  const setReportDetail = useSetRecoilState(reportDetailTitle);
-  const setReportType = useSetRecoilState(reportDetailType);
+  const setSelectedOption = useSetAtom(selectedOptionAtom);
+  const setOptionOpen = useSetAtom(isModalOpenAtom);
+  const setReportDetail = useSetAtom(reportDetailTitleAtom);
+  const setReportType = useSetAtom(reportDetailTypeAtom);
 
-  const getSeletedPostId = useRecoilValue(selectedPostId);
-  const getReportOption = useRecoilValue(reportDetailTitle);
-  const getReportType = useRecoilValue(reportDetailType);
+  const getSeletedPostId = useAtomValue(selectedPostIdAtom);
+  const getReportOption = useAtomValue(reportDetailTitleAtom);
+  const getReportType = useAtomValue(reportDetailTypeAtom);
 
   const [reportDetailValue, setReportDetailValue] = useState('');
 

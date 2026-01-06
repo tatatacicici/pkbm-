@@ -1,11 +1,64 @@
 import { NextAuthOptions } from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import {
   loginByGoogleRequest,
   loginRequest,
 } from '../../../../hooks/authentications/request';
 import { TLoginData } from '../../../../types';
+
+const googleClientId = process.env.GOOGLE_CLIENT_ID;
+const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET;
+
+const providers = [
+  CredentialsProvider({
+    id: 'login',
+    type: 'credentials',
+    credentials: {
+      email: {
+        label: 'Email',
+        type: 'text',
+      },
+      password: {
+        label: 'Password',
+        type: 'password',
+      },
+    },
+    async authorize(credentials, req): Promise<TLoginData> {
+      try {
+        const userAgent = req?.headers?.['user-agent'] || 'Unknown User Agent';
+
+        const data = await loginRequest({
+          email: credentials?.email,
+          password: credentials?.password,
+          user_agent: userAgent,
+        });
+
+        return data;
+      } catch (error: any) {
+        if (error?.response?.status === 422) {
+          throw new Error(error.response.data.message);
+        }
+
+        throw new Error(
+          typeof error?.response?.data === 'string'
+            ? error.response.data
+            : error?.response?.data?.message
+        );
+      }
+    },
+  }),
+];
+
+// Only register Google provider when credentials exist to avoid config errors
+if (googleClientId && googleClientSecret) {
+  const GoogleProvider = require('next-auth/providers/google').default;
+  providers.unshift(
+    GoogleProvider({
+      clientId: googleClientId,
+      clientSecret: googleClientSecret,
+    })
+  );
+}
 
 export const authOptions: NextAuthOptions = {
   pages: {
@@ -15,49 +68,8 @@ export const authOptions: NextAuthOptions = {
   session: {
     maxAge: 3 * 24 * 60 * 60, // 3 * 24 hour * 60 minutes * 60 seconds
   },
-  providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-    }),
-    CredentialsProvider({
-      id: 'login',
-      type: 'credentials',
-      credentials: {
-        email: {
-          label: 'Email',
-          type: 'text',
-        },
-        password: {
-          label: 'Password',
-          type: 'password',
-        },
-      },
-      async authorize(credentials, req): Promise<TLoginData> {
-        try {
-          const userAgent = req?.headers?.['user-agent'] || 'Unknown User Agent';
-
-          const data = await loginRequest({
-            email: credentials?.email,
-            password: credentials?.password,
-            user_agent: userAgent,
-          });
-
-          return data;
-        } catch (error: any) {
-          if (error.response.status === 422) {
-            throw new Error(error.response.data.message);
-          }
-
-          throw new Error(
-            typeof error.response.data === 'string'
-              ? error.response.data
-              : error.response.data?.message
-          );
-        }
-      },
-    }),
-  ],
+  secret: process.env.NEXTAUTH_SECRET || 'dev-secret',
+  providers,
   callbacks: {
     async signIn({ user, account }) {
       if (account?.provider === 'google' && account) {

@@ -2,14 +2,14 @@ import React from 'react';
 
 import Image from 'next/image';
 import { Button } from '@kampus-gratis/components/atoms';
-import { useRecoilState } from 'recoil';
-import { modalBerhasil } from '../../../../../recoil/atoms/rencana-studi';
+import { useAtom } from 'jotai';
+import { modalBerhasilAtom } from '../../../../../store/rencana-studi';
 
 
 export const ModalPopUpBerhasil = ({title}: { title: string }) => {
 
   const [isModalBerhasilOpen, setIsModalBerhasilOpen] =
-  useRecoilState(modalBerhasil);
+  useAtom(modalBerhasilAtom);
 
 
   return (

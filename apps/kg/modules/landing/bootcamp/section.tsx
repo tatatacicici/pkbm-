@@ -25,16 +25,9 @@ export default function BootcampSection() {
     ? subjects.filter(
         (subject: TBootcampSubjectItem) => subject.topic_slug === selectedTopic
       )
-    : subjects;
+    : data?.data?.subjects || [];
 
-  // 🔹 Sebaiknya render sesuatu, bukan `return;` kosong
-  if (isLoading || topicIsLoading) {
-    return (
-      <section className="w-full px-12 2xl:px-0 max-w-[1440px] mx-auto">
-        <p className="text-center py-10">Loading bootcamp...</p>
-      </section>
-    );
-  }
+  if (isLoading || topicIsLoading) return null;
 
   return (
     <section className="w-full px-12 2xl:px-0 max-w-[1440px] mx-auto">

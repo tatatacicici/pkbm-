@@ -1,5 +1,4 @@
 import EmptyState from '@kampus-gratis/apps/kg/components/empty-state';
-import { DM_Sans } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -15,10 +14,8 @@ import {
 import { SearchInput } from './search-input';
 import { quizTryoutInfoDummyData } from '../constant';
 
-const font = DM_Sans({
-  weight: ['400', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
-});
+// Using system font stack instead of Google Fonts to avoid network dependency during build
+const font = { className: 'font-sans' };
 
 export const TabContentTryOutSection = (data: TMyStudyv2Response) => {
   const [filteredData, setFilteredData] = useState(data);

@@ -1,7 +1,7 @@
 'use client';
 import { Tab } from '@headlessui/react';
 import { FC, ReactElement, Suspense, useEffect, useState } from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useSetAtom } from 'jotai';
 
 // import { CertificateSection } from "./section/certificate";
 // import ScoreSection from "./section/score/score";
@@ -9,7 +9,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { BaseLayout } from '../../components';
 import { BreadCrumb } from '../../components/bread-crumb/index';
 import FooterCredit from '../../components/footer/footer-credit/footer-credit';
-import { ShowDetailStatus } from '../../recoil/atoms/score-sertificate';
+import { ShowDetailStatusAtom } from '../../store';
 import { scoreBreadCumbs } from './constant';
 import { CertificateSection } from './section/certificate/certificate';
 import ScoreSection from './section/score/score';
@@ -19,7 +19,7 @@ export const ScoreModule: FC = (): ReactElement => {
   const router = useRouter();
   const pathName = usePathname();
   const [active, setactive] = useState('nilai');
-  const setDetailStatus = useSetRecoilState(ShowDetailStatus);
+  const setDetailStatus = useSetAtom(ShowDetailStatusAtom);
 
   useEffect(() => {
     if (query.get('tab') === 'nilai') {

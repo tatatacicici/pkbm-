@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { FC, ReactElement, use, useEffect, useState } from 'react';
+import { FC, ReactElement, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -8,24 +8,14 @@ import { useQueryClient } from '@tanstack/react-query';
 import Image from 'next/image';
 import { RiSendPlaneFill } from 'react-icons/ri';
 import { RxCross1 } from 'react-icons/rx';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useAtomValue, useSetAtom } from 'jotai';
 import {
-  useGetCommentById,
-  useUpdateComment,
-  useUpdateReply,
-} from '../../../../../hooks/ruang-diskusi/hooks';
-import {
-  isModalOpen,
-  selectedCommentId,
-  selectedPostId,
-  selectedReplyId,
+  isModalOpenAtom,
+  selectedCommentIdAtom,
+  selectedPostIdAtom,
+  selectedReplyIdAtom,
 } from '../../store';
-// import { TPostEditProps } from './type';
-import { DraggableImageInput } from '../../../../../components/draggableImageInput';
-import {
-  TCommentResponse,
-  TCommentsPayload,
-} from '../../../../../types/ruang-diskusi';
+import { TCommentsPayload } from '../../../../../types/ruang-diskusi';
 import { TPostEditCommentProps } from './types';
 import { toast } from 'react-toastify';
 import {
@@ -44,11 +34,40 @@ export const PostEditCommentModal: FC<TPostEditCommentProps> = ({
   subject_id,
   session_id,
 }): ReactElement => {
-  const getSelectedPostId = useRecoilValue(selectedPostId);
-  const getSelectedCommentId = useRecoilValue(selectedCommentId);
-  const getSelectedReplyId = useRecoilValue(selectedReplyId);
+  const getSelectedPostId = useAtomValue(selectedPostIdAtom);
+  const getSelectedCommentId = useAtomValue(selectedCommentIdAtom);
+  const getSelectedReplyId = useAtomValue(selectedReplyIdAtom);
 
   const queryClient = useQueryClient();
+
+  const MAX_FILE_SIZE = 3 * 1024 * 1024;
+  const ACCEPTED_MEDIA_TYPES = [
+    'image/jpeg',
+    'image/jpg',
+    'image/png',
+    'image/webp',
+    'video/mp4',
+    undefined,
+  ];
+
+  const validationSchema = z.object({
+    content: z.string().max(1000, { message: 'Isi diskusi melebihi batas' }),
+    image: z
+      .array(
+        z
+          .any()
+          .refine(
+            (files: File) =>
+              files !== undefined && files?.size <= MAX_FILE_SIZE,
+            'Ukuran maksimum adalah 3mb.'
+          )
+          .refine(
+            (files: File) => ACCEPTED_MEDIA_TYPES.includes(files?.type),
+            'hanya menerima .jpg, .jpeg, .png, .webp, dan .mp4.'
+          )
+      )
+      .optional(),
+  });
 
   type ValidationSchema = z.infer<typeof validationSchema>;
 
@@ -71,16 +90,6 @@ export const PostEditCommentModal: FC<TPostEditCommentProps> = ({
   const selectedCommentData = discussionData?.comment;
   const selectedReplyData = replyDiscussionData?.reply;
 
-  const MAX_FILE_SIZE = 3 * 1024 * 1024;
-  const ACCEPTED_MEDIA_TYPES = [
-    'image/jpeg',
-    'image/jpg',
-    'image/png',
-    'image/webp',
-    'video/mp4',
-    undefined,
-  ];
-
   const { mutate, isLoading } = useEditComment(
     subject_id,
     session_id,
@@ -96,26 +105,7 @@ export const PostEditCommentModal: FC<TPostEditCommentProps> = ({
   );
 
   const [isEdit, setIsEdit] = useState(false);
-  const setOptionOpen = useSetRecoilState(isModalOpen);
-
-  const validationSchema = z.object({
-    content: z.string().max(1000, { message: 'Isi diskusi melebihi batas' }),
-    image: z
-      .array(
-        z
-          .any()
-          .refine(
-            (files: File) =>
-              files !== undefined && files?.size <= MAX_FILE_SIZE,
-            'Ukuran maksimum adalah 3mb.'
-          )
-          .refine(
-            (files: File) => ACCEPTED_MEDIA_TYPES.includes(files?.type),
-            'hanya menerima .jpg, .jpeg, .png, .webp, dan .mp4.'
-          )
-      )
-      .optional(),
-  });
+  const setOptionOpen = useSetAtom(isModalOpenAtom);
 
   const {
     control,
@@ -140,9 +130,7 @@ export const PostEditCommentModal: FC<TPostEditCommentProps> = ({
 
   const onSubmit = handleSubmit(async (data) => {
     const formData = new FormData();
-
     formData.append('content', data.content);
-
     if (data.image) {
       formData.append(`image`, data.image[0]);
     }
@@ -192,13 +180,11 @@ export const PostEditCommentModal: FC<TPostEditCommentProps> = ({
 
   return (
     <section className="bg-neutral-50 min-w-[200px] w-[500px] p-3 md:p-5">
-      <header className=" flex justify-center border-b-[0.5px] pt-2 pb-4 border-neutral-300  relative">
+      <header className="flex justify-center border-b-[0.5px] pt-2 pb-4 border-neutral-300 relative">
         <h1 className="text-lg font-bold text-neutral-900">Edit Komentar</h1>
         <RxCross1
           className="absolute right-0 text-xl cursor-pointer text-neutral-400"
-          onClick={() => {
-            setOptionOpen(false);
-          }}
+          onClick={() => setOptionOpen(false)}
         />
       </header>
       <main className="px-4 py-8">
@@ -224,10 +210,7 @@ export const PostEditCommentModal: FC<TPostEditCommentProps> = ({
               {selectedCommentData?.image ||
               (selectedReplyData?.image && !isEdit) ? (
                 watchImage === undefined || watchImage === null ? (
-                  <div
-                    className="w-full flex gap-2 flex-wrap  justify-center"
-                    // onClick={() => setIsEdit(true)}
-                  >
+                  <div className="w-full flex gap-2 flex-wrap justify-center">
                     <div className="relative w-full h-32 my-2 overflow-hidden rounded-lg shadow-md">
                       <Image
                         src={
@@ -243,24 +226,10 @@ export const PostEditCommentModal: FC<TPostEditCommentProps> = ({
                         style={{ objectFit: 'cover' }}
                       />
                     </div>
-                    {/* <DraggableImageInput
-                      className="border-none min-h-[80px]"
-                      name={'image'}
-                      variant={'lg'}
-                      control={control}
-                      status={errors.image ? 'error' : undefined}
-                    /> */}
                   </div>
                 ) : errors.image ? (
                   <div></div>
                 ) : (
-                  // <DraggableImageInput
-                  //   className="border-none min-h-[80px]"
-                  //   name={'image'}
-                  //   variant={'lg'}
-                  //   control={control}
-                  //   status={errors.image ? 'error' : undefined}
-                  // />
                   <div className="relative w-full h-32 my-2 overflow-hidden rounded-lg shadow-md">
                     <div className="w-full">
                       <Image
@@ -276,15 +245,7 @@ export const PostEditCommentModal: FC<TPostEditCommentProps> = ({
                   </div>
                 )
               ) : (
-                <div>
-                  {/* <DraggableImageInput
-                    className="border-none min-h-[80px]"
-                    name={'image'}
-                    variant={'lg'}
-                    control={control}
-                    status={errors.image ? 'error' : undefined}
-                  /> */}
-                </div>
+                <div></div>
               )}
             </section>
             {errors.image &&

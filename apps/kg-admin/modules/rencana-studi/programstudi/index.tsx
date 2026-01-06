@@ -9,15 +9,15 @@ import { IconDelete } from '../../../components/icons/ic-delete';
 import { IconLock } from '../../../components/icons/ic-lock';
 import { ModalTambahProdi } from './modalTambahProdi';
 import {
-  modalBerhasil,
-  modalConfirmation,
-  modalDelete,
-  modalDeleteSuccess,
-  modalEdit,
-  modalEditSuccess,
-  modalOpenState,
-} from '../../../recoil/atoms/rencana-studi';
-import { useRecoilState } from 'recoil';
+  modalBerhasilAtom,
+  modalConfirmationAtom,
+  modalDeleteAtom,
+  modalDeleteSuccessAtom,
+  modalEditAtom,
+  modalEditSuccessAtom,
+  modalOpenStateAtom,
+} from '../../../store/rencana-studi';
+import { useAtom } from 'jotai';
 import { Modal } from '../../../components/popup/modal';
 import Searchbar from '../../../components/searchbar/Searchbar';
 import Dropdown from '../../../components/dropdown/Dropdown';
@@ -55,17 +55,17 @@ export function useDebounce(
 
 export const ProgramStudiSection = () => {
   const router = useRouter();
-  const [isModalOpen, setIsModalOpen] = useRecoilState(modalOpenState);
+  const [isModalOpen, setIsModalOpen] = useAtom(modalOpenStateAtom);
   const [isModalBerhasilOpen, setIsModalBerhasilOpen] =
-    useRecoilState(modalBerhasil);
+    useAtom(modalBerhasilAtom);
   const [isModalConfirmOpen, setIsModalConfirmOpen] =
-    useRecoilState(modalConfirmation);
-  const [isModalDeleteOpen, setIsModalDeleteOpen] = useRecoilState(modalDelete);
-  const [isModalEditOpen, setIsModalEditOpen] = useRecoilState(modalEdit);
+    useAtom(modalConfirmationAtom);
+  const [isModalDeleteOpen, setIsModalDeleteOpen] = useAtom(modalDeleteAtom);
+  const [isModalEditOpen, setIsModalEditOpen] = useAtom(modalEditAtom);
   const [isModalDeleteSuccessOpen, setIsModalDeleteSuccessOpen] =
-    useRecoilState(modalDeleteSuccess);
+    useAtom(modalDeleteSuccessAtom);
   const [isModalEditSuccessOpen, setIsModalEditSuccessOpen] =
-    useRecoilState(modalEditSuccess);
+    useAtom(modalEditSuccessAtom);
   const [majorId, setMajorId] = useState('');
   const [selectedFaculty, setSelectedFaculty] = useState('');
   const [countSubject, setCountSubject] = useState(0);

@@ -1,11 +1,11 @@
 'use client';
 
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import {
   useProfile,
   useUpdateUserProfile,
 } from '../../../../hooks/profile/hook';
-import { editPhotoState } from '../../../../recoil/atoms/profile';
+import { editPhotoStateAtom } from '../../../../store';
 import { validationSchemaEditProfile } from '../../../../config/validation/profile';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
@@ -32,7 +32,7 @@ export const EditProfileSection = () => {
 
   const { mutate, isLoading } = useUpdateUserProfile();
 
-  const [isEditPhoto, setEditPhoto] = useRecoilState(editPhotoState);
+  const [isEditPhoto, setEditPhoto] = useAtom(editPhotoStateAtom);
 
   const userData = data?.data?.user;
 

@@ -24,4 +24,5 @@ export interface TCardProps {
   href?: string;
   imgStyle?: string;
   onClick?: MouseEventHandler<HTMLDivElement>;
+  alt?: string;
 }

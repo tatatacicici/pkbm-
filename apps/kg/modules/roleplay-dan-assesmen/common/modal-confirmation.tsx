@@ -1,5 +1,6 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { LoadingButton } from '@kampus-gratis/components/molecules';
+import { ReactNode } from 'react';
 
 export default function ModalConfirmation({
   isOpen,
@@ -11,7 +12,7 @@ export default function ModalConfirmation({
 }: {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
-  text?: string | JSX.Element;
+  text?: string | ReactNode;
   onSubmit?: () => void;
   buttonText?: string;
   isLoading?: boolean;

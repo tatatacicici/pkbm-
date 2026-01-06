@@ -12,9 +12,9 @@ export const ConvertionIcon: React.FC = () => (
     <path
       d="M34 24H18L23.5 18M18 28H34L28.5 34"
       stroke="white"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );

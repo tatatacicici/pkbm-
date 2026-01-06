@@ -14,7 +14,10 @@ type Session = {
 };
 
 const apiConfig: AxiosRequestConfig = {
-  baseURL: process.env.NEXT_PUBLIC_API_URL_PRODUCTION,
+  baseURL:
+    process.env.NEXT_PUBLIC_API_URL ??
+    process.env.NEXT_PUBLIC_API_URL_PRODUCTION ??
+    'http://localhost:3000/',
 };
 
 const api = axios.create(apiConfig);
@@ -38,11 +41,14 @@ api.interceptors.response.use(
     return response;
   },
   async (error) => {
-    const originalRequest = error.config;
+    const originalRequest = error?.config ?? {};
+    const status = error?.response?.status;
 
-    if (error.response.status === 401 && !originalRequest._retry) {
+    if (status === 401 && !originalRequest._retry) {
       signOut({ callbackUrl: '/auth/login' });
+      (originalRequest as any)._retry = true;
     }
+
     return Promise.reject(error);
   }
 );

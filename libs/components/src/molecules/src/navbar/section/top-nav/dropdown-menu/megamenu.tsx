@@ -45,35 +45,35 @@ export const NavbarMegaMenu: FC<TNavbarMegaMenuProps> = ({
               <Menu.Items className="absolute -left-16 top-2 origin-top-right bg-white shadow-md rounded-md overflow-hidden h-auto w-[240px] md:w-[500px] border-s-8 border-sky-base">
                 <div className="grid grid-cols-2 text-start justify-start items-center">
                   {megaMenuItems[activeIndex].submenus.map((submenu, idx) => (
-                    <Link href={submenu.link && submenu.link} key={idx}>
-                      <Menu.Item
-                        as="a"
-                        className={`
-                        flex flex-col gap-2 rounded-md p-2 mx-4 my-2 transition-all duration-300 ease-in-out
+                    <Menu.Item
+                      as={Link}
+                      href={submenu.link || '#'}
+                      key={idx}
+                      className={`
+                      flex flex-col gap-2 rounded-md p-2 mx-4 my-2 transition-all duration-300 ease-in-out
+                      ${
+                        submenu.link
+                          ? 'hover:bg-neutral-200 cursor-pointer '
+                          : 'cursor-default'
+                      }
+                      `}
+                    >
+                      <div className="flex flex-row gap-2 items-center">
+                        <div>{submenu.icon}</div>
+                        <h1
+                          className={`
+                        text-sm font-bold
                         ${
                           submenu.link
-                            ? 'hover:bg-neutral-200 cursor-pointer '
-                            : 'cursor-default'
+                            ? 'text-neutral-900'
+                            : 'text-neutral-300'
                         }
                         `}
-                      >
-                        <div className="flex flex-row gap-2 items-center">
-                          <div>{submenu.icon}</div>
-                          <h1
-                            className={`
-                          text-sm font-bold
-                          ${
-                            submenu.link
-                              ? 'text-neutral-900'
-                              : 'text-neutral-300'
-                          }
-                          `}
-                          >
-                            {submenu.name}
-                          </h1>
-                        </div>
-                      </Menu.Item>
-                    </Link>
+                        >
+                          {submenu.name}
+                        </h1>
+                      </div>
+                    </Menu.Item>
                   ))}
                 </div>
               </Menu.Items>

@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, use } from 'react';
 import { Metadata } from 'next';
 import { ErrorBoundary } from 'react-error-boundary';
 import FooterCredit from '../../../components/footer/footer-credit/footer-credit';
@@ -12,24 +12,19 @@ import { ErrorArticle } from '../../../modules/sekilas-ilmu/detail/error';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
+// Return empty array to skip static generation - pages will be generated on-demand
+// This avoids build failures when the API is unreachable during build time
 export async function generateStaticParams() {
-  try {
-    const data = await allArticleGetRequest();
-
-    return data ? data?.data.map(({ slug }) => ({ params: { slug } })) : [];
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Error fetching articles:', error);
-    return [];
-  }
+  return [];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const response = await articleDetailGetRequest(params.slug);
+    const resolvedParams = await params;
+    const response = await articleDetailGetRequest(resolvedParams.slug);
 
     if (!response)
       return {
@@ -46,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         images: response?.data?.thumbnail,
       },
       alternates: {
-        canonical: `/sekilas-ilmu/${params.slug}`,
+        canonical: `/sekilas-ilmu/${resolvedParams.slug}`,
       },
     };
   } catch (error) {
@@ -60,9 +55,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const SekilasIlmuDetails = ({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): ReactElement => {
-  const { slug } = params;
+  const { slug } = use(params);
 
   return (
     <ErrorBoundary fallback={<ErrorArticle />}>

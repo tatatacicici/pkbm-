@@ -2,22 +2,22 @@
 
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
 import {
-  dashboardMatchedCalendarState,
-  filteredCalendarState,
-  limitedCalendarState,
-} from '../../recoil/selectors/dashboard';
+  dashboardMatchedCalendarStateAtom,
+  filteredCalendarStateAtom,
+  limitedCalendarStateAtom,
+} from '../../store';
 import {
   TDashboardCalendar,
   TDashboardResponse,
   TuseDashboardData,
 } from '../../types/dashboard';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useAtom, useAtomValue } from 'jotai';
 import { TMetaErrorResponse } from '@kampus-gratis/utils';
 import { dashboardGetRequest } from './request';
-import { dashboardDataState } from '../../recoil/atoms/dashboard';
+import { dashboardDataStateAtom } from '../../store';
 
 export const useDashboardData = (): TuseDashboardData => {
-  const [get, set] = useRecoilState(dashboardDataState);
+  const [get, set] = useAtom(dashboardDataStateAtom);
   return {
     getDashboardData: get,
     setDashboardData: (val) => set(val),
@@ -34,8 +34,8 @@ export const useGetDashboard = (): UseQueryResult<
   });
 
 export const useMatchCalendarByDate = () => {
-  const filteredCalendar = useRecoilValue(filteredCalendarState);
-  const [getMatch, setMatch] = useRecoilState(dashboardMatchedCalendarState);
+  const filteredCalendar = useAtomValue(filteredCalendarStateAtom);
+  const [getMatch, setMatch] = useAtom(dashboardMatchedCalendarStateAtom);
 
   function matchHandler(val: Date) {
     const foundCalendarByDate = filteredCalendar.find(
@@ -52,14 +52,14 @@ export const useMatchCalendarByDate = () => {
 };
 
 export const useLimitedCalendar = () => {
-  const limitCalendarData = useRecoilValue(limitedCalendarState);
+  const limitCalendarData = useAtomValue(limitedCalendarStateAtom);
   return {
     getLimitedCalendar: limitCalendarData,
   };
 };
 
 export const useFilteredCalendar = () => {
-  const filteredCalendarData = useRecoilValue(filteredCalendarState);
+  const filteredCalendarData = useAtomValue(filteredCalendarStateAtom);
   return {
     getFilteredCalendar: filteredCalendarData,
   };

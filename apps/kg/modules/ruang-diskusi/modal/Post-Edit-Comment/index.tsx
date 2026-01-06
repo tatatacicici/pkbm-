@@ -10,13 +10,13 @@ import {
 } from '@kampus-gratis/components/atoms';
 import { RxCross1 } from 'react-icons/rx';
 import { RiSendPlaneFill } from 'react-icons/ri';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useAtomValue, useSetAtom } from 'jotai';
 import {
-  isModalOpen,
-  selectedCommentId,
-  selectedDiscussionId,
-  selectedPostId,
-  selectedReplyId,
+  isModalOpenAtom,
+  selectedCommentIdAtom,
+  selectedDiscussionIdAtom,
+  selectedPostIdAtom,
+  selectedReplyIdAtom,
 } from '../../store';
 import Image from 'next/image';
 import {
@@ -44,9 +44,9 @@ type ImagesError = {
 export const PostEditCommentModal: FC<TPostEditCommentProps> = ({
   type,
 }): ReactElement => {
-  const getSelectedPostId = useRecoilValue(selectedDiscussionId);
-  const getSelectedCommentId = useRecoilValue(selectedCommentId);
-  const getSelectedReplyId = useRecoilValue(selectedReplyId);
+  const getSelectedPostId = useAtomValue(selectedDiscussionIdAtom);
+  const getSelectedCommentId = useAtomValue(selectedCommentIdAtom);
+  const getSelectedReplyId = useAtomValue(selectedReplyIdAtom);
 
   const queryClient = useQueryClient();
 
@@ -89,7 +89,7 @@ export const PostEditCommentModal: FC<TPostEditCommentProps> = ({
   );
 
   const [isEdit, setIsEdit] = useState(false);
-  const setOptionOpen = useSetRecoilState(isModalOpen);
+  const setOptionOpen = useSetAtom(isModalOpenAtom);
 
   const validationSchema = z.object({
     content: z

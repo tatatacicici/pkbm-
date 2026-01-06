@@ -21,11 +21,11 @@ import {
   TQuizTakeResponse,
   TUseRemaingTimeQuiz,
 } from '@kampus-gratis/apps/kg/types/quiz';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import {
-  quizQuitPopupState,
-  remainingTime,
-} from '@kampus-gratis/apps/kg/recoil/atoms/quiz';
+  quizQuitPopupStateAtom,
+  remainingTimeAtom,
+} from '@kampus-gratis/apps/kg/store';
 
 export const useGetMyStudyv2 = (): UseQueryResult<
   TMyStudyv2Response,
@@ -117,7 +117,7 @@ export const useSubmitQuiz = (): UseMutationResult<
   });
 
 export const useQuizQuitPopup = () => {
-  const [get, set] = useRecoilState(quizQuitPopupState);
+  const [get, set] = useAtom(quizQuitPopupStateAtom);
   return {
     getQuizQuitPopup: get,
     setQuizQuitPopup: (val: TQuizQuitPopup) => set(val),
@@ -125,7 +125,7 @@ export const useQuizQuitPopup = () => {
 };
 
 export const useRemainingTimeQuiz = (): TUseRemaingTimeQuiz => {
-  const [get, set] = useRecoilState(remainingTime);
+  const [get, set] = useAtom(remainingTimeAtom);
 
   return {
     setRemainingTime: (val: number) => set(val),

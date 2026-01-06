@@ -1,1 +1,3 @@
-export {};
+'use client';
+
+export * from './src';

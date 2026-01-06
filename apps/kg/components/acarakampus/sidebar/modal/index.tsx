@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-no-useless-fragment */
 import { Button } from '@kampus-gratis/components/atoms';
-import { TModalProps } from 'libs/components/molecules/src/modal/types';
+import { TModalProps } from '@kampus-gratis/components/molecules';
 import Image from 'next/image';
 import { FC, Fragment, ReactElement } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';

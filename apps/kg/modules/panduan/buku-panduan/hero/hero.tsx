@@ -1,11 +1,11 @@
 import { ReactElement } from 'react';
 import Image from 'next/image';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { queryPanduanBook } from '../../../../recoil/atoms/buku-panduan';
-import { useRecoilState } from 'recoil';
+import { queryPanduanBookAtom } from '../../../../store';
+import { useAtom } from 'jotai';
 
 export const HeroSection = (): ReactElement => {
-  const [query, setQuery] = useRecoilState(queryPanduanBook);
+  const [query, setQuery] = useAtom(queryPanduanBookAtom);
   return (
     <div className="md:grid md:grid-cols-2 md:gap-10 md:px-14 2xl:px-0 px-6 bg-white max-w-[1440px] mx-auto">
       <div className="col-span-1 ">

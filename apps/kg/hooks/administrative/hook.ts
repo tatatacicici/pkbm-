@@ -1,11 +1,11 @@
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
 import { TProvinceResponse, TReturnStatusProvince } from "../../types";
 import { getDistrictRequest, getProvinceRequest, getRegencyRequest, getVillageRequest } from "./request";
-import { StatusProvinceState } from "../../recoil/atoms/administrative";
-import { useRecoilState } from "recoil";
+import { StatusProvinceStateAtom } from "../../store/administrative";
+import { useAtom } from "jotai";
 
 export const useStatusProvince = (): TReturnStatusProvince => {
-    const [get, set] = useRecoilState(StatusProvinceState);
+    const [get, set] = useAtom(StatusProvinceStateAtom);
     return {
         getProvinceStatus: get,
         setProvinceStatus: (val) => set(val),

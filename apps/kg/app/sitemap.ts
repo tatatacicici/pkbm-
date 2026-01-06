@@ -1,39 +1,12 @@
 import { MetadataRoute } from 'next';
-import { allArticleGetRequest } from '../hooks/article/request';
-import { getSubject } from '../hooks/rencana-studi/request';
-import { TSubject } from '../types/rencana-studi';
+
+// Force dynamic generation - skip build-time API calls
+export const dynamic = 'force-dynamic';
+export const revalidate = 3600; // Revalidate every hour
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const articleDatas = await allArticleGetRequest();
-  const subjectDatas = await getSubject(
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    undefined,
-    1000
-  );
-
-  const postEntries: MetadataRoute.Sitemap = articleDatas
-    ? articleDatas.data.map(({ slug }) => ({
-        url: `https://kampusgratis.id/sekilas-ilmu/${slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly',
-        priority: 0.5,
-      }))
-    : [];
-
-  const subjectEntries: MetadataRoute.Sitemap = subjectDatas
-    ? subjectDatas.data.map(({ id }: TSubject) => ({
-        url: `https://kampusgratis.id/rencana-studi/detail-rencana-studi/${id}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly',
-        priority: 0.5,
-      }))
-    : [];
-
+  // Static entries only - dynamic entries will be added at runtime
+  // API calls removed to prevent build failures when backend is unavailable
   return [
     {
       url: 'https://kampusgratis.id/',
@@ -101,7 +74,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly',
       priority: 0.5,
     },
-    ...subjectEntries,
-    ...postEntries,
   ];
 }

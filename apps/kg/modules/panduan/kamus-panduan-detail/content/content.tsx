@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useState } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useAtom, useAtomValue } from 'jotai';
 import { Combobox } from '@headlessui/react';
-import { queryOptionDictionary } from '../../../../recoil/atoms/kamus-kampus-gratis';
+import { queryOptionDictionaryAtom } from '../../../../store';
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
 import {
@@ -10,10 +10,10 @@ import {
 } from '../../../../hooks/panduan/hooks';
 import { TDictionariesResponse } from '../../../../types/panduan';
 import { LoadingSpinner } from '@kampus-gratis/components/atoms';
-import { filterPanduanKamus } from '../../../../recoil/selectors/kampus-kamus-gratis';
+import { filterPanduanKamusAtom } from '../../../../store/selectors/kampus-kamus-gratis';
 
 export const ContentSection = ({ data }: any): ReactElement => {
-  const [query, setQuery] = useRecoilState(queryOptionDictionary);
+  const [query, setQuery] = useAtom(queryOptionDictionaryAtom);
 
   const [selectedKamus, setSelectedKamus] = useState('');
 
@@ -24,7 +24,7 @@ export const ContentSection = ({ data }: any): ReactElement => {
     setDictionariesData(allDictionaries as TDictionariesResponse);
   }, [allDictionaries, setDictionariesData]);
 
-  const getSemuaKamus = useRecoilValue(filterPanduanKamus);
+  const getSemuaKamus = useAtomValue(filterPanduanKamusAtom);
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -41,7 +41,7 @@ export const ContentSection = ({ data }: any): ReactElement => {
           </p>
         </div>
         <div className="lg:w-[700px] h-[56px] w-full rounded-[8px] mt-[48px] flex items-center gap-4 flex-wrap z-10 relative">
-          <Combobox value={selectedKamus} onChange={setSelectedKamus}>
+          <Combobox value={selectedKamus} onChange={(value: string | null) => setSelectedKamus(value || '')}>
             <div
               className={
                 'w-full flex bg-neutral-100 h-[56px] pl-6 focus:outline-none rounded-[8px]'

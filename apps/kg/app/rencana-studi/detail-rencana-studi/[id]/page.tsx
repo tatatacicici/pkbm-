@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { BaseLayout } from '../../../../components/layouts/base/section';
 import DetailStudyplanModule from '../../../../modules/rencana-studi/detail';
 
-import { ReactElement } from 'react';
+import { ReactElement, use } from 'react';
 import FooterCredit from '../../../../components/footer/footer-credit/footer-credit';
 import {
   detailStudyPlanRequest,
@@ -12,26 +12,19 @@ import {
 import { TSubject } from '@kampus-gratis/apps/kg/types/rencana-studi';
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
+// Return empty array to skip static generation - pages will be generated on-demand
+// This avoids build failures when the API is unreachable during build time
 export async function generateStaticParams() {
-  try {
-    const data = await getSubject();
-
-    return data
-      ? data?.data.map(({ id }: TSubject) => ({ params: { id } }))
-      : [];
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Error fetching subject:', error);
-    return [];
-  }
+  return [];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const response = await detailStudyPlanRequest(params.id);
+    const resolvedParams = await params;
+    const response = await detailStudyPlanRequest(resolvedParams.id);
 
     if (!response)
       return {
@@ -46,7 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         images: response?.data?.detail?.thumbnail,
       },
       alternates: {
-        canonical: `/rencana-studi/detail-rencana-studi/${params.id}`,
+        canonical: `/rencana-studi/detail-rencana-studi/${resolvedParams.id}`,
       },
     };
   } catch (error) {
@@ -60,9 +53,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const DetailStudyPlanPage = ({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): ReactElement => {
-  const { id } = params;
+  const { id } = use(params);
   return (
     <BaseLayout title="Detail Matakuliah">
       <DetailStudyplanModule id={id} />

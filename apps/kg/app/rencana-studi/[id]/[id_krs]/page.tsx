@@ -2,6 +2,7 @@ import { SubmissionContractStudy } from '../../../../modules/study-plan/submissi
 import { BaseLayout } from '../../../../components/layouts/base/section';
 import { BreadCrumb } from '@kampus-gratis/components/atoms';
 import { Metadata } from 'next';
+import { use } from 'react';
 
 export const metadata: Metadata = {
   title: 'Paket-C Gratis - Rencana Studi - Fakultas - Mata Kuliah',
@@ -12,9 +13,9 @@ export const metadata: Metadata = {
 const SubmissionContractPage = ({
   params,
 }: {
-  params: { id: string; id_krs: string };
+  params: Promise<{ id: string; id_krs: string }>;
 }) => {
-  const { id, id_krs } = params;
+  const { id, id_krs } = use(params);
 
   const studyContractBreadCumbs = [
     {

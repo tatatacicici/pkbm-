@@ -1,6 +1,5 @@
-import { atom } from "recoil";
+'use client';
 
-export const MobileNavbarState = atom({
-  key: "MobileNavbarState",
-  default: false,
-});
+import { atom } from "jotai";
+
+export const MobileNavbarStateAtom = atom(false);

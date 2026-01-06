@@ -8,7 +8,7 @@ const CSRIcon = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <rect width="36" height="36" rx="5" fill="#FBCB50" />
-      <g clip-path="url(#clip0_2_83)">
+      <g clipPath="url(#clip0_2_83)">
         <path
           d="M10 22C11.1046 22 12 21.1046 12 20C12 18.8954 11.1046 18 10 18C8.89543 18 8 18.8954 8 20C8 21.1046 8.89543 22 10 22Z"
           fill="#106FA5"

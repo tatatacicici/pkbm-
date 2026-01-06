@@ -16,9 +16,9 @@ const Navbar = () => {
           <p className="text-sm">{userData?.full_name}</p>
         </div>
 
-        {userData?.avatar !== null ? (
+        {userData?.avatar ? (
           <Image
-            src={userData?.avatar as string}
+            src={userData.avatar}
             width={50}
             height={50}
             alt="avatar"

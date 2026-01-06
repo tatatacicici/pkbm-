@@ -27,7 +27,7 @@ const DetailPustakaLibraryPage = () => {
     }
   }, [bookId]);
 
-  if (!id) {
+  if (!id || !bookId) {
     return <p>Loading...</p>;
   }
 

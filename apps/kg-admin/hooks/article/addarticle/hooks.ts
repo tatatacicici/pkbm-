@@ -1,8 +1,8 @@
 import { UseMutationResult, useMutation } from '@tanstack/react-query';
 import { TArticleResponse, TCreateArticlePayload } from './type';
 import { CreateArticle } from './request';
-import { useRecoilState } from 'recoil';
-import { PopupSuccesAddArticle } from './atom';
+import { useAtom } from 'jotai';
+import { PopupSuccesAddArticleAtom } from '../../../store/article';
 
 export const useCreateArticle = (): UseMutationResult<
   TCreateArticlePayload,
@@ -21,7 +21,7 @@ type TReturnTypes = {
   getSuccesStatus: boolean;
 };
 export const usePopUpSuccesAddArticle = (): TReturnTypes => {
-  const [get, set] = useRecoilState(PopupSuccesAddArticle);
+  const [get, set] = useAtom(PopupSuccesAddArticleAtom);
   return {
     setSuccesStatus: (val) => set(val),
     getSuccesStatus: get,

@@ -1,9 +1,9 @@
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import {
-  CertificateStatus,
-  PopupModalSuccessOpen,
-} from '../../recoil/atoms/score-sertificate';
+  CertificateStatusAtom,
+  PopupModalSuccessOpenAtom,
+} from '../../store';
 import {
   TCertificateResponse,
   TScoreDetailResponse,
@@ -18,7 +18,7 @@ type ReturnTypes = {
 };
 
 export const usePopupCertificate = (): ReturnTypes => {
-  const [get, set] = useRecoilState(PopupModalSuccessOpen);
+  const [get, set] = useAtom(PopupModalSuccessOpenAtom);
   return {
     setPopupStatus: (val: boolean) => set(val),
     getPopupStatus: get,
@@ -31,7 +31,7 @@ type certificateReturnTypes = {
 };
 
 export const useCertficate = (): certificateReturnTypes => {
-  const [getCertificate, setCertificate] = useRecoilState(CertificateStatus);
+  const [getCertificate, setCertificate] = useAtom(CertificateStatusAtom);
 
   return {
     setCertificate: (val: Array<certificateTypes>) => setCertificate(val),

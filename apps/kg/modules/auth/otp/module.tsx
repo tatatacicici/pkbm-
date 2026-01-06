@@ -30,7 +30,7 @@ export const OtpModule: FC<TOTPProps> = (props) => {
 
   const [timer, setTimer] = useState(60);
 
-  const intervalRef = useRef<any>();
+  const intervalRef = useRef<any>(null);
 
   const decreaseNum = () => setTimer((prev) => prev - 1);
   useEffect(() => {

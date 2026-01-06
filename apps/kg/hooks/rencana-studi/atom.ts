@@ -1,11 +1,5 @@
-import { atom } from 'recoil';
+import { atom } from 'jotai';
 
-export const CardStudyPlanState = atom({
-    key: 'card-study-plan',
-    default: "none"
-});
+export const CardStudyPlanStateAtom = atom("none");
 
-export const EmptyStudyPlanState = atom({
-    key: 'empty-study-plan',
-    default: false
-});
+export const EmptyStudyPlanStateAtom = atom(false);

@@ -1,10 +1,10 @@
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import {
-  PopupProfilLeaderborad,
-  filteredData,
-  popupGetUser,
-} from '../../recoil';
+  PopupProfilLeaderboradAtom,
+  filteredDataAtom,
+  popupGetUserAtom,
+} from '../../store';
 import {
   ReturnTypesFilteredData,
   ReturnTypesPopupGetUser,
@@ -17,7 +17,7 @@ import { TFacultyResponse } from '../../types/study-plan';
 import { leaderboardGetRequest, leaderboardGetRequestScore } from './request';
 
 export const usePopupProfilLeaderboard = (): ReturnTypesPopupProfil => {
-  const [get, set] = useRecoilState(PopupProfilLeaderborad);
+  const [get, set] = useAtom(PopupProfilLeaderboradAtom);
   return {
     getPopupLeaderboardStatus: get,
     setPopupLeaderboardStatus: (val: boolean) => set(val),
@@ -25,7 +25,7 @@ export const usePopupProfilLeaderboard = (): ReturnTypesPopupProfil => {
 };
 
 export const usePopupGetUser = (): ReturnTypesPopupGetUser => {
-  const [get, set] = useRecoilState(popupGetUser);
+  const [get, set] = useAtom(popupGetUserAtom);
   return {
     setPopupUser: (val: TLeaderboardItem) => set(val),
     getPopupUser: get,
@@ -39,7 +39,7 @@ export const useGetLeaderboard = (): UseQueryResult<TLeaderboardResponse> =>
   });
 
 export const useFilteredData = (): ReturnTypesFilteredData => {
-  const [get, set] = useRecoilState(filteredData);
+  const [get, set] = useAtom(filteredDataAtom);
   return {
     setFilteredData: (val) => set(val),
     getFilteredData: get,

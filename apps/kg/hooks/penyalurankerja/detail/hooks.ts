@@ -2,8 +2,8 @@ import { TMetaErrorResponse } from '@kampus-gratis/utils';
 import { UseQueryResult, useQuery } from '@tanstack/react-query';
 import { TPenyaluranKerjaDataById } from '../../../types/penyalurankerja';
 import { jobGetByIdRequest } from './api';
-import { useRecoilState } from 'recoil';
-import { PopupAjukanLamaran, PopupAjukanLamaranLetter } from './atom';
+import { useAtom } from 'jotai';
+import { PopupAjukanLamaranAtom, PopupAjukanLamaranLetterAtom } from './atom';
 
 type TReturnPopupJob = {
   setPopupStatus: (val: boolean) => void;
@@ -24,14 +24,14 @@ export const useGetJobById = (
   });
 
 export const usePopUpJob = (): TReturnPopupJob => {
-  const [get, set] = useRecoilState(PopupAjukanLamaran);
+  const [get, set] = useAtom(PopupAjukanLamaranAtom);
   return {
     setPopupStatus: (val) => set(val),
     getPopupStatus: get,
   };
 };
 export const usePopUpJobLetter = (): TReturnPopupJobLetter => {
-  const [get, set] = useRecoilState(PopupAjukanLamaranLetter);
+  const [get, set] = useAtom(PopupAjukanLamaranLetterAtom);
   return {
     setPopupLetter: (val) => set(val),
     getPopupLetter: get,

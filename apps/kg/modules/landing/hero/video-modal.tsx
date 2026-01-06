@@ -1,7 +1,6 @@
 'use client';
 
 import { Dialog, Transition } from '@headlessui/react';
-import { Button } from '@nextui-org/react';
 import { Fragment, useState } from 'react';
 import { BsBriefcaseFill } from 'react-icons/bs';
 import { FaBook, FaPlay } from 'react-icons/fa6';
@@ -61,13 +60,13 @@ export default function VideoPanduanModal() {
               >
                 <Dialog.Panel className="relative w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <div className="absolute top-4 right-4">
-                    <Button
+                    <button
                       type="button"
                       className="p-2 rounded-full hover:bg-gray-100 transition text-neutral-900"
                       onClick={closeModal}
                     >
                       <IoClose size={24} />
-                    </Button>
+                    </button>
                   </div>
                   <Dialog.Title
                     as="h3"

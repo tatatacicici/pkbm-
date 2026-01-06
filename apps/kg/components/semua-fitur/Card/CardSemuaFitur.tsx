@@ -57,7 +57,7 @@ const CardSemuaFitur: FC<TCardPropsSemuaFitur> = ({
             <Image
               className={`object-cover ${imgStyle}`}
               src={src}
-              alt={title as string}
+              alt={title || 'Feature icon'}
               width={60}
               height={60}
             />

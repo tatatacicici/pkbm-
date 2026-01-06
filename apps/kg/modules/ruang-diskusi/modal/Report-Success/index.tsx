@@ -1,11 +1,11 @@
 import { Button } from '@kampus-gratis/components/atoms';
 import { FC, ReactElement } from 'react';
 import { BsCheckCircleFill } from 'react-icons/bs';
-import { useSetRecoilState } from 'recoil';
-import { isModalOpen } from '../../store';
+import { useSetAtom } from 'jotai';
+import { isModalOpenAtom } from '../../store';
 
 export const ReportSuccessModal: FC = (): ReactElement => {
-  const setOptionOpen = useSetRecoilState(isModalOpen);
+  const setOptionOpen = useSetAtom(isModalOpenAtom);
 
   return (
     <section className="flex flex-col items-center justify-center px-10 py-6">

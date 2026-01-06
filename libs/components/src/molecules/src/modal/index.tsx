@@ -5,6 +5,8 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { Button } from '../../../atoms/src/button';
 import { TModalProps } from './types';
 
+export type { TModalProps } from './types';
+
 export const Modal: FC<TModalProps> = ({
   title,
   children,

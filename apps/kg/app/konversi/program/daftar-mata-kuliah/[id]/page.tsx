@@ -1,5 +1,5 @@
 import { Metadata, NextPage } from 'next';
-import { ReactElement } from 'react';
+import { ReactElement, use } from 'react';
 import DetailMataKuliahKonversiModule from '../../../../../modules/konversi/program/detail-matkul';
 
 export const metadata: Metadata = {
@@ -8,11 +8,11 @@ export const metadata: Metadata = {
 };
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 const DetailMataKuliahKonversiPage = ({ params }: Props): ReactElement => {
-  const { id } = params;
+  const { id } = use(params);
   return <DetailMataKuliahKonversiModule id={id} />;
 };
 

@@ -25,14 +25,14 @@ import {
   studentSubjectPlanRequest,
   studentSubjectSendDraftRequest,
 } from './request';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import {
-  PopupModalAddStudy,
-  PopupModalConfirmCard,
-  PopupModalConfirmStatus,
-  PopupModalSuccessConversi,
-  dataMajorContractState,
-} from '../../recoil/atoms/study-plan';
+  PopupModalAddStudyAtom,
+  PopupModalConfirmCardAtom,
+  PopupModalConfirmStatusAtom,
+  PopupModalSuccessConversiAtom,
+  dataMajorContractStateAtom,
+} from '../../store';
 
 export const useFaculty = (): UseQueryResult<
   TFacultyResponse,
@@ -115,7 +115,7 @@ export const useStudentSubjectPengajuan = (): UseQueryResult<
 };
 
 export const useDataMajorContract = (): TuseMajorContractData => {
-  const [get, set] = useRecoilState(dataMajorContractState);
+  const [get, set] = useAtom(dataMajorContractStateAtom);
 
   return {
     getMajorContractData: get,
@@ -142,7 +142,7 @@ type ReturnTypes = {
 };
 
 export const usePopupConfirmCardStudy = (): ReturnTypes => {
-  const [get, set] = useRecoilState(PopupModalConfirmCard);
+  const [get, set] = useAtom(PopupModalConfirmCardAtom);
   return {
     setPopupStatus: (val: boolean) => set(val),
     getPopupStatus: get,
@@ -155,7 +155,7 @@ type ReturnType = {
 };
 
 export const usePopupSucces = (): ReturnType => {
-  const [get, set] = useRecoilState(PopupModalSuccessConversi);
+  const [get, set] = useAtom(PopupModalSuccessConversiAtom);
   return {
     setPopupSuccess: (val: boolean) => set(val),
     getPopupSuccess: get,
@@ -168,7 +168,7 @@ type ReturnTypeAddStudy = {
 };
 
 export const usePopupAddStudy = (): ReturnTypeAddStudy => {
-  const [get, set] = useRecoilState(PopupModalAddStudy);
+  const [get, set] = useAtom(PopupModalAddStudyAtom);
   return {
     setPopupAdd: (val: boolean) => set(val),
     getPopupAdd: get,
@@ -181,7 +181,7 @@ type ReturnTypesConfirm = {
 };
 
 export const usePopupConfirmStatus = (): ReturnTypesConfirm => {
-  const [get, set] = useRecoilState(PopupModalConfirmStatus);
+  const [get, set] = useAtom(PopupModalConfirmStatusAtom);
   return {
     setPopupStatus: (val: boolean) => set(val),
     getPopupStatus: get,

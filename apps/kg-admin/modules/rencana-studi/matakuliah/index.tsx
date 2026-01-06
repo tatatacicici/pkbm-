@@ -10,16 +10,16 @@ import { IconLock } from '../../../components/icons/ic-lock';
 import Dropdown from '../../../components/dropdown/Dropdown';
 import { IconArrowDown } from '../../../components/icons/ic-arrow-down';
 import ButtonPlus from '../../../components/button-plus/ButtonPlus';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import {
-  modalBerhasil,
-  modalConfirmation,
-  modalDelete,
-  modalDeleteSuccess,
-  modalEdit,
-  modalEditSuccess,
-  modalOpenState,
-} from '../../../recoil/atoms/rencana-studi';
+  modalBerhasilAtom,
+  modalConfirmationAtom,
+  modalDeleteAtom,
+  modalDeleteSuccessAtom,
+  modalEditAtom,
+  modalEditSuccessAtom,
+  modalOpenStateAtom,
+} from '../../../store/rencana-studi';
 import { Modal } from '../../../components/popup/modal';
 import { ModalTambahMatkul } from './modalTambahMatkul';
 import { ModalPopUpBerhasil } from '../fakultas/popUp/popUpBerhasil';
@@ -56,20 +56,20 @@ export function useDebounce(
 
 export const MataKuliahSection = () => {
   const router = useRouter();
-  const [isModalOpen, setIsModalOpen] = useRecoilState(modalOpenState);
+  const [isModalOpen, setIsModalOpen] = useAtom(modalOpenStateAtom);
   const [isModalBerhasilOpen, setIsModalBerhasilOpen] =
-    useRecoilState(modalBerhasil);
+    useAtom(modalBerhasilAtom);
   const [isModalConfirmOpen, setIsModalConfirmOpen] =
-    useRecoilState(modalConfirmation);
-  const [isModalDeleteOpen, setIsModalDeleteOpen] = useRecoilState(modalDelete);
+    useAtom(modalConfirmationAtom);
+  const [isModalDeleteOpen, setIsModalDeleteOpen] = useAtom(modalDeleteAtom);
 
   const [filterData, setFilterData] = useState<TSubjectItem[]>([]);
   const [subjectId, setSubjectId] = useState('');
-  const [isModalEditOpen, setIsModalEditOpen] = useRecoilState(modalEdit);
+  const [isModalEditOpen, setIsModalEditOpen] = useAtom(modalEditAtom);
   const [isModalEditSuccessOpen, setIsModalEditSuccessOpen] =
-    useRecoilState(modalEditSuccess);
+    useAtom(modalEditSuccessAtom);
   const [isModalDeleteSuccessOpen, setIsModalDeleteSuccessOpen] =
-    useRecoilState(modalDeleteSuccess);
+    useAtom(modalDeleteSuccessAtom);
   const [selectedMajor, setSelectedMajor] = useState('');
   const [subjectDataState, setSubjectDataState] = useState<TSubjectItem>({
     id: '',

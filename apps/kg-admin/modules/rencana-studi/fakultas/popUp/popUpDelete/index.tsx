@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { Button } from '@kampus-gratis/components/atoms';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDeleteFaculty } from '../../../../../hooks/rencana-studi/hook';
-import { useRecoilState } from 'recoil';
-import { modalDelete, modalDeleteSuccess } from '../../../../../recoil/atoms/rencana-studi';
+import { useAtom } from 'jotai';
+import { modalDeleteAtom, modalDeleteSuccessAtom } from '../../../../../store/rencana-studi';
 
 interface ModalPopUpDeleteProps {
   jumlahProdi: string;
@@ -21,9 +21,9 @@ export const ModalPopUpDelete: FC<ModalPopUpDeleteProps> = ({
 }) => {
 
   const queryClient = useQueryClient();
-  const [isModalDeleteOpen, setIsModalDeleteOpen] = useRecoilState(modalDelete);
+  const [isModalDeleteOpen, setIsModalDeleteOpen] = useAtom(modalDeleteAtom);
    const [isDeleteSuccessOpen, setIsDeleteSuccessOpen] =
-    useRecoilState(modalDeleteSuccess);
+    useAtom(modalDeleteSuccessAtom);
   const {mutate} = useDeleteFaculty();
 
   const handleSubmitDelete = async () => {

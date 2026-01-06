@@ -5,8 +5,8 @@ import {
   useMutation,
   useQuery,
 } from '@tanstack/react-query';
-import { useRecoilState } from 'recoil';
-import { mystudyAssignmentState } from '../../../recoil/atoms/mystudy-assignment';
+import { useAtom } from 'jotai';
+import { mystudyAssignmentStateAtom } from '../../../store';
 import {
   TListAssignmentResponse,
   TMyStudyAssignmentResponse,
@@ -21,7 +21,7 @@ import {
 } from './request';
 
 export const useMyStudyAssignmentItem = (): TuseMyStudyAssignmentItem => {
-  const [get, set] = useRecoilState(mystudyAssignmentState);
+  const [get, set] = useAtom(mystudyAssignmentStateAtom);
   return {
     getMyStudyAssignmentItem: get,
     setMyStudyAssignmentItem: (val) => set(val),

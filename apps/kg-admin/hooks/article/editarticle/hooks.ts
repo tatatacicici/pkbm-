@@ -14,8 +14,8 @@ import {
   articleDataBySlug,
   articleSlugResponse,
 } from '../../../../kg-admin/types';
-import { useRecoilState } from 'recoil';
-import { PopupDeleteEditArticle } from './atom';
+import { useAtom } from 'jotai';
+import { PopupDeleteEditArticleAtom } from '../../../store/article';
 import { TEditArticlePayload } from './type';
 import { TMetaErrorResponse } from '@kampus-gratis/utils';
 
@@ -47,7 +47,7 @@ type TReturnTypes = {
   getEditStatus: boolean;
 };
 export const usePopUpEditArticle = (): TReturnTypes => {
-  const [get, set] = useRecoilState(PopupDeleteEditArticle);
+  const [get, set] = useAtom(PopupDeleteEditArticleAtom);
   return {
     setEditStatus: (val) => set(val),
     getEditStatus: get,

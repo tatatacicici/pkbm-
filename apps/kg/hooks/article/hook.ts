@@ -22,11 +22,11 @@ import {
   articleGetRequest,
   articleRelatedGetRequest,
 } from './request';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import {
-  articleDataState,
-  articleFavoriteDataState,
-} from '../../recoil/atoms/article';
+  articleDataStateAtom,
+  articleFavoriteDataStateAtom,
+} from '../../store';
 import { TDetailArticleResponse } from '../../types/articlesDetail';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
@@ -39,6 +39,7 @@ export const useGetArticle = (
   useQuery({
     queryKey: ['article-get', page, limit],
     queryFn: async () => await articleGetRequest(page, limit, search),
+    retry: false,
   });
 
 export const useGetAllArticle = (): UseQueryResult<
@@ -48,10 +49,11 @@ export const useGetAllArticle = (): UseQueryResult<
   useQuery({
     queryKey: ['get-all-articles'],
     queryFn: async () => await allArticleGetRequest(),
+    retry: false,
   });
 
 export const useArticleData = (): TuseArticleData => {
-  const [get, set] = useRecoilState(articleDataState);
+  const [get, set] = useAtom(articleDataStateAtom);
   return {
     getArticleData: get,
     setArticleData: (val) => set(val),
@@ -131,7 +133,7 @@ export const useGetArticleFavorite = (
 };
 
 export const useArticleFavoriteData = (): TuseArticleFavortieData => {
-  const [get, set] = useRecoilState(articleFavoriteDataState);
+  const [get, set] = useAtom(articleFavoriteDataStateAtom);
   return {
     getArticleFavoriteData: get,
     setArticleFavoriteData: (val) => set(val),

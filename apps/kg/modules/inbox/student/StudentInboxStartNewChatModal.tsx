@@ -302,7 +302,7 @@ const StudentInboxStartNewChatModal: React.FC<StudentInboxStartNewChatModalProps
       className="fixed inset-0 z-[99] overflow-y-auto"
     >
       <div className="flex items-center justify-center min-h-screen px-4 text-center">
-        <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
+        <div className="fixed inset-0 bg-black opacity-30" aria-hidden="true" />
         <div className="inline-block w-full max-w-2xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
           {modalContent}
         </div>

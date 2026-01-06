@@ -1,7 +1,6 @@
 'use client';
 
 import { BreadCrumb, LoadingSpinner } from '@kampus-gratis/components/atoms';
-import { Button } from '@nextui-org/react';
 import EmptyState from 'apps/kg/components/empty-state';
 import { StudiKuBreadCumbs } from 'apps/kg/utils/constantStudiKu';
 import Link from 'next/link';
@@ -171,7 +170,7 @@ export const ModuleContentModule: FC = (): ReactElement => {
               className="xl:w-[728px] md:w-[728px] xl:h-[398px] lg:h-[508px] w-[350px] h-[240px] border rounded"
             />
 
-            <Button
+            <button
               onClick={() =>
                 handleDownload(
                   activeContent.item.url || '',
@@ -182,7 +181,7 @@ export const ModuleContentModule: FC = (): ReactElement => {
             >
               <FaEye />
               Lihat Jurnal
-            </Button>
+            </button>
           </div>
         );
     }
@@ -302,7 +301,7 @@ export const ModuleContentModule: FC = (): ReactElement => {
                                   type as keyof TModuleContentItem
                                 ] as any[]
                               ).map((item: ContentItem, index: number) => (
-                                <Button
+                                <button
                                   key={index}
                                   type="button"
                                   onClick={() =>
@@ -311,14 +310,6 @@ export const ModuleContentModule: FC = (): ReactElement => {
                                       item,
                                     })
                                   }
-                                  //   className={`flex items-center gap-x-2 w-full py-2 px-3 rounded-md shadow-sm text-start
-                                  // ${
-                                  //   activeContent?.item.id === item.id
-                                  //     ? 'bg-blue-base text-white'
-                                  //     : item.is_video_seen
-                                  //     ? 'bg-green-500 text-white'
-                                  //     : 'text-gray-400 hover:bg-gray-100 hover:text-gray-500 border border-gray-100'
-                                  // }`}
                                   className={`flex items-center gap-x-2 w-full py-2 px-3 rounded-md shadow-sm text-start
                                 ${
                                   activeContent?.item.id === item.id
@@ -350,7 +341,7 @@ export const ModuleContentModule: FC = (): ReactElement => {
                                     text={item.title}
                                     maxLength={50}
                                   />
-                                </Button>
+                                </button>
                               ))
                             ) : (
                               <p className="text-gray-500">

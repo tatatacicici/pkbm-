@@ -9,13 +9,12 @@ import Avatar from 'react-avatar';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 import { HiMiniSquaresPlus } from 'react-icons/hi2';
 import { RiArrowUpSLine } from 'react-icons/ri';
-import { useRecoilState } from 'recoil';
-import { MobileNavbarState } from './store';
 import { TMobileMenuProps } from './typed';
 
-export const HamburgerIcon: FC = (): ReactElement => {
-  const [getMobileNavbar, setMobileNavbar] = useRecoilState(MobileNavbarState);
-
+export const HamburgerIcon: FC<{
+  isOpen: boolean;
+  onToggle: (next: boolean) => void;
+}> = ({ isOpen, onToggle }): ReactElement => {
   return (
     <div className="xl:hidden">
       <button
@@ -23,7 +22,7 @@ export const HamburgerIcon: FC = (): ReactElement => {
         id="mobile-menu"
         aria-label="mobile-menu"
         className="flex flex-col bg-neutral-100  h-9 w-9  p-2 rounded-md justify-center items-center group xl:hidden"
-        onClick={() => setMobileNavbar(!getMobileNavbar)}
+        onClick={() => onToggle(!isOpen)}
       >
         <AiOutlineMenu className="text-xl " />
       </button>
@@ -37,15 +36,15 @@ export const NavbarMobileMenu: FC<TMobileMenuProps> = ({
   userData,
   button,
   logo,
+  isOpen,
+  onToggle,
 }): ReactElement => {
-  const [getMobileNavbar, setMobileNavbar] = useRecoilState(MobileNavbarState);
-
   const { data: session } = useSession();
 
   return (
     <div
       className={`${
-        getMobileNavbar ? 'visible' : 'invisible'
+        isOpen ? 'visible' : 'invisible'
       } px-4 py-4 absolute top-0 left-0 xl:hidden right-0 bg-white shadow-md border-b-2 border-neutral-300 z-50`}
       style={{ maxHeight: '100vh', overflowY: 'auto' }}
     >
@@ -62,7 +61,7 @@ export const NavbarMobileMenu: FC<TMobileMenuProps> = ({
         />
         <AiOutlineClose
           className="text-neutral-base font-bold text-xl cursor-pointer"
-          onClick={() => setMobileNavbar(!getMobileNavbar)}
+          onClick={() => onToggle(!isOpen)}
         />
       </section>
       {session ? (
@@ -114,11 +113,11 @@ export const NavbarMobileMenu: FC<TMobileMenuProps> = ({
                           // className="flex flex-col gap-2 border-s-4 border-primary-500 p-2 mb-1 hover:bg-gray-100 rounded-r-md"
                           className="flex flex-col gap-2 border-s-4 border-sky-base p-2 mb-1 hover:bg-gray-100 rounded-r-md"
                         >
-                          <Link
-                            href={submenu.link}
-                            key={idx}
-                            onClick={() => setMobileNavbar(false)}
-                          >
+                      <Link
+                        href={submenu.link}
+                        key={idx}
+                        onClick={() => onToggle(false)}
+                      >
                             {submenu.name}
                           </Link>
                         </div>
@@ -142,9 +141,7 @@ export const NavbarMobileMenu: FC<TMobileMenuProps> = ({
         <section className=" px-1 py-2">
           <Link
             href="/semua-fitur"
-            onClick={() => {
-              setMobileNavbar(!getMobileNavbar);
-            }}
+            onClick={() => onToggle(false)}
             className=" h-[38px] px-4 flex items-center justify-center rounded-md shadow-sm font-semibold gap-1 text-base bg-red-base text-white hover:bg-red-base/80 transition-colors ease-in-out duration-300 mb-4"
           >
             Semua Fitur
@@ -157,7 +154,7 @@ export const NavbarMobileMenu: FC<TMobileMenuProps> = ({
                 type="submit"
                 onClick={() => {
                   onClick();
-                  setMobileNavbar(!getMobileNavbar);
+                  onToggle(false);
                 }}
               >
                 <h1 className="text-[#171717]  group:hover:text-neutral-100 text-sm text-center">

@@ -24,12 +24,12 @@ import {
   registerRequest,
   resetPasswordRequest,
 } from './request';
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import {
-  PopupModalForgotPass,
-  PopupOtp,
-  forgotPasswordState,
-} from '../../recoil/atoms/auth';
+  PopupModalForgotPassAtom,
+  PopupOtpAtom,
+  forgotPasswordStateAtom,
+} from '../../store';
 
 export const useRegister = (): UseMutationResult<
   TMetaItem,
@@ -63,7 +63,7 @@ export const useOtpRequest = (): UseMutationResult<
   });
 
 export const usePopupOtp = (): TOtpPopup => {
-  const [get, set] = useRecoilState(PopupOtp);
+  const [get, set] = useAtom(PopupOtpAtom);
   return {
     getPopupOtp: get,
     setPopupOtp: (val: boolean) => set(val),
@@ -94,7 +94,7 @@ export const useForgot = (): UseMutationResult<
   });
 
 export const usePopupForgotPassword = (): TForgotPasswordPopup => {
-  const [get, set] = useRecoilState(forgotPasswordState);
+  const [get, set] = useAtom(forgotPasswordStateAtom);
   return {
     setPopupForgotPassword: (val: string) => set(val),
     getPopupForgotPassword: get,
@@ -102,7 +102,7 @@ export const usePopupForgotPassword = (): TForgotPasswordPopup => {
 };
 
 export const usePopupForgotPass = (): TusePopupForgotPass => {
-  const [get, set] = useRecoilState(PopupModalForgotPass);
+  const [get, set] = useAtom(PopupModalForgotPassAtom);
   return {
     setPopupStatus: (val: boolean) => set(val),
     getPopupStatus: get,

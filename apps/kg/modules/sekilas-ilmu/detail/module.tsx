@@ -114,7 +114,7 @@ export const DetailSekilasIlmuModule: FC<any> = ({ slug }): ReactElement => {
                     relatedArticles?.map((article: any) => {
                       return (
                         <Fragment key={article.id}>
-                          <RelatedGlimpseKnowledgeCard data={...article} />
+                          <RelatedGlimpseKnowledgeCard data={article} />
                         </Fragment>
                       );
                     })

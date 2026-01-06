@@ -2,7 +2,7 @@
 
 import React, { FC, useEffect, useState } from 'react';
 
-import { useRecoilState } from 'recoil';
+import { useAtom } from 'jotai';
 import {
   Button,
   SelectField,
@@ -28,11 +28,11 @@ import {
 } from '../../../../../types/rencatastudi';
 import { useQueryClient } from '@tanstack/react-query';
 import {
-  modalBerhasil,
-  modalEdit,
-  modalEditSuccess,
-  modalOpenState,
-} from '../../../../../recoil/atoms/rencana-studi';
+  modalBerhasilAtom,
+  modalEditAtom,
+  modalEditSuccessAtom,
+  modalOpenStateAtom,
+} from '../../../../../store/rencana-studi';
 import { RiCloseLine } from 'react-icons/ri';
 import { MdOutlineZoomInMap } from 'react-icons/md';
 import { MdOutlineZoomOutMap } from 'react-icons/md';
@@ -54,11 +54,11 @@ export const ModalEditMatkul: FC<ModalPopUpEditProps> = ({ subjectData }) => {
   const [fullSize, setFullSize] = useState<boolean>(false);
   type ValidationSchema = z.infer<typeof validationUpdateSubject>;
   const queryClient = useQueryClient();
-  const [isModalEditOpen, setIsModalEditOpen] = useRecoilState(modalEdit);
+  const [isModalEditOpen, setIsModalEditOpen] = useAtom(modalEditAtom);
   const [isModalBerhasilOpen, setIsModalBerhasilOpen] =
-    useRecoilState(modalBerhasil);
+    useAtom(modalBerhasilAtom);
   const [isModalEditSuccessOpen, setIsModalEditSuccessOpen] =
-    useRecoilState(modalEditSuccess);
+    useAtom(modalEditSuccessAtom);
 
   const [searchQuery, setSearchQuery] = useState<string>('');
 

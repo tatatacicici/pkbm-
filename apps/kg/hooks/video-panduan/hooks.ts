@@ -1,25 +1,12 @@
 "use client"
 
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
-import { videoGuideState } from "../../recoil/atoms/video-panduan";
+import { videoGuideStateAtom } from "../../store/video-panduan";
 import { TuseDetailVideoPanduan, TuseVideoPanduan, videoGuideTypes } from "../../types/panduan";
-import { useRecoilState } from "recoil";
+import { useAtom } from "jotai";
 import { panduanDetailVideoGetRequest, panduanVideoGetRequest } from "./request";
 import { useRouter } from "next/navigation";
-import { detailVideoGuideState } from "../../recoil/atoms/detail-video-panduan";
-
-// type GuideVideo = {
-//   setGuideVideo: (val: Array<videoGuideTypes>) => void;
-//   getGuideVideo: Array<videoGuideTypes>;
-// };
-
-// export const useGuideVideo = (): GuideVideo => {
-//   const [get, set] = useRecoilState(videoGuideState);
-//   return {
-//     setGuideVideo: (val: Array<videoGuideTypes>) => set(val),
-//     getGuideVideo: get,
-//   };
-// };
+import { detailVideoGuideStateAtom } from "../../store/detail-video-panduan";
 
 export const useGetVideoPanduan = (
 ): UseQueryResult<videoGuideTypes> =>
@@ -29,7 +16,7 @@ export const useGetVideoPanduan = (
   });
 
 export const useVideoData = (): TuseVideoPanduan => {
-  const [get, set] = useRecoilState(videoGuideState);
+  const [get, set] = useAtom(videoGuideStateAtom);
   return {
     getVideoData: get,
     setVideoData: (val) => set(val),
@@ -44,7 +31,6 @@ export const useGetVideoPanduanDetail = (id: string) => {
       if (response) {
         return response;
       } else {
-        // Jika response kosong, Anda dapat mengembalikan nilai default atau pesan error
         throw new Error("Data not found");
       }
     } catch (error) {
@@ -53,9 +39,8 @@ export const useGetVideoPanduanDetail = (id: string) => {
   });
 };
 
-
 export const useDetailVideoData = (): TuseDetailVideoPanduan => {
-  const [get, set] = useRecoilState(detailVideoGuideState);
+  const [get, set] = useAtom(detailVideoGuideStateAtom);
   return {
     getDetailVideoData: get,
     setDetailVideoData: (val) => set(val),

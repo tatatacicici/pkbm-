@@ -4,8 +4,7 @@ import { useSession } from 'next-auth/react';
 import NextImage from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FC, ReactElement } from 'react';
-import { useRecoilState } from 'recoil';
+import { FC, ReactElement, useState } from 'react';
 import { TNavbarProps } from '../../types';
 import {
   HamburgerIcon,
@@ -15,7 +14,6 @@ import {
   NavbarUserMenu,
 } from './dropdown-menu';
 import { NavbarMegaMenu } from './dropdown-menu/megamenu';
-import { navSearchKeyword } from './store';
 
 export const TopNav: FC<TNavbarProps> = ({
   logo,
@@ -29,9 +27,7 @@ export const TopNav: FC<TNavbarProps> = ({
 }): ReactElement => {
   const pathname = usePathname();
   const { data: session } = useSession();
-
-  const [getSearchingKeyword, setSearchingKeyword] =
-    useRecoilState(navSearchKeyword);
+  const [isMobileNavbarOpen, setIsMobileNavbarOpen] = useState(false);
 
   return (
     // <header className="flex w-full justify-between bg-white">
@@ -95,9 +91,14 @@ export const TopNav: FC<TNavbarProps> = ({
           </section>
         )}
 
-        <HamburgerIcon />
+        <HamburgerIcon
+          isOpen={isMobileNavbarOpen}
+          onToggle={setIsMobileNavbarOpen}
+        />
       </div>
       <NavbarMobileMenu
+        isOpen={isMobileNavbarOpen}
+        onToggle={setIsMobileNavbarOpen}
         mobileitems={mobileMenuItems}
         userData={{
           full_name: userData?.full_name,
